@@ -22,6 +22,8 @@ FORBIDDEN_TOOL_NAMES = frozenset(
         "email_digest",
         "file_gst_return",
         "bank_transfer",
+        "email_handoff",
+        "claim_gst",
     }
 )
 
@@ -64,6 +66,8 @@ def check_action(action: str) -> HitlDecision:
         "file gst",
         "file myir",
         "bank transfer",
+        "email handoff",
+        "claim gst automatically",
     )
     for frag in blocked_fragments:
         if frag in a:

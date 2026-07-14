@@ -40,6 +40,8 @@ Wire into Claude Desktop / Cursor / other hosts via `mcp.json` in this repo.
 | `export_deadline_reminders` | ICS + digest files (never emails) |
 | `bank_import_csv` / `bank_triage` | Bank CSV import + category triage |
 | `gst_prepare_worksheet` | GST **working papers** only (not a filing) |
+| `invoice_triage_path` / `invoice_list` | Invoice field extraction + registry |
+| `handoff_pack_create` | Local accountant zip (never emails) |
 | `hitl_policy_summary` / `check_hitl_action` | Policy helpers |
 
 ## Tools deliberately absent

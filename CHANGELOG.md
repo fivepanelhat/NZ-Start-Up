@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.6.0 — 2026-07-14
+
+### Added
+- **Invoice triage** for PDF/text (optional `pypdf`): field extraction, confidence, registry
+- CLI: `nz-startup invoice triage|list`
+- MCP: `invoice_triage_path`, `invoice_list`
+- **Accountant handoff pack** ZIP of working papers
+- CLI: `nz-startup handoff pack`
+- MCP: `handoff_pack_create`
+- Sample: `templates/sample-tax-invoice.txt`
+- Docs: `docs/INVOICES_HANDOFF.md`
+- Optional extra: `pip install '.[pdf]'`
+
+### HITL
+- No auto GST claims; no emailing handoff packs
+- Image invoices flagged for human OCR (no cloud OCR)
+
 ## 0.5.0 — 2026-07-14
 
 ### Added

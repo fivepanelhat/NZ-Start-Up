@@ -19,6 +19,11 @@ finance/
   bank-feed.md
   bank-imports/         # Archived raw bank CSVs
   gst/                  # GST working papers (not filings)
+  invoices/
+    inbox/              # Archived invoice originals
+    triaged/            # Per-invoice extraction
+    invoice-registry.csv
+handoff/                # Accountant zip packs
 exports/
   deadlines-latest.ics  # Importable calendar
   deadline-digest-latest.md

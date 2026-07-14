@@ -96,6 +96,10 @@ nz-startup bank import my-startup --file templates/bank-feed-sample.csv
 nz-startup bank triage my-startup
 nz-startup gst prepare my-startup --start 2026-07-01 --end 2026-07-31
 
+# Invoice triage + accountant handoff zip (you deliver the zip)
+nz-startup invoice triage my-startup --path templates/sample-tax-invoice.txt
+nz-startup handoff pack my-startup
+
 # Deadline exports (import ICS yourself — agent does not email)
 nz-startup export reminders my-startup --days 14 --ics-days 90
 

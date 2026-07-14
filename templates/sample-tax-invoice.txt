@@ -1,0 +1,22 @@
+TAX INVOICE
+
+Cloud Tools NZ Limited
+GST No: 123-456-789
+
+Bill To:
+Example Sovereign Labs Limited
+
+Invoice No: CT-1042
+Date: 03/07/2026
+Due Date: 20/07/2026
+
+Description                     Amount
+Managed hosting - July          200.00
+Support retainer                100.00
+
+Subtotal                        300.00
+GST 15%                          45.00
+Total (incl GST)                345.00
+
+Payment: bank transfer only
+Thank you for your business.

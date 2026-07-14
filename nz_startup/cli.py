@@ -14,6 +14,8 @@ from nz_startup import (
     export_reminders,
     grants,
     gst_worksheet,
+    handoff,
+    invoice_triage,
     memory,
     nzbn,
     pipeline,
@@ -349,6 +351,47 @@ def cmd_gst(args: argparse.Namespace) -> int:
     return 2
 
 
+def cmd_invoice(args: argparse.Namespace) -> int:
+    if args.invoice_cmd == "triage":
+        results = invoice_triage.triage_path(args.company_id, Path(args.path))
+        if args.json:
+            print(json.dumps(results, indent=2, default=str))
+        else:
+            for detail in results:
+                print(invoice_triage.format_triage_markdown(detail))
+                print("---")
+            print(f"Triaged {len(results)} file(s). Registry: finance/invoices/invoice-registry.csv")
+        return 0
+    if args.invoice_cmd == "list":
+        rows = invoice_triage.list_invoices(args.company_id)
+        if args.json:
+            print(json.dumps(rows, indent=2))
+        else:
+            print(invoice_triage.format_registry_summary(args.company_id))
+        return 0
+    return 2
+
+
+def cmd_handoff(args: argparse.Namespace) -> int:
+    if args.handoff_cmd == "pack":
+        result = handoff.create_handoff_pack(args.company_id, label=args.label)
+        if args.json:
+            print(
+                json.dumps(
+                    {k: (str(v) if hasattr(v, "__fspath__") else v) for k, v in result.items()},
+                    indent=2,
+                )
+            )
+        else:
+            print(f"zip: {result['zip']}")
+            print(f"latest: {result['latest']}")
+            print(f"files: {result['file_count']}")
+            print(f"readme: {result['readme']}")
+            print("HITL: deliver zip to accountant yourself — agent does not email.")
+        return 0
+    return 2
+
+
 def cmd_validate(args: argparse.Namespace) -> int:
     script = repo_root() / "scripts" / "validate_skills.py"
     import subprocess
@@ -605,6 +648,28 @@ def build_parser() -> argparse.ArgumentParser:
     gt_prep.add_argument("--label", default=None)
     gt_prep.add_argument("--json", action="store_true")
     gt_prep.set_defaults(func=cmd_gst)
+
+    # Invoices
+    inv = sub.add_parser("invoice", help="Invoice PDF/text triage")
+    inv_sub = inv.add_subparsers(dest="invoice_cmd", required=True)
+    inv_tr = inv_sub.add_parser("triage", help="Triage file or directory of invoices")
+    inv_tr.add_argument("company_id")
+    inv_tr.add_argument("--path", required=True, help="Invoice file or folder")
+    inv_tr.add_argument("--json", action="store_true")
+    inv_tr.set_defaults(func=cmd_invoice)
+    inv_ls = inv_sub.add_parser("list", help="List triaged invoices")
+    inv_ls.add_argument("company_id")
+    inv_ls.add_argument("--json", action="store_true")
+    inv_ls.set_defaults(func=cmd_invoice)
+
+    # Handoff pack
+    ho = sub.add_parser("handoff", help="Accountant handoff pack")
+    ho_sub = ho.add_subparsers(dest="handoff_cmd", required=True)
+    ho_pack = ho_sub.add_parser("pack", help="Zip working papers for accountant")
+    ho_pack.add_argument("company_id")
+    ho_pack.add_argument("--label", default="accountant")
+    ho_pack.add_argument("--json", action="store_true")
+    ho_pack.set_defaults(func=cmd_handoff)
 
     val = sub.add_parser("validate", help="Validate skill pack")
     val.set_defaults(func=cmd_validate)

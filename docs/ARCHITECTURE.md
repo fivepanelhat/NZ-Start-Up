@@ -23,6 +23,7 @@
               ├─ pipeline/calendar/grants CSVs
               ├─ Xero read-only snapshot (optional)
               ├─ bank-feed.csv import + GST working papers
+              ├─ invoice triage + handoff/*.zip
               └─ exports/*.ics + digest (no email)
                                   │
                      CAT Standards + Aether Guardrails

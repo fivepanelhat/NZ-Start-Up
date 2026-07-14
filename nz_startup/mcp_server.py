@@ -15,6 +15,8 @@ from nz_startup import (
     export_reminders,
     grants,
     gst_worksheet,
+    handoff,
+    invoice_triage,
     memory,
     nzbn,
     pipeline,
@@ -52,6 +54,8 @@ def build_server():
             "Reminder exports write files only — never email digests. "
             "Bank import is CSV-only triage — never moves money. "
             "GST prepare builds working papers only — never files myIR. "
+            "Invoice triage extracts fields for review — never claims GST. "
+            "Handoff pack writes a local zip — never emails the accountant. "
             "Always load CAT Gold/Diamond/Platinum classification for material work."
         ),
     )
@@ -432,6 +436,34 @@ def build_server():
         )
 
     @mcp.tool()
+    def invoice_triage_path(company_id: str, path: str) -> str:
+        """
+        Triage an invoice file or folder (PDF/text). Extracts fields for human review.
+        Requires pypdf for best PDF text extraction (optional extra). Never claims GST.
+        """
+        from pathlib import Path
+
+        results = invoice_triage.triage_path(company_id, Path(path))
+        return json.dumps(results, indent=2, default=str)
+
+    @mcp.tool()
+    def invoice_list(company_id: str) -> str:
+        """List triaged invoices from the local registry."""
+        return invoice_triage.format_registry_summary(company_id)
+
+    @mcp.tool()
+    def handoff_pack_create(company_id: str, label: str = "accountant") -> str:
+        """
+        Create a local zip of finance working papers for an accountant.
+        Does not email or upload — human delivers the zip.
+        """
+        result = handoff.create_handoff_pack(company_id, label=label)
+        return json.dumps(
+            {k: (str(v) if hasattr(v, "__fspath__") else v) for k, v in result.items()},
+            indent=2,
+        )
+
+    @mcp.tool()
     def hitl_policy_summary() -> str:
         """Return autonomy ceilings and forbidden actions for this fleet."""
         return (
@@ -440,7 +472,7 @@ def build_server():
             f"Forbidden MCP tools (not implemented): {sorted(FORBIDDEN_TOOL_NAMES)}\n"
             f"Watermarks: {json.dumps(WATERMARKS, indent=2)}\n"
             f"Server version: {__version__}\n"
-            "Xero: read-only. Bank: CSV triage only. GST: working papers only.\n"
+            "Xero read-only · Bank triage · GST papers · Invoice triage · Handoff zip only.\n"
         )
 
     @mcp.tool()
@@ -499,6 +531,9 @@ def tool_inventory() -> list[str]:
         "bank_import_csv",
         "bank_triage",
         "gst_prepare_worksheet",
+        "invoice_triage_path",
+        "invoice_list",
+        "handoff_pack_create",
         "hitl_policy_summary",
         "check_hitl_action",
     ]
