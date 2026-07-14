@@ -1,8 +1,10 @@
 # NZ Start-Up in a Box — Hardened Compliance Framework
 
-**Coastal Alpine Tech Limited** · Proprietary product · Aligned with Aether compliance patterns, Te Tiriti o Waitangi principles, and Te Mana Raraunga.
+**Coastal Alpine Tech Limited — Pre-seed** · Taranaki · Aotearoa New Zealand  
+**R&D since 8 August 2025** · **Founded 8 August 2026**  
+Aligned with Aether compliance patterns, Te Tiriti o Waitangi principles, and Te Mana Raraunga.
 
-**Licence:** Proprietary — see `LICENSE`. Not open source.
+**Licence:** Dual (proprietary Track A + commercial Track B) — see `LICENSE`, `LICENSE-COMMERCIAL.md`, `docs/DUAL_LICENCE.md`. **Not open source.** Protected under the **Copyright Act 1994 (NZ)**.
 
 ## Purpose
 
@@ -26,7 +28,8 @@ Runtime entry points: `nz-startup compliance check` · `nz-startup harden status
 | Te Mana Raraunga | `compliance/te-mana-raraunga.md` | Cultural/data sovereignty |
 | Audit | `compliance/audit-log-schema.md` | JSONL agent actions |
 | Gate report | `nz-startup compliance check` | Machine-readable pass/fail |
-| Licence | `LICENSE` | Proprietary commercial use only |
+| Licence | `LICENSE` + `LICENSE-COMMERCIAL.md` | Dual proprietary/commercial; NZ copyright |
+| Pre-seed identity | `ABOUT.md` | CAT dates, Taranaki, founding context |
 
 **Gate rule:** Production use of the product under a commercial licence still requires human responsibility for regulated outcomes. Software gates reduce risk; they do not create a compliance certificate.
 

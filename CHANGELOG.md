@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.4.0 — 2026-07-15
+
+### Dual licence & pre-seed IP
+- Dual-licence model documented: Track A proprietary + Track B commercial
+- `docs/DUAL_LICENCE.md` — NZ Copyright Act 1994 plain-English explainer for pre-seed
+- `LICENSE-COMMERCIAL.md` — commercial/white-label outline
+- `LICENSE` updated with dual-track notice and NZ copyright assertion
+- `ABOUT.md` — Coastal Alpine Tech pre-seed, dates, Taranaki founding context
+
+### Branding & badges
+- README badges: Pre-seed, founded 8 Aug 2026, R&D since 8 Aug 2025, dual licence,
+  HITL, Te Mana Raraunga, CAT standards, Grok 4.5 Build, Claude Pro Code,
+  Claude Computer Use, Google Gemini 3.5 Flash
+- Founding context: Wayne Roberts · Taranaki whānau · six generations in agriculture
+- `nz-startup about` CLI
+- `nz_startup/branding.py` single source of truth
+
+### Harness / agents / skills
+- AGENTS.md hardened for dual licence + cultural non-extraction + CAT pre-seed
+- Hardening policy banner includes harness tools + dual licence
+- Compliance gate checks dual licence files + ABOUT branding
+- Fleet/agent-hardening skill metadata: pre-seed dates
+
 ## 1.3.0 — 2026-07-14
 
 ### Licence

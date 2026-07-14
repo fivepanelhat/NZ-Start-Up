@@ -28,28 +28,70 @@ def run_compliance_check(company_id: str | None = None) -> dict[str, Any]:
     root = repo_root()
     checks: list[dict[str, Any]] = []
 
-    # Licence proprietary
+    # Dual / proprietary licence (Track A + Track B)
     license_text = ""
     lic = root / "LICENSE"
     if lic.is_file():
         license_text = lic.read_text(encoding="utf-8", errors="replace")
-    is_prop = "PROPRIETARY" in license_text.upper() and "Apache License" not in license_text
+    is_prop = (
+        "PROPRIETARY" in license_text.upper()
+        and "Apache License" not in license_text
+        and "NOT OPEN SOURCE" in license_text.upper()
+    )
     checks.append(
         _ok(
             "proprietary_license",
             is_prop,
-            "LICENSE is Coastal Alpine Tech proprietary"
+            "LICENSE is Coastal Alpine Tech proprietary (Track A)"
             if is_prop
             else "LICENSE missing proprietary markers or still Apache",
         )
     )
+    dual = root / "LICENSE-COMMERCIAL.md"
+    checks.append(
+        _ok(
+            "dual_licence_commercial_track",
+            dual.is_file()
+            and "Track B" in dual.read_text(encoding="utf-8", errors="replace"),
+            "LICENSE-COMMERCIAL.md Track B present",
+        )
+    )
+    dual_doc = root / "docs" / "DUAL_LICENCE.md"
+    checks.append(
+        _ok(
+            "dual_licence_explainer",
+            dual_doc.is_file(),
+            str(dual_doc),
+        )
+    )
+    about = root / "ABOUT.md"
+    about_txt = about.read_text(encoding="utf-8", errors="replace") if about.is_file() else ""
+    checks.append(
+        _ok(
+            "about_preseed_branding",
+            about.is_file()
+            and "Pre-seed" in about_txt
+            and "8 August 2025" in about_txt
+            and "8 August 2026" in about_txt
+            and "Wayne Roberts" in about_txt,
+            "ABOUT.md has pre-seed dates and founding context",
+        )
+    )
     notice = root / "NOTICE"
+    notice_txt = notice.read_text(encoding="utf-8", errors="replace") if notice.is_file() else ""
     checks.append(
         _ok(
             "notice_proprietary",
-            notice.is_file()
-            and "PROPRIETARY" in notice.read_text(encoding="utf-8", errors="replace").upper(),
-            "NOTICE declares proprietary",
+            notice.is_file() and "PROPRIETARY" in notice_txt.upper(),
+            "NOTICE declares proprietary / dual-licence",
+        )
+    )
+    checks.append(
+        _ok(
+            "notice_nz_copyright",
+            "Copyright Act 1994" in notice_txt or "1994" in notice_txt,
+            "NOTICE references NZ copyright",
+            severity="soft",
         )
     )
 
@@ -57,12 +99,15 @@ def run_compliance_check(company_id: str | None = None) -> dict[str, Any]:
     required_docs = [
         "COMPLIANCE.md",
         "SECURITY.md",
+        "ABOUT.md",
         "compliance/hitl-matrix.md",
         "compliance/legal-boundaries-nz.md",
         "compliance/privacy-act-2020.md",
         "compliance/te-mana-raraunga.md",
         "compliance/audit-log-schema.md",
+        "compliance/proprietary-licence.md",
         "docs/AGENT_HARDENING.md",
+        "docs/DUAL_LICENCE.md",
     ]
     for rel in required_docs:
         p = root / rel
@@ -166,7 +211,7 @@ def run_compliance_check(company_id: str | None = None) -> dict[str, Any]:
         "ok": len(hard_fail) == 0,
         "product_version": __version__,
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "licence": "proprietary",
+        "licence": "dual-proprietary-commercial",
         "company_id": company_id,
         "checks": checks,
         "hard_failures": [c["name"] for c in hard_fail],

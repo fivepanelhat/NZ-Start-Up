@@ -1,7 +1,10 @@
-# NZ Start-Up in a Box — v1.1.0
+# NZ Start-Up in a Box — v1.4.0
 
-**Local founder OS + white-label EDA kit** for Aotearoa New Zealand.  
-Built with **CAT Gold / Diamond / Platinum** standards on **Aether**.
+**Coastal Alpine Tech Limited — Pre-seed** · Taranaki · Aotearoa New Zealand  
+**R&D since 8 August 2025** · **Founded 8 August 2026**  
+**Local founder OS + white-label EDA kit** · dual proprietary/commercial licence  
+Built with **CAT Gold / Diamond / Platinum** on **Aether**  
+Dev tools: **Grok 4.5 Build** · **Claude Pro Code** · **Claude Computer Use** · **Google Gemini 3.5 Flash**
 
 ## What 1.x means
 
@@ -51,10 +54,11 @@ nz-startup cohort pack <cohort-id>
 > Agents inform, draft, prepare, monitor, and remind.  
 > Humans advise, sign, file, send, and pay.
 
-## License
+## Licence
 
-**Proprietary** — Coastal Alpine Tech Limited. See `LICENSE` and `NOTICE`.  
-Not open source. Commercial / white-label use requires a written licence.
+**Dual licence** — Track A proprietary (`LICENSE`) + Track B commercial (`LICENSE-COMMERCIAL.md`).  
+Copyright under NZ law (Copyright Act 1994). Not open source.  
+See `docs/DUAL_LICENCE.md` and `ABOUT.md`.
 
 ## Support
 

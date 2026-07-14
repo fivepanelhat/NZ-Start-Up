@@ -10,9 +10,12 @@ description: >
 metadata:
   status: active
   owner: Coastal Alpine Tech
+  stage: pre-seed
   product: nz-startup-in-a-box
   standards: [gold, diamond, platinum]
-  last_updated: "2026-07-14"
+  rd_start: "2025-08-08"
+  founding_date: "2026-08-08"
+  last_updated: "2026-07-15"
 tags:
   - security
   - hitl
@@ -23,8 +26,10 @@ tags:
 # Agent Hardening
 
 ## Overview
-Cross-cutting security skill for the NZ Start-Up fleet. Operationalises autonomy ceilings
-aligned with CAT Gold/Diamond/Platinum and Aether COMPLIANCE.
+Cross-cutting security skill for the **Coastal Alpine Tech pre-seed** NZ Start-Up fleet.
+Operationalises autonomy ceilings aligned with CAT Gold/Diamond/Platinum, dual proprietary/commercial
+licence, NZ copyright ownership, and Aether COMPLIANCE. Harness-aware: Grok 4.5 Build, Claude Pro Code,
+Claude Computer Use, Google Gemini 3.5 Flash — tools do not own IP.
 
 ## When to Use
 - Starting any fleet session (`nz-startup-fleet`, board routing)

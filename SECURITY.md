@@ -6,9 +6,10 @@ Email security concerns to the maintainer via GitHub Security Advisories on this
 
 ## Licence
 
-This product is **proprietary** software of Coastal Alpine Tech Limited.
+This product is **dual-licensed proprietary** software of **Coastal Alpine Tech Limited (Pre-seed)**.
 Unauthorised redistribution or competitive multi-tenant hosting is prohibited.
-See `LICENSE`.
+See `LICENSE`, `LICENSE-COMMERCIAL.md`, and `docs/DUAL_LICENCE.md`.
+Copyright protected under the Copyright Act 1994 (NZ).
 
 ## Scope
 

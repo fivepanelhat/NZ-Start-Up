@@ -24,6 +24,14 @@ AUTONOMY_SLOGAN = (
     "Humans advise, sign, file, send, and pay."
 )
 
+# Coastal Alpine Tech pre-seed harness banner (injected into policy blocks)
+HARNESS_BANNER = (
+    "Coastal Alpine Tech Limited — Pre-seed · Taranaki · Aotearoa New Zealand · "
+    "R&D since 8 August 2025 · Founded 8 August 2026 · "
+    "Dual licence (proprietary + commercial) · NZ Copyright Act 1994 · "
+    "Harness: Grok 4.5 Build | Claude Pro Code | Claude Computer Use | Google Gemini 3.5 Flash"
+)
+
 # Patterns that must never be written to memory or logs
 SECRET_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     ("private_key", re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----")),
@@ -280,7 +288,10 @@ def skill_policy_block(skill_name: str) -> str:
     return f"""
 ## HARDENED AUTONOMY (mandatory)
 
-Skill: `{skill_name}`
+{HARNESS_BANNER}
+
+Skill: `{skill_name}`  
+Owner: Coastal Alpine Tech Limited (Pre-seed)
 
 {AUTONOMY_SLOGAN}
 
@@ -304,9 +315,16 @@ Use `nz-startup` guardrails: high/critical domain work requires HITL before huma
 
 
 def guardrails_status() -> dict[str, Any]:
+    from nz_startup import branding
+
     return {
-        "version": "1.3.0",
-        "licence": "proprietary",
+        "version": "1.4.0",
+        "licence": "dual-proprietary-commercial",
+        "company": branding.COMPANY_LEGAL,
+        "stage": branding.STAGE,
+        "rd_start": branding.RD_START,
+        "founding_date": branding.FOUNDING_DATE,
+        "harness_banner": HARNESS_BANNER,
         "autonomy_slogan": AUTONOMY_SLOGAN,
         "forbidden_tools": sorted(FORBIDDEN_TOOL_NAMES),
         "allowed_autonomy": sorted(ALLOWED_AUTONOMY),
@@ -315,4 +333,5 @@ def guardrails_status() -> dict[str, Any]:
         "secret_pattern_count": len(SECRET_PATTERNS),
         "sandbox": "company memory under NZ_STARTUP_MEMORY only",
         "compliance_gate": "nz-startup compliance check",
+        "build_tools": list(branding.BUILD_TOOLS),
     }

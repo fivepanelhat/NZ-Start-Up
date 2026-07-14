@@ -1,15 +1,20 @@
-# Proprietary licence posture
+# Dual / proprietary licence posture (pre-seed)
 
-NZ Start-Up in a Box is **proprietary software** owned by **Coastal Alpine Tech Limited**.
+NZ Start-Up in a Box is **dual-licensed proprietary software** owned by **Coastal Alpine Tech Limited** (pre-seed).
 
 | Fact | Detail |
 |------|--------|
-| Licence file | `LICENSE` — Coastal Alpine Tech Proprietary Software Licence |
+| Track A (default) | `LICENSE` — proprietary evaluation |
+| Track B (commercial) | `LICENSE-COMMERCIAL.md` + written/paid terms |
+| Explainer | `docs/DUAL_LICENCE.md` |
+| Copyright | Automatic under **Copyright Act 1994 (NZ)** |
 | Not open source | No Apache/MIT/GPL grant for this product tree |
-| Evaluation | Viewing a public repo for commercial evaluation only |
-| Production | Requires written commercial / white-label / cohort licence |
+| Evaluation | Public repo view for commercial evaluation only |
+| Production | Requires Track B commercial / white-label / cohort licence |
 | Redistribution | Forbidden without written OEM/resale rights |
 | Third-party deps | Keep their upstream licences (mcp, pypdf, etc.) |
+| R&D started | 8 August 2025 |
+| Founding date | 8 August 2026 |
 
 ## Compliance implication
 

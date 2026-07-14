@@ -9,9 +9,12 @@ description: >
 metadata:
   status: active
   owner: Coastal Alpine Tech
+  stage: pre-seed
   product: nz-startup-in-a-box
   standards: [gold, diamond, platinum]
-  last_updated: "2026-07-14"
+  rd_start: "2025-08-08"
+  founding_date: "2026-08-08"
+  last_updated: "2026-07-15"
 tags:
   - fleet
   - bootstrap
@@ -33,11 +36,14 @@ Meta skill for the product. Use when the user installs the pack or says
 5. For EDA partners: `cohort init` + `cohort pack` white-label path.
 6. Remind hard boundaries (file/send/pay = human). Run `nz-startup harden status` if needed.
 
-## Dogfood mode (Coastal Alpine Tech)
+## Dogfood mode (Coastal Alpine Tech pre-seed)
+- Company: Coastal Alpine Tech Limited · Taranaki · founded 8 Aug 2026 · R&D since 8 Aug 2025
+- Founding context: Wayne Roberts · Taranaki whānau · six generations in agriculture
 - Map 30/60/90 plan actions to fleet skills
 - Prefer paid pilot pipeline discipline over new product forks
 - Weekly board report + `nz-startup demo run` is the EDA white-label conversation
-- See `docs/WHITE_LABEL.md` and `docs/DEMO.md`
+- Dual licence: keep proprietary Track A default; sell Track B commercial rights
+- See `ABOUT.md`, `docs/DUAL_LICENCE.md`, `docs/WHITE_LABEL.md`, `docs/DEMO.md`
 
 ## Guardrails
 - Do not promise autonomous company operation

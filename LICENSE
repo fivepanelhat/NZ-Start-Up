@@ -1,81 +1,89 @@
 COASTAL ALPINE TECH LIMITED
+DUAL-LICENCE NOTICE — TRACK A (DEFAULT)
 PROPRIETARY SOFTWARE LICENCE
 NZ Start-Up in a Box
-Copyright © 2026 Coastal Alpine Tech Limited. All rights reserved.
+
+Copyright © 2025–2026 Coastal Alpine Tech Limited. All rights reserved.
+R&D commenced 8 August 2025 · Founding date 8 August 2026 (pre-seed)
+Taranaki · Aotearoa New Zealand
 
 IMPORTANT: THIS IS NOT OPEN SOURCE SOFTWARE.
-This software and associated documentation files (the "Software") are the
-exclusive proprietary property of Coastal Alpine Tech Limited ("Licensor"),
-a company registered in Aotearoa New Zealand.
+This software and associated documentation (the "Software") are the exclusive
+proprietary property of Coastal Alpine Tech Limited ("Licensor").
 
-1. GRANT OF LICENCE
-Subject to a valid written commercial agreement, paid subscription, white-label
-cohort agreement, or other written authorisation from Licensor (a "Licence"),
-Licensor grants you a limited, non-exclusive, non-transferable, non-sublicensable,
-revocable licence to install and use the Software solely for your internal
-business purposes and only as expressly permitted in that Licence.
+DUAL LICENCE
+------------
+This product is dual-licensed under New Zealand copyright ownership:
 
-Without a Licence, you may view a public repository solely to evaluate a
-possible commercial engagement. Evaluation does not include production use,
-redistribution, white-label resale, or removal of proprietary notices.
+  Track A — this Proprietary Software Licence (DEFAULT)
+  Track B — Commercial / white-label / cohort licence terms
+            (see LICENSE-COMMERCIAL.md and any signed order form)
+
+Unless you have a valid Track B agreement, Track A applies in full.
+
+NEW ZEALAND COPYRIGHT
+---------------------
+The Software is protected by the Copyright Act 1994 (NZ) and related laws.
+Copyright arises automatically in original works; this notice does not create
+rights — it asserts them. Evaluation access does not transfer ownership.
+
+1. GRANT OF LICENCE (TRACK A — EVALUATION)
+Subject to these terms, you may view the Software solely to evaluate a possible
+commercial engagement with Licensor. Evaluation does not include production use,
+redistribution, white-label resale, removal of notices, or competitive hosting.
 
 2. RESTRICTIONS
-Except as expressly permitted by a Licence or mandatory applicable law, you
-must not:
+Except as expressly permitted by a Track B Licence or mandatory applicable law,
+you must not:
 
-  (a) copy, modify, adapt, translate, reverse engineer, decompile, or disassemble
-      the Software (except to the extent non-excludable under NZ law);
-  (b) distribute, publish, sublicense, rent, lease, lend, sell, or otherwise
-      make the Software available to any third party;
-  (c) remove or alter proprietary, copyright, trademark, or attribution notices;
+  (a) copy, modify, adapt, reverse engineer, or create derivative works of the
+      Software (except to the extent non-excludable under NZ law);
+  (b) distribute, publish, sublicense, rent, lease, sell, or otherwise make the
+      Software available to any third party;
+  (c) remove or alter proprietary, copyright, trademark, or attribution notices
+      (including Coastal Alpine Tech pre-seed and dual-licence notices);
   (d) use the Software to provide a multi-tenant hosted service competing with
       Licensor without a separate written SaaS or OEM agreement;
   (e) use the Software for any unlawful purpose under New Zealand law.
 
 3. OWNERSHIP
-The Software, including all skills, templates, documentation, branding, and
-related intellectual property, remains the sole property of Licensor. No title
-or ownership interest is transferred by this Licence or any evaluation access.
+The Software — including skills, harness, templates, documentation, branding,
+and related intellectual property — remains the sole property of Licensor.
+No title is transferred by evaluation access.
 
 4. THIRD-PARTY COMPONENTS
-The Software may reference patterns or libraries from third parties (including
-Aether and open-source dependencies). Those components remain subject to their
-own licences. This Proprietary Licence does not re-license third-party code.
+Optional dependencies and external frameworks (including Aether patterns under
+their own licences) remain subject to their own terms. This licence does not
+re-license third-party code.
 
 5. DATA AND COMPLIANCE
-You remain solely responsible for compliance with the Privacy Act 2020, Te Mana
-Raraunga principles where applicable, tax, employment, companies, financial
-markets, and unsolicited electronic messages law. The Software provides
-preparation and information tools only and does not constitute legal, financial,
-tax, or cultural advice.
+You remain solely responsible for Privacy Act 2020, Te Mana Raraunga principles
+where applicable, tax, employment, companies, financial markets, and unsolicited
+electronic messages law. The Software provides preparation tools only and does
+not constitute legal, financial, tax, or cultural advice.
 
 6. NO WARRANTY
 TO THE MAXIMUM EXTENT PERMITTED BY NEW ZEALAND LAW (INCLUDING THE CONSUMER
 GUARANTEES ACT 1993 WHERE IT APPLIES AND CANNOT BE CONTRACTED OUT OF FOR
-CONSUMERS), THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
-AND NON-INFRINGEMENT.
+CONSUMERS), THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND.
 
 7. LIMITATION OF LIABILITY
-TO THE MAXIMUM EXTENT PERMITTED BY LAW, LICENSOR IS NOT LIABLE FOR ANY INDIRECT,
-INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS,
-DATA, OR GOODWILL, ARISING FROM USE OF THE SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY. LICENSOR'S AGGREGATE LIABILITY SHALL NOT EXCEED THE FEES PAID BY
-YOU TO LICENSOR FOR THE SOFTWARE IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM.
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, LICENSOR IS NOT LIABLE FOR INDIRECT,
+INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR LOSS OF PROFITS,
+DATA, OR GOODWILL. LICENSOR'S AGGREGATE LIABILITY SHALL NOT EXCEED FEES PAID
+BY YOU TO LICENSOR FOR THE SOFTWARE IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM
+(OR NZD $0 IF NO FEES WERE PAID).
 
 8. TERMINATION
-This licence terminates automatically if you breach it or when your commercial
-Licence ends. Upon termination you must cease use and destroy copies in your
-possession, except copies required by law to be retained.
+Track A rights end if you breach these terms. Upon termination, cease use and
+destroy copies except those required by law to be retained.
 
 9. GOVERNING LAW
-This licence is governed by the laws of New Zealand. The courts of New Zealand
-have exclusive jurisdiction, subject to any mandatory rights you have as a
-consumer.
+Laws of New Zealand. Courts of New Zealand have exclusive jurisdiction, subject
+to mandatory consumer rights.
 
-10. COMMERCIAL LICENSING
-For production, white-label, cohort, OEM, or redistribution rights, contact
-Coastal Alpine Tech Limited (Taranaki, Aotearoa New Zealand) via the project
-repository or commercial channels designated by Licensor.
+10. COMMERCIAL LICENSING (TRACK B)
+For production, white-label, cohort, or OEM rights, see LICENSE-COMMERCIAL.md
+and contact Coastal Alpine Tech Limited (Pre-seed, Taranaki).
 
-END OF PROPRIETARY SOFTWARE LICENCE
+END OF TRACK A — PROPRIETARY SOFTWARE LICENCE

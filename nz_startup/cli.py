@@ -57,6 +57,25 @@ def cmd_list(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_about(args: argparse.Namespace) -> int:
+    from nz_startup import branding
+
+    data = branding.about_dict()
+    if args.json:
+        print(json.dumps(data, indent=2))
+    else:
+        print(f"{data['company']} — {data['stage']}")
+        print(f"Product: {data['product']}")
+        print(f"Region: {data['region']}")
+        print(f"R&D started: {data['rd_start']} · Founded: {data['founding_date']}")
+        print(f"Context: {data['founder_context']}")
+        print(f"Licence: {data['licence']}")
+        print(f"Build tools: {', '.join(data['build_tools'])}")
+        print(data["copyright"])
+        print("See ABOUT.md and docs/DUAL_LICENCE.md")
+    return 0
+
+
 def cmd_install(args: argparse.Namespace) -> int:
     target = Path(args.target).expanduser() if args.target else default_aether_skills()
     names = install_skills(target, mode=args.mode)
@@ -645,6 +664,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     list_p = sub.add_parser("list", help="List company memory IDs")
     list_p.set_defaults(func=cmd_list)
+
+    ab = sub.add_parser("about", help="Coastal Alpine Tech pre-seed / dual-licence info")
+    ab.add_argument("--json", action="store_true")
+    ab.set_defaults(func=cmd_about)
 
     inst = sub.add_parser("install-skills", help="Install skills into Aether skills path")
     inst.add_argument("--target", help="Destination skills directory")

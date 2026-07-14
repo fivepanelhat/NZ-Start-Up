@@ -1,11 +1,45 @@
 # NZ Start-Up in a Box
 
-**v1.0 — Local founder OS + white-label EDA kit for New Zealand**  
-Formation through funding, with hard legal ceilings and CAT Gold / Diamond / Platinum Aether standards.
+[![Coastal Alpine Tech](https://img.shields.io/badge/Coastal%20Alpine%20Tech-Pre--seed-0ea5e9?style=for-the-badge&logo=data:image/svg+xml;base64,)](./ABOUT.md)
+[![Stage](https://img.shields.io/badge/Stage-Pre--seed-7c3aed?style=for-the-badge)](./ABOUT.md)
+[![Founded](https://img.shields.io/badge/Founded-8%20Aug%202026-0369a1?style=for-the-badge)](./ABOUT.md)
+[![R&D](https://img.shields.io/badge/R%26D%20since-8%20Aug%202025-059669?style=for-the-badge)](./ABOUT.md)
+[![Taranaki](https://img.shields.io/badge/Aotearoa-Taranaki-b45309?style=for-the-badge)](./ABOUT.md)
 
-> **One download.** Skills + NZ knowledge + templates + HITL compliance + localhost console.  
-> **Built on [Aether](https://github.com/fivepanelhat/Aether).**  
-> **Coastal Alpine Tech Limited** · Taranaki · Aotearoa New Zealand.
+[![Licence](https://img.shields.io/badge/Licence-Dual%20(Proprietary%20%2B%20Commercial)-b91c1c?style=flat-square)](./docs/DUAL_LICENCE.md)
+[![Copyright](https://img.shields.io/badge/Copyright-NZ%20Act%201994-111827?style=flat-square)](./docs/DUAL_LICENCE.md)
+[![HITL](https://img.shields.io/badge/HITL-Draft%2FPrepare%20only-dc2626?style=flat-square)](./COMPLIANCE.md)
+[![Te Mana Raraunga](https://img.shields.io/badge/Te%20Mana%20Raraunga-Aligned-0f766e?style=flat-square)](./compliance/te-mana-raraunga.md)
+[![CAT Standards](https://img.shields.io/badge/CAT-Gold%20%7C%20Diamond%20%7C%20Platinum-eab308?style=flat-square)](./docs/STANDARDS.md)
+[![Version](https://img.shields.io/badge/Version-1.4.0-2563eb?style=flat-square)](./CHANGELOG.md)
+
+[![Grok 4.5 Build](https://img.shields.io/badge/Grok%204.5-Build-111827?style=flat-square&logo=x&logoColor=white)](https://x.ai)
+[![Claude Pro Code](https://img.shields.io/badge/Claude%20Pro-Code-d97706?style=flat-square)](https://claude.ai)
+[![Claude Computer Use](https://img.shields.io/badge/Claude-Computer%20Use-ea580c?style=flat-square)](https://claude.ai)
+[![Gemini 3.5 Flash](https://img.shields.io/badge/Google%20Gemini-3.5%20Flash-4285F4?style=flat-square&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
+[![Aether](https://img.shields.io/badge/Built%20on-Aether-14b8a6?style=flat-square)](https://github.com/fivepanelhat/Aether)
+
+**Local founder OS + white-label EDA kit for Aotearoa New Zealand**  
+Formation through funding · hard legal ceilings · CAT Gold / Diamond / Platinum · **Coastal Alpine Tech pre-seed**
+
+> **One download.** Skills + NZ knowledge + templates + HITL + localhost console.  
+> **IP:** Dual licence (proprietary default + commercial track) · protected under **NZ copyright law**.  
+> **Whenua:** Taranaki · Wayne Roberts · whānau with **six generations in agriculture**.  
+> **Not open source.** Production / white-label requires a commercial licence.
+
+## Coastal Alpine Tech (pre-seed)
+
+| | |
+|--|--|
+| **Company** | Coastal Alpine Tech Limited |
+| **Stage** | Pre-seed |
+| **R&D started** | 8 August 2025 |
+| **Founding date** | 8 August 2026 |
+| **Region** | Taranaki, Aotearoa New Zealand |
+| **Founding context** | Wayne Roberts · Taranaki whānau · 6 generations in agriculture |
+| **Māori development** | Te Mana Raraunga–aligned · no cultural extraction · HITL for cultural content |
+
+Full story: [`ABOUT.md`](./ABOUT.md) · Dual licence: [`docs/DUAL_LICENCE.md`](./docs/DUAL_LICENCE.md)
 
 ## What you get
 
@@ -24,179 +58,98 @@ A **small orchestrator + skills-heavy specialist fleet** (not 30 fake “autonom
 | 9 | Legal Document Assistant | NDA, pilot, ToS, employment drafts | Watermarked “not legal advice” |
 | 10 | Board / Chief-of-Staff | Weekly ops review, routing, company memory | Escalates; never decides |
 
+Plus **`agent-hardening`** and **`cat-architectural-standards`** governance skills.
+
 The **NZ moat** is jurisdiction depth (Companies Office, IRD, RDTI, regional grants, Te Mana Raraunga) — not agent novelty.
+
+## Dual licence (IP protection)
+
+| Track | File | Use |
+|-------|------|-----|
+| **A — Default** | [`LICENSE`](./LICENSE) | Proprietary evaluation only |
+| **B — Commercial** | [`LICENSE-COMMERCIAL.md`](./LICENSE-COMMERCIAL.md) | Production · white-label · cohort (by agreement) |
+
+Copyright is automatic under the **Copyright Act 1994 (NZ)**. Dual licence lets Coastal Alpine Tech keep ownership while selling commercial rights at pre-seed. **Not legal advice** — see `docs/DUAL_LICENCE.md`.
 
 ## Standards (mandatory)
 
-Every piece of work is classified under **CAT Architectural Standards**:
+| Tier | Name | Meaning |
+|------|------|---------|
+| **Gold** | Workflow-native design | Fleet maps the real NZ founder lifecycle |
+| **Diamond** | Enterprise-grade foundation | CI, hardening, compliance gate, sandbox |
+| **Platinum** | Self-improving intelligence | Memory + RDTI flywheel + weekly board |
 
-| Tier | Name | Meaning for this product |
-|------|------|--------------------------|
-| **Gold** | Workflow-native design | Fleet maps the real NZ founder lifecycle end-to-end |
-| **Diamond** | Enterprise-grade foundation | CI, skill validation, security, audit logs, privacy defaults |
-| **Platinum** | Self-improving intelligence | Company memory + RDTI/build logs feed a data flywheel |
+Load `agent-hardening` then `cat-architectural-standards` before material work.
 
-Load `skills/cat-architectural-standards` before planning significant work. See `docs/STANDARDS.md`.
-
-## Hard boundaries (where products die)
+## Hard boundaries
 
 Agents may **inform, draft, prepare, monitor, and remind**.  
 Humans must **advise, sign, file, send, and pay**.
 
-Specifically:
+- No legal advice · no regulated financial advice · no tax-agent acts  
+- No autonomous cold email (UEM Act 2007)  
+- No Companies Office / IRD filing except founder-authenticated action  
+- Privacy Act 2020 + Te Mana Raraunga for data  
+- Visible audit trail for agent actions  
 
-- No legal advice (Lawyers and Conveyancers Act 2006)
-- No regulated financial advice (FMC Act)
-- No tax-agent behaviour
-- No autonomous outbound email (Unsolicited Electronic Messages Act 2007)
-- No Companies Office / IRD filing except via founder-authenticated action
-- Privacy Act 2020 + Te Mana Raraunga for any hosted founder data
-- Visible audit trail for agent actions
+## Architecture
 
-## Quick start
+See **[docs/ARCHITECTURE_DETAILED.md](docs/ARCHITECTURE_DETAILED.md)**.
 
-### One-command install (Windows)
+![Architecture — glassmorphism](assets/architecture-glassmorphism.jpg)
+
+## Quick start (Windows)
 
 ```powershell
 git clone https://github.com/fivepanelhat/NZ-Start-Up.git
 cd NZ-Start-Up
 powershell -ExecutionPolicy Bypass -File .\install.ps1
-nz-startup doctor
-nz-startup onboard my-startup --legal-name "My Labs Limited"
-nz-startup console --port 8765 --open
-# or desktop-lite: nz-startup desktop
+python -m nz_startup doctor
+python -m nz_startup compliance check
+python -m nz_startup onboard my-startup --legal-name "My Labs Limited"
+python -m nz_startup console --port 8765 --open
 ```
-
-### Option A — With Aether (recommended)
-
-```powershell
-# After install.ps1 / install.sh, skills are copied to ~/.aether/skills
-# Or:
-nz-startup install-skills --mode copy
-```
-
-Then ask your Aether / Claude / agent runner:
-
-```text
-Load cat-architectural-standards and board-chief-of-staff.
-Initialise company memory for my startup and run a weekly operating review.
-```
-
-### Option B — MCP connectors (v0.2)
-
-```powershell
-python -m pip install -e ".[mcp]"
-nz-startup mcp
-```
-
-Host config sample: `mcp.json`. Tools are **drafts-only** — no send/file/pay. See `docs/MCP.md`.
-
-### Option C — Claude Code / Cowork plugin-style
-
-Copy `skills/*` into your skills directory. Each skill is a self-contained `SKILL.md` pack with references and templates.
 
 ### CLI cheat sheet
 
 ```powershell
-nz-startup init my-startup
-nz-startup rdti add my-startup --hours 2 --activity "..." --uncertainty "..." --evidence "commit:abc"
-nz-startup pipeline add my-startup --account "TRC" --stage discovery --next-step "book demo"
-nz-startup pipeline update my-startup P001 --stage pilot
-nz-startup calendar add my-startup --item "GST prep" --due 2026-08-28 --category finance
-nz-startup calendar remind my-startup --days 14
-nz-startup grants rank my-startup
-nz-startup xero snapshot my-startup --offline
-nz-startup bank import my-startup --file templates/bank-feed-sample.csv
-nz-startup bank triage my-startup
-nz-startup gst prepare my-startup --start 2026-07-01 --end 2026-07-31
-nz-startup invoice triage my-startup --path templates/sample-tax-invoice.txt
-nz-startup handoff pack my-startup
-nz-startup cohort init vt-powerup --partner "Venture Taranaki" --programme "PowerUp"
-nz-startup cohort pack vt-powerup
-nz-startup demo run --company demo-eda --partner "Venture Taranaki"
-nz-startup onboard my-startup --legal-name "Example Labs Limited" --wedge "…" --icp "…"
-nz-startup pilot offer my-startup --customer "Named Account" --fee 1500
-nz-startup cohort report vt-powerup --anonymise
-nz-startup status demo-eda
-nz-startup board pack demo-eda
-nz-startup smoke
-nz-startup doctor
-nz-startup console --port 8765 --open
-nz-startup desktop
-nz-startup export reminders my-startup --days 14
-nz-startup draft-outreach my-startup --subject "Intro" --body "..."
-nz-startup nzbn "Example Limited"
-nz-startup weekly my-startup
-nz-startup validate
+python -m nz_startup harden status
+python -m nz_startup compliance check
+python -m nz_startup demo run --partner "Venture Taranaki"
+python -m nz_startup board pack demo-eda
+python -m nz_startup pilot offer my-startup --customer "Named Account" --fee 1500
+python -m nz_startup cohort pack vt-powerup
+python -m nz_startup smoke
 ```
-
-### Validate skills
-
-```powershell
-python -m pip install -e ".[dev]"
-python scripts/validate_skills.py
-pytest -q
-```
-
-## Architecture
-
-See **[docs/ARCHITECTURE_DETAILED.md](docs/ARCHITECTURE_DETAILED.md)** for the full system design, threat model, and data flows.
-
-![Architecture — glassmorphism](assets/architecture-glassmorphism.jpg)
 
 ## Repository layout
 
 ```text
-skills/                 # Aether-compatible digital employees + CAT standards + hardening
-knowledge/              # NZ integrations, funding landscape, lifecycle map
-templates/              # Checklists and draft outlines (not formal legal docs)
-compliance/             # HITL matrix, Privacy Act, Te Mana Raraunga, legal boundaries
-standards/              # Gold / Diamond / Platinum operational definitions
-memory/                 # Company memory schema + example (runtime data gitignored)
-docs/                   # Architecture, fleet, getting started
-scripts/                # Skill validators
-tests/                  # CI smoke tests
-.github/workflows/      # Skills CI
+skills/                 # Digital employees + agent-hardening + CAT
+nz_startup/             # CLI, MCP, guardrails, compliance gate, console
+compliance/             # HITL, Privacy Act, Te Mana Raraunga, licence posture
+docs/                   # Architecture, dual licence, demos, white-label
+memory/                 # Schema + example (live companies gitignored)
+templates/              # Checklists and commercial outlines
+assets/                 # Architecture art
+ABOUT.md                # Coastal Alpine Tech pre-seed story
 ```
 
-## Pricing posture (product, not this open pack)
+## Pricing posture (indicative)
 
-Reference tiers for a commercial wrap (token burn is real — default agents to on-demand + weekly cadence):
-
-| Tier | Indicative | Who |
-|------|------------|-----|
-| Founder | ~NZ$49/mo | Solo founder |
-| Active | ~NZ$149/mo | Active pipeline |
-| Accelerator cohort | ~NZ$399 seat | EDA / incubator white-label |
-| White-label | per-seat | Venture Taranaki / RBP network style |
-
-This repo is the **open skills core**. White-label packaging is a separate commercial layer.
-
-## Compliance & culture
-
-- `COMPLIANCE.md` — product compliance framework
-- `compliance/*` — operational matrices
-- Te Tiriti / Te Mana Raraunga as architectural constraints, not marketing
-
-## Roadmap
-
-1. **v0.1–0.9** — Skills → finance → white-label → commercial pilot kits  
-2. **v1.0** — Local product release: doctor + Founder Console  
-3. **v1.1 (now)** — Console expansion + desktop-lite launcher  
-4. **Full native shell / SaaS** — only after paid demand + funding
-
-## Related
-
-- [Aether](https://github.com/fivepanelhat/Aether) — sovereign agentic orchestrator
-- [fivepanelhat](https://github.com/fivepanelhat/fivepanelhat) — Kiwi Edge portfolio map
-- Design reference: Agent Fleet Design (July 2026)
+| Tier | Indicative |
+|------|------------|
+| Founder | ~NZ$49/mo |
+| Active | ~NZ$149/mo |
+| Accelerator cohort | ~NZ$399 seat |
+| White-label | per-seat / per-cohort |
 
 ## Disclaimer
 
-**Not legal, financial, tax, or cultural advice.** Confirm application of NZ statutes with a qualified professional before relying on any draft or checklist. Templates are educational outlines only.
+**Not legal, financial, tax, or cultural advice.** Confirm NZ statutes and dual-licence commercial terms with qualified professionals. Templates and agent drafts are educational / preparatory only.
 
-## License
+## Licence
 
-**Proprietary** — Coastal Alpine Tech Limited.  
-See `LICENSE` and `NOTICE`. **Not open-source software.**  
-Production, white-label, and redistribution require a commercial licence.
+**Dual licence (proprietary default + commercial track).**  
+See `LICENSE`, `LICENSE-COMMERCIAL.md`, `NOTICE`, and `docs/DUAL_LICENCE.md`.  
+**© 2025–2026 Coastal Alpine Tech Limited — Pre-seed · Taranaki.**

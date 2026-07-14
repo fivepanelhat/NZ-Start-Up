@@ -4,13 +4,20 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nz-startup-in-a-box"
-version = "1.3.0"
-description = "NZ Start-Up in a Box — Aether skills fleet with CAT Gold/Diamond/Platinum standards"
+version = "1.4.0"
+description = "NZ Start-Up in a Box — Coastal Alpine Tech pre-seed dual-licensed founder fleet (CAT Gold/Diamond/Platinum)"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "LicenseRef-Coastal-Alpine-Tech-Proprietary" }
-
+license = { text = "LicenseRef-Coastal-Alpine-Tech-Dual-Proprietary-Commercial" }
 authors = [{ name = "Coastal Alpine Tech Limited" }]
+keywords = [
+  "coastal-alpine-tech",
+  "pre-seed",
+  "new-zealand",
+  "taranaki",
+  "aether",
+  "hitl",
+]
 dependencies = []
 
 [project.optional-dependencies]
