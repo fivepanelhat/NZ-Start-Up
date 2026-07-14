@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "nz-startup-in-a-box": {
+      "command": "python",
+      "args": ["-m", "nz_startup", "mcp"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "NZ_STARTUP_ROOT": "${workspaceFolder}",
+        "NZ_STARTUP_MEMORY": "${workspaceFolder}/memory"
+      }
+    }
+  }
+}

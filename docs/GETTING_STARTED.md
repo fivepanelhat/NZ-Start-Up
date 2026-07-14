@@ -2,34 +2,83 @@
 
 ## 1. Install
 
+**Windows**
+
+```powershell
+git clone https://github.com/fivepanelhat/NZ-Start-Up.git
+cd NZ-Start-Up
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+**macOS / Linux**
+
 ```bash
 git clone https://github.com/fivepanelhat/NZ-Start-Up.git
 cd NZ-Start-Up
+chmod +x install.sh && ./install.sh
+```
+
+Manual:
+
+```bash
 python -m pip install -e ".[dev]"
-python scripts/validate_skills.py
+nz-startup install-skills
+nz-startup validate
 ```
 
 ## 2. Wire skills into your agent host
 
 ### Aether
 
-Copy or symlink `skills/*` into your Aether skills path, or set your environment to load this directory.
+`install.ps1` / `nz-startup install-skills` copies the fleet into `~/.aether/skills` (or `$AETHER_SKILLS_PATH`).
 
 ### Claude Code / similar
 
-Point the skills root at `./skills`.
+Point the skills root at `./skills`, or use the installed Aether path.
+
+### MCP
+
+```bash
+pip install -e ".[mcp]"
+# Register mcp.json with your host, or run:
+nz-startup mcp
+```
+
+See `docs/MCP.md`.
 
 ## 3. Initialise company memory
 
-Copy the example:
-
 ```bash
-cp -r memory/example-company memory/companies/my-startup
+nz-startup init my-startup
+# or copy manually:
+# cp -r memory/example-company memory/companies/my-startup
 ```
 
-Edit `profile.md` and `decisions.md` with real (non-secret) facts.
+Edit `memory/companies/my-startup/profile.md` with real (non-secret) facts.
 
-## 4. First session prompts
+## 4. Daily / weekly commands
+
+```bash
+# Contemporaneous RDTI log (do not invent hours)
+nz-startup rdti add my-startup \
+  --hours 2 \
+  --activity "Edge offline inference experiment" \
+  --uncertainty "Latency under offline constraint" \
+  --evidence "commit:abc123"
+
+# Outreach draft — never sends
+nz-startup draft-outreach my-startup \
+  --subject "Discovery chat" \
+  --body "Kia ora ..."
+
+# Name check guidance (live if BUSINESS_GOVT_API_KEY set)
+nz-startup nzbn "My Proposed Limited"
+
+# Board pack
+nz-startup weekly my-startup
+```
+
+## 5. First session prompts
 
 **Bootstrap**
 
@@ -52,13 +101,13 @@ Load grants-rdti-clerk.
 Append R&D activity log entries from my recent git commits. Do not invent hours.
 ```
 
-## 5. Rules of engagement
+## 6. Rules of engagement
 
 - Every government filing pack ends with a **human action checklist**  
 - Every outreach draft stays in Drafts until you send it  
 - Every legal document is watermarked not advice  
 
-## 6. Dogfooding path (Coastal Alpine Tech)
+## 7. Dogfooding path (Coastal Alpine Tech)
 
 1. Run your own startup on this fleet as internal skills  
 2. Show Venture Taranaki / EDA a working weekly board report  

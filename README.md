@@ -54,15 +54,22 @@ Specifically:
 
 ## Quick start
 
+### One-command install (Windows)
+
+```powershell
+git clone https://github.com/fivepanelhat/NZ-Start-Up.git
+cd NZ-Start-Up
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+nz-startup init my-startup
+nz-startup weekly my-startup
+```
+
 ### Option A — With Aether (recommended)
 
 ```powershell
-# Clone
-git clone https://github.com/fivepanelhat/NZ-Start-Up.git
-cd NZ-Start-Up
-
-# Point Aether at this skills tree (or copy skills into ~/.aether/skills)
-# Example: set AETHER_SKILLS_PATH to this repo's skills/ directory
+# After install.ps1 / install.sh, skills are copied to ~/.aether/skills
+# Or:
+nz-startup install-skills --mode copy
 ```
 
 Then ask your Aether / Claude / agent runner:
@@ -72,9 +79,29 @@ Load cat-architectural-standards and board-chief-of-staff.
 Initialise company memory for my startup and run a weekly operating review.
 ```
 
-### Option B — Claude Code / Cowork plugin-style
+### Option B — MCP connectors (v0.2)
+
+```powershell
+python -m pip install -e ".[mcp]"
+nz-startup mcp
+```
+
+Host config sample: `mcp.json`. Tools are **drafts-only** — no send/file/pay. See `docs/MCP.md`.
+
+### Option C — Claude Code / Cowork plugin-style
 
 Copy `skills/*` into your skills directory. Each skill is a self-contained `SKILL.md` pack with references and templates.
+
+### CLI cheat sheet
+
+```powershell
+nz-startup init my-startup
+nz-startup rdti add my-startup --hours 2 --activity "..." --uncertainty "..." --evidence "commit:abc"
+nz-startup draft-outreach my-startup --subject "Intro" --body "..."
+nz-startup nzbn "Example Limited"
+nz-startup weekly my-startup
+nz-startup validate
+```
 
 ### Validate skills
 
@@ -120,10 +147,11 @@ This repo is the **open skills core**. White-label packaging is a separate comme
 
 ## Roadmap
 
-1. **v0.1 (now)** — Skills pack + knowledge + templates + CI (this repo)
-2. **v0.2** — MCP connectors (CRM drafts-only, calendar, optional Companies Office read)
-3. **v1.0 desktop** — Tauri/Electron local-first shell (sovereign founder OS) after demand proven
-4. **Hosted SaaS** — only with funding + team (not solo)
+1. **v0.1** — Skills pack + knowledge + templates + CI
+2. **v0.2 (now)** — CLI runtime + MCP connectors (CRM drafts-only, NZBN read-only, RDTI, weekly board)
+3. **v0.3** — Richer CRM pipeline MCP + calendar reminders + grant tracker CSV sync
+4. **v1.0 desktop** — Tauri/Electron local-first shell after demand proven
+5. **Hosted SaaS** — only with funding + team (not solo)
 
 ## Related
 

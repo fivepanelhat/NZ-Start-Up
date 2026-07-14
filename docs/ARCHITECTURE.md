@@ -1,6 +1,6 @@
 # Architecture
 
-## Shape (v0.1)
+## Shape (v0.2)
 
 ```text
                     ┌─────────────────────────────┐
@@ -11,9 +11,14 @@
           ┌───────────────────────┼───────────────────────┐
           ▼                       ▼                       ▼
    Formation … Legal        Company Memory          HITL / Audit
-   (specialist skills)      (local JSON/MD)         (compliance/)
+   (specialist skills)      (local MD/CSV/JSONL)    (compliance/)
           │                       │                       │
           └───────────────────────┴───────────────────────┘
+                                  │
+              ┌───────────────────┼───────────────────┐
+              ▼                   ▼                   ▼
+        nz-startup CLI      MCP stdio server     Aether skills
+        (local runtime)     (drafts-only)        (~/.aether/skills)
                                   │
                      CAT Standards + Aether Guardrails
 ```

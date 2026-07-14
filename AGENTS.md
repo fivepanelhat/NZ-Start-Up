@@ -38,11 +38,19 @@ Ship a **skills-heavy NZ founder fleet** with hard autonomy ceilings. Prefer loc
 | CI, security, validators, privacy defaults | Diamond |
 | Memory schema, flywheel, agent improvement loops | Platinum |
 
+## Runtime (v0.2)
+
+- Package: `nz_startup` — CLI `nz-startup`, MCP `nz-startup mcp`
+- Never add MCP tools that send, file, pay, or sign
+- All memory/RDTI/draft writes must append `audit.jsonl`
+- Prefer offline NZBN mode unless `BUSINESS_GOVT_API_KEY` is set
+
 ## Testing before commit
 
 ```text
 python scripts/validate_skills.py
 pytest -q
+python -m nz_startup --version
 ```
 
 ## Tone
