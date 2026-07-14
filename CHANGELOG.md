@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.5.0 — 2026-07-14
+
+### Added
+- **Bank feed CSV import** with flexible headers, dedupe, category/GST-hint triage
+- CLI: `nz-startup bank import|list|triage`
+- MCP: `bank_import_csv`, `bank_triage`
+- **GST worksheet assist** from bank period + Xero snapshot (working papers only)
+- CLI: `nz-startup gst prepare --start --end`
+- MCP: `gst_prepare_worksheet`
+- Sample: `templates/bank-feed-sample.csv`
+- Docs: `docs/BANK_GST.md`
+
+### HITL
+- No bank transfers, no myIR filing, no GST certification
+- Estimates assume GST-inclusive bank amounts — human verifies tax invoices
+
 ## 0.4.0 — 2026-07-14
 
 ### Added

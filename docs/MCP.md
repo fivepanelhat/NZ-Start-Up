@@ -38,6 +38,8 @@ Wire into Claude Desktop / Cursor / other hosts via `mcp.json` in this repo.
 | `grants_list` / `grants_add` / `grants_update` / `grants_rank` | Grant tracker CSV |
 | `xero_status` / `xero_snapshot` | Xero **read-only** finance snapshot |
 | `export_deadline_reminders` | ICS + digest files (never emails) |
+| `bank_import_csv` / `bank_triage` | Bank CSV import + category triage |
+| `gst_prepare_worksheet` | GST **working papers** only (not a filing) |
 | `hitl_policy_summary` / `check_hitl_action` | Policy helpers |
 
 ## Tools deliberately absent

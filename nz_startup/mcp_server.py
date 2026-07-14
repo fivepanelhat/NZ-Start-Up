@@ -9,10 +9,12 @@ import json
 
 from nz_startup import (
     __version__,
+    bank_feed,
     calendar_ops,
     drafts,
     export_reminders,
     grants,
+    gst_worksheet,
     memory,
     nzbn,
     pipeline,
@@ -48,6 +50,8 @@ def build_server():
             "Grants tracker never submits applications. "
             "Xero adapter is read-only — never create payments. "
             "Reminder exports write files only — never email digests. "
+            "Bank import is CSV-only triage — never moves money. "
+            "GST prepare builds working papers only — never files myIR. "
             "Always load CAT Gold/Diamond/Platinum classification for material work."
         ),
     )
@@ -377,6 +381,57 @@ def build_server():
         return json.dumps({k: str(v) for k, v in paths.items()}, indent=2)
 
     @mcp.tool()
+    def bank_import_csv(
+        company_id: str,
+        file_path: str,
+        replace: bool = False,
+        batch_label: str = "",
+    ) -> str:
+        """
+        Import a bank CSV export for triage. Never moves money or calls bank APIs.
+        file_path must be a local path the human exported.
+        """
+        from pathlib import Path
+
+        summary = bank_feed.import_csv(
+            company_id,
+            Path(file_path),
+            replace=replace,
+            batch_label=batch_label or None,
+        )
+        return json.dumps(summary, indent=2, default=str)
+
+    @mcp.tool()
+    def bank_triage(company_id: str) -> str:
+        """Summarise imported bank feed categories and GST hints."""
+        return bank_feed.format_triage_markdown(company_id)
+
+    @mcp.tool()
+    def gst_prepare_worksheet(
+        company_id: str,
+        period_start: str,
+        period_end: str,
+        gst_rate: float = 0.15,
+        label: str = "",
+    ) -> str:
+        """
+        Build GST working papers from bank feed + Xero snapshot for a period.
+        NOT a tax filing — human/accountant files in myIR.
+        """
+        ws, paths = gst_worksheet.prepare_and_write(
+            company_id,
+            period_start=period_start,
+            period_end=period_end,
+            gst_rate=gst_rate,
+            label=label or None,
+        )
+        return (
+            gst_worksheet.format_worksheet_markdown(ws)
+            + "\n\n## Written\n"
+            + "\n".join(f"- {k}: {v}" for k, v in paths.items())
+        )
+
+    @mcp.tool()
     def hitl_policy_summary() -> str:
         """Return autonomy ceilings and forbidden actions for this fleet."""
         return (
@@ -385,7 +440,7 @@ def build_server():
             f"Forbidden MCP tools (not implemented): {sorted(FORBIDDEN_TOOL_NAMES)}\n"
             f"Watermarks: {json.dumps(WATERMARKS, indent=2)}\n"
             f"Server version: {__version__}\n"
-            "Xero: read-only. Exports: files only, no email send.\n"
+            "Xero: read-only. Bank: CSV triage only. GST: working papers only.\n"
         )
 
     @mcp.tool()
@@ -441,6 +496,9 @@ def tool_inventory() -> list[str]:
         "xero_status",
         "xero_snapshot",
         "export_deadline_reminders",
+        "bank_import_csv",
+        "bank_triage",
+        "gst_prepare_worksheet",
         "hitl_policy_summary",
         "check_hitl_action",
     ]

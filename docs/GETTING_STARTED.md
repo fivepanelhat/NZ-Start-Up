@@ -91,6 +91,11 @@ nz-startup nzbn "My Proposed Limited"
 nz-startup xero status
 nz-startup xero snapshot my-startup --offline
 
+# Bank feed + GST working papers (not a filing)
+nz-startup bank import my-startup --file templates/bank-feed-sample.csv
+nz-startup bank triage my-startup
+nz-startup gst prepare my-startup --start 2026-07-01 --end 2026-07-31
+
 # Deadline exports (import ICS yourself — agent does not email)
 nz-startup export reminders my-startup --days 14 --ics-days 90
 

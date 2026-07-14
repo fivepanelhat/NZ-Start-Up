@@ -15,6 +15,10 @@ runway.md               # Finance snapshot (no bank passwords)
 finance/
   xero-snapshot.json    # Xero read-only snapshot (no tokens)
   xero-snapshot.md
+  bank-feed.csv         # Imported bank transactions (normalized)
+  bank-feed.md
+  bank-imports/         # Archived raw bank CSVs
+  gst/                  # GST working papers (not filings)
 exports/
   deadlines-latest.ics  # Importable calendar
   deadline-digest-latest.md

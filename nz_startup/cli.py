@@ -8,10 +8,12 @@ from pathlib import Path
 
 from nz_startup import __version__
 from nz_startup import (
+    bank_feed,
     calendar_ops,
     drafts,
     export_reminders,
     grants,
+    gst_worksheet,
     memory,
     nzbn,
     pipeline,
@@ -299,6 +301,54 @@ def cmd_export(args: argparse.Namespace) -> int:
     return 2
 
 
+def cmd_bank(args: argparse.Namespace) -> int:
+    if args.bank_cmd == "import":
+        summary = bank_feed.import_csv(
+            args.company_id,
+            Path(args.file),
+            replace=args.replace,
+            batch_label=args.batch,
+        )
+        print(json.dumps(summary, indent=2, default=str))
+        return 0
+    if args.bank_cmd == "list":
+        rows = bank_feed.list_transactions(
+            args.company_id,
+            direction=args.direction,
+            category=args.category,
+            limit=args.limit,
+        )
+        print(json.dumps(rows, indent=2))
+        return 0
+    if args.bank_cmd == "triage":
+        if args.json:
+            print(json.dumps(bank_feed.triage_summary(args.company_id), indent=2))
+        else:
+            print(bank_feed.format_triage_markdown(args.company_id))
+        return 0
+    return 2
+
+
+def cmd_gst(args: argparse.Namespace) -> int:
+    if args.gst_cmd == "prepare":
+        ws, paths = gst_worksheet.prepare_and_write(
+            args.company_id,
+            period_start=args.start,
+            period_end=args.end,
+            gst_rate=args.rate,
+            label=args.label,
+        )
+        if args.json:
+            print(json.dumps(ws, indent=2, default=str))
+        else:
+            print(gst_worksheet.format_worksheet_markdown(ws))
+            print("---")
+            for k, p in paths.items():
+                print(f"{k}: {p}")
+        return 0
+    return 2
+
+
 def cmd_validate(args: argparse.Namespace) -> int:
     script = repo_root() / "scripts" / "validate_skills.py"
     import subprocess
@@ -518,6 +568,43 @@ def build_parser() -> argparse.ArgumentParser:
     ex_dg.add_argument("--days", type=int, default=14)
     ex_dg.add_argument("--stdout", action="store_true")
     ex_dg.set_defaults(func=cmd_export)
+
+    # Bank feed
+    bk = sub.add_parser("bank", help="Bank feed CSV import + triage")
+    bk_sub = bk.add_subparsers(dest="bank_cmd", required=True)
+    bk_imp = bk_sub.add_parser("import", help="Import bank CSV export")
+    bk_imp.add_argument("company_id")
+    bk_imp.add_argument("--file", required=True, help="Path to bank CSV")
+    bk_imp.add_argument("--replace", action="store_true", help="Replace existing feed")
+    bk_imp.add_argument("--batch", default=None, help="Import batch label")
+    bk_imp.set_defaults(func=cmd_bank)
+    bk_list = bk_sub.add_parser("list", help="List imported transactions")
+    bk_list.add_argument("company_id")
+    bk_list.add_argument("--direction", default=None, help="inflow|outflow")
+    bk_list.add_argument("--category", default=None)
+    bk_list.add_argument("--limit", type=int, default=50)
+    bk_list.set_defaults(func=cmd_bank)
+    bk_tr = bk_sub.add_parser("triage", help="Category / GST-hint summary")
+    bk_tr.add_argument("company_id")
+    bk_tr.add_argument("--json", action="store_true")
+    bk_tr.set_defaults(func=cmd_bank)
+
+    # GST worksheet
+    gt = sub.add_parser("gst", help="GST working papers (not a filing)")
+    gt_sub = gt.add_subparsers(dest="gst_cmd", required=True)
+    gt_prep = gt_sub.add_parser("prepare", help="Build period worksheet from bank+Xero")
+    gt_prep.add_argument("company_id")
+    gt_prep.add_argument("--start", required=True, help="Period start YYYY-MM-DD")
+    gt_prep.add_argument("--end", required=True, help="Period end YYYY-MM-DD")
+    gt_prep.add_argument(
+        "--rate",
+        type=float,
+        default=0.15,
+        help="GST rate fraction (default 0.15)",
+    )
+    gt_prep.add_argument("--label", default=None)
+    gt_prep.add_argument("--json", action="store_true")
+    gt_prep.set_defaults(func=cmd_gst)
 
     val = sub.add_parser("validate", help="Validate skill pack")
     val.set_defaults(func=cmd_validate)

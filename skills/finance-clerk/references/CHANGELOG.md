@@ -1,5 +1,8 @@
 # Changelog — finance-clerk
 
+## 0.1.2 — 2026-07-14
+- Bank CSV import + GST working papers path (product v0.5)
+
 ## 0.1.1 — 2026-07-14
 - Document Xero read-only snapshot path (product v0.4)
 

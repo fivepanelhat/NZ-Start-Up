@@ -20,6 +20,8 @@ FORBIDDEN_TOOL_NAMES = frozenset(
         "sign_document",
         "realme_login",
         "email_digest",
+        "file_gst_return",
+        "bank_transfer",
     }
 )
 
@@ -59,6 +61,9 @@ def check_action(action: str) -> HitlDecision:
         "realme",
         "email digest",
         "auto-email",
+        "file gst",
+        "file myir",
+        "bank transfer",
     )
     for frag in blocked_fragments:
         if frag in a:
