@@ -111,6 +111,9 @@ nz-startup handoff pack my-startup
 nz-startup cohort init vt-powerup --partner "Venture Taranaki" --programme "PowerUp"
 nz-startup cohort pack vt-powerup
 nz-startup demo run --company demo-eda --partner "Venture Taranaki"
+nz-startup onboard my-startup --legal-name "Example Labs Limited" --wedge "…" --icp "…"
+nz-startup pilot offer my-startup --customer "Named Account" --fee 1500
+nz-startup cohort report vt-powerup --anonymise
 nz-startup status demo-eda
 nz-startup board pack demo-eda
 nz-startup smoke
@@ -165,8 +168,8 @@ This repo is the **open skills core**. White-label packaging is a separate comme
 
 ## Roadmap
 
-1. **v0.1–0.7** — Skills → finance loop → white-label + EDA demo
-2. **v0.8 (now)** — Status dashboard, mentor board pack, smoke e2e, sales one-pager
+1. **v0.1–0.8** — Skills → finance → white-label → status/board/smoke
+2. **v0.9 (now)** — Onboard wizard, paid pilot offers, partner reports
 3. **v1.0 desktop** — only after paid demand
 4. **Hosted SaaS** — only with funding + team (not solo)
 

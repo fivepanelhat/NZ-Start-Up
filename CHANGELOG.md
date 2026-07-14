@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.9.0 — 2026-07-14
+
+### Added
+- **Founder onboard wizard** (`onboard`) — profile, 30-day plan, seeds, weekly, status
+- **Paid pilot offer pack** (`pilot offer`) — DRAFT_NOT_SENT commercial zip
+- **Cohort partner report** (`cohort report`) — seat readiness, optional anonymise
+- Demo walkthrough now includes **status + board pack**
+- CLI/MCP for onboard, pilot, partner report
+- Docs: `docs/PILOT_ONBOARD.md`
+
 ## 0.8.0 — 2026-07-14
 
 ### Added

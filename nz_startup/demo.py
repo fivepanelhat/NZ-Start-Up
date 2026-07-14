@@ -13,6 +13,7 @@ from typing import Any, Callable
 from nz_startup import (
     __version__,
     bank_feed,
+    board_pack,
     calendar_ops,
     grants,
     gst_worksheet,
@@ -20,6 +21,7 @@ from nz_startup import (
     invoice_triage,
     memory,
     pipeline,
+    status,
     weekly,
     xero_readonly,
 )
@@ -148,6 +150,22 @@ def run_demo(
             lambda: str(weekly.generate_weekly_review(company_id)),
         )
     )
+    log.append(
+        _step(
+            "status",
+            lambda: status.write_status(company_id)[0].get("score"),
+        )
+    )
+    log.append(
+        _step(
+            "board_pack",
+            lambda: str(
+                board_pack.create_board_pack(
+                    company_id, label="demo", refresh_weekly=False, refresh_status=False
+                )["latest"]
+            ),
+        )
+    )
 
     report = {
         "title": f"NZ Start-Up in a Box — demo for {partner}",
@@ -165,6 +183,7 @@ def run_demo(
             "Weekly board report is the founder experience and the EDA demo artefact",
             "White-label path: cohort seats for EDAs without multi-tenant SaaS risk yet",
             "Finance loop ends in accountant handoff zip — not automated tax agent behaviour",
+            "Paid pilots only — use pilot offer pack; free pilots don't convert",
         ],
         "hitl": (
             "Agents inform, draft, prepare, monitor, and remind. "
@@ -172,9 +191,9 @@ def run_demo(
         ),
         "next_human_actions": [
             f"Book discovery with {partner} contacts from pipeline",
-            "Review weekly board markdown and handoff zip",
-            "Decide paid pilot offer pricing before free pilots",
-            "If cohort interest: nz-startup cohort init + add-seat + pack",
+            "Open board-packs/board-pack-latest.zip and status/status-latest.md",
+            "Prepare paid pilot offer: nz-startup pilot offer …",
+            "If cohort interest: nz-startup cohort init + add-seat + report + pack",
         ],
     }
 

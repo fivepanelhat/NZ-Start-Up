@@ -21,6 +21,9 @@ from nz_startup import (
     invoice_triage,
     memory,
     nzbn,
+    onboard,
+    partner_report,
+    pilot_offer,
     pipeline,
     rdti,
     smoke,
@@ -397,49 +400,6 @@ def cmd_handoff(args: argparse.Namespace) -> int:
     return 2
 
 
-def cmd_cohort(args: argparse.Namespace) -> int:
-    if args.cohort_cmd == "init":
-        cfg = cohort.init_cohort(
-            args.cohort_id,
-            partner_name=args.partner,
-            programme=args.programme or "",
-            region=args.region or "Aotearoa New Zealand",
-            contact_email=args.email or "",
-            seat_quota=args.quota,
-            brand_tagline=args.tagline or "",
-            force=args.force,
-        )
-        print(json.dumps(cfg, indent=2) if args.json else cohort.format_cohort_markdown(cfg["cohort_id"]))
-        return 0
-    if args.cohort_cmd == "add-seat":
-        seat = cohort.add_seat(
-            args.cohort_id,
-            founder_id=args.founder,
-            company_id=args.company,
-            display_name=args.name or "",
-            email=args.email or "",
-            force_company_init=args.force,
-        )
-        print(json.dumps(seat, indent=2))
-        return 0
-    if args.cohort_cmd == "list":
-        if args.cohort_id:
-            if args.json:
-                print(json.dumps(cohort.list_seats(args.cohort_id), indent=2))
-            else:
-                print(cohort.format_cohort_markdown(args.cohort_id))
-        else:
-            print(json.dumps(cohort.list_cohorts(), indent=2))
-        return 0
-    if args.cohort_cmd == "pack":
-        result = cohort.build_white_label_pack(args.cohort_id)
-        out = {k: (str(v) if hasattr(v, "__fspath__") else v) for k, v in result.items()}
-        print(json.dumps(out, indent=2))
-        print("HITL: deliver white-label pack to partner yourself — agent does not email.")
-        return 0
-    return 2
-
-
 def cmd_demo(args: argparse.Namespace) -> int:
     if args.demo_cmd == "run":
         report = demo.run_demo(
@@ -500,6 +460,101 @@ def cmd_smoke(args: argparse.Namespace) -> int:
     else:
         print(smoke.format_smoke_markdown(report))
     return 0 if report.get("ok") else 1
+
+
+def cmd_onboard(args: argparse.Namespace) -> int:
+    result = onboard.run_onboard(
+        args.company_id,
+        legal_name=args.legal_name or "",
+        trading_name=args.trading_name or "",
+        region=args.region or "Aotearoa New Zealand",
+        wedge=args.wedge or "",
+        icp=args.icp or "",
+        force=args.force,
+    )
+    if args.json:
+        print(json.dumps(result, indent=2, default=str))
+    else:
+        print(onboard.format_onboard_markdown(result))
+    return 0
+
+
+def cmd_pilot(args: argparse.Namespace) -> int:
+    if args.pilot_cmd == "offer":
+        offer, paths = pilot_offer.prepare_and_write(
+            args.company_id,
+            customer_name=args.customer,
+            pilot_fee_nzd=args.fee,
+            term_days=args.days,
+            success_criteria=args.criteria or "",
+            conversion_price_nzd=args.conversion or "799-999/mo or enterprise quote",
+            scope=args.scope or "Sovereign AI pilot — local-first demo + weekly operating cadence",
+            champion=args.champion or "",
+            start_date=args.start,
+        )
+        if args.json:
+            print(json.dumps({"offer": offer, "paths": {k: str(v) for k, v in paths.items()}}, indent=2))
+        else:
+            print(pilot_offer.format_offer_markdown(offer))
+            print("---")
+            for k, p in paths.items():
+                print(f"{k}: {p}")
+            print("HITL: human sends offer — DRAFT_NOT_SENT")
+        return 0
+    return 2
+
+
+def cmd_cohort(args: argparse.Namespace) -> int:
+    if args.cohort_cmd == "init":
+        cfg = cohort.init_cohort(
+            args.cohort_id,
+            partner_name=args.partner,
+            programme=args.programme or "",
+            region=args.region or "Aotearoa New Zealand",
+            contact_email=args.email or "",
+            seat_quota=args.quota,
+            brand_tagline=args.tagline or "",
+            force=args.force,
+        )
+        print(json.dumps(cfg, indent=2) if args.json else cohort.format_cohort_markdown(cfg["cohort_id"]))
+        return 0
+    if args.cohort_cmd == "add-seat":
+        seat = cohort.add_seat(
+            args.cohort_id,
+            founder_id=args.founder,
+            company_id=args.company,
+            display_name=args.name or "",
+            email=args.email or "",
+            force_company_init=args.force,
+        )
+        print(json.dumps(seat, indent=2))
+        return 0
+    if args.cohort_cmd == "list":
+        if args.cohort_id:
+            if args.json:
+                print(json.dumps(cohort.list_seats(args.cohort_id), indent=2))
+            else:
+                print(cohort.format_cohort_markdown(args.cohort_id))
+        else:
+            print(json.dumps(cohort.list_cohorts(), indent=2))
+        return 0
+    if args.cohort_cmd == "pack":
+        result = cohort.build_white_label_pack(args.cohort_id)
+        out = {k: (str(v) if hasattr(v, "__fspath__") else v) for k, v in result.items()}
+        print(json.dumps(out, indent=2))
+        print("HITL: deliver white-label pack to partner yourself — agent does not email.")
+        return 0
+    if args.cohort_cmd == "report":
+        report, path = partner_report.write_partner_report(
+            args.cohort_id, anonymise=args.anonymise
+        )
+        if args.json:
+            print(json.dumps(report, indent=2))
+        else:
+            print(partner_report.format_partner_report_markdown(report))
+            print(f"---\nwritten: {path}")
+        return 0
+    return 2
 
 
 def cmd_validate(args: argparse.Namespace) -> int:
@@ -810,6 +865,11 @@ def build_parser() -> argparse.ArgumentParser:
     co_pack = co_sub.add_parser("pack", help="Build white-label zip (no seat PII)")
     co_pack.add_argument("cohort_id")
     co_pack.set_defaults(func=cmd_cohort)
+    co_rep = co_sub.add_parser("report", help="Partner seat readiness report")
+    co_rep.add_argument("cohort_id")
+    co_rep.add_argument("--anonymise", action="store_true", help="Hide founder/company ids")
+    co_rep.add_argument("--json", action="store_true")
+    co_rep.set_defaults(func=cmd_cohort)
 
     # Demo walkthrough
     dm = sub.add_parser("demo", help="EDA / accelerator demo walkthrough")
@@ -843,6 +903,32 @@ def build_parser() -> argparse.ArgumentParser:
     sm = sub.add_parser("smoke", help="End-to-end smoke test (local sample data)")
     sm.add_argument("--json", action="store_true")
     sm.set_defaults(func=cmd_smoke)
+
+    ob = sub.add_parser("onboard", help="Founder first-hour onboarding wizard")
+    ob.add_argument("company_id")
+    ob.add_argument("--legal-name", dest="legal_name", default="")
+    ob.add_argument("--trading-name", dest="trading_name", default="")
+    ob.add_argument("--region", default="Aotearoa New Zealand")
+    ob.add_argument("--wedge", default="")
+    ob.add_argument("--icp", default="")
+    ob.add_argument("--force", action="store_true")
+    ob.add_argument("--json", action="store_true")
+    ob.set_defaults(func=cmd_onboard)
+
+    pi = sub.add_parser("pilot", help="Paid pilot commercial packs")
+    pi_sub = pi.add_subparsers(dest="pilot_cmd", required=True)
+    pi_off = pi_sub.add_parser("offer", help="Draft paid pilot offer pack")
+    pi_off.add_argument("company_id")
+    pi_off.add_argument("--customer", required=True)
+    pi_off.add_argument("--fee", default="1500", help="Pilot fee NZD")
+    pi_off.add_argument("--days", type=int, default=90)
+    pi_off.add_argument("--start", default=None, help="Start date YYYY-MM-DD")
+    pi_off.add_argument("--champion", default="")
+    pi_off.add_argument("--criteria", default="")
+    pi_off.add_argument("--conversion", default="799-999/mo or enterprise quote")
+    pi_off.add_argument("--scope", default="")
+    pi_off.add_argument("--json", action="store_true")
+    pi_off.set_defaults(func=cmd_pilot)
 
     val = sub.add_parser("validate", help="Validate skill pack")
     val.set_defaults(func=cmd_validate)

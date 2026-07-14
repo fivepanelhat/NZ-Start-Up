@@ -117,6 +117,19 @@ def run_smoke(*, keep: bool = False) -> dict[str, Any]:
     except Exception as e:  # noqa: BLE001
         steps.append({"step": "demo_quick", "ok": False, "error": str(e)})
 
+    try:
+        from nz_startup import onboard, pilot_offer
+
+        onboard.run_onboard("smoke-onboard", force=True, legal_name="Smoke Onboard Ltd")
+        pilot_offer.prepare_and_write(
+            "smoke-onboard",
+            customer_name="Smoke Customer Ltd",
+            pilot_fee_nzd="1500",
+        )
+        steps.append({"step": "onboard_pilot", "ok": True})
+    except Exception as e:  # noqa: BLE001
+        steps.append({"step": "onboard_pilot", "ok": False, "error": str(e)})
+
     ok = all(s.get("ok") for s in steps)
     return _finish(steps, ok=ok, company_id=company_id)
 

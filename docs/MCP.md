@@ -47,6 +47,9 @@ Wire into Claude Desktop / Cursor / other hosts via `mcp.json` in this repo.
 | `company_status` | Readiness score + gaps |
 | `board_pack_create` | Mentor/board zip (not accountant) |
 | `smoke_run` | Local e2e smoke |
+| `onboard_company` | First-hour founder wizard |
+| `pilot_offer_create` | Paid pilot pack (DRAFT_NOT_SENT) |
+| `cohort_partner_report` | EDA seat readiness report |
 | `hitl_policy_summary` / `check_hitl_action` | Policy helpers |
 
 ## Tools deliberately absent

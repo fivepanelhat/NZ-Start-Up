@@ -24,6 +24,8 @@ FORBIDDEN_TOOL_NAMES = frozenset(
         "bank_transfer",
         "email_handoff",
         "claim_gst",
+        "send_pilot_offer",
+        "email_partner_report",
     }
 )
 

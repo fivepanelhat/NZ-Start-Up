@@ -24,6 +24,10 @@ nz-startup cohort add-seat vt-powerup --founder alice --company alice-labs --nam
 nz-startup cohort list
 nz-startup cohort list vt-powerup
 
+# Partner readiness report (optional anonymise)
+nz-startup cohort report vt-powerup
+nz-startup cohort report vt-powerup --anonymise
+
 # White-label zip for partner (NO seat PII)
 nz-startup cohort pack vt-powerup
 # → cohorts/vt-powerup/exports/white-label-latest.zip

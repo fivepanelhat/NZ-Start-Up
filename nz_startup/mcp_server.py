@@ -22,6 +22,9 @@ from nz_startup import (
     invoice_triage,
     memory,
     nzbn,
+    onboard,
+    partner_report,
+    pilot_offer,
     pipeline,
     rdti,
     smoke,
@@ -530,6 +533,66 @@ def build_server():
         return smoke.format_smoke_markdown(report)
 
     @mcp.tool()
+    def onboard_company(
+        company_id: str,
+        legal_name: str = "",
+        trading_name: str = "",
+        region: str = "Aotearoa New Zealand",
+        wedge: str = "",
+        icp: str = "",
+        force: bool = False,
+    ) -> str:
+        """First-hour founder onboard wizard (local artefacts only)."""
+        result = onboard.run_onboard(
+            company_id,
+            legal_name=legal_name,
+            trading_name=trading_name,
+            region=region,
+            wedge=wedge,
+            icp=icp,
+            force=force,
+        )
+        return onboard.format_onboard_markdown(result)
+
+    @mcp.tool()
+    def pilot_offer_create(
+        company_id: str,
+        customer_name: str,
+        pilot_fee_nzd: str = "1500",
+        term_days: int = 90,
+        champion: str = "",
+        success_criteria: str = "",
+    ) -> str:
+        """
+        Draft paid pilot offer pack. DRAFT_NOT_SENT — human must send and sign.
+        Not legal advice.
+        """
+        offer, paths = pilot_offer.prepare_and_write(
+            company_id,
+            customer_name=customer_name,
+            pilot_fee_nzd=pilot_fee_nzd,
+            term_days=term_days,
+            champion=champion,
+            success_criteria=success_criteria,
+        )
+        return (
+            pilot_offer.format_offer_markdown(offer)
+            + "\n\n## Written\n"
+            + "\n".join(f"- {k}: {v}" for k, v in paths.items())
+        )
+
+    @mcp.tool()
+    def cohort_partner_report(cohort_id: str, anonymise: bool = False) -> str:
+        """Partner seat readiness report. Does not email."""
+        report, path = partner_report.write_partner_report(
+            cohort_id, anonymise=anonymise
+        )
+        return (
+            partner_report.format_partner_report_markdown(report)
+            + f"\n\nwritten: {path}"
+        )
+
+    @mcp.tool()
     def hitl_policy_summary() -> str:
         """Return autonomy ceilings and forbidden actions for this fleet."""
         return (
@@ -538,7 +601,7 @@ def build_server():
             f"Forbidden MCP tools (not implemented): {sorted(FORBIDDEN_TOOL_NAMES)}\n"
             f"Watermarks: {json.dumps(WATERMARKS, indent=2)}\n"
             f"Server version: {__version__}\n"
-            "Status/board/smoke are local artefacts only — no send/file/pay.\n"
+            "Pilot offers are DRAFT_NOT_SENT. Partner reports are manual delivery.\n"
         )
 
     @mcp.tool()
@@ -607,6 +670,9 @@ def tool_inventory() -> list[str]:
         "company_status",
         "board_pack_create",
         "smoke_run",
+        "onboard_company",
+        "pilot_offer_create",
+        "cohort_partner_report",
         "hitl_policy_summary",
         "check_hitl_action",
     ]

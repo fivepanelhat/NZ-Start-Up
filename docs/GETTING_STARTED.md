@@ -49,9 +49,14 @@ See `docs/MCP.md`.
 ## 3. Initialise company memory
 
 ```bash
+# Recommended first hour
+nz-startup onboard my-startup \
+  --legal-name "Example Labs Limited" \
+  --wedge "Your wedge" \
+  --icp "Your ICP"
+
+# Or bare init:
 nz-startup init my-startup
-# or copy manually:
-# cp -r memory/example-company memory/companies/my-startup
 ```
 
 Edit `memory/companies/my-startup/profile.md` with real (non-secret) facts.
