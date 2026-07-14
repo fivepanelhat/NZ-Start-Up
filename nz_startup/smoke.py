@@ -130,6 +130,14 @@ def run_smoke(*, keep: bool = False) -> dict[str, Any]:
     except Exception as e:  # noqa: BLE001
         steps.append({"step": "onboard_pilot", "ok": False, "error": str(e)})
 
+    try:
+        from nz_startup import doctor
+
+        d = doctor.run_doctor()
+        steps.append({"step": "doctor", "ok": bool(d.get("ok"))})
+    except Exception as e:  # noqa: BLE001
+        steps.append({"step": "doctor", "ok": False, "error": str(e)})
+
     ok = all(s.get("ok") for s in steps)
     return _finish(steps, ok=ok, company_id=company_id)
 

@@ -17,10 +17,12 @@ python -m nz_startup install-skills --target $AetherSkills --mode copy
 Write-Host "==> Validating skills"
 python scripts\validate_skills.py
 python -m pytest -q
+python -m nz_startup doctor
+python -m nz_startup smoke
 
 Write-Host ""
-Write-Host "Done. Next:"
-Write-Host "  nz-startup init my-startup"
-Write-Host "  nz-startup weekly my-startup"
-Write-Host "  nz-startup mcp          # MCP stdio (pip install '.[mcp]' first)"
-Write-Host "  See docs/GETTING_STARTED.md"
+Write-Host "Done (v1.0). Next:"
+Write-Host "  nz-startup onboard my-startup --legal-name `"My Labs Limited`""
+Write-Host "  nz-startup console --port 8765"
+Write-Host "  nz-startup demo run --partner `"Venture Taranaki`""
+Write-Host "  See RELEASE.md and docs/GETTING_STARTED.md"

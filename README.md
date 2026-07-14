@@ -1,8 +1,9 @@
 # NZ Start-Up in a Box
 
-**Plug-and-play agent fleet for New Zealand founders** — formation through funding, with hard legal ceilings and CAT Gold / Diamond / Platinum Aether standards.
+**v1.0 — Local founder OS + white-label EDA kit for New Zealand**  
+Formation through funding, with hard legal ceilings and CAT Gold / Diamond / Platinum Aether standards.
 
-> **One download.** Skills + NZ knowledge + templates + HITL compliance.  
+> **One download.** Skills + NZ knowledge + templates + HITL compliance + localhost console.  
 > **Built on [Aether](https://github.com/fivepanelhat/Aether).**  
 > **Coastal Alpine Tech Limited** · Taranaki · Aotearoa New Zealand.
 
@@ -60,8 +61,10 @@ Specifically:
 git clone https://github.com/fivepanelhat/NZ-Start-Up.git
 cd NZ-Start-Up
 powershell -ExecutionPolicy Bypass -File .\install.ps1
-nz-startup init my-startup
-nz-startup weekly my-startup
+nz-startup doctor
+nz-startup onboard my-startup --legal-name "My Labs Limited"
+nz-startup console --port 8765
+# open http://127.0.0.1:8765/
 ```
 
 ### Option A — With Aether (recommended)
@@ -117,6 +120,8 @@ nz-startup cohort report vt-powerup --anonymise
 nz-startup status demo-eda
 nz-startup board pack demo-eda
 nz-startup smoke
+nz-startup doctor
+nz-startup console --port 8765
 nz-startup export reminders my-startup --days 14
 nz-startup draft-outreach my-startup --subject "Intro" --body "..."
 nz-startup nzbn "Example Limited"
@@ -168,9 +173,9 @@ This repo is the **open skills core**. White-label packaging is a separate comme
 
 ## Roadmap
 
-1. **v0.1–0.8** — Skills → finance → white-label → status/board/smoke
-2. **v0.9 (now)** — Onboard wizard, paid pilot offers, partner reports
-3. **v1.0 desktop** — only after paid demand
+1. **v0.1–0.9** — Skills → finance → white-label → commercial pilot kits  
+2. **v1.0 (now)** — Local product release: doctor + localhost Founder Console  
+3. **Native desktop shell** — only after paid demand  
 4. **Hosted SaaS** — only with funding + team (not solo)
 
 ## Related

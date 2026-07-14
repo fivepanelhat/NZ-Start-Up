@@ -21,9 +21,18 @@ chmod +x install.sh && ./install.sh
 Manual:
 
 ```bash
-python -m pip install -e ".[dev]"
+python -m pip install -e ".[all]"
 nz-startup install-skills
+nz-startup doctor
 nz-startup validate
+nz-startup smoke
+```
+
+### Local console (v1.0)
+
+```bash
+nz-startup console --port 8765
+# http://127.0.0.1:8765/
 ```
 
 ## 2. Wire skills into your agent host

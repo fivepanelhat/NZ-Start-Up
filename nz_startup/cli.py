@@ -12,7 +12,9 @@ from nz_startup import (
     board_pack,
     calendar_ops,
     cohort,
+    console,
     demo,
+    doctor,
     drafts,
     export_reminders,
     grants,
@@ -462,6 +464,20 @@ def cmd_smoke(args: argparse.Namespace) -> int:
     return 0 if report.get("ok") else 1
 
 
+def cmd_doctor(args: argparse.Namespace) -> int:
+    report = doctor.run_doctor()
+    if args.json:
+        print(json.dumps(report, indent=2))
+    else:
+        print(doctor.format_doctor_markdown(report))
+    return 0 if report.get("ok") else 1
+
+
+def cmd_console(args: argparse.Namespace) -> int:
+    console.run_console(host=args.host, port=args.port)
+    return 0
+
+
 def cmd_onboard(args: argparse.Namespace) -> int:
     result = onboard.run_onboard(
         args.company_id,
@@ -903,6 +919,15 @@ def build_parser() -> argparse.ArgumentParser:
     sm = sub.add_parser("smoke", help="End-to-end smoke test (local sample data)")
     sm.add_argument("--json", action="store_true")
     sm.set_defaults(func=cmd_smoke)
+
+    doc = sub.add_parser("doctor", help="Check install / environment health")
+    doc.add_argument("--json", action="store_true")
+    doc.set_defaults(func=cmd_doctor)
+
+    con = sub.add_parser("console", help="Localhost Founder Console (v1.0 UI)")
+    con.add_argument("--host", default="127.0.0.1", help="Must be localhost")
+    con.add_argument("--port", type=int, default=8765)
+    con.set_defaults(func=cmd_console)
 
     ob = sub.add_parser("onboard", help="Founder first-hour onboarding wizard")
     ob.add_argument("company_id")

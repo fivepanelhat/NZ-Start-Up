@@ -19,5 +19,7 @@ jobs:
         run: python scripts/validate_skills.py
       - name: Tests
         run: pytest -q
+      - name: Doctor
+        run: python -m nz_startup doctor
       - name: Smoke e2e
         run: python -m nz_startup smoke

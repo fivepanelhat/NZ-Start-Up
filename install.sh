@@ -14,10 +14,12 @@ python3 -m nz_startup install-skills --target "$AETHER_SKILLS" --mode copy
 echo "==> Validating skills"
 python3 scripts/validate_skills.py
 python3 -m pytest -q
+python3 -m nz_startup doctor
+python3 -m nz_startup smoke
 
 echo ""
-echo "Done. Next:"
-echo "  nz-startup init my-startup"
-echo "  nz-startup weekly my-startup"
-echo "  nz-startup mcp"
-echo "  See docs/GETTING_STARTED.md"
+echo "Done (v1.0). Next:"
+echo "  nz-startup onboard my-startup --legal-name 'My Labs Limited'"
+echo "  nz-startup console --port 8765"
+echo "  nz-startup demo run --partner 'Venture Taranaki'"
+echo "  See RELEASE.md and docs/GETTING_STARTED.md"

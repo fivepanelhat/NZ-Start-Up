@@ -14,6 +14,7 @@ from nz_startup import (
     calendar_ops,
     cohort,
     demo,
+    doctor,
     drafts,
     export_reminders,
     grants,
@@ -533,6 +534,12 @@ def build_server():
         return smoke.format_smoke_markdown(report)
 
     @mcp.tool()
+    def doctor_run() -> str:
+        """Check install/environment health for the local v1.0 product."""
+        report = doctor.run_doctor()
+        return doctor.format_doctor_markdown(report)
+
+    @mcp.tool()
     def onboard_company(
         company_id: str,
         legal_name: str = "",
@@ -670,6 +677,7 @@ def tool_inventory() -> list[str]:
         "company_status",
         "board_pack_create",
         "smoke_run",
+        "doctor_run",
         "onboard_company",
         "pilot_offer_create",
         "cohort_partner_report",

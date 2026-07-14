@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.0 — 2026-07-14
+
+### Added
+- **v1.0 local product release** — skills + CLI + MCP + localhost Founder Console
+- `nz-startup console` — 127.0.0.1-only dashboard (status + weekly actions)
+- `nz-startup doctor` — install/environment health checks
+- `RELEASE.md`, `docs/CONSOLE.md`
+- MCP: `doctor_run`
+- Smoke includes doctor
+
+### Notes
+- Console refuses non-localhost binds (not multi-tenant SaaS)
+- Full native desktop shell still demand-gated; console is the v1.0 UI surface
+
 ## 0.9.0 — 2026-07-14
 
 ### Added
