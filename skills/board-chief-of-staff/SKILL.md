@@ -35,8 +35,10 @@ compliance deadlines, and top-3 priorities. **Escalates, never decides.**
 1. Load `cat-architectural-standards` classification for the week.
 2. Read memory: profile, pipeline, runway, calendar, rdti-log, recent drafts.
 3. Produce `weekly/YYYY-MM-DD.md` from `templates/weekly-operating-review.md`.
-4. Propose next specialist tasks (do not auto-execute forbidden actions).
-5. Append decision prompts for the human.
+4. Run or recommend `nz-startup status <company>` for readiness score/gaps.
+5. For mentor meetings: `nz-startup board pack <company>` (not accountant handoff).
+6. Propose next specialist tasks (do not auto-execute forbidden actions).
+7. Append decision prompts for the human.
 
 ## Routing table
 | Founder ask contains | Route to |

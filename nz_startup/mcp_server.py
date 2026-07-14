@@ -10,6 +10,7 @@ import json
 from nz_startup import (
     __version__,
     bank_feed,
+    board_pack,
     calendar_ops,
     cohort,
     demo,
@@ -23,6 +24,8 @@ from nz_startup import (
     nzbn,
     pipeline,
     rdti,
+    smoke,
+    status,
     weekly,
     xero_readonly,
 )
@@ -503,6 +506,30 @@ def build_server():
         return demo.format_demo_markdown(report)
 
     @mcp.tool()
+    def company_status(company_id: str) -> str:
+        """Readiness dashboard (score + gaps + next actions). Informational only."""
+        st, path = status.write_status(company_id)
+        return status.format_status_markdown(st) + f"\n\nwritten: {path}"
+
+    @mcp.tool()
+    def board_pack_create(company_id: str, label: str = "mentor") -> str:
+        """
+        Create mentor/board operating pack zip (pipeline, weekly, status).
+        Distinct from accountant handoff. Does not email.
+        """
+        result = board_pack.create_board_pack(company_id, label=label)
+        return json.dumps(
+            {k: (str(v) if hasattr(v, "__fspath__") else v) for k, v in result.items()},
+            indent=2,
+        )
+
+    @mcp.tool()
+    def smoke_run() -> str:
+        """Run local end-to-end smoke using sample data. Never sends/files/pays."""
+        report = smoke.run_smoke()
+        return smoke.format_smoke_markdown(report)
+
+    @mcp.tool()
     def hitl_policy_summary() -> str:
         """Return autonomy ceilings and forbidden actions for this fleet."""
         return (
@@ -511,7 +538,7 @@ def build_server():
             f"Forbidden MCP tools (not implemented): {sorted(FORBIDDEN_TOOL_NAMES)}\n"
             f"Watermarks: {json.dumps(WATERMARKS, indent=2)}\n"
             f"Server version: {__version__}\n"
-            "Cohort white-label + EDA demo available; still no send/file/pay.\n"
+            "Status/board/smoke are local artefacts only — no send/file/pay.\n"
         )
 
     @mcp.tool()
@@ -577,6 +604,9 @@ def tool_inventory() -> list[str]:
         "cohort_status",
         "cohort_pack",
         "demo_run",
+        "company_status",
+        "board_pack_create",
+        "smoke_run",
         "hitl_policy_summary",
         "check_hitl_action",
     ]

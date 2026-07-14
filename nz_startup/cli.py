@@ -9,6 +9,7 @@ from pathlib import Path
 from nz_startup import __version__
 from nz_startup import (
     bank_feed,
+    board_pack,
     calendar_ops,
     cohort,
     demo,
@@ -22,6 +23,8 @@ from nz_startup import (
     nzbn,
     pipeline,
     rdti,
+    smoke,
+    status,
     weekly,
     xero_readonly,
 )
@@ -456,6 +459,49 @@ def cmd_demo(args: argparse.Namespace) -> int:
     return 2
 
 
+def cmd_status(args: argparse.Namespace) -> int:
+    st, path = status.write_status(args.company_id)
+    if args.json:
+        print(json.dumps(st, indent=2))
+    else:
+        print(status.format_status_markdown(st))
+        print(f"---\nwritten: {path}")
+    return 0
+
+
+def cmd_board(args: argparse.Namespace) -> int:
+    if args.board_cmd == "pack":
+        result = board_pack.create_board_pack(
+            args.company_id,
+            label=args.label,
+            refresh_weekly=not args.no_refresh,
+            refresh_status=not args.no_refresh,
+        )
+        if args.json:
+            print(
+                json.dumps(
+                    {k: (str(v) if hasattr(v, "__fspath__") else v) for k, v in result.items()},
+                    indent=2,
+                )
+            )
+        else:
+            print(f"zip: {result['zip']}")
+            print(f"latest: {result['latest']}")
+            print(f"files: {result['file_count']}")
+            print("HITL: deliver board pack yourself — agent does not email.")
+        return 0
+    return 2
+
+
+def cmd_smoke(args: argparse.Namespace) -> int:
+    report = smoke.run_smoke()
+    if args.json:
+        print(json.dumps(report, indent=2, default=str))
+    else:
+        print(smoke.format_smoke_markdown(report))
+    return 0 if report.get("ok") else 1
+
+
 def cmd_validate(args: argparse.Namespace) -> int:
     script = repo_root() / "scripts" / "validate_skills.py"
     import subprocess
@@ -775,6 +821,28 @@ def build_parser() -> argparse.ArgumentParser:
     dm_run.add_argument("--quick", action="store_true", help="Skip finance deep steps")
     dm_run.add_argument("--json", action="store_true")
     dm_run.set_defaults(func=cmd_demo)
+
+    st = sub.add_parser("status", help="Company readiness dashboard")
+    st.add_argument("company_id")
+    st.add_argument("--json", action="store_true")
+    st.set_defaults(func=cmd_status)
+
+    bd = sub.add_parser("board", help="Mentor/board packs")
+    bd_sub = bd.add_subparsers(dest="board_cmd", required=True)
+    bd_pack = bd_sub.add_parser("pack", help="Zip mentor/board operating pack")
+    bd_pack.add_argument("company_id")
+    bd_pack.add_argument("--label", default="mentor")
+    bd_pack.add_argument(
+        "--no-refresh",
+        action="store_true",
+        help="Do not regenerate weekly/status before packing",
+    )
+    bd_pack.add_argument("--json", action="store_true")
+    bd_pack.set_defaults(func=cmd_board)
+
+    sm = sub.add_parser("smoke", help="End-to-end smoke test (local sample data)")
+    sm.add_argument("--json", action="store_true")
+    sm.set_defaults(func=cmd_smoke)
 
     val = sub.add_parser("validate", help="Validate skill pack")
     val.set_defaults(func=cmd_validate)

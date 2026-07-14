@@ -105,6 +105,9 @@ nz-startup cohort init vt-powerup --partner "Venture Taranaki" --programme "Powe
 nz-startup cohort add-seat vt-powerup --founder demo --company demo-seat
 nz-startup cohort pack vt-powerup
 nz-startup demo run --company demo-eda --partner "Venture Taranaki"
+nz-startup status demo-eda
+nz-startup board pack demo-eda
+nz-startup smoke
 
 # Deadline exports (import ICS yourself — agent does not email)
 nz-startup export reminders my-startup --days 14 --ics-days 90

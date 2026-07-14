@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.8.0 — 2026-07-14
+
+### Added
+- **Company status dashboard** (`status`) with readiness score, gaps, next actions
+- **Board/mentor pack** zip (distinct from accountant handoff)
+- **Smoke e2e** command for install/CI confidence
+- Sales one-pager template for white-label pitch
+- CLI: `status`, `board pack`, `smoke`
+- MCP: `company_status`, `board_pack_create`, `smoke_run`
+- Docs: `docs/STATUS_BOARD.md`
+
 ## 0.7.0 — 2026-07-14
 
 ### Added

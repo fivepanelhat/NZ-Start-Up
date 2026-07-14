@@ -111,6 +111,9 @@ nz-startup handoff pack my-startup
 nz-startup cohort init vt-powerup --partner "Venture Taranaki" --programme "PowerUp"
 nz-startup cohort pack vt-powerup
 nz-startup demo run --company demo-eda --partner "Venture Taranaki"
+nz-startup status demo-eda
+nz-startup board pack demo-eda
+nz-startup smoke
 nz-startup export reminders my-startup --days 14
 nz-startup draft-outreach my-startup --subject "Intro" --body "..."
 nz-startup nzbn "Example Limited"
@@ -162,15 +165,10 @@ This repo is the **open skills core**. White-label packaging is a separate comme
 
 ## Roadmap
 
-1. **v0.1** — Skills pack + knowledge + templates + CI
-2. **v0.2** — CLI runtime + MCP (memory, RDTI, drafts, NZBN read)
-3. **v0.3** — Pipeline CRM + calendar + grants tracker
-4. **v0.4** — Xero read-only snapshot + ICS/digest exports
-5. **v0.5** — Bank-feed CSV import + GST working papers assist
-6. **v0.6** — Invoice triage + accountant handoff zip
-7. **v0.7 (now)** — White-label cohorts + EDA demo walkthrough
-8. **v1.0 desktop** — only after paid demand
-9. **Hosted SaaS** — only with funding + team (not solo)
+1. **v0.1–0.7** — Skills → finance loop → white-label + EDA demo
+2. **v0.8 (now)** — Status dashboard, mentor board pack, smoke e2e, sales one-pager
+3. **v1.0 desktop** — only after paid demand
+4. **Hosted SaaS** — only with funding + team (not solo)
 
 ## Related
 

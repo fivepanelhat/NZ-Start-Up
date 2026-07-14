@@ -36,6 +36,8 @@ nz-startup demo run --company demo-eda --quick
 - `memory/companies/<id>/demo/demo-report-latest.md` — shareable script notes  
 - Weekly board under `weekly/`  
 - Handoff zip under `handoff/` (full mode)  
+- Mentor board pack: `nz-startup board pack <id>` → `board-packs/board-pack-latest.zip`  
+- Readiness: `nz-startup status <id>`  
 
 ## Room talking points
 

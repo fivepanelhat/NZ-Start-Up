@@ -44,6 +44,9 @@ Wire into Claude Desktop / Cursor / other hosts via `mcp.json` in this repo.
 | `handoff_pack_create` | Local accountant zip (never emails) |
 | `cohort_list` / `cohort_status` / `cohort_pack` | White-label cohorts (no email) |
 | `demo_run` | EDA demo walkthrough report |
+| `company_status` | Readiness score + gaps |
+| `board_pack_create` | Mentor/board zip (not accountant) |
+| `smoke_run` | Local e2e smoke |
 | `hitl_policy_summary` / `check_hitl_action` | Policy helpers |
 
 ## Tools deliberately absent
