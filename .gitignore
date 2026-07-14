@@ -33,5 +33,10 @@ memory/companies/*
 !memory/companies/.gitkeep
 !memory/example-company/
 
+# Cohort runtime (seat data + packs may contain partner ops notes)
+cohorts/*
+!cohorts/.gitkeep
+!cohorts/README.md
+
 # OS
 desktop.ini

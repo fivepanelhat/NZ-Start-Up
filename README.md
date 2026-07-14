@@ -108,6 +108,9 @@ nz-startup bank triage my-startup
 nz-startup gst prepare my-startup --start 2026-07-01 --end 2026-07-31
 nz-startup invoice triage my-startup --path templates/sample-tax-invoice.txt
 nz-startup handoff pack my-startup
+nz-startup cohort init vt-powerup --partner "Venture Taranaki" --programme "PowerUp"
+nz-startup cohort pack vt-powerup
+nz-startup demo run --company demo-eda --partner "Venture Taranaki"
 nz-startup export reminders my-startup --days 14
 nz-startup draft-outreach my-startup --subject "Intro" --body "..."
 nz-startup nzbn "Example Limited"
@@ -164,9 +167,9 @@ This repo is the **open skills core**. White-label packaging is a separate comme
 3. **v0.3** — Pipeline CRM + calendar + grants tracker
 4. **v0.4** — Xero read-only snapshot + ICS/digest exports
 5. **v0.5** — Bank-feed CSV import + GST working papers assist
-6. **v0.6 (now)** — Invoice triage + accountant handoff zip
-7. **v0.7** — Optional white-label cohort packaging + demo script
-8. **v1.0 desktop** — Tauri/Electron local-first shell after demand proven
+6. **v0.6** — Invoice triage + accountant handoff zip
+7. **v0.7 (now)** — White-label cohorts + EDA demo walkthrough
+8. **v1.0 desktop** — only after paid demand
 9. **Hosted SaaS** — only with funding + team (not solo)
 
 ## Related

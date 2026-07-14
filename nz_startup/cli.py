@@ -10,6 +10,8 @@ from nz_startup import __version__
 from nz_startup import (
     bank_feed,
     calendar_ops,
+    cohort,
+    demo,
     drafts,
     export_reminders,
     grants,
@@ -392,6 +394,68 @@ def cmd_handoff(args: argparse.Namespace) -> int:
     return 2
 
 
+def cmd_cohort(args: argparse.Namespace) -> int:
+    if args.cohort_cmd == "init":
+        cfg = cohort.init_cohort(
+            args.cohort_id,
+            partner_name=args.partner,
+            programme=args.programme or "",
+            region=args.region or "Aotearoa New Zealand",
+            contact_email=args.email or "",
+            seat_quota=args.quota,
+            brand_tagline=args.tagline or "",
+            force=args.force,
+        )
+        print(json.dumps(cfg, indent=2) if args.json else cohort.format_cohort_markdown(cfg["cohort_id"]))
+        return 0
+    if args.cohort_cmd == "add-seat":
+        seat = cohort.add_seat(
+            args.cohort_id,
+            founder_id=args.founder,
+            company_id=args.company,
+            display_name=args.name or "",
+            email=args.email or "",
+            force_company_init=args.force,
+        )
+        print(json.dumps(seat, indent=2))
+        return 0
+    if args.cohort_cmd == "list":
+        if args.cohort_id:
+            if args.json:
+                print(json.dumps(cohort.list_seats(args.cohort_id), indent=2))
+            else:
+                print(cohort.format_cohort_markdown(args.cohort_id))
+        else:
+            print(json.dumps(cohort.list_cohorts(), indent=2))
+        return 0
+    if args.cohort_cmd == "pack":
+        result = cohort.build_white_label_pack(args.cohort_id)
+        out = {k: (str(v) if hasattr(v, "__fspath__") else v) for k, v in result.items()}
+        print(json.dumps(out, indent=2))
+        print("HITL: deliver white-label pack to partner yourself — agent does not email.")
+        return 0
+    return 2
+
+
+def cmd_demo(args: argparse.Namespace) -> int:
+    if args.demo_cmd == "run":
+        report = demo.run_demo(
+            args.company,
+            partner=args.partner,
+            programme=args.programme,
+            quick=args.quick,
+        )
+        if args.json:
+            print(json.dumps(report, indent=2, default=str))
+        else:
+            print(demo.format_demo_markdown(report))
+            paths = report.get("paths") or {}
+            print("---")
+            print(f"latest: {paths.get('latest_md')}")
+        return 0
+    return 2
+
+
 def cmd_validate(args: argparse.Namespace) -> int:
     script = repo_root() / "scripts" / "validate_skills.py"
     import subprocess
@@ -670,6 +734,47 @@ def build_parser() -> argparse.ArgumentParser:
     ho_pack.add_argument("--label", default="accountant")
     ho_pack.add_argument("--json", action="store_true")
     ho_pack.set_defaults(func=cmd_handoff)
+
+    # Cohort white-label
+    co = sub.add_parser("cohort", help="White-label EDA/accelerator cohorts")
+    co_sub = co.add_subparsers(dest="cohort_cmd", required=True)
+    co_init = co_sub.add_parser("init", help="Create cohort + brand overlay")
+    co_init.add_argument("cohort_id")
+    co_init.add_argument("--partner", required=True, help="Partner org name")
+    co_init.add_argument("--programme", default="")
+    co_init.add_argument("--region", default="Aotearoa New Zealand")
+    co_init.add_argument("--email", default="")
+    co_init.add_argument("--quota", type=int, default=10)
+    co_init.add_argument("--tagline", default="")
+    co_init.add_argument("--force", action="store_true")
+    co_init.add_argument("--json", action="store_true")
+    co_init.set_defaults(func=cmd_cohort)
+    co_seat = co_sub.add_parser("add-seat", help="Add founder seat + company memory")
+    co_seat.add_argument("cohort_id")
+    co_seat.add_argument("--founder", required=True)
+    co_seat.add_argument("--company", default=None)
+    co_seat.add_argument("--name", default="")
+    co_seat.add_argument("--email", default="")
+    co_seat.add_argument("--force", action="store_true")
+    co_seat.set_defaults(func=cmd_cohort)
+    co_list = co_sub.add_parser("list", help="List cohorts or seats")
+    co_list.add_argument("cohort_id", nargs="?", default=None)
+    co_list.add_argument("--json", action="store_true")
+    co_list.set_defaults(func=cmd_cohort)
+    co_pack = co_sub.add_parser("pack", help="Build white-label zip (no seat PII)")
+    co_pack.add_argument("cohort_id")
+    co_pack.set_defaults(func=cmd_cohort)
+
+    # Demo walkthrough
+    dm = sub.add_parser("demo", help="EDA / accelerator demo walkthrough")
+    dm_sub = dm.add_subparsers(dest="demo_cmd", required=True)
+    dm_run = dm_sub.add_parser("run", help="Run demo and write report")
+    dm_run.add_argument("--company", default="demo-eda")
+    dm_run.add_argument("--partner", default="Venture Taranaki")
+    dm_run.add_argument("--programme", default="PowerUp / founder demo")
+    dm_run.add_argument("--quick", action="store_true", help="Skip finance deep steps")
+    dm_run.add_argument("--json", action="store_true")
+    dm_run.set_defaults(func=cmd_demo)
 
     val = sub.add_parser("validate", help="Validate skill pack")
     val.set_defaults(func=cmd_validate)

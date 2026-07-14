@@ -29,13 +29,15 @@ Meta skill for the product. Use when the user installs the pack or says
 1. Load `cat-architectural-standards` — classify session (usually Gold + Platinum).
 2. Ensure company memory exists (copy example structure).
 3. Introduce the 10 digital employees and autonomy slogan.
-4. Offer one of: formation pack | weekly board | RDTI log start | GTM draft week.
-5. Remind hard boundaries (file/send/pay = human).
+4. Offer one of: formation pack | weekly board | RDTI log start | GTM draft week | `demo run`.
+5. For EDA partners: `cohort init` + `cohort pack` white-label path.
+6. Remind hard boundaries (file/send/pay = human).
 
 ## Dogfood mode (Coastal Alpine Tech)
 - Map 30/60/90 plan actions to fleet skills
 - Prefer paid pilot pipeline discipline over new product forks
-- Weekly board report is the demo for EDA white-label conversations
+- Weekly board report + `nz-startup demo run` is the EDA white-label conversation
+- See `docs/WHITE_LABEL.md` and `docs/DEMO.md`
 
 ## Guardrails
 - Do not promise autonomous company operation

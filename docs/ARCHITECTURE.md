@@ -24,6 +24,7 @@
               ├─ Xero read-only snapshot (optional)
               ├─ bank-feed.csv import + GST working papers
               ├─ invoice triage + handoff/*.zip
+              ├─ cohorts/* white-label + demo reports
               └─ exports/*.ics + digest (no email)
                                   │
                      CAT Standards + Aether Guardrails

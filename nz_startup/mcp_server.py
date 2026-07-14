@@ -11,6 +11,8 @@ from nz_startup import (
     __version__,
     bank_feed,
     calendar_ops,
+    cohort,
+    demo,
     drafts,
     export_reminders,
     grants,
@@ -56,6 +58,8 @@ def build_server():
             "GST prepare builds working papers only — never files myIR. "
             "Invoice triage extracts fields for review — never claims GST. "
             "Handoff pack writes a local zip — never emails the accountant. "
+            "Cohort white-label packs exclude seat PII and never email partners. "
+            "Demo run uses sample data only — never files or sends. "
             "Always load CAT Gold/Diamond/Platinum classification for material work."
         ),
     )
@@ -464,6 +468,41 @@ def build_server():
         )
 
     @mcp.tool()
+    def cohort_list() -> str:
+        """List white-label cohorts (ids, partners, seat counts)."""
+        return json.dumps(cohort.list_cohorts(), indent=2)
+
+    @mcp.tool()
+    def cohort_status(cohort_id: str) -> str:
+        """Show cohort brand + seats summary (markdown)."""
+        return cohort.format_cohort_markdown(cohort_id)
+
+    @mcp.tool()
+    def cohort_pack(cohort_id: str) -> str:
+        """Build white-label distribution zip without seat PII. Does not email."""
+        result = cohort.build_white_label_pack(cohort_id)
+        return json.dumps(
+            {k: (str(v) if hasattr(v, "__fspath__") else v) for k, v in result.items()},
+            indent=2,
+        )
+
+    @mcp.tool()
+    def demo_run(
+        company_id: str = "demo-eda",
+        partner: str = "Venture Taranaki",
+        programme: str = "PowerUp / founder demo",
+        quick: bool = False,
+    ) -> str:
+        """
+        Run EDA demo walkthrough with sample data; write demo report under company memory.
+        Never sends email or files government forms.
+        """
+        report = demo.run_demo(
+            company_id, partner=partner, programme=programme, quick=quick
+        )
+        return demo.format_demo_markdown(report)
+
+    @mcp.tool()
     def hitl_policy_summary() -> str:
         """Return autonomy ceilings and forbidden actions for this fleet."""
         return (
@@ -472,7 +511,7 @@ def build_server():
             f"Forbidden MCP tools (not implemented): {sorted(FORBIDDEN_TOOL_NAMES)}\n"
             f"Watermarks: {json.dumps(WATERMARKS, indent=2)}\n"
             f"Server version: {__version__}\n"
-            "Xero read-only · Bank triage · GST papers · Invoice triage · Handoff zip only.\n"
+            "Cohort white-label + EDA demo available; still no send/file/pay.\n"
         )
 
     @mcp.tool()
@@ -534,6 +573,10 @@ def tool_inventory() -> list[str]:
         "invoice_triage_path",
         "invoice_list",
         "handoff_pack_create",
+        "cohort_list",
+        "cohort_status",
+        "cohort_pack",
+        "demo_run",
         "hitl_policy_summary",
         "check_hitl_action",
     ]

@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.7.0 — 2026-07-14
+
+### Added
+- **White-label cohorts** for EDAs/accelerators: init, seats, brand overlay, pack zip (no seat PII)
+- CLI: `nz-startup cohort init|add-seat|list|pack`
+- MCP: `cohort_list`, `cohort_status`, `cohort_pack`
+- **EDA demo walkthrough**: full + quick modes, demo report markdown
+- CLI: `nz-startup demo run`
+- MCP: `demo_run`
+- Scripts: `scripts/demo_eda.ps1`, `scripts/demo_eda.sh`
+- Docs: `docs/WHITE_LABEL.md`, `docs/DEMO.md`
+- Template: `templates/cohort.example.json`
+
+### Notes
+- Still local-first; not multi-tenant SaaS
+- White-label pack excludes founder seat PII
+
 ## 0.6.0 — 2026-07-14
 
 ### Added

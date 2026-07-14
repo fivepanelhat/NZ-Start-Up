@@ -100,6 +100,12 @@ nz-startup gst prepare my-startup --start 2026-07-01 --end 2026-07-31
 nz-startup invoice triage my-startup --path templates/sample-tax-invoice.txt
 nz-startup handoff pack my-startup
 
+# White-label cohort + EDA demo
+nz-startup cohort init vt-powerup --partner "Venture Taranaki" --programme "PowerUp"
+nz-startup cohort add-seat vt-powerup --founder demo --company demo-seat
+nz-startup cohort pack vt-powerup
+nz-startup demo run --company demo-eda --partner "Venture Taranaki"
+
 # Deadline exports (import ICS yourself — agent does not email)
 nz-startup export reminders my-startup --days 14 --ics-days 90
 
