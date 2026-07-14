@@ -26,6 +26,14 @@ FORBIDDEN_TOOL_NAMES = frozenset(
         "claim_gst",
         "send_pilot_offer",
         "email_partner_report",
+        # hardened expansions
+        "webhook_exfil",
+        "upload_customer_data",
+        "disable_hitl",
+        "bypass_guardrails",
+        "auto_approve",
+        "mass_mail",
+        "scraped_lead_blast",
     }
 )
 
@@ -70,6 +78,12 @@ def check_action(action: str) -> HitlDecision:
         "bank transfer",
         "email handoff",
         "claim gst automatically",
+        "bypass hitl",
+        "disable guardrail",
+        "mass mail",
+        "cold email blast",
+        "upload all customer",
+        "exfiltrate",
     )
     for frag in blocked_fragments:
         if frag in a:

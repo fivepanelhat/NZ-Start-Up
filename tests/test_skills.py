@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / "skills"
 
 EXPECTED = {
+    "agent-hardening",
     "cat-architectural-standards",
     "nz-startup-fleet",
     "board-chief-of-staff",

@@ -8,6 +8,7 @@ from pathlib import Path
 
 from nz_startup import __version__
 from nz_startup import (
+    agent_guardrails,
     bank_feed,
     board_pack,
     calendar_ops,
@@ -473,6 +474,22 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     return 0 if report.get("ok") else 1
 
 
+def cmd_harden(args: argparse.Namespace) -> int:
+    if args.harden_cmd == "status":
+        print(json.dumps(agent_guardrails.guardrails_status(), indent=2))
+        return 0
+    if args.harden_cmd == "check":
+        result = agent_guardrails.classify_risk(
+            args.action, context=args.context or "", skill=args.skill or ""
+        )
+        print(json.dumps(result.as_dict(), indent=2))
+        return 0 if result.allowed else 2
+    if args.harden_cmd == "policy":
+        print(agent_guardrails.skill_policy_block(args.skill or "fleet"))
+        return 0
+    return 2
+
+
 def cmd_console(args: argparse.Namespace) -> int:
     console.run_console(host=args.host, port=args.port, open_browser=args.open)
     return 0
@@ -928,6 +945,19 @@ def build_parser() -> argparse.ArgumentParser:
     doc = sub.add_parser("doctor", help="Check install / environment health")
     doc.add_argument("--json", action="store_true")
     doc.set_defaults(func=cmd_doctor)
+
+    hd = sub.add_parser("harden", help="Agent hardening / HITL policy tools")
+    hd_sub = hd.add_subparsers(dest="harden_cmd", required=True)
+    hd_st = hd_sub.add_parser("status", help="Show guardrails policy snapshot")
+    hd_st.set_defaults(func=cmd_harden)
+    hd_ck = hd_sub.add_parser("check", help="Classify an action for HITL")
+    hd_ck.add_argument("--action", required=True)
+    hd_ck.add_argument("--context", default="")
+    hd_ck.add_argument("--skill", default="")
+    hd_ck.set_defaults(func=cmd_harden)
+    hd_pol = hd_sub.add_parser("policy", help="Print policy block for a skill")
+    hd_pol.add_argument("--skill", default="fleet")
+    hd_pol.set_defaults(func=cmd_harden)
 
     con = sub.add_parser("console", help="Localhost Founder Console")
     con.add_argument("--host", default="127.0.0.1", help="Must be localhost")

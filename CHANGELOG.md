@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.2.0 — 2026-07-14
+
+### Security / agents
+- **Agent hardening plane**: `agent_guardrails.py`, skill `agent-hardening`
+- Stronger HITL forbidden tools/fragments (bypass, mass mail, exfil)
+- Memory writes: path sandbox + secret-pattern refusal
+- CLI: `harden status|check|policy`
+- MCP: `harden_status`, `harden_check`
+- Docs: `docs/AGENT_HARDENING.md`
+
+### Architecture
+- Detailed architecture doc with diagrams: `docs/ARCHITECTURE_DETAILED.md`
+- Ultra glassmorphism architecture hero: `assets/architecture-glassmorphism.jpg`
+
 ## 1.1.0 — 2026-07-14
 
 ### Added

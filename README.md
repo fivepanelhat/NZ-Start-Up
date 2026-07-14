@@ -138,10 +138,16 @@ python scripts/validate_skills.py
 pytest -q
 ```
 
+## Architecture
+
+See **[docs/ARCHITECTURE_DETAILED.md](docs/ARCHITECTURE_DETAILED.md)** for the full system design, threat model, and data flows.
+
+![Architecture — glassmorphism](assets/architecture-glassmorphism.jpg)
+
 ## Repository layout
 
 ```text
-skills/                 # Aether-compatible digital employees + CAT standards
+skills/                 # Aether-compatible digital employees + CAT standards + hardening
 knowledge/              # NZ integrations, funding landscape, lifecycle map
 templates/              # Checklists and draft outlines (not formal legal docs)
 compliance/             # HITL matrix, Privacy Act, Te Mana Raraunga, legal boundaries

@@ -26,12 +26,12 @@ Meta skill for the product. Use when the user installs the pack or says
 "run my NZ startup agents" / "startup in a box".
 
 ## Bootstrap sequence
-1. Load `cat-architectural-standards` — classify session (usually Gold + Platinum).
+1. Load `agent-hardening` then `cat-architectural-standards` — ceilings + Gold/Platinum/Diamond.
 2. Ensure company memory exists (copy example structure).
 3. Introduce the 10 digital employees and autonomy slogan.
 4. Offer one of: formation pack | weekly board | RDTI log start | GTM draft week | `demo run`.
 5. For EDA partners: `cohort init` + `cohort pack` white-label path.
-6. Remind hard boundaries (file/send/pay = human).
+6. Remind hard boundaries (file/send/pay = human). Run `nz-startup harden status` if needed.
 
 ## Dogfood mode (Coastal Alpine Tech)
 - Map 30/60/90 plan actions to fleet skills

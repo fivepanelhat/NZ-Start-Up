@@ -22,6 +22,8 @@ def run_doctor() -> dict[str, Any]:
     skills = skills_dir()
     skill_count = len([p for p in skills.iterdir() if p.is_dir()]) if skills.is_dir() else 0
     add("skills", skill_count >= 10, f"{skill_count} skill dirs at {skills}")
+    harden = skills / "agent-hardening" / "SKILL.md"
+    add("agent_hardening_skill", harden.is_file(), str(harden))
     add("example_company", example_company_dir().is_dir(), str(example_company_dir()))
     add("memory_root", memory_root().is_dir(), str(memory_root()))
     add("validate_script", (repo_root() / "scripts" / "validate_skills.py").is_file(), "scripts/validate_skills.py")
@@ -40,7 +42,8 @@ def run_doctor() -> dict[str, Any]:
     except Exception as e:  # noqa: BLE001
         add("core_imports", False, str(e))
 
-    ok = all(c["ok"] for c in checks if c["name"] not in ("mcp_extra", "pypdf_extra"))
+    soft = {"mcp_extra", "pypdf_extra", "agent_hardening_skill"}
+    ok = all(c["ok"] for c in checks if c["name"] not in soft)
     return {
         "ok": ok,
         "product_version": __version__,

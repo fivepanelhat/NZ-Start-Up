@@ -9,6 +9,7 @@ import json
 
 from nz_startup import (
     __version__,
+    agent_guardrails,
     bank_feed,
     board_pack,
     calendar_ops,
@@ -53,21 +54,16 @@ def build_server():
     mcp = FastMCP(
         "nz-startup-in-a-box",
         instructions=(
-            "NZ Start-Up in a Box fleet connectors v0.4. "
+            "NZ Start-Up in a Box fleet connectors v1.2 (hardened). "
             "Agents may inform, draft, prepare, monitor, and remind. "
             "Humans must advise, sign, file, send, and pay. "
             f"Forbidden tools: {sorted(FORBIDDEN_TOOL_NAMES)}. "
-            "Pipeline is CRM-lite local only — never send outreach. "
-            "Grants tracker never submits applications. "
-            "Xero adapter is read-only — never create payments. "
-            "Reminder exports write files only — never email digests. "
-            "Bank import is CSV-only triage — never moves money. "
-            "GST prepare builds working papers only — never files myIR. "
-            "Invoice triage extracts fields for review — never claims GST. "
-            "Handoff pack writes a local zip — never emails the accountant. "
-            "Cohort white-label packs exclude seat PII and never email partners. "
-            "Demo run uses sample data only — never files or sends. "
-            "Always load CAT Gold/Diamond/Platinum classification for material work."
+            "Load agent-hardening + cat-architectural-standards first. "
+            "Pipeline drafts only — never send outreach (UEM Act). "
+            "Grants never submit. Xero read-only. Bank CSV triage only. "
+            "GST working papers only. Invoice triage never claims GST. "
+            "Handoff/cohort packs never email. Demo never files or sends. "
+            "Refuse secrets in memory writes. Path sandbox company memory only."
         ),
     )
 
@@ -89,7 +85,8 @@ def build_server():
 
     @mcp.tool()
     def write_company_file(company_id: str, relative_path: str, content: str) -> str:
-        """Write a non-secret file into company memory. Audited."""
+        """Write a non-secret file into company memory. Audited. Secrets refused."""
+        # Pre-check secrets / sandbox via hardened write path
         path = memory.write_file(company_id, relative_path, content)
         return f"Wrote {path}"
 
@@ -540,6 +537,17 @@ def build_server():
         return doctor.format_doctor_markdown(report)
 
     @mcp.tool()
+    def harden_status() -> str:
+        """Return agent hardening / HITL policy snapshot."""
+        return json.dumps(agent_guardrails.guardrails_status(), indent=2)
+
+    @mcp.tool()
+    def harden_check(action: str, context: str = "", skill: str = "") -> str:
+        """Classify an action for risk tier and HITL requirement."""
+        result = agent_guardrails.classify_risk(action, context=context, skill=skill)
+        return json.dumps(result.as_dict(), indent=2)
+
+    @mcp.tool()
     def onboard_company(
         company_id: str,
         legal_name: str = "",
@@ -678,6 +686,8 @@ def tool_inventory() -> list[str]:
         "board_pack_create",
         "smoke_run",
         "doctor_run",
+        "harden_status",
+        "harden_check",
         "onboard_company",
         "pilot_offer_create",
         "cohort_partner_report",

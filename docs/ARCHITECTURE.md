@@ -1,6 +1,10 @@
 # Architecture
 
-## Shape (v0.2)
+> **Detailed reference:** [ARCHITECTURE_DETAILED.md](ARCHITECTURE_DETAILED.md)  
+> **Hardening:** [AGENT_HARDENING.md](AGENT_HARDENING.md)  
+> **Hero visual:** ![glassmorphism](assets/architecture-glassmorphism.jpg)
+
+## Shape (v1.2)
 
 ```text
                     ┌─────────────────────────────┐

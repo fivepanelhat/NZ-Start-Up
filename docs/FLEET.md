@@ -21,6 +21,7 @@ End-to-end NZ founder lifecycle as ~10 specialists. Autonomy column is the produ
 
 | Skill | Role |
 |-------|------|
+| `agent-hardening` | Autonomy ceilings, secrets, sandbox, watermarks |
 | `cat-architectural-standards` | Classify work; enforce HITL; maturity model |
 | `nz-startup-fleet` | Product entry skill — dogfood bootstrap + install |
 

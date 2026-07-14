@@ -95,12 +95,15 @@ def write_file(
     actor: str = "agent:memory",
     skill: str = "board-chief-of-staff",
 ) -> Path:
-    base, path = _resolve_under_company(company_id, relative)
-    # Refuse secrets-ish filenames
+    from nz_startup.agent_guardrails import assert_safe_write_content, resolve_sandboxed_path
+
+    base = company_dir(company_id).resolve()
+    path = resolve_sandboxed_path(company_id, relative)
     lowered = relative.lower()
-    for bad in (".env", "id_rsa", "service_role", "password", "secret"):
+    for bad in (".env", "id_rsa", "service_role", "password", "secret", ".pem", "credentials"):
         if bad in lowered:
             raise PermissionError(f"Refusing to write sensitive path fragment: {bad}")
+    assert_safe_write_content(content, allow_soft_pii=True)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8", newline="\n")
     append_audit(
