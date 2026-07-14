@@ -7,7 +7,19 @@ from __future__ import annotations
 
 import json
 
-from nz_startup import __version__, calendar_ops, drafts, grants, memory, nzbn, pipeline, rdti, weekly
+from nz_startup import (
+    __version__,
+    calendar_ops,
+    drafts,
+    export_reminders,
+    grants,
+    memory,
+    nzbn,
+    pipeline,
+    rdti,
+    weekly,
+    xero_readonly,
+)
 from nz_startup.hitl import FORBIDDEN_TOOL_NAMES, WATERMARKS, check_action
 
 
@@ -28,12 +40,14 @@ def build_server():
     mcp = FastMCP(
         "nz-startup-in-a-box",
         instructions=(
-            "NZ Start-Up in a Box fleet connectors v0.3. "
+            "NZ Start-Up in a Box fleet connectors v0.4. "
             "Agents may inform, draft, prepare, monitor, and remind. "
             "Humans must advise, sign, file, send, and pay. "
             f"Forbidden tools: {sorted(FORBIDDEN_TOOL_NAMES)}. "
             "Pipeline is CRM-lite local only — never send outreach. "
             "Grants tracker never submits applications. "
+            "Xero adapter is read-only — never create payments. "
+            "Reminder exports write files only — never email digests. "
             "Always load CAT Gold/Diamond/Platinum classification for material work."
         ),
     )
@@ -329,6 +343,40 @@ def build_server():
         return json.dumps(grants.rank_by_fit(company_id, min_score=min_score), indent=2)
 
     @mcp.tool()
+    def xero_status() -> str:
+        """Report whether Xero live credentials are configured (never prints secrets)."""
+        return json.dumps(xero_readonly.credentials_status(), indent=2)
+
+    @mcp.tool()
+    def xero_snapshot(company_id: str, force_offline: bool = False) -> str:
+        """
+        Read-only Xero snapshot into company memory (finance/xero-snapshot.*).
+        Without tokens returns offline demo guidance. Never creates payments.
+        """
+        snap = xero_readonly.fetch_snapshot(company_id, force_offline=force_offline)
+        paths = xero_readonly.write_snapshot(company_id, snap)
+        return (
+            xero_readonly.format_snapshot_markdown(snap)
+            + "\n\n## Written\n"
+            + "\n".join(f"- {k}: {v}" for k, v in paths.items())
+        )
+
+    @mcp.tool()
+    def export_deadline_reminders(
+        company_id: str,
+        digest_days: int = 14,
+        ics_days: int = 90,
+    ) -> str:
+        """
+        Export ICS + markdown deadline digest under company exports/.
+        Does not email. Human may import ICS into their calendar app.
+        """
+        paths = export_reminders.export_all(
+            company_id, within_days=digest_days, ics_days=ics_days
+        )
+        return json.dumps({k: str(v) for k, v in paths.items()}, indent=2)
+
+    @mcp.tool()
     def hitl_policy_summary() -> str:
         """Return autonomy ceilings and forbidden actions for this fleet."""
         return (
@@ -337,6 +385,7 @@ def build_server():
             f"Forbidden MCP tools (not implemented): {sorted(FORBIDDEN_TOOL_NAMES)}\n"
             f"Watermarks: {json.dumps(WATERMARKS, indent=2)}\n"
             f"Server version: {__version__}\n"
+            "Xero: read-only. Exports: files only, no email send.\n"
         )
 
     @mcp.tool()
@@ -389,6 +438,9 @@ def tool_inventory() -> list[str]:
         "grants_add",
         "grants_update",
         "grants_rank",
+        "xero_status",
+        "xero_snapshot",
+        "export_deadline_reminders",
         "hitl_policy_summary",
         "check_hitl_action",
     ]

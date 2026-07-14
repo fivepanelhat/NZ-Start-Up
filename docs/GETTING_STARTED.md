@@ -87,7 +87,14 @@ nz-startup draft-outreach my-startup \
 # Name check guidance (live if BUSINESS_GOVT_API_KEY set)
 nz-startup nzbn "My Proposed Limited"
 
-# Board pack (includes pipeline + calendar + grants)
+# Xero read-only (offline demo without tokens)
+nz-startup xero status
+nz-startup xero snapshot my-startup --offline
+
+# Deadline exports (import ICS yourself — agent does not email)
+nz-startup export reminders my-startup --days 14 --ics-days 90
+
+# Board pack (pipeline + calendar + grants + export refresh)
 nz-startup weekly my-startup
 ```
 

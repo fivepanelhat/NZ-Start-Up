@@ -4,7 +4,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from nz_startup import calendar_ops, grants, pipeline
+from nz_startup import calendar_ops, export_reminders, grants, pipeline
 from nz_startup.audit import append_audit
 from nz_startup.memory import ensure_exists, read_file
 from nz_startup.paths import templates_dir
@@ -33,6 +33,19 @@ def generate_weekly_review(company_id: str, review_date: str | None = None) -> P
     except Exception as e:  # noqa: BLE001
         grants_md = f"_Grants unavailable: {e}_"
 
+    # Auto-refresh deadline exports for board pack (v0.4)
+    export_note = ""
+    try:
+        paths = export_reminders.export_all(company_id, within_days=14, ics_days=90)
+        export_note = (
+            "### Reminder exports\n\n"
+            f"- ICS: `{paths['ics_latest'].name}`\n"
+            f"- Digest: `{paths['digest_latest'].name}`\n"
+            "- Agent does not email these files.\n"
+        )
+    except Exception as e:  # noqa: BLE001
+        export_note = f"### Reminder exports\n\n_Unavailable: {e}_\n"
+
     # Inject lightweight memory snapshots (truncated)
     snippets = []
     for rel, label in (
@@ -40,6 +53,7 @@ def generate_weekly_review(company_id: str, review_date: str | None = None) -> P
         ("runway.md", "Runway"),
         ("calendar.md", "Calendar file"),
         ("grants-tracker.md", "Grants tracker file"),
+        ("finance/xero-snapshot.md", "Xero snapshot"),
     ):
         try:
             text = read_file(company_id, rel)
@@ -55,6 +69,8 @@ def generate_weekly_review(company_id: str, review_date: str | None = None) -> P
         + cal_md
         + "\n\n"
         + grants_md
+        + "\n\n"
+        + export_note
         + "\n\n---\n\n## Memory snapshots\n\n"
         + "\n".join(snippets)
         + "\n\n## HITL reminder\n\n"

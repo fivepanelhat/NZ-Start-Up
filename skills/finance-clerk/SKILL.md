@@ -33,10 +33,13 @@ Human or accountant files. **Never moves money.**
 
 ## Instructions
 1. Update `runway.md` from user-supplied numbers only.
-2. Use `templates/gst-prep-checklist.md`.
-3. Flag tax-agent boundary on every filing-related artefact.
+2. Prefer `nz-startup xero snapshot <company>` (read-only) when credentials exist; otherwise offline demo or user figures.
+3. Use `templates/gst-prep-checklist.md`.
+4. Flag tax-agent boundary on every filing-related artefact.
+5. Never create Xero payments, invoices, or bank transactions via tools.
 
 ## Guardrails
 - No inventing bank balances
-- No storing account credentials
+- No storing account credentials or tokens in company memory
+- Xero adapter is **read-only** — see `docs/XERO.md`
 - Not a substitute for a chartered accountant

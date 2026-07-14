@@ -7,7 +7,18 @@ import sys
 from pathlib import Path
 
 from nz_startup import __version__
-from nz_startup import calendar_ops, drafts, grants, memory, nzbn, pipeline, rdti, weekly
+from nz_startup import (
+    calendar_ops,
+    drafts,
+    export_reminders,
+    grants,
+    memory,
+    nzbn,
+    pipeline,
+    rdti,
+    weekly,
+    xero_readonly,
+)
 from nz_startup.install_skills import default_aether_skills, install_skills
 from nz_startup.paths import repo_root
 
@@ -215,6 +226,79 @@ def cmd_draft_outreach(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_xero(args: argparse.Namespace) -> int:
+    if args.xero_cmd == "status":
+        # company_id unused
+        print(json.dumps(xero_readonly.credentials_status(), indent=2))
+        return 0
+    if args.xero_cmd == "snapshot":
+        snap = xero_readonly.fetch_snapshot(
+            args.company_id, force_offline=args.offline
+        )
+        paths = xero_readonly.write_snapshot(args.company_id, snap)
+        if args.json:
+            print(json.dumps(snap, indent=2, default=str))
+        else:
+            print(xero_readonly.format_snapshot_markdown(snap))
+            print("---")
+            for k, p in paths.items():
+                print(f"{k}: {p}")
+        return 0
+    if args.xero_cmd == "refresh-token":
+        result = xero_readonly.refresh_access_token()
+        # Do not print full tokens by default — only lengths + guidance
+        safe = {
+            "access_token_len": len(result.get("access_token") or ""),
+            "refresh_token_len": len(result.get("refresh_token") or ""),
+            "expires_in": result.get("expires_in"),
+            "warning": result.get("warning"),
+            "hint": "Copy tokens into your private env (not git).",
+        }
+        if args.show_tokens:
+            safe["access_token"] = result.get("access_token")
+            safe["refresh_token"] = result.get("refresh_token")
+        print(json.dumps(safe, indent=2))
+        return 0
+    return 2
+
+
+def cmd_export(args: argparse.Namespace) -> int:
+    if args.export_cmd == "reminders":
+        paths = export_reminders.export_all(
+            args.company_id,
+            within_days=args.days,
+            ics_days=args.ics_days,
+        )
+        for k, p in paths.items():
+            print(f"{k}: {p}")
+        return 0
+    if args.export_cmd == "ics":
+        text = export_reminders.build_ics(
+            args.company_id, within_days=args.days
+        )
+        if args.stdout:
+            print(text)
+            return 0
+        paths = export_reminders.export_all(
+            args.company_id, within_days=args.days, ics_days=args.days
+        )
+        print(paths["ics"])
+        return 0
+    if args.export_cmd == "digest":
+        text = export_reminders.build_digest(
+            args.company_id, within_days=args.days
+        )
+        if args.stdout:
+            print(text)
+            return 0
+        paths = export_reminders.export_all(
+            args.company_id, within_days=args.days, ics_days=max(args.days, 90)
+        )
+        print(paths["digest"])
+        return 0
+    return 2
+
+
 def cmd_validate(args: argparse.Namespace) -> int:
     script = repo_root() / "scripts" / "validate_skills.py"
     import subprocess
@@ -396,6 +480,45 @@ def build_parser() -> argparse.ArgumentParser:
     dr.add_argument("--icp", default="")
     dr.set_defaults(func=cmd_draft_outreach)
 
+    # Xero read-only
+    xe = sub.add_parser("xero", help="Xero read-only finance snapshot")
+    xe_sub = xe.add_subparsers(dest="xero_cmd", required=True)
+    xe_st = xe_sub.add_parser("status", help="Credential mode (no secrets printed)")
+    xe_st.set_defaults(func=cmd_xero)
+    # status needs no company — fake company_id optional
+    xe_st.set_defaults(company_id="_")
+    xe_snap = xe_sub.add_parser("snapshot", help="Fetch and write read-only snapshot")
+    xe_snap.add_argument("company_id")
+    xe_snap.add_argument("--offline", action="store_true", help="Force offline demo")
+    xe_snap.add_argument("--json", action="store_true")
+    xe_snap.set_defaults(func=cmd_xero)
+    xe_ref = xe_sub.add_parser("refresh-token", help="Refresh access token (env only)")
+    xe_ref.add_argument(
+        "--show-tokens",
+        action="store_true",
+        help="Print tokens to stdout (dangerous on shared screens)",
+    )
+    xe_ref.set_defaults(func=cmd_xero, company_id="_")
+
+    # Export reminders
+    ex = sub.add_parser("export", help="Export reminders (ICS / digest)")
+    ex_sub = ex.add_subparsers(dest="export_cmd", required=True)
+    ex_all = ex_sub.add_parser("reminders", help="Write ICS + markdown digest to exports/")
+    ex_all.add_argument("company_id")
+    ex_all.add_argument("--days", type=int, default=14, help="Digest window")
+    ex_all.add_argument("--ics-days", type=int, default=90, help="ICS horizon")
+    ex_all.set_defaults(func=cmd_export)
+    ex_ics = ex_sub.add_parser("ics", help="ICS only")
+    ex_ics.add_argument("company_id")
+    ex_ics.add_argument("--days", type=int, default=90)
+    ex_ics.add_argument("--stdout", action="store_true")
+    ex_ics.set_defaults(func=cmd_export)
+    ex_dg = ex_sub.add_parser("digest", help="Markdown digest only")
+    ex_dg.add_argument("company_id")
+    ex_dg.add_argument("--days", type=int, default=14)
+    ex_dg.add_argument("--stdout", action="store_true")
+    ex_dg.set_defaults(func=cmd_export)
+
     val = sub.add_parser("validate", help="Validate skill pack")
     val.set_defaults(func=cmd_validate)
 
@@ -411,7 +534,13 @@ def main(argv: list[str] | None = None) -> None:
     args = parser.parse_args(argv)
     try:
         code = int(args.func(args))
-    except (FileNotFoundError, FileExistsError, ValueError, PermissionError) as e:
+    except (
+        FileNotFoundError,
+        FileExistsError,
+        ValueError,
+        PermissionError,
+        xero_readonly.XeroError,
+    ) as e:
         print(f"error: {e}", file=sys.stderr)
         raise SystemExit(1) from e
     raise SystemExit(code)

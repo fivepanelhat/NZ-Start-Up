@@ -12,6 +12,12 @@ pipeline.csv            # CRM-lite deals (source of truth)
 grants-tracker.md       # Synced view of grants-tracker.csv
 grants-tracker.csv      # Funding opportunities (source of truth)
 runway.md               # Finance snapshot (no bank passwords)
+finance/
+  xero-snapshot.json    # Xero read-only snapshot (no tokens)
+  xero-snapshot.md
+exports/
+  deadlines-latest.ics  # Importable calendar
+  deadline-digest-latest.md
 rdti-log.csv            # R&D activity log
 audit.jsonl             # Agent audit trail
 weekly/                 # Board reports

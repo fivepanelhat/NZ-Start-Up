@@ -102,6 +102,8 @@ nz-startup pipeline update my-startup P001 --stage pilot
 nz-startup calendar add my-startup --item "GST prep" --due 2026-08-28 --category finance
 nz-startup calendar remind my-startup --days 14
 nz-startup grants rank my-startup
+nz-startup xero snapshot my-startup --offline
+nz-startup export reminders my-startup --days 14
 nz-startup draft-outreach my-startup --subject "Intro" --body "..."
 nz-startup nzbn "Example Limited"
 nz-startup weekly my-startup
@@ -154,10 +156,11 @@ This repo is the **open skills core**. White-label packaging is a separate comme
 
 1. **v0.1** — Skills pack + knowledge + templates + CI
 2. **v0.2** — CLI runtime + MCP (memory, RDTI, drafts, NZBN read)
-3. **v0.3 (now)** — Pipeline CRM stages + calendar reminders + grants tracker CSV
-4. **v0.4** — Optional calendar notifications export + Xero read-only adapter
-5. **v1.0 desktop** — Tauri/Electron local-first shell after demand proven
-6. **Hosted SaaS** — only with funding + team (not solo)
+3. **v0.3** — Pipeline CRM + calendar + grants tracker
+4. **v0.4 (now)** — Xero read-only snapshot + ICS/digest reminder exports
+5. **v0.5** — Optional bank-feed CSV import + GST worksheet assist from Xero snapshot
+6. **v1.0 desktop** — Tauri/Electron local-first shell after demand proven
+7. **Hosted SaaS** — only with funding + team (not solo)
 
 ## Related
 

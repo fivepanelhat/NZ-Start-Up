@@ -14,9 +14,12 @@ FORBIDDEN_TOOL_NAMES = frozenset(
         "file_gst",
         "move_money",
         "make_payment",
+        "create_payment",
+        "create_xero_invoice",
         "submit_grant",
         "sign_document",
         "realme_login",
+        "email_digest",
     }
 )
 
@@ -50,8 +53,12 @@ def check_action(action: str) -> HitlDecision:
         "move money",
         "wire transfer",
         "pay invoice",
+        "create payment",
+        "create invoice in xero",
         "sign as",
         "realme",
+        "email digest",
+        "auto-email",
     )
     for frag in blocked_fragments:
         if frag in a:

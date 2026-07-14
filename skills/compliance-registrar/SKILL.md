@@ -32,10 +32,12 @@ Digital employee #2. Deadline intelligence and records-keeping prompts under NZ 
 - First hire employment checklist
 
 ## Instructions
-1. Update `calendar.md` with dated obligations.
-2. Draft checklists into `checklists/` using templates.
-3. Label all outputs: `INFORMATION ONLY — not a compliance certificate`.
-4. Escalate legal questions to human + lawyer.
+1. Update calendar via `calendar.csv` / `nz-startup calendar` (syncs `calendar.md`).
+2. Run deadline reminders: `nz-startup calendar remind` and exports: `nz-startup export reminders`.
+3. Draft checklists into `checklists/` using templates.
+4. Label all outputs: `INFORMATION ONLY — not a compliance certificate`.
+5. Escalate legal questions to human + lawyer.
+6. Never email digests autonomously — export files only (`docs/EXPORTS.md`).
 
 ## Guardrails
 - Lawyers and Conveyancers Act boundary

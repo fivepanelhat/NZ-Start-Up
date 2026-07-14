@@ -19,6 +19,10 @@
               ▼                   ▼                   ▼
         nz-startup CLI      MCP stdio server     Aether skills
         (local runtime)     (drafts-only)        (~/.aether/skills)
+              │                   │
+              ├─ pipeline/calendar/grants CSVs
+              ├─ Xero read-only snapshot (optional)
+              └─ exports/*.ics + digest (no email)
                                   │
                      CAT Standards + Aether Guardrails
 ```

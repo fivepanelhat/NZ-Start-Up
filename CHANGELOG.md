@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.4.0 — 2026-07-14
+
+### Added
+- **Xero read-only adapter** (`nz_startup/xero_readonly.py`): offline demo + live GET snapshot
+- CLI: `nz-startup xero status|snapshot|refresh-token`
+- MCP: `xero_status`, `xero_snapshot`
+- Writes `finance/xero-snapshot.{json,md}` and runway note (no tokens stored)
+- **Reminder exports**: ICS + markdown digest under `exports/`
+- CLI: `nz-startup export reminders|ics|digest`
+- MCP: `export_deadline_reminders`
+- Weekly board auto-refreshes latest ICS/digest
+- Docs: `docs/XERO.md`, `docs/EXPORTS.md`
+
+### HITL
+- No Xero write APIs; no emailing digests
+- Forbidden tool names extended: `create_payment`, `email_digest`, etc.
+
 ## 0.3.0 — 2026-07-14
 
 ### Added
