@@ -21,5 +21,7 @@ jobs:
         run: pytest -q
       - name: Doctor
         run: python -m nz_startup doctor
+      - name: Compliance gate
+        run: python -m nz_startup compliance check
       - name: Smoke e2e
         run: python -m nz_startup smoke

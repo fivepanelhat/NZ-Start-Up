@@ -1,9 +1,17 @@
 NZ Start-Up in a Box
-Copyright 2026 Coastal Alpine Tech Limited
+Copyright © 2026 Coastal Alpine Tech Limited. All rights reserved.
 
-This product includes software developed under the Aether sovereign
-agentic framework patterns (https://github.com/fivepanelhat/Aether).
+PROPRIETARY AND CONFIDENTIAL
+Licensed under the Coastal Alpine Tech Proprietary Software Licence.
+See the file LICENSE in this distribution. This is not open-source software.
 
-Te Mana Raraunga principles guide data design. This product does not
-provide legal, financial, tax, or cultural advice. Human review is required
-for all filings, regulated advice, outbound email, payments, and legal documents.
+Third-party acknowledgements (do not re-license this product):
+- Design patterns inspired by the Aether sovereign agentic framework
+  (https://github.com/fivepanelhat/Aether) — Aether remains under its own licence.
+- Optional runtime dependencies (e.g. mcp, pypdf, pywebview) remain under
+  their respective upstream licences.
+
+Compliance:
+Te Mana Raraunga principles guide data design. This product does not provide
+legal, financial, tax, or cultural advice. Human review is required for filings,
+regulated advice, outbound electronic messages, payments, and legal documents.

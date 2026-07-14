@@ -27,7 +27,7 @@ Operational summary of Coastal Alpine Tech architectural standards for this prod
 | Security | Guardrails, no secrets, HITL matrix |
 | Compliance readiness | Privacy Act, legal ceilings documented |
 | Observability | Audit log schema + weekly board report |
-| Packaging | Versioned skills, CHANGELOGs, Apache-2.0 |
+| Packaging | Versioned skills, CHANGELOGs, proprietary licence |
 
 Diamond does **not** mean overbuilding Kubernetes for a solo founder. It means production hygiene appropriate to the delivery shape (skills pack first).
 

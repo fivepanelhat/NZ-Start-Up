@@ -138,6 +138,14 @@ def run_smoke(*, keep: bool = False) -> dict[str, Any]:
     except Exception as e:  # noqa: BLE001
         steps.append({"step": "doctor", "ok": False, "error": str(e)})
 
+    try:
+        from nz_startup import compliance_gate
+
+        cg = compliance_gate.run_compliance_check(None)
+        steps.append({"step": "compliance_gate", "ok": bool(cg.get("ok"))})
+    except Exception as e:  # noqa: BLE001
+        steps.append({"step": "compliance_gate", "ok": False, "error": str(e)})
+
     ok = all(s.get("ok") for s in steps)
     return _finish(steps, ok=ok, company_id=company_id)
 

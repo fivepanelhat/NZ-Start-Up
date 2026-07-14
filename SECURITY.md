@@ -4,9 +4,15 @@
 
 Email security concerns to the maintainer via GitHub Security Advisories on this repository. Do not open public issues for secrets or vulnerabilities that could expose founder data.
 
+## Licence
+
+This product is **proprietary** software of Coastal Alpine Tech Limited.
+Unauthorised redistribution or competitive multi-tenant hosting is prohibited.
+See `LICENSE`.
+
 ## Scope
 
-NZ Start-Up in a Box is a **local-first skills pack**. Default posture:
+NZ Start-Up in a Box is a **local-first proprietary skills pack**. Default posture:
 
 - Founder company data stays on the founder's machine (company memory under `memory/`).
 - Skills **draft and prepare**; they do not file, sign, send, or pay.

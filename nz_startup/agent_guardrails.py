@@ -305,7 +305,8 @@ Use `nz-startup` guardrails: high/critical domain work requires HITL before huma
 
 def guardrails_status() -> dict[str, Any]:
     return {
-        "version": "1.2.0",
+        "version": "1.3.0",
+        "licence": "proprietary",
         "autonomy_slogan": AUTONOMY_SLOGAN,
         "forbidden_tools": sorted(FORBIDDEN_TOOL_NAMES),
         "allowed_autonomy": sorted(ALLOWED_AUTONOMY),
@@ -313,4 +314,5 @@ def guardrails_status() -> dict[str, Any]:
         "watermarks": WATERMARKS,
         "secret_pattern_count": len(SECRET_PATTERNS),
         "sandbox": "company memory under NZ_STARTUP_MEMORY only",
+        "compliance_gate": "nz-startup compliance check",
     }

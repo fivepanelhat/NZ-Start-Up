@@ -197,4 +197,6 @@ This repo is the **open skills core**. White-label packaging is a separate comme
 
 ## License
 
-Apache-2.0 — see `LICENSE` and `NOTICE`.
+**Proprietary** — Coastal Alpine Tech Limited.  
+See `LICENSE` and `NOTICE`. **Not open-source software.**  
+Production, white-label, and redistribution require a commercial licence.

@@ -14,6 +14,7 @@ from nz_startup import (
     board_pack,
     calendar_ops,
     cohort,
+    compliance_gate,
     demo,
     doctor,
     drafts,
@@ -548,6 +549,15 @@ def build_server():
         return json.dumps(result.as_dict(), indent=2)
 
     @mcp.tool()
+    def compliance_check(company_id: str = "") -> str:
+        """
+        Run product compliance control gate (proprietary licence, HITL docs, hardening).
+        NOT a legal compliance certificate for the founder's business.
+        """
+        report = compliance_gate.run_compliance_check(company_id or None)
+        return compliance_gate.format_compliance_markdown(report)
+
+    @mcp.tool()
     def onboard_company(
         company_id: str,
         legal_name: str = "",
@@ -688,6 +698,7 @@ def tool_inventory() -> list[str]:
         "doctor_run",
         "harden_status",
         "harden_check",
+        "compliance_check",
         "onboard_company",
         "pilot_offer_create",
         "cohort_partner_report",

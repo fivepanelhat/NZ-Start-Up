@@ -13,6 +13,7 @@ from nz_startup import (
     board_pack,
     calendar_ops,
     cohort,
+    compliance_gate,
     console,
     demo,
     doctor,
@@ -490,6 +491,25 @@ def cmd_harden(args: argparse.Namespace) -> int:
     return 2
 
 
+def cmd_compliance(args: argparse.Namespace) -> int:
+    if args.compliance_cmd in ("check", "report"):
+        if args.compliance_cmd == "report" or args.write:
+            report, path = compliance_gate.write_compliance_report(args.company)
+            if args.json:
+                print(json.dumps(report, indent=2))
+            else:
+                print(compliance_gate.format_compliance_markdown(report))
+                print(f"---\nwritten: {path}")
+        else:
+            report = compliance_gate.run_compliance_check(args.company)
+            if args.json:
+                print(json.dumps(report, indent=2))
+            else:
+                print(compliance_gate.format_compliance_markdown(report))
+        return 0 if report.get("ok") else 1
+    return 2
+
+
 def cmd_console(args: argparse.Namespace) -> int:
     console.run_console(host=args.host, port=args.port, open_browser=args.open)
     return 0
@@ -958,6 +978,18 @@ def build_parser() -> argparse.ArgumentParser:
     hd_pol = hd_sub.add_parser("policy", help="Print policy block for a skill")
     hd_pol.add_argument("--skill", default="fleet")
     hd_pol.set_defaults(func=cmd_harden)
+
+    cp = sub.add_parser("compliance", help="Hardened compliance gate")
+    cp_sub = cp.add_subparsers(dest="compliance_cmd", required=True)
+    cp_ck = cp_sub.add_parser("check", help="Run compliance control checks")
+    cp_ck.add_argument("--company", default=None)
+    cp_ck.add_argument("--json", action="store_true")
+    cp_ck.add_argument("--write", action="store_true", help="Write report under compliance/reports/")
+    cp_ck.set_defaults(func=cmd_compliance)
+    cp_rp = cp_sub.add_parser("report", help="Run checks and write report files")
+    cp_rp.add_argument("--company", default=None)
+    cp_rp.add_argument("--json", action="store_true")
+    cp_rp.set_defaults(func=cmd_compliance, write=True)
 
     con = sub.add_parser("console", help="Localhost Founder Console")
     con.add_argument("--host", default="127.0.0.1", help="Must be localhost")

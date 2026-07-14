@@ -1,19 +1,81 @@
-Apache License
-Version 2.0, January 2004
-http://www.apache.org/licenses/
+COASTAL ALPINE TECH LIMITED
+PROPRIETARY SOFTWARE LICENCE
+NZ Start-Up in a Box
+Copyright © 2026 Coastal Alpine Tech Limited. All rights reserved.
 
-Copyright 2026 Coastal Alpine Tech Limited
+IMPORTANT: THIS IS NOT OPEN SOURCE SOFTWARE.
+This software and associated documentation files (the "Software") are the
+exclusive proprietary property of Coastal Alpine Tech Limited ("Licensor"),
+a company registered in Aotearoa New Zealand.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+1. GRANT OF LICENCE
+Subject to a valid written commercial agreement, paid subscription, white-label
+cohort agreement, or other written authorisation from Licensor (a "Licence"),
+Licensor grants you a limited, non-exclusive, non-transferable, non-sublicensable,
+revocable licence to install and use the Software solely for your internal
+business purposes and only as expressly permitted in that Licence.
 
-    http://www.apache.org/licenses/LICENSE-2.0
+Without a Licence, you may view a public repository solely to evaluate a
+possible commercial engagement. Evaluation does not include production use,
+redistribution, white-label resale, or removal of proprietary notices.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+2. RESTRICTIONS
+Except as expressly permitted by a Licence or mandatory applicable law, you
+must not:
 
-Full license text: https://www.apache.org/licenses/LICENSE-2.0.txt
+  (a) copy, modify, adapt, translate, reverse engineer, decompile, or disassemble
+      the Software (except to the extent non-excludable under NZ law);
+  (b) distribute, publish, sublicense, rent, lease, lend, sell, or otherwise
+      make the Software available to any third party;
+  (c) remove or alter proprietary, copyright, trademark, or attribution notices;
+  (d) use the Software to provide a multi-tenant hosted service competing with
+      Licensor without a separate written SaaS or OEM agreement;
+  (e) use the Software for any unlawful purpose under New Zealand law.
+
+3. OWNERSHIP
+The Software, including all skills, templates, documentation, branding, and
+related intellectual property, remains the sole property of Licensor. No title
+or ownership interest is transferred by this Licence or any evaluation access.
+
+4. THIRD-PARTY COMPONENTS
+The Software may reference patterns or libraries from third parties (including
+Aether and open-source dependencies). Those components remain subject to their
+own licences. This Proprietary Licence does not re-license third-party code.
+
+5. DATA AND COMPLIANCE
+You remain solely responsible for compliance with the Privacy Act 2020, Te Mana
+Raraunga principles where applicable, tax, employment, companies, financial
+markets, and unsolicited electronic messages law. The Software provides
+preparation and information tools only and does not constitute legal, financial,
+tax, or cultural advice.
+
+6. NO WARRANTY
+TO THE MAXIMUM EXTENT PERMITTED BY NEW ZEALAND LAW (INCLUDING THE CONSUMER
+GUARANTEES ACT 1993 WHERE IT APPLIES AND CANNOT BE CONTRACTED OUT OF FOR
+CONSUMERS), THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+AND NON-INFRINGEMENT.
+
+7. LIMITATION OF LIABILITY
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, LICENSOR IS NOT LIABLE FOR ANY INDIRECT,
+INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS,
+DATA, OR GOODWILL, ARISING FROM USE OF THE SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY. LICENSOR'S AGGREGATE LIABILITY SHALL NOT EXCEED THE FEES PAID BY
+YOU TO LICENSOR FOR THE SOFTWARE IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM.
+
+8. TERMINATION
+This licence terminates automatically if you breach it or when your commercial
+Licence ends. Upon termination you must cease use and destroy copies in your
+possession, except copies required by law to be retained.
+
+9. GOVERNING LAW
+This licence is governed by the laws of New Zealand. The courts of New Zealand
+have exclusive jurisdiction, subject to any mandatory rights you have as a
+consumer.
+
+10. COMMERCIAL LICENSING
+For production, white-label, cohort, OEM, or redistribution rights, contact
+Coastal Alpine Tech Limited (Taranaki, Aotearoa New Zealand) via the project
+repository or commercial channels designated by Licensor.
+
+END OF PROPRIETARY SOFTWARE LICENCE

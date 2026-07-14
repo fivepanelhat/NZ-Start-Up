@@ -53,7 +53,8 @@ nz-startup cohort pack <cohort-id>
 
 ## License
 
-Apache-2.0 — see `LICENSE` and `NOTICE`.
+**Proprietary** — Coastal Alpine Tech Limited. See `LICENSE` and `NOTICE`.  
+Not open source. Commercial / white-label use requires a written licence.
 
 ## Support
 

@@ -38,5 +38,8 @@ cohorts/*
 !cohorts/.gitkeep
 !cohorts/README.md
 
+# Generated compliance gate reports
+compliance/reports/
+
 # OS
 desktop.ini

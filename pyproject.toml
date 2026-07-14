@@ -4,11 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nz-startup-in-a-box"
-version = "1.2.0"
+version = "1.3.0"
 description = "NZ Start-Up in a Box — Aether skills fleet with CAT Gold/Diamond/Platinum standards"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "Apache-2.0" }
+license = { text = "LicenseRef-Coastal-Alpine-Tech-Proprietary" }
+
 authors = [{ name = "Coastal Alpine Tech Limited" }]
 dependencies = []
 

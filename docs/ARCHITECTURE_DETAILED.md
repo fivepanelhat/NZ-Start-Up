@@ -23,7 +23,7 @@ Not a multi-tenant SaaS agent farm. Not legal/financial/tax advice automation.
 | Principle | Implementation |
 |-----------|----------------|
 | Gold — workflow-native | Fleet maps NZ founder lifecycle end-to-end |
-| Diamond — foundation | CI, doctor/smoke, sandbox, secrets refusal, Apache-2.0 |
+| Diamond — foundation | CI, doctor/smoke, sandbox, secrets refusal, proprietary licence |
 | Platinum — intelligence | Company memory flywheel, RDTI logs, weekly board synthesis |
 | HITL | Agents draft/prepare; humans file/send/pay/sign |
 | Local-first | `memory/companies/*` on founder machine |

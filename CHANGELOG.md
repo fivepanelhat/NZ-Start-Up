@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.3.0 — 2026-07-14
+
+### Licence
+- **Switched from Apache-2.0 to Coastal Alpine Tech Proprietary Software Licence**
+- Updated `LICENSE`, `NOTICE`, `pyproject.toml`, README, RELEASE, SECURITY
+
+### Compliance hardening
+- Expanded `COMPLIANCE.md` control plane
+- Runtime gate: `nz-startup compliance check|report`
+- MCP: `compliance_check`
+- `compliance/proprietary-licence.md`
+- CI + smoke include compliance gate
+- Gate verifies proprietary licence, HITL docs, hardening modules, MCP inventory
+
 ## 1.2.0 — 2026-07-14
 
 ### Security / agents

@@ -67,7 +67,11 @@ Prefer CLI/MCP tools that already enforce HITL. Never invent tools named send_/f
 
 ## References
 - `compliance/hitl-matrix.md`
+- `compliance/proprietary-licence.md`
+- `COMPLIANCE.md` — hardened control plane
 - `docs/AGENT_HARDENING.md`
 - `nz_startup/agent_guardrails.py`
+- `nz_startup/compliance_gate.py`
 - `nz_startup/hitl.py`
 - CAT skill: `cat-architectural-standards`
+- Run: `nz-startup compliance check`
