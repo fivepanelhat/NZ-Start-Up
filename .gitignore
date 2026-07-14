@@ -1,0 +1,35 @@
+# Secrets & local
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+.local/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Node / IDE
+node_modules/
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Company memory (runtime — keep schema + example only)
+memory/companies/*
+!memory/companies/.gitkeep
+!memory/example-company/
+
+# OS
+desktop.ini

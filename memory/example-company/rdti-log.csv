@@ -1,0 +1,2 @@
+date,hours,activity,technical_uncertainty,evidence_ref,person,notes
+2026-07-14,1.5,Designed agent fleet skill schema for NZ founder lifecycle,Skill routing and HITL enforcement under multi-agent cost constraints,repo:NZ-Start-Up,Founder,Example row

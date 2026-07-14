@@ -1,0 +1,2 @@
+date,hours,activity,technical_uncertainty,evidence_ref,person,notes
+2026-07-14,2.0,Example — edge offline inference experiment,Model latency under offline constraint,commit:abc123,Founder,REPLACE with real rows — never invent
