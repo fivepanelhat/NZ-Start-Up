@@ -43,6 +43,21 @@ def init_company(company_id: str, *, force: bool = False) -> Path:
         tier="platinum",
         artefact_ref=str(dest),
     )
+    # Seed structured trackers (v0.3) after company exists
+    from nz_startup import calendar_ops, grants, pipeline
+
+    pipeline.ensure_csv(company_id)
+    if not pipeline.list_deals(company_id):
+        pipeline.add_deal(
+            company_id,
+            account="Example EDA",
+            stage="discovery",
+            next_step="book intro",
+            source="seed",
+            notes="Replace with real accounts",
+        )
+    calendar_ops.seed_defaults(company_id)
+    grants.seed_nz_starters(company_id)
     return dest
 
 

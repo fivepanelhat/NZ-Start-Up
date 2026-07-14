@@ -97,6 +97,11 @@ Copy `skills/*` into your skills directory. Each skill is a self-contained `SKIL
 ```powershell
 nz-startup init my-startup
 nz-startup rdti add my-startup --hours 2 --activity "..." --uncertainty "..." --evidence "commit:abc"
+nz-startup pipeline add my-startup --account "TRC" --stage discovery --next-step "book demo"
+nz-startup pipeline update my-startup P001 --stage pilot
+nz-startup calendar add my-startup --item "GST prep" --due 2026-08-28 --category finance
+nz-startup calendar remind my-startup --days 14
+nz-startup grants rank my-startup
 nz-startup draft-outreach my-startup --subject "Intro" --body "..."
 nz-startup nzbn "Example Limited"
 nz-startup weekly my-startup
@@ -148,10 +153,11 @@ This repo is the **open skills core**. White-label packaging is a separate comme
 ## Roadmap
 
 1. **v0.1** — Skills pack + knowledge + templates + CI
-2. **v0.2 (now)** — CLI runtime + MCP connectors (CRM drafts-only, NZBN read-only, RDTI, weekly board)
-3. **v0.3** — Richer CRM pipeline MCP + calendar reminders + grant tracker CSV sync
-4. **v1.0 desktop** — Tauri/Electron local-first shell after demand proven
-5. **Hosted SaaS** — only with funding + team (not solo)
+2. **v0.2** — CLI runtime + MCP (memory, RDTI, drafts, NZBN read)
+3. **v0.3 (now)** — Pipeline CRM stages + calendar reminders + grants tracker CSV
+4. **v0.4** — Optional calendar notifications export + Xero read-only adapter
+5. **v1.0 desktop** — Tauri/Electron local-first shell after demand proven
+6. **Hosted SaaS** — only with funding + team (not solo)
 
 ## Related
 

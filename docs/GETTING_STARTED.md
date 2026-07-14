@@ -66,6 +66,19 @@ nz-startup rdti add my-startup \
   --uncertainty "Latency under offline constraint" \
   --evidence "commit:abc123"
 
+# Pipeline (local CRM — never sends)
+nz-startup pipeline add my-startup --account "Venture Taranaki" --stage discovery --next-step "intro call"
+nz-startup pipeline update my-startup P001 --stage qualified --next-step "paid pilot offer"
+nz-startup pipeline summary my-startup
+
+# Calendar reminders
+nz-startup calendar add my-startup --item "Annual return prep" --due 2027-08-01 --category compliance
+nz-startup calendar remind my-startup --days 14
+
+# Grants tracker
+nz-startup grants rank my-startup
+nz-startup grants update my-startup G001 --status drafting --next-action "complete budget skeleton"
+
 # Outreach draft — never sends
 nz-startup draft-outreach my-startup \
   --subject "Discovery chat" \
@@ -74,7 +87,7 @@ nz-startup draft-outreach my-startup \
 # Name check guidance (live if BUSINESS_GOVT_API_KEY set)
 nz-startup nzbn "My Proposed Limited"
 
-# Board pack
+# Board pack (includes pipeline + calendar + grants)
 nz-startup weekly my-startup
 ```
 

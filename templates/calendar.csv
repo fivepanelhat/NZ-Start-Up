@@ -1,0 +1,4 @@
+id,due,item,owner,status,category,recurring,notes
+C001,TBD,Incorporate NZ limited company,Founder,planned,compliance,,Founder files via RealMe
+C002,Weekly,Weekly board operating review,Founder,planned,board,weekly,
+C003,Ongoing,RDTI contemporaneous activity log,grants-rdti-clerk,planned,rdti,ongoing,Never invent hours

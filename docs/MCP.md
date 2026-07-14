@@ -25,14 +25,17 @@ Wire into Claude Desktop / Cursor / other hosts via `mcp.json` in this repo.
 | Tool | Purpose |
 |------|---------|
 | `list_companies` | List company memory IDs |
-| `init_company_memory` | Scaffold local memory |
+| `init_company_memory` | Scaffold local memory (+ pipeline/calendar/grants) |
 | `read_company_file` / `write_company_file` | Memory I/O (audited) |
 | `append_company_decision` | Decision log |
 | `append_rdti_log` / `list_rdti_log` | Contemporaneous RDTI logging |
-| `generate_weekly_operating_review` | Board pack draft |
+| `generate_weekly_operating_review` | Board pack with live pipeline/calendar/grants |
 | `save_outreach_draft` | CRM-style draft only — **never sends** |
 | `save_legal_draft` | Watermarked legal draft |
 | `nzbn_lookup` | Read-only NZBN/name (offline without API key) |
+| `pipeline_list` / `pipeline_add` / `pipeline_update` / `pipeline_summary` | Local CRM stages |
+| `calendar_list` / `calendar_add` / `calendar_update` / `calendar_reminders` | Deadlines |
+| `grants_list` / `grants_add` / `grants_update` / `grants_rank` | Grant tracker CSV |
 | `hitl_policy_summary` / `check_hitl_action` | Policy helpers |
 
 ## Tools deliberately absent

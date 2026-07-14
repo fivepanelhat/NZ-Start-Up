@@ -6,10 +6,8 @@ Exposes draft/prepare/read tools only. Deliberately omits send/file/pay/sign.
 from __future__ import annotations
 
 import json
-import sys
-from typing import Any
 
-from nz_startup import __version__, drafts, memory, nzbn, rdti, weekly
+from nz_startup import __version__, calendar_ops, drafts, grants, memory, nzbn, pipeline, rdti, weekly
 from nz_startup.hitl import FORBIDDEN_TOOL_NAMES, WATERMARKS, check_action
 
 
@@ -30,10 +28,12 @@ def build_server():
     mcp = FastMCP(
         "nz-startup-in-a-box",
         instructions=(
-            "NZ Start-Up in a Box fleet connectors. "
+            "NZ Start-Up in a Box fleet connectors v0.3. "
             "Agents may inform, draft, prepare, monitor, and remind. "
             "Humans must advise, sign, file, send, and pay. "
             f"Forbidden tools: {sorted(FORBIDDEN_TOOL_NAMES)}. "
+            "Pipeline is CRM-lite local only — never send outreach. "
+            "Grants tracker never submits applications. "
             "Always load CAT Gold/Diamond/Platinum classification for material work."
         ),
     )
@@ -45,9 +45,9 @@ def build_server():
 
     @mcp.tool()
     def init_company_memory(company_id: str, force: bool = False) -> str:
-        """Create company memory from the example scaffold (local only)."""
+        """Create company memory from the example scaffold (local only). Seeds pipeline/calendar/grants."""
         path = memory.init_company(company_id, force=force)
-        return f"Initialised {path}"
+        return f"Initialised {path} with pipeline, calendar, grants trackers"
 
     @mcp.tool()
     def read_company_file(company_id: str, relative_path: str) -> str:
@@ -77,10 +77,7 @@ def build_server():
         notes: str = "",
         entry_date: str = "",
     ) -> str:
-        """
-        Append a contemporaneous RDTI R&D activity row.
-        Never invent hours — evidence_ref required (commit/timesheet/doc).
-        """
+        """Append a contemporaneous RDTI R&D activity row. Never invent hours."""
         row = rdti.append_entry(
             company_id,
             hours=hours,
@@ -100,13 +97,8 @@ def build_server():
 
     @mcp.tool()
     def generate_weekly_operating_review(company_id: str, review_date: str = "") -> str:
-        """
-        Generate a weekly board review draft from company memory.
-        HITL: founder decides priorities — agent escalates only.
-        """
-        path = weekly.generate_weekly_review(
-            company_id, review_date or None
-        )
+        """Generate a weekly board review with pipeline, calendar reminders, and grants."""
+        path = weekly.generate_weekly_review(company_id, review_date or None)
         return (
             f"Wrote {path}\n"
             f"{WATERMARKS['agent']}\n"
@@ -121,11 +113,7 @@ def build_server():
         to_hint: str = "",
         icp_segment: str = "",
     ) -> str:
-        """
-        Save an outreach email draft. NEVER sends.
-        UEM Act 2007: human must send from their own client after compliance checks.
-        """
-        # Explicit block if someone tries to smuggle send semantics
+        """Save an outreach email draft. NEVER sends (UEM Act 2007)."""
         blob = f"{subject}\n{body}".lower()
         if "send now" in blob or "auto-send" in blob:
             decision = check_action("send_email")
@@ -155,13 +143,190 @@ def build_server():
 
     @mcp.tool()
     def nzbn_lookup(query: str, limit: int = 5) -> str:
-        """
-        Read-only NZBN / entity name lookup.
-        Without BUSINESS_GOVT_API_KEY returns offline guidance (does not invent NZBNs).
-        Never files with Companies Office.
-        """
+        """Read-only NZBN / entity name lookup. Never files with Companies Office."""
         result = nzbn.lookup_entities(query, limit=limit)
         return nzbn.format_lookup_markdown(result)
+
+    # --- Pipeline (v0.3) ---
+
+    @mcp.tool()
+    def pipeline_list(company_id: str, stage: str = "") -> str:
+        """List pipeline deals; optional stage filter (lead/discovery/.../won/lost)."""
+        rows = pipeline.list_deals(company_id, stage=stage or None)
+        return json.dumps(rows, indent=2)
+
+    @mcp.tool()
+    def pipeline_add(
+        company_id: str,
+        account: str,
+        stage: str = "lead",
+        next_step: str = "",
+        owner: str = "Founder",
+        value_nzd: str = "",
+        source: str = "",
+        notes: str = "",
+    ) -> str:
+        """Add a local CRM deal. Does not contact the account."""
+        row = pipeline.add_deal(
+            company_id,
+            account=account,
+            stage=stage,
+            next_step=next_step,
+            owner=owner,
+            value_nzd=value_nzd,
+            source=source,
+            notes=notes,
+        )
+        return json.dumps(row, indent=2)
+
+    @mcp.tool()
+    def pipeline_update(
+        company_id: str,
+        deal_id: str,
+        stage: str = "",
+        next_step: str = "",
+        owner: str = "",
+        value_nzd: str = "",
+        notes: str = "",
+    ) -> str:
+        """Update deal stage or next step. Never sends outreach."""
+        row = pipeline.update_deal(
+            company_id,
+            deal_id,
+            stage=stage or None,
+            next_step=next_step if next_step != "" else None,
+            owner=owner or None,
+            value_nzd=value_nzd if value_nzd != "" else None,
+            notes=notes if notes != "" else None,
+        )
+        return json.dumps(row, indent=2)
+
+    @mcp.tool()
+    def pipeline_summary(company_id: str) -> str:
+        """Markdown pipeline summary for board review."""
+        return pipeline.format_summary_markdown(company_id)
+
+    # --- Calendar (v0.3) ---
+
+    @mcp.tool()
+    def calendar_list(company_id: str, status: str = "") -> str:
+        """List calendar items; optional status filter."""
+        return json.dumps(calendar_ops.list_items(company_id, status=status or None), indent=2)
+
+    @mcp.tool()
+    def calendar_add(
+        company_id: str,
+        item: str,
+        due: str,
+        owner: str = "Founder",
+        status: str = "planned",
+        category: str = "compliance",
+        recurring: str = "",
+        notes: str = "",
+    ) -> str:
+        """Add a calendar deadline. Agent reminds; human files."""
+        row = calendar_ops.add_item(
+            company_id,
+            item=item,
+            due=due,
+            owner=owner,
+            status=status,
+            category=category,
+            recurring=recurring,
+            notes=notes,
+        )
+        return json.dumps(row, indent=2)
+
+    @mcp.tool()
+    def calendar_update(
+        company_id: str,
+        item_id: str,
+        due: str = "",
+        status: str = "",
+        owner: str = "",
+        notes: str = "",
+        item: str = "",
+    ) -> str:
+        """Update a calendar item."""
+        row = calendar_ops.update_item(
+            company_id,
+            item_id,
+            due=due or None,
+            status=status or None,
+            owner=owner or None,
+            notes=notes if notes != "" else None,
+            item=item or None,
+        )
+        return json.dumps(row, indent=2)
+
+    @mcp.tool()
+    def calendar_reminders(company_id: str, within_days: int = 14) -> str:
+        """Upcoming and overdue deadline reminders (not a compliance certificate)."""
+        return calendar_ops.format_reminders_markdown(company_id, within_days=within_days)
+
+    # --- Grants (v0.3) ---
+
+    @mcp.tool()
+    def grants_list(company_id: str, status: str = "") -> str:
+        """List tracked grant opportunities."""
+        return json.dumps(grants.list_grants(company_id, status=status or None), indent=2)
+
+    @mcp.tool()
+    def grants_add(
+        company_id: str,
+        name: str,
+        funder: str = "",
+        status: str = "watch",
+        fit_score: str = "",
+        deadline: str = "",
+        amount_hint: str = "",
+        url: str = "",
+        next_action: str = "",
+        notes: str = "",
+    ) -> str:
+        """Add a grant to the tracker. Does not submit applications."""
+        row = grants.add_grant(
+            company_id,
+            name=name,
+            funder=funder,
+            status=status,
+            fit_score=fit_score,
+            deadline=deadline,
+            amount_hint=amount_hint,
+            url=url,
+            next_action=next_action,
+            notes=notes,
+        )
+        return json.dumps(row, indent=2)
+
+    @mcp.tool()
+    def grants_update(
+        company_id: str,
+        grant_id: str,
+        status: str = "",
+        fit_score: str = "",
+        deadline: str = "",
+        next_action: str = "",
+        notes: str = "",
+        url: str = "",
+    ) -> str:
+        """Update grant tracker row. Status 'submitted' requires human confirmation note."""
+        row = grants.update_grant(
+            company_id,
+            grant_id,
+            status=status or None,
+            fit_score=fit_score if fit_score != "" else None,
+            deadline=deadline if deadline != "" else None,
+            next_action=next_action if next_action != "" else None,
+            notes=notes if notes != "" else None,
+            url=url if url != "" else None,
+        )
+        return json.dumps(row, indent=2)
+
+    @mcp.tool()
+    def grants_rank(company_id: str, min_score: int = 0) -> str:
+        """Rank open opportunities by fit score."""
+        return json.dumps(grants.rank_by_fit(company_id, min_score=min_score), indent=2)
 
     @mcp.tool()
     def hitl_policy_summary() -> str:
@@ -187,14 +352,11 @@ def build_server():
             indent=2,
         )
 
-    # Sanity: ensure we never registered forbidden names
-    # FastMCP stores tools internally; document in instructions only.
     return mcp
 
 
 def run_stdio() -> None:
     mcp = build_server()
-    # Prefer explicit stdio entrypoints across mcp versions
     if hasattr(mcp, "run"):
         mcp.run(transport="stdio")
     else:
@@ -215,6 +377,18 @@ def tool_inventory() -> list[str]:
         "save_outreach_draft",
         "save_legal_draft",
         "nzbn_lookup",
+        "pipeline_list",
+        "pipeline_add",
+        "pipeline_update",
+        "pipeline_summary",
+        "calendar_list",
+        "calendar_add",
+        "calendar_update",
+        "calendar_reminders",
+        "grants_list",
+        "grants_add",
+        "grants_update",
+        "grants_rank",
         "hitl_policy_summary",
         "check_hitl_action",
     ]
@@ -224,7 +398,6 @@ def assert_no_forbidden_tools() -> None:
     for name in tool_inventory():
         if name in FORBIDDEN_TOOL_NAMES:
             raise AssertionError(f"Forbidden tool exposed: {name}")
-        # also ensure inventory doesn't contain send/file verbs
         for frag in ("send_email", "file_ird", "move_money", "submit_grant"):
             if frag in name:
                 raise AssertionError(f"Dangerous tool name: {name}")

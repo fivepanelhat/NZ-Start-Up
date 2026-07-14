@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.0 — 2026-07-14
+
+### Added
+- **Pipeline CRM-lite** (`pipeline.csv` + markdown sync): stages lead→won/lost, add/update/list/summary
+- **Calendar** (`calendar.csv`): deadlines, overdue/upcoming reminders (default 14 days)
+- **Grants tracker** (`grants-tracker.csv`): add/update/list/rank by fit; NZ starter seed
+- CLI: `nz-startup pipeline|calendar|grants ...`
+- MCP tools for pipeline, calendar reminders, grants rank/update
+- Weekly board review injects live pipeline + reminders + top grants
+- Company `init` seeds all three trackers
+- Templates: `templates/pipeline.csv`, `calendar.csv`, `grants-tracker.csv`
+
+### HITL
+- Pipeline never sends outreach
+- Calendar never files compliance
+- Grants never submits applications (`submitted` status flags human confirmation)
+
 ## 0.2.0 — 2026-07-14
 
 ### Added

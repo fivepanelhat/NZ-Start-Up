@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 from nz_startup import __version__
-from nz_startup import drafts, memory, nzbn, rdti, weekly
+from nz_startup import calendar_ops, drafts, grants, memory, nzbn, pipeline, rdti, weekly
 from nz_startup.install_skills import default_aether_skills, install_skills
 from nz_startup.paths import repo_root
 
@@ -15,6 +15,7 @@ from nz_startup.paths import repo_root
 def cmd_init(args: argparse.Namespace) -> int:
     path = memory.init_company(args.company_id, force=args.force)
     print(f"Initialised company memory: {path}")
+    print("Seeded pipeline.csv, calendar.csv, grants-tracker.csv")
     print("Edit profile.md with non-secret facts next.")
     return 0
 
@@ -57,6 +58,132 @@ def cmd_rdti(args: argparse.Namespace) -> int:
         print(json.dumps(rows, indent=2))
         return 0
     print("Unknown rdti subcommand", file=sys.stderr)
+    return 2
+
+
+def cmd_pipeline(args: argparse.Namespace) -> int:
+    cid = args.company_id
+    if args.pipeline_cmd == "list":
+        rows = pipeline.list_deals(cid, stage=args.stage)
+        print(json.dumps(rows, indent=2) if args.json else pipeline.format_summary_markdown(cid))
+        return 0
+    if args.pipeline_cmd == "add":
+        row = pipeline.add_deal(
+            cid,
+            account=args.account,
+            stage=args.stage or "lead",
+            next_step=args.next_step or "",
+            owner=args.owner or "Founder",
+            value_nzd=args.value or "",
+            source=args.source or "",
+            notes=args.notes or "",
+        )
+        print(json.dumps(row, indent=2))
+        return 0
+    if args.pipeline_cmd == "update":
+        row = pipeline.update_deal(
+            cid,
+            args.deal_id,
+            stage=args.stage,
+            next_step=args.next_step,
+            owner=args.owner,
+            value_nzd=args.value,
+            notes=args.notes,
+        )
+        print(json.dumps(row, indent=2))
+        return 0
+    if args.pipeline_cmd == "summary":
+        print(pipeline.format_summary_markdown(cid))
+        return 0
+    return 2
+
+
+def cmd_calendar(args: argparse.Namespace) -> int:
+    cid = args.company_id
+    if args.calendar_cmd == "list":
+        rows = calendar_ops.list_items(cid, status=args.status)
+        print(json.dumps(rows, indent=2))
+        return 0
+    if args.calendar_cmd == "add":
+        row = calendar_ops.add_item(
+            cid,
+            item=args.item,
+            due=args.due,
+            owner=args.owner or "Founder",
+            status=args.status or "planned",
+            category=args.category or "compliance",
+            recurring=args.recurring or "",
+            notes=args.notes or "",
+        )
+        print(json.dumps(row, indent=2))
+        return 0
+    if args.calendar_cmd == "update":
+        row = calendar_ops.update_item(
+            cid,
+            args.item_id,
+            due=args.due,
+            status=args.status,
+            owner=args.owner,
+            notes=args.notes,
+            item=args.item,
+        )
+        print(json.dumps(row, indent=2))
+        return 0
+    if args.calendar_cmd == "remind":
+        if args.json:
+            print(json.dumps(calendar_ops.reminders(cid, within_days=args.days), indent=2, default=str))
+        else:
+            print(calendar_ops.format_reminders_markdown(cid, within_days=args.days))
+        return 0
+    if args.calendar_cmd == "seed":
+        rows = calendar_ops.seed_defaults(cid)
+        print(json.dumps(rows, indent=2))
+        return 0
+    return 2
+
+
+def cmd_grants(args: argparse.Namespace) -> int:
+    cid = args.company_id
+    if args.grants_cmd == "list":
+        rows = grants.list_grants(cid, status=args.status)
+        print(json.dumps(rows, indent=2))
+        return 0
+    if args.grants_cmd == "add":
+        row = grants.add_grant(
+            cid,
+            name=args.name,
+            funder=args.funder or "",
+            status=args.status or "watch",
+            fit_score=args.fit or "",
+            deadline=args.deadline or "",
+            amount_hint=args.amount or "",
+            url=args.url or "",
+            next_action=args.next_action or "",
+            notes=args.notes or "",
+        )
+        print(json.dumps(row, indent=2))
+        return 0
+    if args.grants_cmd == "update":
+        row = grants.update_grant(
+            cid,
+            args.grant_id,
+            status=args.status,
+            fit_score=args.fit,
+            deadline=args.deadline,
+            next_action=args.next_action,
+            notes=args.notes,
+            url=args.url,
+        )
+        print(json.dumps(row, indent=2))
+        return 0
+    if args.grants_cmd == "rank":
+        rows = grants.rank_by_fit(cid, min_score=args.min_fit)
+        print(json.dumps(rows, indent=2) if args.json else grants.format_board_slice(cid))
+        return 0
+    if args.grants_cmd == "seed":
+        rows = grants.seed_nz_starters(cid)
+        print(json.dumps(rows, indent=2))
+        return 0
     return 2
 
 
@@ -145,6 +272,110 @@ def build_parser() -> argparse.ArgumentParser:
     ls.add_argument("company_id")
     ls.add_argument("--limit", type=int, default=20)
     ls.set_defaults(func=cmd_rdti)
+
+    # Pipeline
+    pl = sub.add_parser("pipeline", help="CRM-lite pipeline (drafts only)")
+    pl_sub = pl.add_subparsers(dest="pipeline_cmd", required=True)
+    pl_list = pl_sub.add_parser("list", help="List or summarise deals")
+    pl_list.add_argument("company_id")
+    pl_list.add_argument("--stage", default=None)
+    pl_list.add_argument("--json", action="store_true")
+    pl_list.set_defaults(func=cmd_pipeline)
+    pl_sum = pl_sub.add_parser("summary", help="Markdown summary")
+    pl_sum.add_argument("company_id")
+    pl_sum.set_defaults(func=cmd_pipeline)
+    pl_add = pl_sub.add_parser("add", help="Add deal")
+    pl_add.add_argument("company_id")
+    pl_add.add_argument("--account", required=True)
+    pl_add.add_argument("--stage", default="lead")
+    pl_add.add_argument("--next-step", dest="next_step", default="")
+    pl_add.add_argument("--owner", default="Founder")
+    pl_add.add_argument("--value", default="")
+    pl_add.add_argument("--source", default="")
+    pl_add.add_argument("--notes", default="")
+    pl_add.set_defaults(func=cmd_pipeline)
+    pl_up = pl_sub.add_parser("update", help="Update deal stage/next step")
+    pl_up.add_argument("company_id")
+    pl_up.add_argument("deal_id")
+    pl_up.add_argument("--stage", default=None)
+    pl_up.add_argument("--next-step", dest="next_step", default=None)
+    pl_up.add_argument("--owner", default=None)
+    pl_up.add_argument("--value", default=None)
+    pl_up.add_argument("--notes", default=None)
+    pl_up.set_defaults(func=cmd_pipeline)
+
+    # Calendar
+    cal = sub.add_parser("calendar", help="Compliance calendar + reminders")
+    cal_sub = cal.add_subparsers(dest="calendar_cmd", required=True)
+    cal_list = cal_sub.add_parser("list")
+    cal_list.add_argument("company_id")
+    cal_list.add_argument("--status", default=None)
+    cal_list.set_defaults(func=cmd_calendar)
+    cal_add = cal_sub.add_parser("add")
+    cal_add.add_argument("company_id")
+    cal_add.add_argument("--item", required=True)
+    cal_add.add_argument("--due", required=True, help="ISO date or TBD/Weekly/Ongoing")
+    cal_add.add_argument("--owner", default="Founder")
+    cal_add.add_argument("--status", default="planned")
+    cal_add.add_argument("--category", default="compliance")
+    cal_add.add_argument("--recurring", default="")
+    cal_add.add_argument("--notes", default="")
+    cal_add.set_defaults(func=cmd_calendar)
+    cal_up = cal_sub.add_parser("update")
+    cal_up.add_argument("company_id")
+    cal_up.add_argument("item_id")
+    cal_up.add_argument("--due", default=None)
+    cal_up.add_argument("--status", default=None)
+    cal_up.add_argument("--owner", default=None)
+    cal_up.add_argument("--notes", default=None)
+    cal_up.add_argument("--item", default=None)
+    cal_up.set_defaults(func=cmd_calendar)
+    cal_rem = cal_sub.add_parser("remind", help="Upcoming + overdue deadlines")
+    cal_rem.add_argument("company_id")
+    cal_rem.add_argument("--days", type=int, default=14)
+    cal_rem.add_argument("--json", action="store_true")
+    cal_rem.set_defaults(func=cmd_calendar)
+    cal_seed = cal_sub.add_parser("seed", help="Seed default founder deadlines if empty")
+    cal_seed.add_argument("company_id")
+    cal_seed.set_defaults(func=cmd_calendar)
+
+    # Grants
+    gr = sub.add_parser("grants", help="Grant tracker CSV")
+    gr_sub = gr.add_subparsers(dest="grants_cmd", required=True)
+    gr_list = gr_sub.add_parser("list")
+    gr_list.add_argument("company_id")
+    gr_list.add_argument("--status", default=None)
+    gr_list.set_defaults(func=cmd_grants)
+    gr_add = gr_sub.add_parser("add")
+    gr_add.add_argument("company_id")
+    gr_add.add_argument("--name", required=True)
+    gr_add.add_argument("--funder", default="")
+    gr_add.add_argument("--status", default="watch")
+    gr_add.add_argument("--fit", default="")
+    gr_add.add_argument("--deadline", default="")
+    gr_add.add_argument("--amount", default="")
+    gr_add.add_argument("--url", default="")
+    gr_add.add_argument("--next-action", dest="next_action", default="")
+    gr_add.add_argument("--notes", default="")
+    gr_add.set_defaults(func=cmd_grants)
+    gr_up = gr_sub.add_parser("update")
+    gr_up.add_argument("company_id")
+    gr_up.add_argument("grant_id")
+    gr_up.add_argument("--status", default=None)
+    gr_up.add_argument("--fit", default=None)
+    gr_up.add_argument("--deadline", default=None)
+    gr_up.add_argument("--next-action", dest="next_action", default=None)
+    gr_up.add_argument("--notes", default=None)
+    gr_up.add_argument("--url", default=None)
+    gr_up.set_defaults(func=cmd_grants)
+    gr_rank = gr_sub.add_parser("rank", help="Rank open opportunities by fit")
+    gr_rank.add_argument("company_id")
+    gr_rank.add_argument("--min-fit", type=int, default=0)
+    gr_rank.add_argument("--json", action="store_true")
+    gr_rank.set_defaults(func=cmd_grants)
+    gr_seed = gr_sub.add_parser("seed", help="Seed NZ starter opportunities if empty")
+    gr_seed.add_argument("company_id")
+    gr_seed.set_defaults(func=cmd_grants)
 
     wk = sub.add_parser("weekly", help="Generate weekly operating review")
     wk.add_argument("company_id")

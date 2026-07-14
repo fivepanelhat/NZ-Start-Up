@@ -5,8 +5,12 @@ Root: `memory/companies/<company-id>/`
 ```text
 profile.md              # Non-secret company facts
 decisions.md            # Append-only decision log
-calendar.md             # Compliance and filing deadlines
-pipeline.md             # GTM stages
+calendar.md             # Synced view of calendar.csv
+calendar.csv            # Compliance deadlines (source of truth)
+pipeline.md             # Synced view of pipeline.csv
+pipeline.csv            # CRM-lite deals (source of truth)
+grants-tracker.md       # Synced view of grants-tracker.csv
+grants-tracker.csv      # Funding opportunities (source of truth)
 runway.md               # Finance snapshot (no bank passwords)
 rdti-log.csv            # R&D activity log
 audit.jsonl             # Agent audit trail
