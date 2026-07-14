@@ -474,7 +474,12 @@ def cmd_doctor(args: argparse.Namespace) -> int:
 
 
 def cmd_console(args: argparse.Namespace) -> int:
-    console.run_console(host=args.host, port=args.port)
+    console.run_console(host=args.host, port=args.port, open_browser=args.open)
+    return 0
+
+
+def cmd_desktop(args: argparse.Namespace) -> int:
+    console.run_desktop(port=args.port)
     return 0
 
 
@@ -924,10 +929,18 @@ def build_parser() -> argparse.ArgumentParser:
     doc.add_argument("--json", action="store_true")
     doc.set_defaults(func=cmd_doctor)
 
-    con = sub.add_parser("console", help="Localhost Founder Console (v1.0 UI)")
+    con = sub.add_parser("console", help="Localhost Founder Console")
     con.add_argument("--host", default="127.0.0.1", help="Must be localhost")
     con.add_argument("--port", type=int, default=8765)
+    con.add_argument("--open", action="store_true", help="Open system browser")
     con.set_defaults(func=cmd_console)
+
+    desk = sub.add_parser(
+        "desktop",
+        help="Desktop-lite window (pywebview if installed, else browser)",
+    )
+    desk.add_argument("--port", type=int, default=8765)
+    desk.set_defaults(func=cmd_desktop)
 
     ob = sub.add_parser("onboard", help="Founder first-hour onboarding wizard")
     ob.add_argument("company_id")

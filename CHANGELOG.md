@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.0 — 2026-07-14
+
+### Added
+- Console company view: pipeline, grants, 14d reminders, weekly excerpt, artefact paths
+- Console actions: board pack zip + export reminders (local only)
+- `nz-startup console --open` opens system browser
+- `nz-startup desktop` desktop-lite (pywebview optional, else browser)
+- Optional extra: `pip install '.[desktop]'`
+- Home list shows status score per company
+- Console security headers (nosniff, DENY frame)
+
 ## 1.0.0 — 2026-07-14
 
 ### Added

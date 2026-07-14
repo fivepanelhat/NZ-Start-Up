@@ -66,6 +66,8 @@ def test_console_pages(env):
     html2 = console.page_company("conco")
     assert "conco" in html2
     assert "100" in html2 or "score" in html2.lower() or "/100" in html2
+    assert "Pipeline" in html2
+    assert "Board pack" in html2 or "board" in html2.lower()
 
 
 def test_mcp_v10_tools():

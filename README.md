@@ -63,8 +63,8 @@ cd NZ-Start-Up
 powershell -ExecutionPolicy Bypass -File .\install.ps1
 nz-startup doctor
 nz-startup onboard my-startup --legal-name "My Labs Limited"
-nz-startup console --port 8765
-# open http://127.0.0.1:8765/
+nz-startup console --port 8765 --open
+# or desktop-lite: nz-startup desktop
 ```
 
 ### Option A — With Aether (recommended)
@@ -121,7 +121,8 @@ nz-startup status demo-eda
 nz-startup board pack demo-eda
 nz-startup smoke
 nz-startup doctor
-nz-startup console --port 8765
+nz-startup console --port 8765 --open
+nz-startup desktop
 nz-startup export reminders my-startup --days 14
 nz-startup draft-outreach my-startup --subject "Intro" --body "..."
 nz-startup nzbn "Example Limited"
@@ -174,9 +175,9 @@ This repo is the **open skills core**. White-label packaging is a separate comme
 ## Roadmap
 
 1. **v0.1–0.9** — Skills → finance → white-label → commercial pilot kits  
-2. **v1.0 (now)** — Local product release: doctor + localhost Founder Console  
-3. **Native desktop shell** — only after paid demand  
-4. **Hosted SaaS** — only with funding + team (not solo)
+2. **v1.0** — Local product release: doctor + Founder Console  
+3. **v1.1 (now)** — Console expansion + desktop-lite launcher  
+4. **Full native shell / SaaS** — only after paid demand + funding
 
 ## Related
 

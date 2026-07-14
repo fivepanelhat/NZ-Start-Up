@@ -1,21 +1,21 @@
-# NZ Start-Up in a Box — v1.0.0
+# NZ Start-Up in a Box — v1.1.0
 
 **Local founder OS + white-label EDA kit** for Aotearoa New Zealand.  
 Built with **CAT Gold / Diamond / Platinum** standards on **Aether**.
 
-## What 1.0 means
+## What 1.x means
 
-v1.0 is the **production local product** (skills + CLI + MCP + localhost console):
+The **production local product** (skills + CLI + MCP + localhost console + desktop-lite):
 
 | Included | Deferred |
 |----------|----------|
 | 12 digital-employee skills + CAT standards | Multi-tenant hosted SaaS |
 | Full finance/ops loop (bank, GST papers, invoices, handoff) | Always-on autonomous agents |
 | White-label cohorts + EDA demo | Unsolicited email / IRD filing automation |
-| Status, board pack, pilot offers, partner reports | Heavy Tauri/Electron desktop shell |
-| **Localhost Founder Console** | Cloud data hosting of founder secrets |
+| Status, board pack, pilot offers, partner reports | Full packaged native installers |
+| **Founder Console** + **desktop-lite** (`pywebview` optional) | Cloud data hosting of founder secrets |
 
-Desktop-class **full native shell** remains demand-gated; console covers day-to-day local UI.
+Full native packaged desktop remains demand-gated; desktop-lite covers day-to-day local UI.
 
 ## Install
 
@@ -34,8 +34,8 @@ Windows: `powershell -ExecutionPolicy Bypass -File .\install.ps1`
 
 ```bash
 nz-startup onboard my-startup --legal-name "…" --wedge "…" --icp "…"
-nz-startup console --port 8765
-# open http://127.0.0.1:8765/
+nz-startup console --port 8765 --open
+# or: nz-startup desktop
 ```
 
 ## EDA demo

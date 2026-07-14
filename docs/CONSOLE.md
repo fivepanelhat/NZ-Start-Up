@@ -1,23 +1,25 @@
-# Founder Console (v1.0)
+# Founder Console (v1.1)
 
 Localhost-only web UI over company memory.
 
 ```bash
-nz-startup console --port 8765
-# http://127.0.0.1:8765/
+nz-startup console --port 8765 --open
+# or:
+nz-startup desktop   # pywebview if installed: pip install '.[desktop]'
 ```
 
 ## Features
 
-- List companies  
-- Status score + checks  
-- Generate weekly board / refresh status  
+- List companies with status scores  
+- Company page: pipeline, grants, 14d reminders, weekly excerpt  
+- Actions: refresh status, weekly board, board pack zip, export reminders  
+- Local artefact path table  
 
 ## Hard limits
 
 - Binds **only** to `127.0.0.1` / localhost (non-local bind refused)  
 - No email, no IRD/Companies Office filing, no payments  
-- Board/handoff/pilot packs remain CLI (smaller attack surface)  
+- Pilot send / outreach send remain human CLI paths  
 
 ## Not SaaS
 

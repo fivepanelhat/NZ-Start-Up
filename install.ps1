@@ -23,6 +23,7 @@ python -m nz_startup smoke
 Write-Host ""
 Write-Host "Done (v1.0). Next:"
 Write-Host "  nz-startup onboard my-startup --legal-name `"My Labs Limited`""
-Write-Host "  nz-startup console --port 8765"
+Write-Host "  nz-startup console --port 8765 --open"
+Write-Host "  nz-startup desktop"
 Write-Host "  nz-startup demo run --partner `"Venture Taranaki`""
 Write-Host "  See RELEASE.md and docs/GETTING_STARTED.md"
