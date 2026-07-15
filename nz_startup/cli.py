@@ -695,6 +695,7 @@ def cmd_pack(args: argparse.Namespace) -> int:
 
 
 def cmd_backup(args: argparse.Namespace) -> int:
+    # Consistent subcommand-first: backup create|restore (same shape as tasks/schedule)
     if args.backup_cmd == "create":
         man = backup.create_backup(
             args.company_id,
@@ -702,20 +703,38 @@ def cmd_backup(args: argparse.Namespace) -> int:
             out_path=Path(args.out) if args.out else None,
         )
         print(json.dumps(man, indent=2))
+        print(
+            f"# encryption_path={man.get('encryption_path')} "
+            f"cryptography={man.get('cryptography_available')}",
+            file=sys.stderr,
+        )
         return 0
     if args.backup_cmd == "restore":
+        archive = getattr(args, "archive", None) or getattr(args, "path", None)
         result = backup.restore_backup(
-            Path(args.archive),
+            Path(archive),
             passphrase=args.passphrase,
             company_id=args.company,
             force=args.force,
         )
         print(json.dumps(result, indent=2))
         return 0
+    if args.backup_cmd == "backend":
+        print(
+            json.dumps(
+                {
+                    "encryption_backend": backup.encryption_backend(),
+                    "cryptography_available": backup._has_cryptography(),
+                },
+                indent=2,
+            )
+        )
+        return 0
     return 2
 
 
 def cmd_audit(args: argparse.Namespace) -> int:
+    # Consistent subcommand-first: audit export|rates (same shape as budget/tasks)
     if args.audit_cmd == "export":
         result = audit_export.export_audit(
             args.company_id,
@@ -1321,8 +1340,8 @@ def build_parser() -> argparse.ArgumentParser:
     pk = sub.add_parser("pack", help="Build versioned skills-pack zip + SHA256 + SBOM")
     pk.set_defaults(func=cmd_pack)
 
-    # T7 backup
-    bk = sub.add_parser("backup", help="Encrypted local company backup (T7)")
+    # T7 backup — subcommand-first (create|restore|backend)
+    bk = sub.add_parser("backup", help="Encrypted local company backup (T7/T7*)")
     bk_sub = bk.add_subparsers(dest="backup_cmd", required=True)
     bk_c = bk_sub.add_parser("create", help="Create encrypted .nzbak archive")
     bk_c.add_argument("company_id")
@@ -1330,13 +1349,16 @@ def build_parser() -> argparse.ArgumentParser:
     bk_c.add_argument("--out", default=None, help="Output path")
     bk_c.set_defaults(func=cmd_backup)
     bk_r = bk_sub.add_parser("restore", help="Restore encrypted archive")
-    bk_r.add_argument("archive")
+    bk_r.add_argument("archive", nargs="?", default=None)
+    bk_r.add_argument("--archive", dest="path", default=None, help="Alias for archive path")
     bk_r.add_argument("--passphrase", required=True)
     bk_r.add_argument("--company", default=None)
     bk_r.add_argument("--force", action="store_true")
     bk_r.set_defaults(func=cmd_backup)
+    bk_b = bk_sub.add_parser("backend", help="Show encryption backend (Fernet vs stdlib)")
+    bk_b.set_defaults(func=cmd_backup)
 
-    # T8 audit export
+    # T8 audit — subcommand-first (export|rates)
     au = sub.add_parser("audit", help="Audit log export / cost rates")
     au_sub = au.add_subparsers(dest="audit_cmd", required=True)
     au_ex = au_sub.add_parser("export", help="Export OTel-GenAI-shaped JSON")

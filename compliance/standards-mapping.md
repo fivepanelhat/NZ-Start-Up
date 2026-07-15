@@ -1,7 +1,8 @@
 # Standards mapping — procurement & due-diligence collateral
 
 **Product:** NZ Start-Up in a Box · Coastal Alpine Tech Limited (Pre-seed)  
-**Verified:** 2026-07-15 · **Version:** 1.6.0  
+verified: 2026-07-15  
+**Version:** 1.6.1  
 
 Maps existing engineering controls to frameworks EDAs, councils, and investors ask about.
 This is **alignment evidence**, not a certification claim.

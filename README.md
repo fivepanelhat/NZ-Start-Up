@@ -11,7 +11,8 @@
 [![HITL](https://img.shields.io/badge/HITL-Draft%2FPrepare%20only-dc2626?style=flat-square)](./COMPLIANCE.md)
 [![Te Mana Raraunga](https://img.shields.io/badge/Te%20Mana%20Raraunga-Aligned-0f766e?style=flat-square)](./compliance/te-mana-raraunga.md)
 [![CAT Standards](https://img.shields.io/badge/CAT-Gold%20%7C%20Diamond%20%7C%20Platinum-eab308?style=flat-square)](./docs/STANDARDS.md)
-[![Version](https://img.shields.io/badge/Version-1.6.0-2563eb?style=flat-square)](./CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-1.6.1-2563eb?style=flat-square)](./CHANGELOG.md)
+[![Hybrid](https://img.shields.io/badge/Hybrid-Edge%20%2B%20Multi--model-0f766e?style=flat-square)](./ABOUT.md)
 
 [![Grok 4.5 Build](https://img.shields.io/badge/Grok%204.5-Build-111827?style=flat-square&logo=x&logoColor=white)](https://x.ai)
 [![Claude Pro Code](https://img.shields.io/badge/Claude%20Pro-Code-d97706?style=flat-square)](https://claude.ai)
@@ -20,12 +21,16 @@
 [![Aether](https://img.shields.io/badge/Built%20on-Aether-14b8a6?style=flat-square)](https://github.com/fivepanelhat/Aether)
 
 **Local founder OS + white-label EDA kit for Aotearoa New Zealand**  
-Formation through funding · hard legal ceilings · CAT Gold / Diamond / Platinum · **Coastal Alpine Tech pre-seed**
+Formation through funding · hard legal ceilings · CAT Gold / Diamond / Platinum · **Coastal Alpine Tech pre-seed**  
+**Hybrid:** edge (RPi 5 + Hailo target) + multi-model fleet · agents draft/prepare · humans file/send/pay/sign
+
+> **Investor one-liner:** Coastal Alpine Tech is building the sovereign hybrid edge-AI stack for Aotearoa’s primary industries and founders — local-first RPi 5 + Hailo nodes, multi-model fleets (Grok/Claude/Gemini), Te Mana Raraunga data sovereignty, and white-label EDA tools — actively seeking collaboration with **Venture Taranaki**, **startups.com investors**, and the **Kotahitanga Investment Fund** to scale intergenerational Māori and regional economic outcomes.
 
 > **One download.** Skills + NZ knowledge + templates + HITL + localhost console.  
 > **IP:** Dual licence (proprietary default + commercial track) · protected under **NZ copyright law**.  
 > **Whenua:** Taranaki · Wayne Roberts · whānau with **six generations in agriculture**.  
-> **Not open source.** Production / white-label requires a commercial licence.
+> **Not open source.** Production / white-label requires a commercial licence.  
+> **Collaboration:** Open to Venture Taranaki, startups.com investors, and Kotahitanga Investment Fund (cultural HITL for formal approaches).
 
 ## Coastal Alpine Tech (pre-seed)
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nz-startup-in-a-box"
-version = "1.6.0"
+version = "1.6.1"
 description = "NZ Start-Up in a Box — Coastal Alpine Tech pre-seed dual-licensed founder fleet (CAT Gold/Diamond/Platinum)"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -18,7 +18,9 @@ keywords = [
   "aether",
   "hitl",
 ]
-dependencies = []
+dependencies = [
+  "cryptography>=42.0",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -36,6 +38,7 @@ desktop = [
   "pywebview>=5.0",
 ]
 all = [
+  "cryptography>=42.0",
   "pytest>=8.0",
   "ruff>=0.4",
   "pip-audit>=2.7",

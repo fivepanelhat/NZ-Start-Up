@@ -116,6 +116,8 @@ def test_t7_backup_roundtrip(company, tmp_path):
     )
     assert Path(man["path"]).is_file()
     assert man["sha256"]
+    assert "encryption_path" in man
+    assert man["encryption_path"]  # fernet or stdlib path reported (T7*)
     restored = backup.restore_backup(
         Path(man["path"]),
         passphrase="test-pass-1234",
@@ -124,6 +126,7 @@ def test_t7_backup_roundtrip(company, tmp_path):
     )
     assert Path(restored["path"]).is_dir()
     assert (Path(restored["path"]) / "profile.md").is_file()
+    assert restored.get("encryption_path")
     with pytest.raises(PermissionError):
         backup.restore_backup(
             Path(man["path"]),
@@ -131,6 +134,12 @@ def test_t7_backup_roundtrip(company, tmp_path):
             company_id="bad",
             force=True,
         )
+
+
+def test_t1_live_config_rubric_default():
+    cfg = evals._resolve_live_config("rubric")
+    assert cfg["provider"] == "rubric"
+    assert not cfg.get("key")
 
 
 def test_t8_audit_export_otel(company):

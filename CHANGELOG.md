@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.6.1 — 2026-07-15
+
+### Final review calibration (report 8) + investor consistency (report 9)
+
+Super Grok final review of v1.6.0: **demo-ready**; remaining items are calibration, not construction.
+
+| Item | Ship |
+|------|------|
+| **T1*** | Real LLM-as-judge path: `--provider openai\|xai` + API key env; rubric always baseline |
+| **T7*** | `cryptography` default dependency; Fernet preferred; `encryption_path` always printed |
+| CLI | `backup create\|restore\|backend` and `audit export\|rates` consistent subcommand-first |
+| Freshness | `compliance/standards-mapping.md` included in knowledge freshness CI |
+| Branding | Global investor one-liner + Venture Taranaki / startups.com / Kotahitanga collab (report 9) |
+| Hybrid badge | README hybrid edge + multi-model framing |
+
 ## 1.6.0 — 2026-07-15
 
 ### Next-tier optimisations (Claude v1.5.0 review T1–T9)

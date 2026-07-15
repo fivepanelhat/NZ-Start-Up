@@ -9,6 +9,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 KNOWLEDGE = ROOT / "knowledge"
+# Also freshness-check procurement collateral (final review: stale standards doc is worse than none)
+EXTRA_FILES = [
+    ROOT / "compliance" / "standards-mapping.md",
+]
 MAX_AGE_DAYS = 90
 VERIFIED_RE = re.compile(
     r"(?im)^(?:verified|verified_on|last_verified)\s*:\s*['\"]?(\d{4}-\d{2}-\d{2})"
@@ -33,20 +37,25 @@ def main() -> int:
     today = date.today()
     failures: list[str] = []
     ok_files: list[str] = []
-    for path in sorted(KNOWLEDGE.glob("*.md")):
+    paths = list(sorted(KNOWLEDGE.glob("*.md"))) + [p for p in EXTRA_FILES if p.is_file()]
+    for path in paths:
+        try:
+            rel = path.relative_to(ROOT).as_posix()
+        except ValueError:
+            rel = path.name
         text = path.read_text(encoding="utf-8", errors="replace")
         verified = parse_verified(text)
         if verified is None:
-            failures.append(f"{path.name}: missing verified: YYYY-MM-DD frontmatter")
+            failures.append(f"{rel}: missing verified: YYYY-MM-DD frontmatter")
             continue
         age = (today - verified).days
         if age > MAX_AGE_DAYS:
             failures.append(
-                f"{path.name}: verified {verified.isoformat()} is {age}d old "
+                f"{rel}: verified {verified.isoformat()} is {age}d old "
                 f"(max {MAX_AGE_DAYS}d) — re-verify"
             )
         else:
-            ok_files.append(f"{path.name}: verified {verified.isoformat()} ({age}d)")
+            ok_files.append(f"{rel}: verified {verified.isoformat()} ({age}d)")
     print("Knowledge freshness check")
     print(f"Max age: {MAX_AGE_DAYS} days · Today: {today.isoformat()}")
     for line in ok_files:

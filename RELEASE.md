@@ -1,4 +1,4 @@
-# NZ Start-Up in a Box — v1.6.0
+# NZ Start-Up in a Box — v1.6.1
 
 **Coastal Alpine Tech Limited — Pre-seed** · Taranaki · Aotearoa New Zealand  
 **R&D since 8 August 2025** · **Founded 8 August 2026**  
@@ -6,9 +6,13 @@
 Built with **CAT Gold / Diamond / Platinum** on **Aether**  
 Dev tools: **Grok 4.5 Build** · **Claude Pro Code** · **Claude Computer Use** · **Google Gemini 3.5 Flash**
 
+## Investor one-liner
+
+> Coastal Alpine Tech is building the sovereign hybrid edge-AI stack for Aotearoa’s primary industries and founders — local-first RPi 5 + Hailo nodes, multi-model fleets (Grok/Claude/Gemini), Te Mana Raraunga data sovereignty, and white-label EDA tools — actively seeking collaboration with Venture Taranaki, startups.com investors, and the Kotahitanga Investment Fund to scale intergenerational Māori and regional economic outcomes.
+
 ## What 1.6 means
 
-Trust-transfer layer (Claude T1–T9) on the v1.5 fleet ops base:
+Trust-transfer layer (Claude T1–T9) on the v1.5 fleet ops base · **v1.6.1** calibrates Fernet backups + real live-eval provider hooks:
 
 | Ops | Command |
 |-----|---------|

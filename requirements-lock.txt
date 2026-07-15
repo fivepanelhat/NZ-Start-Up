@@ -1,7 +1,10 @@
-# G5 — Supply-chain lock for optional/dev dependencies.
-# Core package has zero hard runtime deps (stdlib-only fleet).
+# G5/T7* — Supply-chain lock.
+# Core runtime now includes cryptography for Fernet backups.
 # Install: pip install -r requirements-lock.txt
 # Audit:   pip-audit -r requirements-lock.txt
+
+# runtime
+cryptography==44.0.3
 
 # dev / CI
 pytest==8.4.1

@@ -23,6 +23,28 @@ BUILD_TOOLS = (
     "Google Gemini 3.5 Flash",
 )
 
+# Global investor one-liner (portfolio consistency — report 9, 2026-07-15)
+INVESTOR_ONE_LINER = (
+    "Coastal Alpine Tech is building the sovereign hybrid edge-AI stack for Aotearoa’s "
+    "primary industries and founders — local-first RPi 5 + Hailo nodes, multi-model fleets "
+    "(Grok/Claude/Gemini), Te Mana Raraunga data sovereignty, and white-label EDA tools — "
+    "actively seeking collaboration with Venture Taranaki, startups.com investors, and the "
+    "Kotahitanga Investment Fund to scale intergenerational Māori and regional economic outcomes."
+)
+INVESTOR_ONE_LINER_SHORT = (
+    "Sovereign hybrid edge AI for NZ farms & founders — local-first + multi-model, "
+    "Te Mana Raraunga aligned — collaborating with Venture Taranaki, startups.com investors "
+    "& Kotahitanga Investment Fund."
+)
+COLLABORATION_NOTE = (
+    "Open to collaboration with Venture Taranaki, startups.com investors, "
+    "and Kotahitanga Investment Fund (HITL + cultural advisory for any formal approach)."
+)
+HYBRID_DEFINITION = (
+    "Hybrid edge + multi-model fleet: RPi 5 16GB + Hailo-10H (edge) · workstation companions · "
+    "light/standard/frontier model tiers · local-first Te Mana Raraunga data · CAT Gold/Diamond/Platinum"
+)
+
 COPYRIGHT_LINE = (
     f"Copyright © {COPYRIGHT_YEARS} {COMPANY_LEGAL}. All rights reserved. "
     f"{STAGE}. R&D since {RD_START_DISPLAY}. Founded {FOUNDING_DISPLAY}."
@@ -52,4 +74,8 @@ def about_dict() -> dict:
         "licence": LICENCE_POSTURE,
         "build_tools": list(BUILD_TOOLS),
         "copyright": COPYRIGHT_LINE,
+        "investor_one_liner": INVESTOR_ONE_LINER,
+        "investor_one_liner_short": INVESTOR_ONE_LINER_SHORT,
+        "collaboration": COLLABORATION_NOTE,
+        "hybrid": HYBRID_DEFINITION,
     }

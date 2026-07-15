@@ -30,9 +30,19 @@ Ship a **local-first NZ founder operating system** — skills-heavy agents under
 
 **startups.com** sits in the global founder media and community layer — visibility, narrative, and peer benchmarks. It is useful for **story and signal**, not a substitute for Taranaki relationships, NZ compliance depth, or a signed pilot. Use it to sharpen the pitch; close deals where the whenua and customers are.
 
-**Blurb (short form):**
+**Investor one-liner (global portfolio standard):**
 
-> Coastal Alpine Tech is a Taranaki pre-seed company building *NZ Start-Up in a Box* — a local-first, HITL agent fleet for NZ founders. We partner first with **Venture Taranaki** and regional pathways (e.g. PowerUp), pursue **paid pilots** before free experiments, and treat national **pre-seed VC** as a second step after proof. Global platforms like **startups.com** help with narrative and reach; the moat remains NZ jurisdiction depth, dual-licence IP, and six-generation whenua context — not hype agents.
+> Coastal Alpine Tech is building the sovereign hybrid edge-AI stack for Aotearoa’s primary industries and founders — local-first RPi 5 + Hailo nodes, multi-model fleets (Grok/Claude/Gemini), Te Mana Raraunga data sovereignty, and white-label EDA tools — actively seeking collaboration with Venture Taranaki, startups.com investors, and the Kotahitanga Investment Fund to scale intergenerational Māori and regional economic outcomes.
+
+**Shorter:**
+
+> Sovereign hybrid edge AI for NZ farms & founders — local-first + multi-model, Te Mana Raraunga aligned — collaborating with Venture Taranaki, startups.com investors & Kotahitanga Investment Fund.
+
+**Blurb (product-focused):**
+
+> Coastal Alpine Tech is a Taranaki pre-seed company building *NZ Start-Up in a Box* — a local-first, HITL agent fleet for NZ founders. We partner first with **Venture Taranaki** and regional pathways (e.g. PowerUp), pursue **paid pilots** before free experiments, and treat national **pre-seed VC** as a second step after proof. Global platforms like **startups.com** help with narrative and reach; **Kotahitanga Investment Fund** is a cultural fit for sovereign Māori-aligned capital (formal approach requires HITL + cultural advisory). The moat remains NZ jurisdiction depth, dual-licence IP, and six-generation whenua context — not hype agents.
+
+**Hybrid (CAT canonical):** Edge RPi 5 16GB + Hailo-10H · workstation companions · light/standard/frontier models · local-first Te Mana Raraunga · CAT Gold / Diamond / Platinum.
 
 ## IP posture
 
