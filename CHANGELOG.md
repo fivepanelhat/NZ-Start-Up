@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.8.1 — 2026-07-15
+
+### Portfolio congruence + anti-hallucination agent fleet
+
+| Item | Ship |
+|------|------|
+| **Pack** | `portfolio/congruence-pack/` — portable AGENTS, hardening, anti-hallucination, CAT standards |
+| **Org sweep** | Applied + pushed to all 14 public fivepanelhat repos + front page |
+| **NZ-Start-Up** | `CAT_CONGRUENCE.md`, `.github/agent-fleet/*`, agent-hardening **v1.1** (tool use, refusal, extended thinking) |
+| **Docs** | AGENT_HARDENING anti-hallucination section; AGENTS.md load order updated |
+
+Every repo now links fivepanelhat + NZ-Start-Up, HITL slogan, investor one-liner, and FACT/INFERENCE/UNKNOWN policy.
+
 ## 1.8.0 — 2026-07-15
 
 ### Seed GTM — market-fit matrices, enterprise markets, investor pack

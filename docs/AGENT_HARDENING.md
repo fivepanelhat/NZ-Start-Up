@@ -1,6 +1,6 @@
 # Agent Hardening Guide
 
-**Version:** 1.2 · Coastal Alpine Tech · NZ Start-Up in a Box
+**Version:** 1.3 · Coastal Alpine Tech · NZ Start-Up in a Box · Portfolio pack aligned
 
 ## Autonomy ceiling
 
@@ -12,19 +12,35 @@
 | Monitor | Send |
 | Remind | Pay |
 
+## Anti-hallucination (portfolio standard)
+
+| Mechanism | Where |
+|-----------|--------|
+| Prefer tools/files over model memory | `AGENTS.md`, `.github/agent-fleet/anti-hallucination.md` |
+| FACT / INFERENCE / UNKNOWN labels | anti-hallucination policy |
+| Refusal when evidence missing | agent-hardening v1.1 + HITL default-deny |
+| Extended thinking before high-stakes answers | list unknowns & failure modes first |
+| Knowledge freshness 90-day gate | `knowledge/*` `verified:` + CI |
+| Untrusted inbound quarantine | `nz_startup/untrusted.py` (nonce fences) |
+| No invented MCP tools | MCP surface never exposes send/file/pay |
+
+**Investor/reviewer signal:** we would rather refuse or mark `NEEDS_EVIDENCE` than invent NZBN, LOIs, stats, or partnerships.
+
 ## Enforcement layers
 
 ```text
-User / Aether / Claude
+User / Aether / Claude / Grok
         │
         ▼
 ┌───────────────────┐
-│ agent-hardening   │  policy skill (always load first with CAT standards)
+│ agent-hardening   │  policy skill + anti-hallucination
+│ anti-hallucination.md
 └─────────┬─────────┘
           ▼
 ┌───────────────────┐
-│ hitl.py           │  forbidden tools + action fragments
+│ hitl.py           │  default-deny allow-list + fragments
 │ agent_guardrails  │  risk tier, secrets, sandbox, watermarks
+│ untrusted.py      │  inbound data quarantine
 └─────────┬─────────┘
           ▼
 ┌───────────────────┐
@@ -32,7 +48,7 @@ User / Aether / Claude
 └─────────┬─────────┘
           ▼
 ┌───────────────────┐
-│ Company memory    │  path sandbox + audit.jsonl
+│ Company memory    │  path sandbox + audit.jsonl + INDEX
 └───────────────────┘
 ```
 
