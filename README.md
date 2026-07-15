@@ -44,7 +44,8 @@ Formation through funding · hard legal ceilings · CAT Gold / Diamond / Platinu
 | **Founding context** | Wayne Roberts · Taranaki whānau · 6 generations in agriculture |
 | **Māori development** | Te Mana Raraunga–aligned · no cultural extraction · HITL for cultural content |
 
-Full story: [`ABOUT.md`](./ABOUT.md) · Dual licence: [`docs/DUAL_LICENCE.md`](./docs/DUAL_LICENCE.md)
+Full story: [`ABOUT.md`](./ABOUT.md) · Dual licence: [`docs/DUAL_LICENCE.md`](./docs/DUAL_LICENCE.md)  
+**Investor R&D + market dossier:** [`docs/INVESTOR_RD_AND_MARKET_REFERENCE.md`](./docs/INVESTOR_RD_AND_MARKET_REFERENCE.md) (8 Aug 2025 claim, Drive evidence, Taranaki/NZ employment pathways)
 
 ## What you get
 
