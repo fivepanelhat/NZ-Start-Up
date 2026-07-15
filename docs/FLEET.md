@@ -17,19 +17,24 @@ End-to-end NZ founder lifecycle as ~10 specialists. Autonomy column is the produ
 | `legal-document-assistant` | Legal Document Assistant | NZ template outlines, Privacy Act checklists | Gold + Diamond |
 | `board-chief-of-staff` | Board / Chief-of-Staff | All + memory | Platinum + Gold |
 
-## Meta
+## Meta & growth skills
 
 | Skill | Role |
 |-------|------|
-| `agent-hardening` | Autonomy ceilings, secrets, sandbox, watermarks |
+| `agent-hardening` | Autonomy ceilings, secrets, sandbox, watermarks, **anti-hallucination** |
 | `cat-architectural-standards` | Classify work; enforce HITL; maturity model |
 | `nz-startup-fleet` | Product entry skill — dogfood bootstrap + install |
+| `enterprise-adoption-officer` | EDA/council/procurement fit packs (create enterprise markets) |
+| `investor-readiness-clerk` | Seed data-room index + diligence hygiene (no invented traction) |
+
+**Portfolio pack (all CAT repos):** `.github/agent-fleet/` — same HITL + FACT/INFERENCE/UNKNOWN policy.  
+**Canonical org map:** [fivepanelhat](https://github.com/fivepanelhat/fivepanelhat)
 
 ## Optional later hires
 
 - Hiring Coordinator (Human Rights Act constraints on screening)  
 - Export Readiness Officer (NZTE)  
-- Procurement Navigator (council / GETS tenders)
+- Procurement Navigator (council / GETS tenders) — partially covered by enterprise-adoption-officer
 
 ## Autonomy slogan
 
