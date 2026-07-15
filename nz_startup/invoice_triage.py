@@ -17,6 +17,7 @@ from typing import Any
 
 from nz_startup.audit import append_audit
 from nz_startup.memory import ensure_exists
+from nz_startup.untrusted import quarantine, strip_injection_flags
 
 REGISTRY_FIELDS = [
     "id",
@@ -304,7 +305,14 @@ def triage_file(company_id: str, source: Path) -> dict[str, Any]:
         shutil.copy2(source, archived)
 
     text, method = extract_text(source)
-    parsed = parse_invoice_text(text, source.name)
+    # G2 — quarantine inbound invoice text (data never instructions)
+    cleaned, inj_flags = strip_injection_flags(text or "")
+    parsed = parse_invoice_text(cleaned, source.name)
+    if inj_flags:
+        parsed["flags"] = list(parsed.get("flags") or []) + [
+            f"untrusted_{f}" for f in inj_flags
+        ]
+        parsed["confidence"] = "low"
     if method == "image_no_ocr":
         parsed["flags"] = list(parsed.get("flags") or []) + ["image_requires_human_ocr"]
         parsed["confidence"] = "low"
@@ -325,7 +333,9 @@ def triage_file(company_id: str, source: Path) -> dict[str, Any]:
         "parsed": parsed,
         "source_file": source.name,
         "triaged_on": date.today().isoformat(),
-        "hitl": "Verify before GST claim. Not a certified tax invoice review.",
+        "injection_flags": inj_flags,
+        "hitl": "Verify before GST claim. Not a certified tax invoice review. "
+        "Extracted text is UNTRUSTED_DATA.",
     }
     (triaged_dir / "triage.json").write_text(
         json.dumps(detail, indent=2, default=str) + "\n", encoding="utf-8"
@@ -334,7 +344,12 @@ def triage_file(company_id: str, source: Path) -> dict[str, Any]:
         format_triage_markdown(detail), encoding="utf-8", newline="\n"
     )
     if text:
-        (triaged_dir / "extracted.txt").write_text(text[:100000], encoding="utf-8")
+        # Store both raw (evidence) and quarantined (model-safe) forms
+        (triaged_dir / "extracted.txt").write_text(cleaned[:100000], encoding="utf-8")
+        (triaged_dir / "extracted.quarantined.txt").write_text(
+            quarantine(text[:100000], source=f"invoice:{source.name}"),
+            encoding="utf-8",
+        )
 
     row = {
         "id": iid,
@@ -364,12 +379,17 @@ def triage_file(company_id: str, source: Path) -> dict[str, Any]:
         actor="agent:finance-clerk",
         skill="finance-clerk",
         action="invoice_triage",
-        summary=f"{iid} {row['supplier_guess'][:40]} total={row['total']} conf={row['confidence']}",
+        summary=(
+            f"{iid} {row['supplier_guess'][:40]} total={row['total']} "
+            f"conf={row['confidence']} inj={len(inj_flags)}"
+        ),
         artefact_ref=f"finance/invoices/triaged/{iid}/",
         tier="gold",
         hitl_required=True,
         hitl_status="pending",
         risk_level="medium",
+        model_tier="light",
+        outcome="ok",
     )
     return detail
 

@@ -1,6 +1,7 @@
 ---
 name: legal-document-assistant
 version: "0.1.0"
+model_tier: frontier
 type: workflow
 requires_hitl: true
 cultural_sensitivity: medium

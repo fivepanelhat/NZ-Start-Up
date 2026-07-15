@@ -1,6 +1,7 @@
 ---
 name: cat-architectural-standards
 version: "1.0.0"
+model_tier: light
 type: orchestration
 requires_hitl: true
 cultural_sensitivity: high

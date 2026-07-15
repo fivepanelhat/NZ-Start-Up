@@ -18,20 +18,26 @@ from nz_startup import (
     demo,
     doctor,
     drafts,
+    evals,
     export_reminders,
     grants,
     gst_worksheet,
     handoff,
     invoice_triage,
     memory,
+    memory_index,
+    model_routing,
     nzbn,
     onboard,
+    packaging,
     partner_report,
     pilot_offer,
     pipeline,
     rdti,
+    schedule,
     smoke,
     status,
+    tasks,
     weekly,
     xero_readonly,
 )
@@ -530,12 +536,143 @@ def cmd_compliance(args: argparse.Namespace) -> int:
 
 
 def cmd_console(args: argparse.Namespace) -> int:
-    console.run_console(host=args.host, port=args.port, open_browser=args.open)
+    console.run_console(
+        host=args.host,
+        port=args.port,
+        open_browser=args.open,
+        token=getattr(args, "token", None),
+    )
     return 0
 
 
 def cmd_desktop(args: argparse.Namespace) -> int:
-    console.run_desktop(port=args.port)
+    console.run_desktop(port=args.port, token=getattr(args, "token", None))
+    return 0
+
+
+def cmd_tasks(args: argparse.Namespace) -> int:
+    if args.tasks_cmd == "add":
+        row = tasks.append_task(
+            args.company_id,
+            title=args.title,
+            owner=args.owner or "Founder",
+            skill=args.skill or "board-chief-of-staff",
+            status=args.status or "todo",
+            next_step=args.next_step or "",
+            due=args.due or "",
+            notes=args.notes or "",
+        )
+        print(json.dumps(row, indent=2))
+        return 0
+    if args.tasks_cmd == "list":
+        rows = tasks.list_tasks(args.company_id, status=args.status)
+        if args.json:
+            print(json.dumps(rows, indent=2))
+        else:
+            for r in rows:
+                print(
+                    f"{r.get('id')}\t{r.get('status')}\t{r.get('owner')}\t"
+                    f"{r.get('title')}\tnext={r.get('next_step')}\tdue={r.get('due')}"
+                )
+        return 0
+    if args.tasks_cmd == "update":
+        row = tasks.update_task(
+            args.company_id,
+            args.task_id,
+            status=args.status,
+            next_step=args.next_step,
+            notes=args.notes,
+            owner=args.owner,
+        )
+        print(json.dumps(row, indent=2))
+        return 0
+    return 2
+
+
+def cmd_schedule(args: argparse.Namespace) -> int:
+    if args.schedule_cmd == "install":
+        result = schedule.install_schedule(force=getattr(args, "force", False))
+        print(json.dumps(result, indent=2, default=str))
+        # installation may require elevation — non-zero only on hard failure with error key
+        if result.get("error") and not result.get("installed"):
+            return 1
+        return 0
+    if args.schedule_cmd == "uninstall":
+        print(json.dumps(schedule.uninstall_schedule(), indent=2, default=str))
+        return 0
+    if args.schedule_cmd == "status":
+        print(json.dumps(schedule.schedule_status(), indent=2))
+        return 0
+    if args.schedule_cmd == "run":
+        cids = [args.company_id] if getattr(args, "company_id", None) else memory.list_companies()
+        if not cids:
+            print("No companies in memory — nothing to run.")
+            return 0
+        for cid in cids:
+            status.write_status(cid)
+            weekly.generate_weekly_review(cid)
+            export_reminders.export_all(cid)
+            memory_index.write_index(cid)
+            print(f"ok: {cid}")
+        return 0
+    return 2
+
+
+def cmd_index(args: argparse.Namespace) -> int:
+    if args.index_cmd == "write":
+        path = memory_index.write_index(args.company_id)
+        print(path)
+        return 0
+    if args.index_cmd == "compact":
+        result = memory_index.compact_memory(args.company_id)
+        print(json.dumps(result, indent=2))
+        return 0
+    return 2
+
+
+def cmd_eval(args: argparse.Namespace) -> int:
+    report = evals.run_evals(company_id=args.company_id or "eval-harness")
+    if args.write:
+        path = evals.write_eval_report(report)
+        print(f"written: {path}")
+    if args.json:
+        print(json.dumps(report, indent=2))
+    else:
+        print(evals.format_eval_markdown(report))
+    return 0 if report.get("ok") else 1
+
+
+def cmd_budget(args: argparse.Namespace) -> int:
+    if args.budget_cmd == "show":
+        data = model_routing.routing_status(args.company_id)
+        print(json.dumps(data, indent=2))
+        return 0
+    if args.budget_cmd == "set":
+        data = model_routing.load_budget(args.company_id)
+        if args.tokens is not None:
+            data["monthly_token_budget"] = int(args.tokens)
+        if args.warn is not None:
+            data["warn_fraction"] = float(args.warn)
+        model_routing.save_budget(args.company_id, data)
+        print(json.dumps(data, indent=2))
+        return 0
+    if args.budget_cmd == "record":
+        data = model_routing.record_usage(
+            args.company_id,
+            tokens_in=args.tokens_in or 0,
+            tokens_out=args.tokens_out or 0,
+            skill=args.skill or "",
+            model_tier=args.tier or "",
+        )
+        print(json.dumps(data, indent=2))
+        return 0
+    return 2
+
+
+def cmd_pack(args: argparse.Namespace) -> int:
+    result = packaging.build_skills_pack()
+    out = {k: (str(v) if hasattr(v, "__fspath__") else v) for k, v in result.items()}
+    print(json.dumps(out, indent=2))
     return 0
 
 
@@ -1014,10 +1151,11 @@ def build_parser() -> argparse.ArgumentParser:
     cp_rp.add_argument("--json", action="store_true")
     cp_rp.set_defaults(func=cmd_compliance, write=True)
 
-    con = sub.add_parser("console", help="Localhost Founder Console")
+    con = sub.add_parser("console", help="Localhost Founder Console (session token)")
     con.add_argument("--host", default="127.0.0.1", help="Must be localhost")
     con.add_argument("--port", type=int, default=8765)
     con.add_argument("--open", action="store_true", help="Open system browser")
+    con.add_argument("--token", default=None, help="Session token (default: auto-mint)")
     con.set_defaults(func=cmd_console)
 
     desk = sub.add_parser(
@@ -1025,7 +1163,89 @@ def build_parser() -> argparse.ArgumentParser:
         help="Desktop-lite window (pywebview if installed, else browser)",
     )
     desk.add_argument("--port", type=int, default=8765)
+    desk.add_argument("--token", default=None, help="Session token (default: auto-mint)")
     desk.set_defaults(func=cmd_desktop)
+
+    # G7 tasks
+    tk = sub.add_parser("tasks", help="Long-horizon task state (per company)")
+    tk_sub = tk.add_subparsers(dest="tasks_cmd", required=True)
+    tk_add = tk_sub.add_parser("add", help="Append a task")
+    tk_add.add_argument("company_id")
+    tk_add.add_argument("--title", required=True)
+    tk_add.add_argument("--owner", default="Founder")
+    tk_add.add_argument("--skill", default="board-chief-of-staff")
+    tk_add.add_argument("--status", default="todo", choices=list(tasks.STATUSES))
+    tk_add.add_argument("--next-step", dest="next_step", default="")
+    tk_add.add_argument("--due", default="")
+    tk_add.add_argument("--notes", default="")
+    tk_add.set_defaults(func=cmd_tasks)
+    tk_ls = tk_sub.add_parser("list", help="List open tasks")
+    tk_ls.add_argument("company_id")
+    tk_ls.add_argument("--status", default=None)
+    tk_ls.add_argument("--json", action="store_true")
+    tk_ls.set_defaults(func=cmd_tasks)
+    tk_up = tk_sub.add_parser("update", help="Update task status/next step")
+    tk_up.add_argument("company_id")
+    tk_up.add_argument("task_id")
+    tk_up.add_argument("--status", default=None, choices=list(tasks.STATUSES))
+    tk_up.add_argument("--next-step", dest="next_step", default=None)
+    tk_up.add_argument("--notes", default=None)
+    tk_up.add_argument("--owner", default=None)
+    tk_up.set_defaults(func=cmd_tasks)
+
+    # G6 schedule
+    sch = sub.add_parser("schedule", help="OS-native weekly cadence (HITL-safe)")
+    sch_sub = sch.add_subparsers(dest="schedule_cmd", required=True)
+    sch_in = sch_sub.add_parser("install", help="Register OS timer")
+    sch_in.add_argument("--force", action="store_true")
+    sch_in.set_defaults(func=cmd_schedule)
+    sch_un = sch_sub.add_parser("uninstall", help="Remove OS timer")
+    sch_un.set_defaults(func=cmd_schedule)
+    sch_st = sch_sub.add_parser("status", help="Show schedule artefacts")
+    sch_st.set_defaults(func=cmd_schedule)
+    sch_run = sch_sub.add_parser("run", help="Run cadence now (local)")
+    sch_run.add_argument("company_id", nargs="?", default=None)
+    sch_run.set_defaults(func=cmd_schedule)
+
+    # G10 index / compact
+    ix = sub.add_parser("index", help="Company INDEX.md + memory compaction")
+    ix_sub = ix.add_subparsers(dest="index_cmd", required=True)
+    ix_w = ix_sub.add_parser("write", help="Refresh INDEX.md")
+    ix_w.add_argument("company_id")
+    ix_w.set_defaults(func=cmd_index)
+    ix_c = ix_sub.add_parser("compact", help="Archive stale weekly + refresh INDEX")
+    ix_c.add_argument("company_id")
+    ix_c.set_defaults(func=cmd_index)
+
+    # G1 evals
+    ev = sub.add_parser("eval", help="Run golden behavioural eval suite")
+    ev.add_argument("--company-id", dest="company_id", default="eval-harness")
+    ev.add_argument("--json", action="store_true")
+    ev.add_argument("--write", action="store_true", help="Write evals/reports/")
+    ev.set_defaults(func=cmd_eval)
+
+    # G9 budget / routing
+    bg = sub.add_parser("budget", help="Model tier routing + monthly token budget")
+    bg_sub = bg.add_subparsers(dest="budget_cmd", required=True)
+    bg_sh = bg_sub.add_parser("show", help="Show routing map + company budget")
+    bg_sh.add_argument("company_id", nargs="?", default=None)
+    bg_sh.set_defaults(func=cmd_budget)
+    bg_set = bg_sub.add_parser("set", help="Set monthly token budget")
+    bg_set.add_argument("company_id")
+    bg_set.add_argument("--tokens", type=int, default=None)
+    bg_set.add_argument("--warn", type=float, default=None, help="Warn fraction 0-1")
+    bg_set.set_defaults(func=cmd_budget)
+    bg_rec = bg_sub.add_parser("record", help="Record token usage against budget")
+    bg_rec.add_argument("company_id")
+    bg_rec.add_argument("--tokens-in", dest="tokens_in", type=int, default=0)
+    bg_rec.add_argument("--tokens-out", dest="tokens_out", type=int, default=0)
+    bg_rec.add_argument("--skill", default="")
+    bg_rec.add_argument("--tier", default="", choices=["", "light", "standard", "frontier"])
+    bg_rec.set_defaults(func=cmd_budget)
+
+    # G14 pack
+    pk = sub.add_parser("pack", help="Build versioned skills-pack zip (dist/)")
+    pk.set_defaults(func=cmd_pack)
 
     ob = sub.add_parser("onboard", help="Founder first-hour onboarding wizard")
     ob.add_argument("company_id")

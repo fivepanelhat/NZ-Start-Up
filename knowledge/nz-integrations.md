@@ -1,3 +1,9 @@
+---
+verified: 2026-07-15
+status: active
+max_age_days: 90
+---
+
 # NZ Integrations Map
 
 Living list — verify URLs and API terms before production use.

@@ -1,6 +1,7 @@
 ---
 name: finance-clerk
 version: "0.1.0"
+model_tier: light
 type: workflow
 requires_hitl: true
 cultural_sensitivity: low

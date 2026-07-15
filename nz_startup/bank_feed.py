@@ -15,6 +15,7 @@ from typing import Any
 
 from nz_startup.audit import append_audit
 from nz_startup.memory import ensure_exists
+from nz_startup.untrusted import strip_injection_flags
 
 NORMALIZED_FIELDS = [
     "id",
@@ -188,7 +189,9 @@ def parse_bank_csv(path: Path) -> tuple[list[dict[str, str]], dict[str, Any]]:
     rows: list[dict[str, str]] = []
     for idx, raw in enumerate(reader):
         date_s = _parse_date(raw.get(mapping["date"] or "", ""))
-        desc = (raw.get(mapping["description"] or "") or "").strip()
+        desc_raw = (raw.get(mapping["description"] or "") or "").strip()
+        # G2 — flag injection-like bank narratives; keep structured CSV clean
+        desc, inj_flags = strip_injection_flags(desc_raw)
         if not date_s and not desc:
             continue
         amount: float | None = None
@@ -205,6 +208,9 @@ def parse_bank_csv(path: Path) -> tuple[list[dict[str, str]], dict[str, Any]]:
         balance = _parse_amount(balance_raw) if balance_raw else None
         cat, gst = _categorize(desc, amount)
         direction = "inflow" if amount >= 0 else "outflow"
+        notes = ""
+        if inj_flags:
+            notes = f"untrusted_flags:{','.join(inj_flags)}"
         rows.append(
             {
                 "id": _row_id(date_s, desc, amount, idx),
@@ -215,7 +221,7 @@ def parse_bank_csv(path: Path) -> tuple[list[dict[str, str]], dict[str, Any]]:
                 "balance": f"{balance:.2f}" if balance is not None else "",
                 "category_guess": cat,
                 "gst_hint": gst,
-                "notes": "",
+                "notes": notes,
                 "source_file": path.name,
                 "import_batch": "",
             }
@@ -323,15 +329,19 @@ def import_csv(
         "output": str(out_path),
         "hitl": "Triage suggestions only. Human reconciles in Xero/myIR.",
     }
+    flagged = sum(1 for r in new_rows if "untrusted_flags" in (r.get("notes") or ""))
+    summary["untrusted_flagged_rows"] = flagged
     append_audit(
         ensure_exists(company_id),
         actor="agent:finance-clerk",
         skill="finance-clerk",
         action="bank_feed_import",
-        summary=f"Imported {added} rows from {source.name} (skipped {skipped})",
+        summary=f"Imported {added} rows from {source.name} (skipped {skipped}; untrusted_flags={flagged})",
         artefact_ref="finance/bank-feed.csv",
         tier="gold",
         risk_level="medium",
+        model_tier="light",
+        outcome="ok",
     )
     return summary
 

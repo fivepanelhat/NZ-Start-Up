@@ -1,4 +1,4 @@
-# NZ Start-Up in a Box — v1.4.0
+# NZ Start-Up in a Box — v1.5.0
 
 **Coastal Alpine Tech Limited — Pre-seed** · Taranaki · Aotearoa New Zealand  
 **R&D since 8 August 2025** · **Founded 8 August 2026**  
@@ -6,17 +6,32 @@
 Built with **CAT Gold / Diamond / Platinum** on **Aether**  
 Dev tools: **Grok 4.5 Build** · **Claude Pro Code** · **Claude Computer Use** · **Google Gemini 3.5 Flash**
 
+## What 1.5 means
+
+Fleet **ops layer** on top of hardened guardrails (gap analysis G1–G14):
+
+| Ops | Command |
+|-----|---------|
+| Golden evals | `nz-startup eval --write` |
+| Weekly cadence | `nz-startup schedule install` / `run` |
+| Task state | `nz-startup tasks add\|list\|update` |
+| Memory INDEX | `nz-startup index write\|compact` |
+| Token budget | `nz-startup budget show\|set\|record` |
+| Skills pack zip | `nz-startup pack` |
+| Console auth | auto session token on `console` |
+
 ## What 1.x means
 
 The **production local product** (skills + CLI + MCP + localhost console + desktop-lite):
 
 | Included | Deferred |
 |----------|----------|
-| 12 digital-employee skills + CAT standards | Multi-tenant hosted SaaS |
+| 13 digital-employee skills + CAT standards | Multi-tenant hosted SaaS |
 | Full finance/ops loop (bank, GST papers, invoices, handoff) | Always-on autonomous agents |
 | White-label cohorts + EDA demo | Unsolicited email / IRD filing automation |
 | Status, board pack, pilot offers, partner reports | Full packaged native installers |
 | **Founder Console** + **desktop-lite** (`pywebview` optional) | Cloud data hosting of founder secrets |
+| Evals · quarantine · allow-list HITL · freshness · telemetry · scheduler | RealMe / myIR computer-use (G15 watch) |
 
 Full native packaged desktop remains demand-gated; desktop-lite covers day-to-day local UI.
 

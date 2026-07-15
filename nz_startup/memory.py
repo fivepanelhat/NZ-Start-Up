@@ -58,6 +58,18 @@ def init_company(company_id: str, *, force: bool = False) -> Path:
         )
     calendar_ops.seed_defaults(company_id)
     grants.seed_nz_starters(company_id)
+    # G7/G10 — task state + INDEX for Board skill default load
+    try:
+        from nz_startup.memory_index import write_index
+        from nz_startup.tasks import _sync_md, tasks_path
+
+        tasks_path(company_id)  # ensure company exists; create empty tasks.md
+        if not (dest / "tasks.jsonl").is_file():
+            (dest / "tasks.jsonl").write_text("", encoding="utf-8")
+        _sync_md(company_id)
+        write_index(company_id)
+    except Exception:
+        pass
     return dest
 
 

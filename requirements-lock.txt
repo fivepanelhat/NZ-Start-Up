@@ -1,0 +1,14 @@
+# G5 — Supply-chain lock for optional/dev dependencies.
+# Core package has zero hard runtime deps (stdlib-only fleet).
+# Install: pip install -r requirements-lock.txt
+# Audit:   pip-audit -r requirements-lock.txt
+
+# dev / CI
+pytest==8.4.1
+ruff==0.12.2
+pip-audit==2.9.0
+
+# optional extras (pin when used)
+mcp==1.10.1
+pypdf==5.7.0
+pywebview==5.4

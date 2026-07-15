@@ -18,7 +18,15 @@ nz-startup mcp
 python -m nz_startup mcp
 ```
 
-Wire into Claude Desktop / Cursor / other hosts via `mcp.json` in this repo.
+Wire into Claude Desktop / Cursor / other hosts via the single **`mcp.json`** in this repo root
+(G13: do not maintain a parallel `.mcp.json` — drift risk).
+
+**Paths:** env uses relative `NZ_STARTUP_ROOT=.` and `NZ_STARTUP_MEMORY=./memory`.
+Set absolute paths in your client if it does not resolve cwd to the repo root.
+VS Code `${workspaceFolder}` is **not** expanded by all MCP hosts.
+
+**Annotations:** the entire tool surface is non-destructive (reads + local drafts only).
+Clients may treat tools as `readOnlyHint` / `destructiveHint: false` for auto-approval UX.
 
 ## Tools (allowed)
 

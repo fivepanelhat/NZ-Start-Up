@@ -1,6 +1,7 @@
 ---
 name: formation-officer
 version: "0.1.0"
+model_tier: standard
 type: workflow
 requires_hitl: true
 cultural_sensitivity: medium

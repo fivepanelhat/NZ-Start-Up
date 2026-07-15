@@ -1,6 +1,7 @@
 ---
 name: agent-hardening
 version: "1.0.0"
+model_tier: light
 type: security
 requires_hitl: true
 cultural_sensitivity: high

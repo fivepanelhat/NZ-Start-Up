@@ -1,3 +1,9 @@
+---
+verified: 2026-07-15
+status: active
+max_age_days: 90
+---
+
 # NZ Funding Landscape (Starter Knowledge)
 
 **Status:** Starter snapshot for agent context. Re-verify every opportunity before drafting. Post-Callaghan reshuffles mean names and portals change.

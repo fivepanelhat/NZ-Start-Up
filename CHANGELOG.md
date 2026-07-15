@@ -1,5 +1,34 @@
 # Changelog
 
+## 1.5.0 — 2026-07-15
+
+### Gap analysis ship (G1–G14) — EDA fleet ops layer
+
+Aggressive build against Super Grok gap report. Guardrails were already strong;
+this release adds the operational layer: evals, freshness, telemetry, cadence, tasks.
+
+| Gap | Ship |
+|-----|------|
+| **G1** | Golden behavioural eval harness (`nz-startup eval`, `evals/`, CI) |
+| **G2** | Untrusted-data quarantine on bank CSV + invoice triage + injection corpus |
+| **G3** | HITL default-deny allow-list (`ALLOWED_AUTONOMY_VERBS`) |
+| **G4** | Knowledge `verified:` frontmatter + `scripts/check_knowledge_freshness.py` (90d) |
+| **G5** | `requirements-lock.txt` + `pip-audit` CI step |
+| **G6** | `nz-startup schedule install\|run` — OS timers (Task Scheduler / launchd / systemd) |
+| **G7** | Per-company `tasks.jsonl` + `tasks.md` + CLI |
+| **G8** | Audit telemetry (`model`, tokens, `est_cost_nzd`) + board pack fleet-cost line |
+| **G9** | `model_tier` skill frontmatter + monthly token budget CLI |
+| **G10** | Company `INDEX.md`, compaction ritual, single-writer `.memory.lock` |
+| **G11** | Console session token (localhost + cookie/Bearer) |
+| **G12** | Policy banner stripped of marketing — pure policy tokens |
+| **G13** | Single `mcp.json` (removed drift-prone `.mcp.json`) |
+| **G14** | `nz-startup pack` → versioned skills-pack zip under `dist/` |
+| **G15** | Watch-only (RealMe / A2A) — correctly not automated |
+
+### CLI surface
+- `tasks`, `schedule`, `index`, `eval`, `budget`, `pack`
+- Console `--token` / auto-minted session secret
+
 ## 1.4.0 — 2026-07-15
 
 ### Dual licence & pre-seed IP

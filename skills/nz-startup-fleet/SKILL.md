@@ -1,6 +1,7 @@
 ---
 name: nz-startup-fleet
 version: "0.1.0"
+model_tier: standard
 type: orchestration
 requires_hitl: true
 cultural_sensitivity: high

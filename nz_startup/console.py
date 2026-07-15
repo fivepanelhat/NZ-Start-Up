@@ -1,13 +1,16 @@
 """
-Local Founder Console — localhost-only dashboard (v1.1).
+Local Founder Console — localhost-only dashboard.
 
 Not multi-tenant SaaS. Binds to 127.0.0.1 only.
+G11: optional/required session token so local processes cannot browse company data freely.
 Never sends email, files government forms, or moves money.
 """
 from __future__ import annotations
 
 import html
 import json
+import os
+import secrets
 import threading
 import traceback
 import webbrowser
@@ -18,6 +21,23 @@ from urllib.parse import parse_qs, quote, urlparse
 
 from nz_startup import __version__, board_pack, calendar_ops, export_reminders, grants, memory, pipeline, status, weekly
 from nz_startup.paths import companies_dir, company_dir
+
+# Process-scoped session token (set at run_console); also accepts NZ_STARTUP_CONSOLE_TOKEN env
+_CONSOLE_TOKEN: str = ""
+_COOKIE_NAME = "nz_startup_console"
+
+
+def _expected_token() -> str:
+    return _CONSOLE_TOKEN or os.environ.get("NZ_STARTUP_CONSOLE_TOKEN", "").strip()
+
+
+def _parse_cookies(header: str) -> dict[str, str]:
+    out: dict[str, str] = {}
+    for part in (header or "").split(";"):
+        if "=" in part:
+            k, v = part.split("=", 1)
+            out[k.strip()] = v.strip()
+    return out
 
 
 def _esc(s: Any) -> str:
@@ -327,6 +347,26 @@ def page_help() -> str:
     return _layout("Help", body)
 
 
+def _page_login(error: str = "") -> str:
+    err = f'<p class="gap">{_esc(error)}</p>' if error else ""
+    body = f"""
+    <div class="card">
+      <h1>Console session</h1>
+      <p class="muted">Localhost only · session token required (G11)</p>
+      {err}
+      <form method="POST" action="/login">
+        <label>Session token<br/>
+          <input name="token" type="password" autocomplete="current-password"
+                 style="width:100%;max-width:28rem;padding:.5rem;margin:.5rem 0;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#e5e7eb"/>
+        </label>
+        <div><button type="submit">Unlock</button></div>
+      </form>
+      <p class="muted" style="margin-top:1rem">Token printed when the console starts, or set <code>NZ_STARTUP_CONSOLE_TOKEN</code>.</p>
+    </div>
+    """
+    return _layout("Login", body)
+
+
 class ConsoleHandler(BaseHTTPRequestHandler):
     server_version = f"NZStartupConsole/{__version__}"
 
@@ -334,7 +374,33 @@ class ConsoleHandler(BaseHTTPRequestHandler):
         sys_stderr = __import__("sys").stderr
         sys_stderr.write("%s - %s\n" % (self.address_string(), fmt % args))
 
-    def _send(self, code: int, body: str, content_type: str = "text/html; charset=utf-8") -> None:
+    def _authorized(self) -> bool:
+        expected = _expected_token()
+        if not expected:
+            return True  # auth disabled only if no token configured (should not happen at runtime)
+        auth = self.headers.get("Authorization") or ""
+        if auth.lower().startswith("bearer ") and auth[7:].strip() == expected:
+            return True
+        if (self.headers.get("X-NZ-Startup-Token") or "").strip() == expected:
+            return True
+        cookies = _parse_cookies(self.headers.get("Cookie") or "")
+        if cookies.get(_COOKIE_NAME) == expected:
+            return True
+        # one-shot query param for first open from CLI
+        parsed = urlparse(self.path)
+        qs = parse_qs(parsed.query)
+        if (qs.get("token") or [""])[0] == expected:
+            return True
+        return False
+
+    def _send(
+        self,
+        code: int,
+        body: str,
+        content_type: str = "text/html; charset=utf-8",
+        *,
+        set_cookie: str | None = None,
+    ) -> None:
         data = body.encode("utf-8")
         self.send_response(code)
         self.send_header("Content-Type", content_type)
@@ -343,12 +409,22 @@ class ConsoleHandler(BaseHTTPRequestHandler):
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("X-Frame-Options", "DENY")
+        if set_cookie:
+            self.send_header(
+                "Set-Cookie",
+                f"{_COOKIE_NAME}={set_cookie}; Path=/; HttpOnly; SameSite=Strict",
+            )
         self.end_headers()
         self.wfile.write(data)
 
-    def _redirect(self, location: str) -> None:
+    def _redirect(self, location: str, *, set_cookie: str | None = None) -> None:
         self.send_response(303)
         self.send_header("Location", location)
+        if set_cookie:
+            self.send_header(
+                "Set-Cookie",
+                f"{_COOKIE_NAME}={set_cookie}; Path=/; HttpOnly; SameSite=Strict",
+            )
         self.end_headers()
 
     def do_GET(self) -> None:  # noqa: N802
@@ -357,30 +433,49 @@ class ConsoleHandler(BaseHTTPRequestHandler):
         qs = parse_qs(parsed.query)
         flash = (qs.get("flash") or [""])[0]
         try:
+            if path == "/login":
+                self._send(200, _page_login())
+                return
+            if path == "/healthz":
+                self._send(200, json.dumps({"ok": True, "version": __version__}), "application/json")
+                return
+            # Auto-set cookie if token query present and valid
+            expected = _expected_token()
+            qtok = (qs.get("token") or [""])[0]
+            set_ck = qtok if expected and qtok == expected else None
+
+            if not self._authorized():
+                if path.startswith("/api/"):
+                    self._send(401, json.dumps({"error": "unauthorized"}), "application/json")
+                    return
+                self._send(401, _page_login("Session required"))
+                return
+
             if path == "/":
-                self._send(200, page_home(flash))
+                self._send(200, page_home(flash), set_cookie=set_ck)
                 return
             if path == "/help":
-                self._send(200, page_help())
+                self._send(200, page_help(), set_cookie=set_ck)
                 return
             if path == "/api/companies":
                 self._send(
                     200,
                     json.dumps({"companies": _list_companies(), "version": __version__}),
                     "application/json",
+                    set_cookie=set_ck,
                 )
                 return
             if path.startswith("/api/c/") and path.endswith("/status"):
                 cid = path.split("/")[3]
                 st = status.collect_status(cid)
-                self._send(200, json.dumps(st, default=str), "application/json")
+                self._send(200, json.dumps(st, default=str), "application/json", set_cookie=set_ck)
                 return
             if path.startswith("/c/"):
                 parts = path.split("/")
                 if len(parts) >= 3 and parts[2]:
                     company_id = parts[2]
                     if len(parts) == 3:
-                        self._send(200, page_company(company_id, flash))
+                        self._send(200, page_company(company_id, flash), set_cookie=set_ck)
                         return
             self._send(404, _layout("404", "<div class='card'><h1>Not found</h1></div>"))
         except Exception:  # noqa: BLE001
@@ -396,6 +491,22 @@ class ConsoleHandler(BaseHTTPRequestHandler):
         parsed = urlparse(self.path)
         path = parsed.path.rstrip("/") or "/"
         try:
+            if path == "/login":
+                length = int(self.headers.get("Content-Length") or 0)
+                raw = self.rfile.read(length).decode("utf-8", errors="replace") if length else ""
+                form = parse_qs(raw)
+                token = (form.get("token") or [""])[0].strip()
+                expected = _expected_token()
+                if expected and token == expected:
+                    self._redirect("/?flash=Session+unlocked", set_cookie=token)
+                    return
+                self._send(401, _page_login("Invalid token"))
+                return
+
+            if not self._authorized():
+                self._send(401, _page_login("Session required"))
+                return
+
             parts = path.split("/")
             if len(parts) == 4 and parts[1] == "c":
                 company_id = parts[2]
@@ -434,18 +545,25 @@ def run_console(
     port: int = 8765,
     *,
     open_browser: bool = False,
+    token: str | None = None,
 ) -> None:
+    global _CONSOLE_TOKEN
     if host not in ("127.0.0.1", "localhost", "::1"):
         raise ValueError(
             "Console must bind to localhost only (127.0.0.1). "
             "Refusing non-local bind — this is not a multi-tenant server."
         )
+    # G11 — always mint a session token unless env already set
+    _CONSOLE_TOKEN = (token or os.environ.get("NZ_STARTUP_CONSOLE_TOKEN") or "").strip()
+    if not _CONSOLE_TOKEN:
+        _CONSOLE_TOKEN = secrets.token_urlsafe(24)
     companies_dir().mkdir(parents=True, exist_ok=True)
     httpd = ThreadingHTTPServer((host, port), ConsoleHandler)
-    url = f"http://{host}:{port}/"
+    url = f"http://{host}:{port}/?token={_CONSOLE_TOKEN}"
     print(f"NZ Start-Up Console v{__version__}")
-    print(f"Open {url}  (localhost only)")
-    print("Ctrl+C to stop. HITL: no send/file/pay from this UI.")
+    print(f"Open {url}")
+    print(f"Session token: {_CONSOLE_TOKEN}")
+    print("Localhost only · Ctrl+C to stop · HITL: no send/file/pay from this UI.")
     if open_browser:
         threading.Timer(0.6, lambda: webbrowser.open(url)).start()
     try:
@@ -455,18 +573,23 @@ def run_console(
         httpd.server_close()
 
 
-def run_desktop(port: int = 8765) -> None:
+def run_desktop(port: int = 8765, *, token: str | None = None) -> None:
     """
     Desktop-lite: prefer pywebview window; fall back to browser console.
-    Still localhost-only.
+    Still localhost-only + session token.
     """
+    global _CONSOLE_TOKEN
     host = "127.0.0.1"
+    _CONSOLE_TOKEN = (token or os.environ.get("NZ_STARTUP_CONSOLE_TOKEN") or "").strip()
+    if not _CONSOLE_TOKEN:
+        _CONSOLE_TOKEN = secrets.token_urlsafe(24)
     companies_dir().mkdir(parents=True, exist_ok=True)
     httpd = ThreadingHTTPServer((host, port), ConsoleHandler)
-    url = f"http://{host}:{port}/"
+    url = f"http://{host}:{port}/?token={_CONSOLE_TOKEN}"
     thread = threading.Thread(target=httpd.serve_forever, daemon=True)
     thread.start()
     print(f"NZ Start-Up Desktop-lite v{__version__} → {url}")
+    print(f"Session token: {_CONSOLE_TOKEN}")
     try:
         import webview  # type: ignore
 

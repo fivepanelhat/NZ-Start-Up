@@ -13,11 +13,14 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 from nz_startup import status as status_mod
 from nz_startup import weekly
-from nz_startup.audit import append_audit
+from nz_startup.audit import append_audit, sum_costs
 from nz_startup.memory import ensure_exists
+from nz_startup.memory_index import write_index
 
 BOARD_GLOBS = [
+    "INDEX.md",
     "profile.md",
+    "tasks.md",
     "pipeline.md",
     "pipeline.csv",
     "calendar.md",
@@ -61,6 +64,8 @@ def create_board_pack(
         status_mod.write_status(company_id)
     if refresh_weekly:
         weekly.generate_weekly_review(company_id)
+    write_index(company_id)
+    fleet_cost = sum_costs(company)
 
     files = _iter_files(company)
     out_dir = company / "board-packs"
@@ -77,11 +82,13 @@ def create_board_pack(
         "hitl": "For human discussion only. Agent does not email this pack.",
         "file_count": len(files),
         "files": [str(p.relative_to(company)).replace("\\", "/") for p in files],
+        "fleet_cost": fleet_cost,
         "suggested_agenda": [
             "Pipeline vs plan (pipeline.md / status)",
             "Cash / runway narrative (runway.md — figures human-owned)",
             "Compliance deadlines (calendar / digest)",
             "RDTI log hygiene",
+            f"Fleet cost (heuristic NZD): ${fleet_cost.get('est_cost_nzd')} across {fleet_cost.get('entries')} metered events",
             "Top 3 founder decisions this week",
         ],
     }
@@ -122,6 +129,7 @@ def _readme(manifest: dict) -> str:
         f"- Company: `{manifest['company_id']}`",
         f"- Generated: {manifest['generated_at']}",
         f"- Files: {manifest['file_count']}",
+        f"- Est. fleet cost (NZD heuristic): **${(manifest.get('fleet_cost') or {}).get('est_cost_nzd', 0)}**",
         "",
         "## Purpose",
         "",

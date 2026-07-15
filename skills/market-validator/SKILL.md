@@ -1,6 +1,7 @@
 ---
 name: market-validator
 version: "0.1.0"
+model_tier: standard
 type: workflow
 requires_hitl: false
 cultural_sensitivity: low

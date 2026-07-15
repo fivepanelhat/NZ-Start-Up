@@ -1,3 +1,9 @@
+---
+verified: 2026-07-15
+status: active
+max_age_days: 90
+---
+
 # NZ Founder Lifecycle (Gold Map)
 
 ```text

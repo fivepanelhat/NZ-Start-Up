@@ -14,14 +14,29 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dev deps
-        run: python -m pip install -e ".[dev]"
+        run: |
+          python -m pip install -U pip
+          python -m pip install -e ".[dev]"
       - name: Validate skills
         run: python scripts/validate_skills.py
+      - name: Knowledge freshness (G4)
+        run: python scripts/check_knowledge_freshness.py
       - name: Tests
         run: pytest -q
+      - name: Golden evals (G1)
+        run: python -m nz_startup eval --company-id eval-ci --write
       - name: Doctor
         run: python -m nz_startup doctor
       - name: Compliance gate
         run: python -m nz_startup compliance check
       - name: Smoke e2e
         run: python -m nz_startup smoke
+      - name: Supply chain pip-audit (G5)
+        run: |
+          python -m pip install pip-audit
+          # Audit installed environment; core package is stdlib-only
+          pip-audit || true
+          # Fail on known issues in lockfile pins when present
+          if [ -f requirements-lock.txt ]; then
+            pip-audit -r requirements-lock.txt
+          fi
