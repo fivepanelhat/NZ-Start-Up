@@ -1,4 +1,4 @@
-# NZ Start-Up in a Box — v1.6.1
+# NZ Start-Up in a Box — v1.8.0
 
 **Coastal Alpine Tech Limited — Pre-seed** · Taranaki · Aotearoa New Zealand  
 **R&D since 8 August 2025** · **Founded 8 August 2026**  

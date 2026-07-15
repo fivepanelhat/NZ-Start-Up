@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.8.0 — 2026-07-15
+
+### Seed GTM — market-fit matrices, enterprise markets, investor pack
+
+Built on Claude's v1.7.0 market intelligence + investor R&D dossier.
+
+| Item | Ship |
+|------|------|
+| **Market-fit matrix** | `docs/MARKET_FIT_MATRIX.md` — 12 segments scored (S1–S12), enterprise products A–G |
+| **Portfolio matrix** | `docs/PORTFOLIO_MARKET_FIT.md` — all CAT public repos scored for seed narrative |
+| **Seed pack** | `docs/SEED_INVESTOR_PACK.md` — diligence-ready narrative + data-room index |
+| **Skills** | `enterprise-adoption-officer`, `investor-readiness-clerk` (15 skills total) |
+| **CLI** | `nz-startup market matrix\|score\|enterprise\|portfolio` · `investor data-room\|pack` |
+| **Runtime** | `nz_startup/market_fit.py` deterministic scoring |
+
+**GTM priority:** S2 EDA/PowerUp → S1 founders → S3 agritech → S7 climate / S4 SaaS.
+
 ## 1.7.0 — 2026-07-15
 
 ### Market intelligence layer (reports 10–11)

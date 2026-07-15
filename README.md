@@ -11,7 +11,7 @@
 [![HITL](https://img.shields.io/badge/HITL-Draft%2FPrepare%20only-dc2626?style=flat-square)](./COMPLIANCE.md)
 [![Te Mana Raraunga](https://img.shields.io/badge/Te%20Mana%20Raraunga-Aligned-0f766e?style=flat-square)](./compliance/te-mana-raraunga.md)
 [![CAT Standards](https://img.shields.io/badge/CAT-Gold%20%7C%20Diamond%20%7C%20Platinum-eab308?style=flat-square)](./docs/STANDARDS.md)
-[![Version](https://img.shields.io/badge/Version-1.7.0-2563eb?style=flat-square)](./CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-1.8.0-2563eb?style=flat-square)](./CHANGELOG.md)
 [![Hybrid](https://img.shields.io/badge/Hybrid-Edge%20%2B%20Multi--model-0f766e?style=flat-square)](./ABOUT.md)
 
 [![Grok 4.5 Build](https://img.shields.io/badge/Grok%204.5-Build-111827?style=flat-square&logo=x&logoColor=white)](https://x.ai)
@@ -45,7 +45,8 @@ Formation through funding · hard legal ceilings · CAT Gold / Diamond / Platinu
 | **Māori development** | Te Mana Raraunga–aligned · no cultural extraction · HITL for cultural content |
 
 Full story: [`ABOUT.md`](./ABOUT.md) · Dual licence: [`docs/DUAL_LICENCE.md`](./docs/DUAL_LICENCE.md)  
-**Investor R&D + market dossier:** [`docs/INVESTOR_RD_AND_MARKET_REFERENCE.md`](./docs/INVESTOR_RD_AND_MARKET_REFERENCE.md) (8 Aug 2025 claim, Drive evidence, Taranaki/NZ employment pathways)
+**Investor R&D + market dossier:** [`docs/INVESTOR_RD_AND_MARKET_REFERENCE.md`](./docs/INVESTOR_RD_AND_MARKET_REFERENCE.md) (8 Aug 2025 claim, Drive evidence, Taranaki/NZ employment pathways)  
+**Market fit matrix:** [`docs/MARKET_FIT_MATRIX.md`](./docs/MARKET_FIT_MATRIX.md) · **Portfolio:** [`docs/PORTFOLIO_MARKET_FIT.md`](./docs/PORTFOLIO_MARKET_FIT.md) · **Seed pack:** [`docs/SEED_INVESTOR_PACK.md`](./docs/SEED_INVESTOR_PACK.md)
 **Market opportunity (verified 2026-07-15):** [`docs/MARKET.md`](./docs/MARKET.md) — honest NZ sizing, ranked ICP, adoption pathways, competitive white space
 
 ## What you get

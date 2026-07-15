@@ -25,6 +25,8 @@ DEFAULT_SKILL_TIERS: dict[str, str] = {
     "agent-hardening": "light",
     "nz-startup-fleet": "standard",
     "cat-architectural-standards": "light",
+    "enterprise-adoption-officer": "standard",
+    "investor-readiness-clerk": "standard",
 }
 
 DEFAULT_MONTHLY_TOKEN_BUDGET = 2_000_000

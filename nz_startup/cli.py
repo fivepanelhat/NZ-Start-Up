@@ -31,6 +31,7 @@ from nz_startup import (
     model_routing,
     nzbn,
     onboard,
+    market_fit,
     packaging,
     partner_report,
     pilot_offer,
@@ -656,6 +657,95 @@ def cmd_eval(args: argparse.Namespace) -> int:
     else:
         print(evals.format_eval_markdown(report))
     return 0 if report.get("ok") else 1
+
+
+def cmd_market(args: argparse.Namespace) -> int:
+    if args.market_cmd == "matrix":
+        if args.json:
+            print(json.dumps(market_fit.matrix_table(), indent=2))
+        else:
+            print(market_fit.format_matrix_markdown())
+            print("## GTM priority (90 days)\n")
+            for i, line in enumerate(market_fit.gtm_priority(), 1):
+                print(f"{i}. {line}")
+        return 0
+    if args.market_cmd == "score":
+        row = market_fit.score_segment(args.segment)
+        if args.json:
+            print(json.dumps(row, indent=2))
+        else:
+            print(f"# {row['id']} — {row['name']}")
+            print(f"Total: **{row['total']}/{row['max']}** · Decision: {row['decision']} · Band: {row['band']}")
+            print(f"Entry: {row['entry']}")
+            print(f"Skills: {', '.join(row.get('skills') or [])}")
+            print("Scores:", json.dumps(row["scores"]))
+        return 0
+    if args.market_cmd == "enterprise":
+        if args.json:
+            print(json.dumps(market_fit.ENTERPRISE_PRODUCTS, indent=2))
+        else:
+            print(market_fit.format_enterprise_markdown())
+        return 0
+    if args.market_cmd == "portfolio":
+        if args.json:
+            print(json.dumps(market_fit.PORTFOLIO, indent=2))
+        else:
+            print(market_fit.format_portfolio_markdown())
+        return 0
+    return 2
+
+
+def cmd_investor(args: argparse.Namespace) -> int:
+    if args.investor_cmd == "data-room":
+        from datetime import date
+
+        company_id = args.company_id
+        base = memory.ensure_exists(company_id)
+        out_dir = base / "commercial"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        path = out_dir / "data-room-index.md"
+        lines = [
+            f"# Data room index — `{company_id}`",
+            "",
+            f"Generated: {date.today().isoformat()} · **DRAFT — NOT AN OFFER OF SECURITIES**",
+            "",
+            "Fill gaps with founder evidence. Agents must not invent LOIs or revenue.",
+            "",
+            "| # | Artefact | Path / command | Status |",
+            "|---|----------|----------------|--------|",
+            "| 1 | One-pager / seed pack | `docs/SEED_INVESTOR_PACK.md` | LINK |",
+            "| 2 | Market opportunity | `docs/MARKET.md` | LINK |",
+            "| 3 | Market-fit matrix | `docs/MARKET_FIT_MATRIX.md` · `nz-startup market matrix` | LINK |",
+            "| 4 | Portfolio fit | `docs/PORTFOLIO_MARKET_FIT.md` | LINK |",
+            "| 5 | R&D chronology (Aug 2025+) | `docs/INVESTOR_RD_AND_MARKET_REFERENCE.md` | LINK |",
+            "| 6 | VT PowerUp approach | `docs/VT_POWERUP_APPROACH.md` | DRAFT_NOT_SENT |",
+            "| 7 | Dual licence | `LICENSE` + `LICENSE-COMMERCIAL.md` | LINK |",
+            "| 8 | Compliance / standards | `compliance/standards-mapping.md` · `nz-startup compliance check` | LINK |",
+            "| 9 | Security policy | `SECURITY.md` | LINK |",
+            "| 10 | Architecture | `docs/ARCHITECTURE.md` | LINK |",
+            "| 11 | Product demo | `nz-startup demo run` / smoke | RUN |",
+            "| 12 | Cap table | *founder provides* | NEEDS_EVIDENCE |",
+            "| 13 | Financial snapshot | *founder provides* | NEEDS_EVIDENCE |",
+            "| 14 | Pilot LOIs | `commercial/pilots/` | NEEDS_EVIDENCE |",
+            "| 15 | RDTI log sample | `rdti-log.csv` | CHECK |",
+            "| 16 | Team / founder bio | `ABOUT.md` | LINK |",
+            "| 17 | Risks | See SEED_INVESTOR_PACK §6 | LINK |",
+            "",
+            "## HITL",
+            "",
+            "Human verifies every row before sharing externally.",
+            "",
+        ]
+        path.write_text("\n".join(lines), encoding="utf-8", newline="\n")
+        print(path)
+        return 0
+    if args.investor_cmd == "pack":
+        from nz_startup.paths import repo_root
+
+        p = repo_root() / "docs" / "SEED_INVESTOR_PACK.md"
+        print(p.read_text(encoding="utf-8") if p.is_file() else "missing SEED_INVESTOR_PACK.md")
+        return 0
+    return 2
 
 
 def cmd_budget(args: argparse.Namespace) -> int:
@@ -1310,6 +1400,32 @@ def build_parser() -> argparse.ArgumentParser:
         help="Live judge provider: rubric (default) or future openai|xai",
     )
     ev.set_defaults(func=cmd_eval)
+
+    # Market-fit matrix (seed GTM)
+    mk = sub.add_parser("market", help="Market-fit matrix & enterprise adoption products")
+    mk_sub = mk.add_subparsers(dest="market_cmd", required=True)
+    mk_mx = mk_sub.add_parser("matrix", help="Print ranked segment matrix")
+    mk_mx.add_argument("--json", action="store_true")
+    mk_mx.set_defaults(func=cmd_market)
+    mk_sc = mk_sub.add_parser("score", help="Score one segment S1–S12")
+    mk_sc.add_argument("--segment", required=True, help="e.g. S2")
+    mk_sc.add_argument("--json", action="store_true")
+    mk_sc.set_defaults(func=cmd_market)
+    mk_en = mk_sub.add_parser("enterprise", help="Enterprise adoption products A–G")
+    mk_en.add_argument("--json", action="store_true")
+    mk_en.set_defaults(func=cmd_market)
+    mk_pf = mk_sub.add_parser("portfolio", help="CAT portfolio repo fit scores")
+    mk_pf.add_argument("--json", action="store_true")
+    mk_pf.set_defaults(func=cmd_market)
+
+    # Investor readiness
+    inv = sub.add_parser("investor", help="Seed data-room index & pack (HITL)")
+    inv_sub = inv.add_subparsers(dest="investor_cmd", required=True)
+    inv_dr = inv_sub.add_parser("data-room", help="Write commercial/data-room-index.md")
+    inv_dr.add_argument("company_id")
+    inv_dr.set_defaults(func=cmd_investor)
+    inv_pk = inv_sub.add_parser("pack", help="Print SEED_INVESTOR_PACK.md")
+    inv_pk.set_defaults(func=cmd_investor)
 
     # G9/T6 budget / routing
     bg = sub.add_parser("budget", help="Model tier routing + monthly token budget")

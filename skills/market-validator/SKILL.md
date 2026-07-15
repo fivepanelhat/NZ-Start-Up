@@ -45,3 +45,6 @@ Include confidence (high/medium/low) per major claim.
 - `knowledge/nz-market-stats.md` — sizing, employee bands, segment demand
 - `knowledge/agentic-ecosystem-nz.md` — NZ agentic competitor / partner map
 - `docs/MARKET.md` — investor-facing synthesis (human-readable)
+- `docs/MARKET_FIT_MATRIX.md` — segment scores S1–S12 + enterprise products A–G
+- `docs/PORTFOLIO_MARKET_FIT.md` — full CAT portfolio scores
+- CLI: `nz-startup market matrix` · `nz-startup market score --segment S2`
