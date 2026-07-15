@@ -8,12 +8,12 @@
 [![HITL](https://img.shields.io/badge/HITL-Draft%2FPrepare%20only-dc2626)](./.github/agent-fleet/AGENTS.md)
 [![Te Mana Raraunga](https://img.shields.io/badge/Te%20Mana%20Raraunga-Aligned-0f766e)](https://github.com/fivepanelhat/fivepanelhat)
 
-**Part of the [Kiwi Edge AI Stack](https://github.com/fivepanelhat/fivepanelhat)** · Founder OS: [NZ-Start-Up](https://github.com/fivepanelhat/NZ-Start-Up) · Agent policy: [`.github/agent-fleet/`](./.github/agent-fleet/)
+**Part of the [Kiwi Edge AI Stack](https://github.com/fivepanelhat/fivepanelhat)** | Founder OS: [NZ-Start-Up](https://github.com/fivepanelhat/NZ-Start-Up) | Agent policy: [`.github/agent-fleet/`](./.github/agent-fleet/)
 
-> Sovereign hybrid edge AI for NZ farms & founders — local-first + multi-model, Te Mana Raraunga aligned — collaborating with Venture Taranaki, startups.com investors & Kotahitanga Investment Fund (HITL + cultural advisory for formal approaches).
+> Sovereign hybrid edge AI for NZ farms and founders - local-first + multi-model, Te Mana Raraunga aligned - collaborating with Venture Taranaki, startups.com investors and Kotahitanga Investment Fund (HITL + cultural advisory for formal approaches).
 
 **Agents inform, draft, prepare, monitor, and remind. Humans advise, sign, file, send, and pay.**  
-Anti-hallucination policy: [`.github/agent-fleet/anti-hallucination.md`](./.github/agent-fleet/anti-hallucination.md) · Congruence: [`CAT_CONGRUENCE.md`](./CAT_CONGRUENCE.md)
+Anti-hallucination policy: [`.github/agent-fleet/anti-hallucination.md`](./.github/agent-fleet/anti-hallucination.md) | Congruence: [`CAT_CONGRUENCE.md`](./CAT_CONGRUENCE.md)
 <!-- END CAT_CONGRUENCE_SNIPPET -->
 
 
@@ -37,91 +37,91 @@ Anti-hallucination policy: [`.github/agent-fleet/anti-hallucination.md`](./.gith
 [![Gemini 3.5 Flash](https://img.shields.io/badge/Google%20Gemini-3.5%20Flash-4285F4?style=flat-square&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
 [![Aether](https://img.shields.io/badge/Built%20on-Aether-14b8a6?style=flat-square)](https://github.com/fivepanelhat/Aether)
 
-**Local founder OS + white-label EDA kit for Aotearoa New Zealand**  
-Formation through funding Â· hard legal ceilings Â· CAT Gold / Diamond / Platinum Â· **Coastal Alpine Tech pre-seed**  
-**Hybrid:** edge (RPi 5 + Hailo target) + multi-model fleet Â· agents draft/prepare Â· humans file/send/pay/sign
+**Local founder OS + white-label EDA kit for Aotearoa New Zealand**
+Formation through funding | hard legal ceilings | CAT Gold / Diamond / Platinum | **Coastal Alpine Tech pre-seed**
+**Hybrid:** edge (RPi 5 + Hailo target) + multi-model fleet | agents draft/prepare | humans file/send/pay/sign
 
-> **Investor one-liner:** Coastal Alpine Tech is building the sovereign hybrid edge-AI stack for Aotearoaâ€™s primary industries and founders â€” local-first RPi 5 + Hailo nodes, multi-model fleets (Grok/Claude/Gemini), Te Mana Raraunga data sovereignty, and white-label EDA tools â€” actively seeking collaboration with **Venture Taranaki**, **startups.com investors**, and the **Kotahitanga Investment Fund** to scale intergenerational MÄori and regional economic outcomes.
+> **Investor one-liner:** Coastal Alpine Tech is building the sovereign hybrid edge-AI stack for Aotearoa's primary industries and founders  local-first RPi 5 + Hailo nodes, multi-model fleets (Grok/Claude/Gemini), Te Mana Raraunga data sovereignty, and white-label EDA tools  actively seeking collaboration with **Venture Taranaki**, **startups.com investors**, and the **Kotahitanga Investment Fund** to scale intergenerational MÄori and regional economic outcomes.
 
-> **One download.** Skills + NZ knowledge + templates + HITL + localhost console.  
-> **IP:** Dual licence (proprietary default + commercial track) Â· protected under **NZ copyright law**.  
-> **Whenua:** Taranaki Â· Wayne Roberts Â· whÄnau with **six generations in agriculture**.  
-> **Not open source.** Production / white-label requires a commercial licence.  
+> **One download.** Skills + NZ knowledge + templates + HITL + localhost console.
+> **IP:** Dual licence (proprietary default + commercial track) | protected under **NZ copyright law**.
+> **Whenua:** Taranaki | Wayne Roberts | whÄnau with **six generations in agriculture**.
+> **Not open source.** Production / white-label requires a commercial licence.
 > **Collaboration:** Open to Venture Taranaki, startups.com investors, and Kotahitanga Investment Fund (cultural HITL for formal approaches).
 
 ## Coastal Alpine Tech (pre-seed)
 
-| | |
-|--|--|
-| **Company** | Coastal Alpine Tech Limited |
-| **Stage** | Pre-seed |
-| **R&D started** | 8 August 2025 |
-| **Founding date** | 8 August 2026 |
-| **Region** | Taranaki, Aotearoa New Zealand |
-| **Founding context** | Wayne Roberts Â· Taranaki whÄnau Â· 6 generations in agriculture |
-| **MÄori development** | Te Mana Raraungaâ€“aligned Â· no cultural extraction Â· HITL for cultural content |
+ |  |  |
+ | -- | -- |
+ | **Company** | Coastal Alpine Tech Limited |
+ | **Stage** | Pre-seed |
+ | **R&D started** | 8 August 2025 |
+ | **Founding date** | 8 August 2026 |
+ | **Region** | Taranaki, Aotearoa New Zealand |
+ | **Founding context** | Wayne Roberts | Taranaki whÄnau | 6 generations in agriculture |
+ | **MÄori development** | Te Mana Raraungaaligned | no cultural extraction | HITL for cultural content |
 
-Full story: [`ABOUT.md`](./ABOUT.md) Â· Dual licence: [`docs/DUAL_LICENCE.md`](./docs/DUAL_LICENCE.md)  
-**Investor R&D + market dossier:** [`docs/INVESTOR_RD_AND_MARKET_REFERENCE.md`](./docs/INVESTOR_RD_AND_MARKET_REFERENCE.md) (8 Aug 2025 claim, Drive evidence, Taranaki/NZ employment pathways)  
-**Market fit matrix:** [`docs/MARKET_FIT_MATRIX.md`](./docs/MARKET_FIT_MATRIX.md) Â· **Portfolio:** [`docs/PORTFOLIO_MARKET_FIT.md`](./docs/PORTFOLIO_MARKET_FIT.md) Â· **Seed pack:** [`docs/SEED_INVESTOR_PACK.md`](./docs/SEED_INVESTOR_PACK.md)
-**Market opportunity (verified 2026-07-15):** [`docs/MARKET.md`](./docs/MARKET.md) â€” honest NZ sizing, ranked ICP, adoption pathways, competitive white space
+Full story: [`ABOUT.md`](./ABOUT.md) | Dual licence: [`docs/DUAL_LICENCE.md`](./docs/DUAL_LICENCE.md)
+**Investor R&D + market dossier:** [`docs/INVESTOR_RD_AND_MARKET_REFERENCE.md`](./docs/INVESTOR_RD_AND_MARKET_REFERENCE.md) (8 Aug 2025 claim, Drive evidence, Taranaki/NZ employment pathways)
+**Market fit matrix:** [`docs/MARKET_FIT_MATRIX.md`](./docs/MARKET_FIT_MATRIX.md) | **Portfolio:** [`docs/PORTFOLIO_MARKET_FIT.md`](./docs/PORTFOLIO_MARKET_FIT.md) | **Seed pack:** [`docs/SEED_INVESTOR_PACK.md`](./docs/SEED_INVESTOR_PACK.md)
+**Market opportunity (verified 2026-07-15):** [`docs/MARKET.md`](./docs/MARKET.md)  honest NZ sizing, ranked ICP, adoption pathways, competitive white space
 
 ## What you get
 
-A **small orchestrator + skills-heavy specialist fleet** (not 30 fake â€œautonomous employeesâ€):
+A **small orchestrator + skills-heavy specialist fleet** (not 30 fake "autonomous employees"):
 
-| # | Digital employee | Role | Autonomy ceiling |
-|---|------------------|------|------------------|
-| 1 | Formation Officer | Name, constitution pack, IRD/GST prep, NZBN | Prepares; founder files via RealMe |
-| 2 | Compliance Registrar | Annual returns, Privacy Act, H&S, employment checklists | Drafts + calendar; never self-certifies |
-| 3 | Grants & RDTI Clerk | Grant radar, eligibility, R&D activity logging | High autonomy on logs; human submits apps |
-| 4 | Market Validator | Sizing, comps, interview guides | Research autonomous; sources + confidence |
-| 5 | GTM / Pipeline Rep | ICP, outreach drafts, CRM hygiene, proposals | **Sends nothing** without approval (UEM Act) |
-| 6 | Content & Comms Officer | One-asset-five-outputs engine | Schedules only pre-approved content |
-| 7 | Finance Clerk | Bookkeeping triage, GST prep, runway alerts | Never moves money; not a tax agent |
-| 8 | Funding Analyst | Investor targeting, data room, SAFE comparison | Prep only; FMCA advice boundary |
-| 9 | Legal Document Assistant | NDA, pilot, ToS, employment drafts | Watermarked â€œnot legal adviceâ€ |
-| 10 | Board / Chief-of-Staff | Weekly ops review, routing, company memory | Escalates; never decides |
+ | # | Digital employee | Role | Autonomy ceiling |
+ | --- | ------------------ | ------ | ------------------ |
+ | 1 | Formation Officer | Name, constitution pack, IRD/GST prep, NZBN | Prepares; founder files via RealMe |
+ | 2 | Compliance Registrar | Annual returns, Privacy Act, H&S, employment checklists | Drafts + calendar; never self-certifies |
+ | 3 | Grants & RDTI Clerk | Grant radar, eligibility, R&D activity logging | High autonomy on logs; human submits apps |
+ | 4 | Market Validator | Sizing, comps, interview guides | Research autonomous; sources + confidence |
+ | 5 | GTM / Pipeline Rep | ICP, outreach drafts, CRM hygiene, proposals | **Sends nothing** without approval (UEM Act) |
+ | 6 | Content & Comms Officer | One-asset-five-outputs engine | Schedules only pre-approved content |
+ | 7 | Finance Clerk | Bookkeeping triage, GST prep, runway alerts | Never moves money; not a tax agent |
+ | 8 | Funding Analyst | Investor targeting, data room, SAFE comparison | Prep only; FMCA advice boundary |
+ | 9 | Legal Document Assistant | NDA, pilot, ToS, employment drafts | Watermarked "not legal advice" |
+ | 10 | Board / Chief-of-Staff | Weekly ops review, routing, company memory | Escalates; never decides |
 
 Plus **`agent-hardening`** and **`cat-architectural-standards`** governance skills.
 
-The **NZ moat** is jurisdiction depth (Companies Office, IRD, RDTI, regional grants, Te Mana Raraunga) â€” not agent novelty.
+The **NZ moat** is jurisdiction depth (Companies Office, IRD, RDTI, regional grants, Te Mana Raraunga)  not agent novelty.
 
 ## Dual licence (IP protection)
 
-| Track | File | Use |
-|-------|------|-----|
-| **A â€” Default** | [`LICENSE`](./LICENSE) | Proprietary evaluation only |
-| **B â€” Commercial** | [`LICENSE-COMMERCIAL.md`](./LICENSE-COMMERCIAL.md) | Production Â· white-label Â· cohort (by agreement) |
+ | Track | File | Use |
+ | ------- | ------ | ----- |
+ | **A  Default** | [`LICENSE`](./LICENSE) | Proprietary evaluation only |
+ | **B  Commercial** | [`LICENSE-COMMERCIAL.md`](./LICENSE-COMMERCIAL.md) | Production | white-label | cohort (by agreement) |
 
-Copyright is automatic under the **Copyright Act 1994 (NZ)**. Dual licence lets Coastal Alpine Tech keep ownership while selling commercial rights at pre-seed. **Not legal advice** â€” see `docs/DUAL_LICENCE.md`.
+Copyright is automatic under the **Copyright Act 1994 (NZ)**. Dual licence lets Coastal Alpine Tech keep ownership while selling commercial rights at pre-seed. **Not legal advice**  see `docs/DUAL_LICENCE.md`.
 
 ## Standards (mandatory)
 
-| Tier | Name | Meaning |
-|------|------|---------|
-| **Gold** | Workflow-native design | Fleet maps the real NZ founder lifecycle |
-| **Diamond** | Enterprise-grade foundation | CI, hardening, compliance gate, sandbox |
-| **Platinum** | Self-improving intelligence | Memory + RDTI flywheel + weekly board |
+ | Tier | Name | Meaning |
+ | ------ | ------ | --------- |
+ | **Gold** | Workflow-native design | Fleet maps the real NZ founder lifecycle |
+ | **Diamond** | Enterprise-grade foundation | CI, hardening, compliance gate, sandbox |
+ | **Platinum** | Self-improving intelligence | Memory + RDTI flywheel + weekly board |
 
 Load `agent-hardening` then `cat-architectural-standards` before material work.
 
 ## Hard boundaries
 
-Agents may **inform, draft, prepare, monitor, and remind**.  
+Agents may **inform, draft, prepare, monitor, and remind**.
 Humans must **advise, sign, file, send, and pay**.
 
-- No legal advice Â· no regulated financial advice Â· no tax-agent acts  
-- No autonomous cold email (UEM Act 2007)  
-- No Companies Office / IRD filing except founder-authenticated action  
-- Privacy Act 2020 + Te Mana Raraunga for data  
-- Visible audit trail for agent actions  
+- No legal advice | no regulated financial advice | no tax-agent acts
+- No autonomous cold email (UEM Act 2007)
+- No Companies Office / IRD filing except founder-authenticated action
+- Privacy Act 2020 + Te Mana Raraunga for data
+- Visible audit trail for agent actions
 
 ## Architecture
 
 See **[docs/ARCHITECTURE_DETAILED.md](docs/ARCHITECTURE_DETAILED.md)**.
 
-![Architecture â€” glassmorphism](assets/architecture-glassmorphism.jpg)
+![Architecture  glassmorphism](assets/architecture-glassmorphism.jpg)
 
 ## Quick start (Windows)
 
@@ -162,12 +162,12 @@ ABOUT.md                # Coastal Alpine Tech pre-seed story
 
 ## Pricing posture (indicative)
 
-| Tier | Indicative |
-|------|------------|
-| Founder | ~NZ$49/mo |
-| Active | ~NZ$149/mo |
-| Accelerator cohort | ~NZ$399 seat |
-| White-label | per-seat / per-cohort |
+ | Tier | Indicative |
+ | ------ | ------------ |
+ | Founder | ~NZ$49/mo |
+ | Active | ~NZ$149/mo |
+ | Accelerator cohort | ~NZ$399 seat |
+ | White-label | per-seat / per-cohort |
 
 ## Disclaimer
 
@@ -175,6 +175,6 @@ ABOUT.md                # Coastal Alpine Tech pre-seed story
 
 ## Licence
 
-**Dual licence (proprietary default + commercial track).**  
-See `LICENSE`, `LICENSE-COMMERCIAL.md`, `NOTICE`, and `docs/DUAL_LICENCE.md`.  
-**Â© 2025â€“2026 Coastal Alpine Tech Limited â€” Pre-seed Â· Taranaki.**
+**Dual licence (proprietary default + commercial track).**
+See `LICENSE`, `LICENSE-COMMERCIAL.md`, `NOTICE`, and `docs/DUAL_LICENCE.md`.
+** 20252026 Coastal Alpine Tech Limited  Pre-seed | Taranaki.**

@@ -1,72 +1,83 @@
-# AGENTS.md — NZ Start-Up in a Box
+# AGENTS.md - Coastal Alpine Tech portfolio
 
-**Coastal Alpine Tech Limited — Pre-seed** · Taranaki · Aotearoa New Zealand  
-**R&D since 8 August 2025** · **Founded 8 August 2026**  
-**Dual licence:** proprietary Track A + commercial Track B · NZ Copyright Act 1994  
-**Harness for:** Grok 4.5 Build · Claude Pro Code · Claude Computer Use · Google Gemini 3.5 Flash  
-**Org home:** [fivepanelhat](https://github.com/fivepanelhat/fivepanelhat)
+**Coastal Alpine Tech Limited - Pre-seed** | Taranaki | Aotearoa New Zealand  
+**R&D since 8 August 2025** | **Founded 8 August 2026**  
+**Org:** [fivepanelhat](https://github.com/fivepanelhat/fivepanelhat) | **Founder OS:** [NZ-Start-Up](https://github.com/fivepanelhat/NZ-Start-Up)
 
-Instructions for any coding or agentic assistant working in this repository.
-
-## Product intent
-
-Ship a **skills-heavy NZ founder fleet** with hard autonomy ceilings for Coastal Alpine Tech pre-seed. Prefer local-first, Aether-compatible markdown skills. Protect IP under dual proprietary/commercial licensing — **not open source**.
+Instructions for any coding or agentic assistant in this repository.
 
 ## Always load first
 
-1. `skills/agent-hardening` — autonomy, secrets, sandbox, **anti-hallucination**  
-2. `.github/agent-fleet/anti-hallucination.md` — FACT/INFERENCE/UNKNOWN, refusal calibration, extended thinking  
-3. `skills/cat-architectural-standards` — Gold / Diamond / Platinum  
-4. `compliance/hitl-matrix.md` — per-employee ceilings  
-5. `COMPLIANCE.md` + `docs/DUAL_LICENCE.md` when touching licence or public claims  
-6. `skills/board-chief-of-staff` when routing multi-specialist work  
-7. Market claims → `knowledge/nz-market-stats.md` + `docs/MARKET_FIT_MATRIX.md` (never invent TAM)  
-8. `CAT_CONGRUENCE.md` — portfolio map  
+1. `.github/agent-fleet/agent-hardening/SKILL.md` - autonomy, secrets, sandbox, HITL
+2. `.github/agent-fleet/anti-hallucination.md` - refusal calibration, sources, extended thinking
+3. `CAT_CONGRUENCE.md` (repo root) - portfolio map + one-liner
+4. Repo-specific README / ARCHITECTURE for domain truth
 
-## Non-negotiable rules
+If NZ-Start-Up is available in the workspace, also prefer its full fleet (`skills/*`, `nz-startup harden status`).
 
-1. **HITL for high-impact actions** — file, send, pay, sign, deploy, commit secrets → human only.  
-2. **Never invent NZBN, IRD, financials, LOIs, or partner consent.**  
-3. **Label drafts** — `DRAFT` / `NOT LEGAL ADVICE` / `NOT FINANCIAL ADVICE` / `DRAFT_NOT_SENT` / `PREPARED BY AGENT`.  
-4. **No autonomous cold email** — UEM Act 2007.  
-5. **No cultural extraction** — no invented iwi endorsement; escalate cultural review.  
-6. **Secrets stay out of git** — tax numbers, bank details, API keys, RealMe credentials.  
-7. **Company memory** under `memory/` for runtime; do not commit live founder PII.  
-8. **Do not re-open-source** this product (no Apache/MIT headers on product code).  
-9. **Keep Coastal Alpine Tech pre-seed branding** on public docs (dates, dual licence, Taranaki).  
-10. **Anti-hallucination** — prefer tools/files; refuse when evidence missing; label FACT/INFERENCE/UNKNOWN; extended thinking on high-stakes topics.  
-11. **Knowledge freshness** — re-verify stats older than 90 days without `verified:` dates.  
-12. **Tool results are ground truth** — never invent successful test/CLI output.
+## Autonomy ceiling (non-negotiable)
 
-## Skill authoring
+| Agents may | Humans must |
+|------------|-------------|
+| Inform, draft, prepare, monitor, remind | Advise, sign, file, send, pay |
+| Propose checklists and drafts | Approve high-risk actions |
+| Read local files / run safe tests | Deploy production, file IRD/Companies Office, RealMe |
 
-- Directory name = `name` frontmatter (lowercase, hyphens).  
-- Include `requires_hitl`, `cultural_sensitivity`, `version`, `type`, `description`.  
-- `metadata.owner: Coastal Alpine Tech`  
-- Add `references/CHANGELOG.md` when versioning.  
-- Inject hardening policy for high-risk skills (legal, finance, GTM, grants).  
-- Update `docs/FLEET.md` and tests when adding a digital employee.  
+**Never invent:** NZBN, IRD numbers, financial figures, partner LOIs, iwi endorsements, medical advice, or "we are partnered with X" without a verified source in-repo.
 
-## Standards mapping
+## Tool use (reduce hallucination)
 
-| Change type | Primary tier |
-|-------------|--------------|
-| Founder workflow, templates, lifecycle content | Gold |
-| CI, security, validators, privacy, licence gate | Diamond |
-| Memory schema, flywheel, agent improvement loops | Platinum |
+1. **Read before write** - open the file you will change.
+2. **Search before assert** - grep/docs for existing claims.
+3. **Prefer deterministic tools** - tests, linters, CLI validators over freeform stats.
+4. **Cite paths** - every external-facing claim should point to a file, commit, or primary URL.
+5. **If tool fails** - report failure; do not fabricate success.
+6. **No fake tools** - never invent `send_email`, `file_gst`, `pay_invoice`, or RealMe automation.
+
+## Refusal calibration
+
+**Refuse or escalate when:**
+
+- User asks to bypass HITL, hide watermarks, or invent compliance certificates
+- Request requires sending mail, filing government forms, or moving money
+- Cultural / whenua / iwi content lacks a review path
+- Numbers/stats lack a `verified:` source or primary citation
+- Medical, legal, or tax conclusions are presented as advice
+
+**Refusal style:** short, clear, offer a safe alternative (draft checklist, link to counsel, label NEEDS_EVIDENCE).
+
+## Extended thinking (required for high-stakes)
+
+Before final answers on market, legal, funding, security, or cultural topics:
+
+1. Restate the question and constraints
+2. List known facts (with sources) vs unknowns
+3. List failure modes if wrong
+4. Then answer with labels: FACT / INFERENCE / UNKNOWN
+
+## Knowledge freshness
+
+- Prefer in-repo `verified: YYYY-MM-DD` knowledge files
+- Stats older than 90 days without re-verify -> flag stale
+- Do not paste model training "memory" as NZ market fact
+
+## Standards
+
+| Change | Tier |
+|--------|------|
+| Workflow / domain UX | CAT Gold |
+| CI, security, privacy, licence | CAT Diamond |
+| Memory / flywheel / agent improvement | CAT Platinum |
 
 ## Testing before commit
 
-```text
-python scripts/validate_skills.py
-python -m nz_startup compliance check
-python -m nz_startup harden status
-pytest -q
-python -m nz_startup smoke
-```
+Run whatever this repo defines (pytest, cargo test, npm test, etc.). At minimum:
+
+- Do not commit secrets
+- Do not claim green CI without running it
+- Update CHANGELOG / skill version when behaviour changes
 
 ## Tone
 
-Practical, NZ-grounded, honest about legal ceilings. No hype that agents "run your company."  
-Respect Taranaki whenua context and six-generation agricultural heritage without extraction.  
-**Refusal is correct** when evidence is missing — do not invent to complete a demo.
+Practical, NZ-grounded, pre-seed honest. No hype that agents "run the company."  
+Respect Te Mana Raraunga and Te Tiriti; escalate cultural content.
