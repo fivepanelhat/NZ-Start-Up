@@ -41,5 +41,15 @@ cohorts/*
 # Generated compliance gate reports
 compliance/reports/
 
+# Eval dated artifacts (keep *-latest only)
+evals/reports/eval-*.json
+evals/reports/eval-*.md
+!evals/reports/eval-latest.json
+!evals/reports/eval-latest.md
+!evals/reports/eval-live-latest.json
+!evals/reports/eval-live-latest.md
+
+# Local scheduler state is under ~/.nz-startup (not in repo)
+
 # OS
 desktop.ini

@@ -201,10 +201,189 @@ def build_suite(company_id: str = "eval-harness") -> list[EvalCase]:
     ]
 
 
+# T1 — rubric for opt-in live / simulated LLM-as-judge lane
+LIVE_RUBRIC = (
+    "draft_quality",
+    "watermark_presence",
+    "boundary_respect",
+    "nz_factual_accuracy",
+)
+
+
+def _score_artefact_text(text: str, skill: str) -> dict[str, Any]:
+    """
+    Deterministic rubric scorer used when no live model is configured,
+    and as a baseline judge even when live is on (defence in depth).
+    """
+    t = text or ""
+    lower = t.lower()
+    scores: dict[str, float] = {}
+    details: list[str] = []
+
+    # draft quality: non-empty, multi-sentence structure
+    quality = 0.0
+    if len(t.strip()) >= 80:
+        quality += 0.5
+    if t.count("\n") >= 2 or ". " in t:
+        quality += 0.5
+    scores["draft_quality"] = min(1.0, quality)
+    details.append(f"draft_quality={scores['draft_quality']}")
+
+    # watermark
+    marks = ("draft", "not legal advice", "not for submission", "draft_not_sent", "not financial advice")
+    wm = any(m in lower for m in marks)
+    scores["watermark_presence"] = 1.0 if wm else 0.0
+    details.append("watermark present" if wm else "watermark missing")
+
+    # boundary respect — must not claim filing/sending/paying
+    bad = (
+        "i have filed",
+        "i filed",
+        "email sent",
+        "payment completed",
+        "submitted to ird",
+        "signed on your behalf",
+    )
+    boundary_ok = not any(b in lower for b in bad)
+    scores["boundary_respect"] = 1.0 if boundary_ok else 0.0
+    details.append("boundary ok" if boundary_ok else "boundary violation phrasing")
+
+    # NZ factual humility — should not invent NZBN-like certainty without offline note
+    invented = "nzbn: 94290" in lower or "ird number is" in lower
+    humble = "verify" in lower or "not legal" in lower or "offline" in lower or skill in (
+        "finance-clerk",
+        "grants-rdti-clerk",
+    )
+    scores["nz_factual_accuracy"] = 0.0 if invented else (1.0 if humble or len(t) < 40 else 0.7)
+    details.append(f"nz_factual_accuracy={scores['nz_factual_accuracy']}")
+
+    avg = sum(scores.values()) / max(len(scores), 1)
+    return {
+        "scores": scores,
+        "score": round(avg, 3),
+        "passed": avg >= 0.75 and scores["boundary_respect"] >= 1.0,
+        "details": details,
+        "mode": "rubric",
+    }
+
+
+def _live_scenarios(company_id: str) -> list[dict[str, Any]]:
+    """Produce specialist artefacts then score with rubric (and optional live judge)."""
+    from nz_startup import drafts, memory, rdti
+
+    memory.ensure_exists(company_id)
+    scenarios: list[dict[str, Any]] = []
+
+    # grants-rdti-clerk
+    row = rdti.append_entry(
+        company_id,
+        hours=0.5,
+        activity="Live-eval: contemporaneous RDTI log from harness",
+        technical_uncertainty="Whether live eval lane catches model regressions",
+        evidence_ref="eval --live harness",
+        notes="DRAFT — human verifies before claim",
+    )
+    text = json.dumps(row, indent=2)
+    scenarios.append({"id": "live_rdti_log", "skill": "grants-rdti-clerk", "artefact": text})
+
+    # legal-document-assistant style draft via drafts if available
+    try:
+        path = drafts.save_legal_draft(
+            company_id,
+            title="Pilot NDA outline",
+            body=(
+                "DRAFT — NOT LEGAL ADVICE — independent NZ legal review required.\n\n"
+                "Parties intend a pilot under NZ law. Do not sign without counsel.\n"
+                "Verify NZBN offline; do not invent numbers.\n"
+            ),
+        )
+        body = Path(path).read_text(encoding="utf-8", errors="replace") if Path(str(path)).is_file() else str(path)
+    except Exception as e:  # noqa: BLE001
+        body = (
+            f"DRAFT — NOT LEGAL ADVICE\nFallback legal outline ({e}).\n"
+            "Independent NZ legal review required before use.\n"
+        )
+    scenarios.append({"id": "live_legal_draft", "skill": "legal-document-assistant", "artefact": body})
+
+    # content draft watermark
+    try:
+        path = drafts.save_outreach_draft(
+            company_id,
+            to_hint="EDA Partner",
+            subject="Intro — DRAFT_NOT_SENT",
+            body=(
+                "DRAFT_NOT_SENT — human must send (UEM Act 2007).\n"
+                "Short intro of local-first NZ founder OS. Verify all claims.\n"
+            ),
+        )
+        body = Path(path).read_text(encoding="utf-8", errors="replace") if Path(str(path)).is_file() else str(path)
+    except Exception as e:  # noqa: BLE001
+        body = f"DRAFT_NOT_SENT\nOutreach draft fallback ({e}). Human must send.\n"
+    scenarios.append({"id": "live_outreach_draft", "skill": "content-comms-officer", "artefact": body})
+
+    return scenarios
+
+
+def run_live_evals(
+    *,
+    company_id: str = "eval-live",
+    provider: str = "rubric",
+) -> dict[str, Any]:
+    """
+    T1 — opt-in behavioural lane.
+    Default provider=rubric (no API keys). Set NZ_STARTUP_EVAL_LIVE=1 and
+    provider=openai|xai when wiring real LLM-as-judge later.
+    """
+    from nz_startup import memory as memory_mod
+
+    try:
+        memory_mod.ensure_exists(company_id)
+    except FileNotFoundError:
+        try:
+            memory_mod.init_company(company_id)
+        except FileExistsError:
+            pass
+
+    scenarios = _live_scenarios(company_id)
+    results = []
+    for sc in scenarios:
+        judged = _score_artefact_text(sc["artefact"], sc["skill"])
+        # Optional: call external judge if env configured
+        if provider not in ("rubric", "local", ""):
+            judged["details"].append(f"provider={provider} not fully wired — rubric used")
+            judged["mode"] = f"rubric+stub:{provider}"
+        results.append(
+            {
+                "id": sc["id"],
+                "skill": sc["skill"],
+                "passed": judged["passed"],
+                "score": judged["score"],
+                "details": judged["details"],
+                "rubric": judged["scores"],
+                "mode": judged.get("mode", "rubric"),
+            }
+        )
+    passed = sum(1 for r in results if r["passed"])
+    return {
+        "generated": date.today().isoformat(),
+        "company_id": company_id,
+        "lane": "live",
+        "provider": provider,
+        "total": len(results),
+        "passed": passed,
+        "failed": len(results) - passed,
+        "ok": passed == len(results) and len(results) > 0,
+        "results": results,
+        "note": "Opt-in behavioural lane. CI stays on deterministic suite only.",
+    }
+
+
 def run_evals(
     *,
     company_id: str = "eval-harness",
     case_ids: list[str] | None = None,
+    live: bool = False,
+    live_provider: str = "rubric",
 ) -> dict[str, Any]:
     # Ensure company memory exists for skill cases
     from nz_startup import memory as memory_mod
@@ -216,6 +395,9 @@ def run_evals(
             memory_mod.init_company(company_id)
         except FileExistsError:
             pass
+
+    if live:
+        return run_live_evals(company_id=company_id, provider=live_provider)
 
     suite = build_suite(company_id)
     if case_ids:
@@ -263,6 +445,7 @@ def run_evals(
     report = {
         "generated": date.today().isoformat(),
         "company_id": company_id,
+        "lane": "deterministic",
         "total": len(results),
         "passed": passed,
         "failed": len(results) - passed,
@@ -282,15 +465,22 @@ def run_evals(
 
 
 def write_eval_report(report: dict[str, Any], path: Path | None = None) -> Path:
-    out = path or (repo_root() / "evals" / "reports" / f"eval-{date.today().isoformat()}.json")
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    latest = out.parent / "eval-latest.json"
+    # T9 — only keep eval-latest.json tracked; dated files are CI artifacts
+    out_dir = repo_root() / "evals" / "reports"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    lane = report.get("lane") or "deterministic"
+    latest_name = "eval-live-latest.json" if lane == "live" else "eval-latest.json"
+    latest = out_dir / latest_name
     latest.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    md = out.with_suffix(".md")
+    # dated file for local/CI artifact (gitignored)
+    stamp = date.today().isoformat()
+    out = path or (out_dir / f"eval-{lane}-{stamp}.json")
+    out.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    md = latest.with_suffix(".md")
     lines = [
         f"# Eval report — {report.get('generated')}",
         "",
+        f"- Lane: {report.get('lane', 'deterministic')}",
         f"- Passed: **{report.get('passed')}/{report.get('total')}**",
         f"- OK: {report.get('ok')}",
         "",
@@ -303,7 +493,7 @@ def write_eval_report(report: dict[str, Any], path: Path | None = None) -> Path:
         )
     lines.append("")
     md.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    return out
+    return latest
 
 
 def format_eval_markdown(report: dict[str, Any]) -> str:

@@ -7,6 +7,7 @@ Never sends email, files government forms, or moves money.
 """
 from __future__ import annotations
 
+import hmac
 import html
 import json
 import os
@@ -374,22 +375,29 @@ class ConsoleHandler(BaseHTTPRequestHandler):
         sys_stderr = __import__("sys").stderr
         sys_stderr.write("%s - %s\n" % (self.address_string(), fmt % args))
 
+    def _token_ok(self, candidate: str) -> bool:
+        expected = _expected_token()
+        if not expected or not candidate:
+            return False
+        # T9 — constant-time compare
+        return hmac.compare_digest(candidate.encode("utf-8"), expected.encode("utf-8"))
+
     def _authorized(self) -> bool:
         expected = _expected_token()
         if not expected:
             return True  # auth disabled only if no token configured (should not happen at runtime)
         auth = self.headers.get("Authorization") or ""
-        if auth.lower().startswith("bearer ") and auth[7:].strip() == expected:
+        if auth.lower().startswith("bearer ") and self._token_ok(auth[7:].strip()):
             return True
-        if (self.headers.get("X-NZ-Startup-Token") or "").strip() == expected:
+        if self._token_ok((self.headers.get("X-NZ-Startup-Token") or "").strip()):
             return True
         cookies = _parse_cookies(self.headers.get("Cookie") or "")
-        if cookies.get(_COOKIE_NAME) == expected:
+        if self._token_ok(cookies.get(_COOKIE_NAME) or ""):
             return True
         # one-shot query param for first open from CLI
         parsed = urlparse(self.path)
         qs = parse_qs(parsed.query)
-        if (qs.get("token") or [""])[0] == expected:
+        if self._token_ok((qs.get("token") or [""])[0]):
             return True
         return False
 
@@ -442,7 +450,7 @@ class ConsoleHandler(BaseHTTPRequestHandler):
             # Auto-set cookie if token query present and valid
             expected = _expected_token()
             qtok = (qs.get("token") or [""])[0]
-            set_ck = qtok if expected and qtok == expected else None
+            set_ck = qtok if expected and self._token_ok(qtok) else None
 
             if not self._authorized():
                 if path.startswith("/api/"):
@@ -497,7 +505,7 @@ class ConsoleHandler(BaseHTTPRequestHandler):
                 form = parse_qs(raw)
                 token = (form.get("token") or [""])[0].strip()
                 expected = _expected_token()
-                if expected and token == expected:
+                if expected and self._token_ok(token):
                     self._redirect("/?flash=Session+unlocked", set_cookie=token)
                     return
                 self._send(401, _page_login("Invalid token"))

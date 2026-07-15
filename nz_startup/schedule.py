@@ -1,12 +1,16 @@
-"""G6 — OS-native cadence install (Task Scheduler / launchd / systemd).
+"""G6/T5 — OS-native cadence install (relocatable + verifiable).
 
 Never emails. Jobs write HITL-safe artefacts to company memory only.
+Generated runner lives under ~/.nz-startup/ (not the repo tree).
 """
 from __future__ import annotations
 
+import json
 import platform
 import shlex
+import subprocess
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -17,39 +21,73 @@ LAUNCHD_LABEL = "nz.startup.weekly"
 SYSTEMD_UNIT = "nz-startup-weekly"
 
 
+def state_dir() -> Path:
+    p = Path.home() / ".nz-startup"
+    p.mkdir(parents=True, exist_ok=True)
+    return p
+
+
 def _python() -> str:
     return sys.executable
 
 
 def _runner_script() -> Path:
-    """Write a small runner that invokes weekly + board + export for all companies."""
-    root = repo_root()
-    scripts = root / "scripts"
-    scripts.mkdir(exist_ok=True)
-    path = scripts / "run_cadence.py"
+    """Write cadence runner to state dir (T5 — do not mutate repo at install)."""
+    path = state_dir() / "run_cadence.py"
+    root = repo_root().resolve()
     path.write_text(
-        '''#!/usr/bin/env python3
-"""Weekly cadence: status, weekly board, deadline export, INDEX refresh. HITL-safe."""
+        f'''#!/usr/bin/env python3
+"""Weekly cadence: status, weekly board, deadline export, INDEX + heartbeat. HITL-safe."""
 from __future__ import annotations
 
+import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
-# Ensure repo importable when launched from OS scheduler
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(r"{root}")
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from nz_startup import board_pack, export_reminders, memory, status, weekly
+from nz_startup import export_reminders, memory, status, weekly
 from nz_startup.memory_index import write_index
 from nz_startup.audit import append_audit
+
+STATE = Path.home() / ".nz-startup"
+
+
+def _heartbeat(companies: list[str], ok: int, errors: list[str]) -> None:
+    STATE.mkdir(parents=True, exist_ok=True)
+    payload = {{
+        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "companies": companies,
+        "ok": ok,
+        "errors": errors[:20],
+        "python": sys.executable,
+        "repo": str(ROOT),
+    }}
+    (STATE / "cadence-heartbeat.json").write_text(
+        json.dumps(payload, indent=2) + "\\n", encoding="utf-8"
+    )
+    for cid in companies:
+        try:
+            cpath = memory.ensure_exists(cid)
+            (cpath / "status").mkdir(exist_ok=True)
+            (cpath / "status" / "cadence-last-run.json").write_text(
+                json.dumps(payload, indent=2) + "\\n", encoding="utf-8"
+            )
+        except Exception:
+            pass
 
 
 def main() -> int:
     companies = memory.list_companies()
     if not companies:
         print("No companies in memory — nothing to run.")
+        _heartbeat([], 0, [])
         return 0
+    ok = 0
+    errors: list[str] = []
     for cid in companies:
         try:
             status.write_status(cid)
@@ -65,10 +103,13 @@ def main() -> int:
                 model_tier="light",
                 outcome="ok",
             )
-            print(f"ok: {cid}")
+            print(f"ok: {{cid}}")
+            ok += 1
         except Exception as e:  # noqa: BLE001
-            print(f"error: {cid}: {e}", file=sys.stderr)
-    return 0
+            errors.append(f"{{cid}}: {{e}}")
+            print(f"error: {{cid}}: {{e}}", file=sys.stderr)
+    _heartbeat(companies, ok, errors)
+    return 0 if not errors else 1
 
 
 if __name__ == "__main__":
@@ -77,11 +118,35 @@ if __name__ == "__main__":
         encoding="utf-8",
         newline="\n",
     )
+    # also keep a thin stub in repo scripts for discoverability
+    stub = repo_root() / "scripts" / "run_cadence.py"
+    stub.parent.mkdir(exist_ok=True)
+    if not stub.is_file() or "STATE dir" not in stub.read_text(encoding="utf-8", errors="replace"):
+        stub.write_text(
+            """#!/usr/bin/env python3
+\"\"\"Thin launcher — real runner lives in ~/.nz-startup/run_cadence.py (T5).\"\"\"
+from __future__ import annotations
+
+import runpy
+import sys
+from pathlib import Path
+
+target = Path.home() / ".nz-startup" / "run_cadence.py"
+if not target.is_file():
+    # bootstrap via package
+    from nz_startup.schedule import _runner_script
+
+    target = _runner_script()
+sys.argv[0] = str(target)
+runpy.run_path(str(target), run_name="__main__")
+""",
+            encoding="utf-8",
+            newline="\n",
+        )
     return path
 
 
 def install_schedule(*, force: bool = False) -> dict[str, Any]:
-    """Register OS-native weekly timer. Returns instructions + artefacts."""
     runner = _runner_script()
     system = platform.system().lower()
     py = _python()
@@ -89,30 +154,22 @@ def install_schedule(*, force: bool = False) -> dict[str, Any]:
         "platform": system,
         "runner": str(runner),
         "python": py,
+        "state_dir": str(state_dir()),
         "hitl": "Cadence writes local artefacts only — never emails or files government forms.",
     }
 
     if system == "windows":
-        # schtasks XML-free simple weekly Sunday 09:00 local
-        cmd = (
+        result["command"] = (
             f'schtasks /Create /F /TN "{TASK_NAME}" /SC WEEKLY /D SUN /ST 09:00 '
             f'/TR "\\"{py}\\" \\"{runner}\\"" /RL LIMITED'
         )
-        result["command"] = cmd
         result["uninstall"] = f'schtasks /Delete /F /TN "{TASK_NAME}"'
-        result["note"] = (
-            "Run the command in an elevated PowerShell if Task Scheduler denies access. "
-            "Or paste into Task Scheduler GUI: Weekly · Sunday 09:00 · action = python run_cadence.py"
-        )
-        # Attempt non-elevated create
-        import subprocess
-
         try:
             proc = subprocess.run(
                 [
                     "schtasks",
                     "/Create",
-                    "/F" if force else "/F",
+                    "/F",
                     "/TN",
                     TASK_NAME,
                     "/SC",
@@ -171,7 +228,6 @@ def install_schedule(*, force: bool = False) -> dict[str, Any]:
         result["installed"] = True
         return result
 
-    # Linux systemd user unit
     unit_dir = Path.home() / ".config" / "systemd" / "user"
     unit_dir.mkdir(parents=True, exist_ok=True)
     service = unit_dir / f"{SYSTEMD_UNIT}.service"
@@ -205,7 +261,6 @@ WantedBy=timers.target
     result["enable"] = f"systemctl --user enable --now {SYSTEMD_UNIT}.timer"
     result["uninstall"] = f"systemctl --user disable --now {SYSTEMD_UNIT}.timer"
     result["installed"] = True
-    result["note"] = "Run enable command if systemd user session is available."
     return result
 
 
@@ -213,8 +268,6 @@ def uninstall_schedule() -> dict[str, Any]:
     system = platform.system().lower()
     result: dict[str, Any] = {"platform": system}
     if system == "windows":
-        import subprocess
-
         try:
             proc = subprocess.run(
                 ["schtasks", "/Delete", "/F", "/TN", TASK_NAME],
@@ -230,21 +283,88 @@ def uninstall_schedule() -> dict[str, Any]:
         return result
     if system == "darwin":
         plist = Path.home() / "Library" / "LaunchAgents" / f"{LAUNCHD_LABEL}.plist"
-        result["plist"] = str(plist)
-        result["removed"] = False
         result["manual"] = f"launchctl unload {plist} && rm {plist}"
+        result["removed"] = False
         return result
     result["manual"] = f"systemctl --user disable --now {SYSTEMD_UNIT}.timer"
     return result
 
 
+def read_heartbeat() -> dict[str, Any] | None:
+    path = state_dir() / "cadence-heartbeat.json"
+    if not path.is_file():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+
+
 def schedule_status() -> dict[str, Any]:
-    runner = repo_root() / "scripts" / "run_cadence.py"
+    runner = state_dir() / "run_cadence.py"
+    hb = read_heartbeat()
     return {
         "runner_exists": runner.is_file(),
         "runner": str(runner),
+        "state_dir": str(state_dir()),
         "platform": platform.system(),
         "task_name_windows": TASK_NAME,
         "launchd_label": LAUNCHD_LABEL,
         "systemd_unit": SYSTEMD_UNIT,
+        "last_heartbeat": hb,
     }
+
+
+def verify_schedule() -> dict[str, Any]:
+    """T5 — query OS scheduler presence + heartbeat freshness."""
+    system = platform.system().lower()
+    result: dict[str, Any] = {
+        "platform": system,
+        "runner": schedule_status(),
+        "os_task_present": None,
+        "heartbeat": read_heartbeat(),
+        "ok": False,
+        "checks": [],
+    }
+    runner_ok = (state_dir() / "run_cadence.py").is_file()
+    result["checks"].append({"check": "runner_script", "ok": runner_ok})
+
+    if system == "windows":
+        try:
+            proc = subprocess.run(
+                ["schtasks", "/Query", "/TN", TASK_NAME],
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            present = proc.returncode == 0
+            result["os_task_present"] = present
+            result["checks"].append({"check": "schtasks", "ok": present, "detail": (proc.stdout or "")[:200]})
+        except (FileNotFoundError, OSError) as e:
+            result["os_task_present"] = False
+            result["checks"].append({"check": "schtasks", "ok": False, "detail": str(e)})
+    elif system == "darwin":
+        plist = Path.home() / "Library" / "LaunchAgents" / f"{LAUNCHD_LABEL}.plist"
+        present = plist.is_file()
+        result["os_task_present"] = present
+        result["checks"].append({"check": "launchd_plist", "ok": present})
+    else:
+        timer = Path.home() / ".config" / "systemd" / "user" / f"{SYSTEMD_UNIT}.timer"
+        present = timer.is_file()
+        result["os_task_present"] = present
+        result["checks"].append({"check": "systemd_timer", "ok": present})
+
+    hb = result["heartbeat"]
+    hb_ok = bool(hb and hb.get("ts"))
+    result["checks"].append(
+        {
+            "check": "heartbeat",
+            "ok": hb_ok,
+            "ts": (hb or {}).get("ts"),
+            "note": "absent until first schedule run",
+        }
+    )
+    # ok if runner exists; OS task optional until install; heartbeat soft
+    result["ok"] = runner_ok
+    result["cadence_last_ran"] = (hb or {}).get("ts")
+    return result

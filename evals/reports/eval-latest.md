@@ -1,5 +1,6 @@
 # Eval report — 2026-07-15
 
+- Lane: deterministic
 - Passed: **5/5**
 - OK: True
 

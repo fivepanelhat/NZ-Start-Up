@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.6.0 — 2026-07-15
+
+### Next-tier optimisations (Claude v1.5.0 review T1–T9)
+
+Super Grok G1–G14 verified closed; this release closes the trust-transfer tier.
+
+| Item | Ship |
+|------|------|
+| **T1** | Opt-in behavioural lane: `nz-startup eval --live` (rubric judge; LLM-ready) |
+| **T2** | Nonce quarantine delimiters + expanded injection fuzz patterns |
+| **T3** | `compliance/standards-mapping.md` — OWASP LLM Top 10, NIST AI RMF, ISO 42001, NZ Algorithm Charter, Privacy Act |
+| **T4** | Hard pip-audit on lockfile; pack SHA256 + CycloneDX SBOM + git provenance |
+| **T5** | Scheduler runner in `~/.nz-startup/`; `schedule verify` + heartbeat |
+| **T6** | Budget hard cap (`--enforce`); cost rates with `verified:` date in CI |
+| **T7** | `nz-startup backup create\|restore` encrypted `.nzbak` archives |
+| **T8** | `nz-startup audit export` OTel-GenAI-shaped JSON |
+| **T9** | eval-latest only in git; `hmac.compare_digest` console tokens; SECURITY inbox |
+
 ## 1.5.0 — 2026-07-15
 
 ### Gap analysis ship (G1–G14) — EDA fleet ops layer

@@ -6,4 +6,4 @@ Dual licence (proprietary Track A + commercial Track B)
 Copyright © 2025–2026 Coastal Alpine Tech Limited. All rights reserved.
 """
 
-__version__ = "1.5.0"
+__version__ = "1.6.0"

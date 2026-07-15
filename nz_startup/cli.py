@@ -9,6 +9,8 @@ from pathlib import Path
 from nz_startup import __version__
 from nz_startup import (
     agent_guardrails,
+    audit_export,
+    backup,
     bank_feed,
     board_pack,
     calendar_ops,
@@ -603,18 +605,28 @@ def cmd_schedule(args: argparse.Namespace) -> int:
     if args.schedule_cmd == "status":
         print(json.dumps(schedule.schedule_status(), indent=2))
         return 0
+    if args.schedule_cmd == "verify":
+        result = schedule.verify_schedule()
+        print(json.dumps(result, indent=2, default=str))
+        return 0 if result.get("ok") else 1
     if args.schedule_cmd == "run":
-        cids = [args.company_id] if getattr(args, "company_id", None) else memory.list_companies()
-        if not cids:
-            print("No companies in memory — nothing to run.")
-            return 0
-        for cid in cids:
+        # run via relocatable runner (writes heartbeat)
+        runner = schedule._runner_script()
+        import subprocess
+
+        proc = subprocess.run(
+            [sys.executable, str(runner)],
+            capture_output=False,
+        )
+        if getattr(args, "company_id", None):
+            # also ensure named company got a pass if list was empty before
+            cid = args.company_id
             status.write_status(cid)
             weekly.generate_weekly_review(cid)
             export_reminders.export_all(cid)
             memory_index.write_index(cid)
             print(f"ok: {cid}")
-        return 0
+        return int(proc.returncode)
     return 2
 
 
@@ -631,7 +643,11 @@ def cmd_index(args: argparse.Namespace) -> int:
 
 
 def cmd_eval(args: argparse.Namespace) -> int:
-    report = evals.run_evals(company_id=args.company_id or "eval-harness")
+    report = evals.run_evals(
+        company_id=args.company_id or "eval-harness",
+        live=bool(getattr(args, "live", False)),
+        live_provider=getattr(args, "provider", None) or "rubric",
+    )
     if args.write:
         path = evals.write_eval_report(report)
         print(f"written: {path}")
@@ -653,6 +669,8 @@ def cmd_budget(args: argparse.Namespace) -> int:
             data["monthly_token_budget"] = int(args.tokens)
         if args.warn is not None:
             data["warn_fraction"] = float(args.warn)
+        if getattr(args, "enforce", None) is not None:
+            data["enforce"] = bool(args.enforce)
         model_routing.save_budget(args.company_id, data)
         print(json.dumps(data, indent=2))
         return 0
@@ -674,6 +692,44 @@ def cmd_pack(args: argparse.Namespace) -> int:
     out = {k: (str(v) if hasattr(v, "__fspath__") else v) for k, v in result.items()}
     print(json.dumps(out, indent=2))
     return 0
+
+
+def cmd_backup(args: argparse.Namespace) -> int:
+    if args.backup_cmd == "create":
+        man = backup.create_backup(
+            args.company_id,
+            passphrase=args.passphrase,
+            out_path=Path(args.out) if args.out else None,
+        )
+        print(json.dumps(man, indent=2))
+        return 0
+    if args.backup_cmd == "restore":
+        result = backup.restore_backup(
+            Path(args.archive),
+            passphrase=args.passphrase,
+            company_id=args.company,
+            force=args.force,
+        )
+        print(json.dumps(result, indent=2))
+        return 0
+    return 2
+
+
+def cmd_audit(args: argparse.Namespace) -> int:
+    if args.audit_cmd == "export":
+        result = audit_export.export_audit(
+            args.company_id,
+            format=args.format or "otel-json",
+            limit=args.limit or 0,
+        )
+        print(json.dumps(result, indent=2))
+        return 0
+    if args.audit_cmd == "rates":
+        from nz_startup.audit import cost_rates
+
+        print(json.dumps(cost_rates(), indent=2))
+        return 0
+    return 2
 
 
 def cmd_onboard(args: argparse.Namespace) -> int:
@@ -1203,6 +1259,8 @@ def build_parser() -> argparse.ArgumentParser:
     sch_un.set_defaults(func=cmd_schedule)
     sch_st = sch_sub.add_parser("status", help="Show schedule artefacts")
     sch_st.set_defaults(func=cmd_schedule)
+    sch_vf = sch_sub.add_parser("verify", help="Verify OS task + heartbeat (T5)")
+    sch_vf.set_defaults(func=cmd_schedule)
     sch_run = sch_sub.add_parser("run", help="Run cadence now (local)")
     sch_run.add_argument("company_id", nargs="?", default=None)
     sch_run.set_defaults(func=cmd_schedule)
@@ -1217,14 +1275,24 @@ def build_parser() -> argparse.ArgumentParser:
     ix_c.add_argument("company_id")
     ix_c.set_defaults(func=cmd_index)
 
-    # G1 evals
+    # G1/T1 evals
     ev = sub.add_parser("eval", help="Run golden behavioural eval suite")
     ev.add_argument("--company-id", dest="company_id", default="eval-harness")
     ev.add_argument("--json", action="store_true")
     ev.add_argument("--write", action="store_true", help="Write evals/reports/")
+    ev.add_argument(
+        "--live",
+        action="store_true",
+        help="T1 opt-in behavioural lane (rubric / LLM-as-judge ready)",
+    )
+    ev.add_argument(
+        "--provider",
+        default="rubric",
+        help="Live judge provider: rubric (default) or future openai|xai",
+    )
     ev.set_defaults(func=cmd_eval)
 
-    # G9 budget / routing
+    # G9/T6 budget / routing
     bg = sub.add_parser("budget", help="Model tier routing + monthly token budget")
     bg_sub = bg.add_subparsers(dest="budget_cmd", required=True)
     bg_sh = bg_sub.add_parser("show", help="Show routing map + company budget")
@@ -1234,6 +1302,12 @@ def build_parser() -> argparse.ArgumentParser:
     bg_set.add_argument("company_id")
     bg_set.add_argument("--tokens", type=int, default=None)
     bg_set.add_argument("--warn", type=float, default=None, help="Warn fraction 0-1")
+    bg_set.add_argument(
+        "--enforce",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="T6 hard cap: refuse frontier when exhausted",
+    )
     bg_set.set_defaults(func=cmd_budget)
     bg_rec = bg_sub.add_parser("record", help="Record token usage against budget")
     bg_rec.add_argument("company_id")
@@ -1243,9 +1317,39 @@ def build_parser() -> argparse.ArgumentParser:
     bg_rec.add_argument("--tier", default="", choices=["", "light", "standard", "frontier"])
     bg_rec.set_defaults(func=cmd_budget)
 
-    # G14 pack
-    pk = sub.add_parser("pack", help="Build versioned skills-pack zip (dist/)")
+    # G14/T4 pack
+    pk = sub.add_parser("pack", help="Build versioned skills-pack zip + SHA256 + SBOM")
     pk.set_defaults(func=cmd_pack)
+
+    # T7 backup
+    bk = sub.add_parser("backup", help="Encrypted local company backup (T7)")
+    bk_sub = bk.add_subparsers(dest="backup_cmd", required=True)
+    bk_c = bk_sub.add_parser("create", help="Create encrypted .nzbak archive")
+    bk_c.add_argument("company_id")
+    bk_c.add_argument("--passphrase", required=True)
+    bk_c.add_argument("--out", default=None, help="Output path")
+    bk_c.set_defaults(func=cmd_backup)
+    bk_r = bk_sub.add_parser("restore", help="Restore encrypted archive")
+    bk_r.add_argument("archive")
+    bk_r.add_argument("--passphrase", required=True)
+    bk_r.add_argument("--company", default=None)
+    bk_r.add_argument("--force", action="store_true")
+    bk_r.set_defaults(func=cmd_backup)
+
+    # T8 audit export
+    au = sub.add_parser("audit", help="Audit log export / cost rates")
+    au_sub = au.add_subparsers(dest="audit_cmd", required=True)
+    au_ex = au_sub.add_parser("export", help="Export OTel-GenAI-shaped JSON")
+    au_ex.add_argument("company_id")
+    au_ex.add_argument(
+        "--format",
+        default="otel-json",
+        choices=("otel-json", "jsonl"),
+    )
+    au_ex.add_argument("--limit", type=int, default=0)
+    au_ex.set_defaults(func=cmd_audit)
+    au_rt = au_sub.add_parser("rates", help="Show NZD cost rate table + verified date")
+    au_rt.set_defaults(func=cmd_audit)
 
     ob = sub.add_parser("onboard", help="Founder first-hour onboarding wizard")
     ob.add_argument("company_id")

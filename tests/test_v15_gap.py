@@ -54,7 +54,8 @@ def test_g2_injection_flags_and_wrap():
     assert flags
     q = quarantine(evil, source="memo")
     assert is_quarantined(q)
-    assert "UNTRUSTED_DATA" in q
+    assert "UNTRUSTED_DATA_" in q  # T2 nonced
+    assert "END_UNTRUSTED_DATA_" in q
     assert "FLAGGED_UNTRUSTED" in cleaned or "ignore" not in cleaned.lower() or flags
 
 

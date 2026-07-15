@@ -39,6 +39,24 @@ BOARD_GLOBS = [
 ]
 
 
+def _cadence_last_ran(company: Path) -> str:
+    p = company / "status" / "cadence-last-run.json"
+    if not p.is_file():
+        try:
+            from nz_startup.schedule import read_heartbeat
+
+            hb = read_heartbeat()
+            return (hb or {}).get("ts") or ""
+        except Exception:
+            return ""
+    try:
+        import json
+
+        return str(json.loads(p.read_text(encoding="utf-8")).get("ts") or "")
+    except Exception:
+        return ""
+
+
 def _iter_files(company: Path) -> list[Path]:
     found: set[Path] = set()
     for pattern in BOARD_GLOBS:
@@ -83,12 +101,15 @@ def create_board_pack(
         "file_count": len(files),
         "files": [str(p.relative_to(company)).replace("\\", "/") for p in files],
         "fleet_cost": fleet_cost,
+        "cost_rates_verified": fleet_cost.get("cost_rates_verified"),
+        "cadence_last_ran": _cadence_last_ran(company),
         "suggested_agenda": [
             "Pipeline vs plan (pipeline.md / status)",
             "Cash / runway narrative (runway.md — figures human-owned)",
             "Compliance deadlines (calendar / digest)",
             "RDTI log hygiene",
-            f"Fleet cost (heuristic NZD): ${fleet_cost.get('est_cost_nzd')} across {fleet_cost.get('entries')} metered events",
+            f"Fleet cost (heuristic NZD): ${fleet_cost.get('est_cost_nzd')} across {fleet_cost.get('entries')} metered events (rates verified {fleet_cost.get('cost_rates_verified')})",
+            f"Cadence last ran: {_cadence_last_ran(company) or 'never — run nz-startup schedule install'}",
             "Top 3 founder decisions this week",
         ],
     }

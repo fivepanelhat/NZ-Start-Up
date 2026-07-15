@@ -319,7 +319,7 @@ def guardrails_status() -> dict[str, Any]:
     from nz_startup import branding
 
     return {
-        "version": "1.5.0",
+        "version": "1.6.0",
         "licence": "dual-proprietary-commercial",
         "company": branding.COMPANY_LEGAL,
         "stage": branding.STAGE,

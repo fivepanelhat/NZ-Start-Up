@@ -1,4 +1,7 @@
-"""Append-only JSONL audit log with optional telemetry (G8)."""
+"""Append-only JSONL audit log with optional telemetry (G8/T6).
+
+NZD/token rates carry verified dates so freshness CI can catch stale economics.
+"""
 from __future__ import annotations
 
 import json
@@ -6,13 +9,26 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-
 # Rough NZD/token heuristic for board pack cost lines (not a billing system)
+# T6 — verified: date for freshness of economics
+COST_RATES_META = {
+    "verified": "2026-07-15",
+    "currency": "NZD",
+    "unit": "per_1k_tokens",
+    "note": "Heuristic only — re-verify before board packs quote costs to partners.",
+}
 _DEFAULT_NZD_PER_1K_TOKENS = {
     "light": 0.002,
     "standard": 0.02,
     "frontier": 0.12,
 }
+
+
+def cost_rates() -> dict[str, Any]:
+    return {
+        **COST_RATES_META,
+        "rates": dict(_DEFAULT_NZD_PER_1K_TOKENS),
+    }
 
 
 def estimate_cost_nzd(
@@ -72,6 +88,7 @@ def append_audit(
         "tokens_out": tout if tokens_out is not None else None,
         "duration_ms": duration_ms,
         "est_cost_nzd": cost,
+        "cost_rates_verified": COST_RATES_META["verified"] if cost is not None else None,
     }
     if extra:
         event["extra"] = extra
@@ -86,7 +103,11 @@ def sum_costs(company_path: Path, *, since_prefix: str = "") -> dict[str, Any]:
     total = 0.0
     n = 0
     if not path.is_file():
-        return {"entries": 0, "est_cost_nzd": 0.0}
+        return {
+            "entries": 0,
+            "est_cost_nzd": 0.0,
+            "cost_rates_verified": COST_RATES_META["verified"],
+        }
     with path.open(encoding="utf-8") as f:
         for line in f:
             line = line.strip()
@@ -105,4 +126,8 @@ def sum_costs(company_path: Path, *, since_prefix: str = "") -> dict[str, Any]:
                     n += 1
                 except (TypeError, ValueError):
                     pass
-    return {"entries": n, "est_cost_nzd": round(total, 4)}
+    return {
+        "entries": n,
+        "est_cost_nzd": round(total, 4),
+        "cost_rates_verified": COST_RATES_META["verified"],
+    }

@@ -1,10 +1,28 @@
-# NZ Start-Up in a Box — v1.5.0
+# NZ Start-Up in a Box — v1.6.0
 
 **Coastal Alpine Tech Limited — Pre-seed** · Taranaki · Aotearoa New Zealand  
 **R&D since 8 August 2025** · **Founded 8 August 2026**  
 **Local founder OS + white-label EDA kit** · dual proprietary/commercial licence  
 Built with **CAT Gold / Diamond / Platinum** on **Aether**  
 Dev tools: **Grok 4.5 Build** · **Claude Pro Code** · **Claude Computer Use** · **Google Gemini 3.5 Flash**
+
+## What 1.6 means
+
+Trust-transfer layer (Claude T1–T9) on the v1.5 fleet ops base:
+
+| Ops | Command |
+|-----|---------|
+| Deterministic evals | `nz-startup eval --write` |
+| Live/rubric evals | `nz-startup eval --live` |
+| Weekly cadence | `nz-startup schedule install` / `verify` / `run` |
+| Task state | `nz-startup tasks add\|list\|update` |
+| Memory INDEX | `nz-startup index write\|compact` |
+| Token budget + hard cap | `nz-startup budget set --enforce` |
+| Skills pack + SHA256/SBOM | `nz-startup pack` |
+| Encrypted backup | `nz-startup backup create <co> --passphrase …` |
+| Audit OTel export | `nz-startup audit export <co>` |
+| Standards mapping | `compliance/standards-mapping.md` |
+| Console auth | session token (`hmac.compare_digest`) |
 
 ## What 1.5 means
 

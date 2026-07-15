@@ -11,7 +11,7 @@
 [![HITL](https://img.shields.io/badge/HITL-Draft%2FPrepare%20only-dc2626?style=flat-square)](./COMPLIANCE.md)
 [![Te Mana Raraunga](https://img.shields.io/badge/Te%20Mana%20Raraunga-Aligned-0f766e?style=flat-square)](./compliance/te-mana-raraunga.md)
 [![CAT Standards](https://img.shields.io/badge/CAT-Gold%20%7C%20Diamond%20%7C%20Platinum-eab308?style=flat-square)](./docs/STANDARDS.md)
-[![Version](https://img.shields.io/badge/Version-1.5.0-2563eb?style=flat-square)](./CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-1.6.0-2563eb?style=flat-square)](./CHANGELOG.md)
 
 [![Grok 4.5 Build](https://img.shields.io/badge/Grok%204.5-Build-111827?style=flat-square&logo=x&logoColor=white)](https://x.ai)
 [![Claude Pro Code](https://img.shields.io/badge/Claude%20Pro-Code-d97706?style=flat-square)](https://claude.ai)

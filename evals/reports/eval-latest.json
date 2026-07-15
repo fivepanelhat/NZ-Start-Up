@@ -1,6 +1,7 @@
 {
   "generated": "2026-07-15",
-  "company_id": "eval-ci",
+  "company_id": "eval-harness",
+  "lane": "deterministic",
   "total": 5,
   "passed": 5,
   "failed": 0,
