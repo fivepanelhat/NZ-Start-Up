@@ -2,6 +2,8 @@
 
 For **EDAs, accelerators, incubators, accounting firms** — sell per-seat / per-cohort capacity without multi-tenant SaaS.
 
+**Ready-to-use approach kit (Venture Taranaki PowerUp):** [`docs/VT_POWERUP_APPROACH.md`](./VT_POWERUP_APPROACH.md) — one-pager, verified 10-minute demo runbook, DRAFT_NOT_SENT outreach email, objection crib sheet, follow-through sequence.
+
 ## Thesis
 
 > "Nick, but scalable" — white-label fleet on infrastructure you already run,  
