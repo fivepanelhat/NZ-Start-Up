@@ -16,7 +16,7 @@
 | **Market wedge with data** | 617k NZ enterprises; ~90% <10 staff; only 47 first-funded in 2025 → admin OS demand |
 | **Clear first customer** | Venture Taranaki PowerUp white-label pilot kit ready (`docs/VT_POWERUP_APPROACH.md`) |
 | **R&D continuity** | Claimed R&D since **8 Aug 2025** mapped to Drive artefacts + this product (`docs/INVESTOR_RD_AND_MARKET_REFERENCE.md`) |
-| **Portfolio optionality** | Edge agritech stack (Blue-Moon, SoilGuard, Sting…) as expansion — see portfolio matrix |
+| **Portfolio optionality** | Edge agritech stack (Byte Size Kai, SoilGuard, Sting…) as expansion — see portfolio matrix |
 | **IP posture** | Dual proprietary + commercial licence (NZ Copyright Act 1994) |
 
 ---

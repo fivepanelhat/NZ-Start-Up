@@ -131,7 +131,7 @@ ENTERPRISE_PRODUCTS: list[dict[str, Any]] = [
         "buyer": "Agritech co-ops / farms",
         "job": "Local inference + founder ops narrative",
         "ship": "Portfolio link + board pack",
-        "revenue": "Bundle with Blue-Moon/SoilGuard",
+        "revenue": "Bundle with Byte Size Kai / SoilGuard",
     },
     {
         "id": "F",
@@ -154,7 +154,7 @@ ENTERPRISE_PRODUCTS: list[dict[str, Any]] = [
 PORTFOLIO: list[dict[str, Any]] = [
     {"repo": "NZ-Start-Up", "total": 25, "role": "Lead product", "buyer": "EDA + founders"},
     {"repo": "Aether", "total": 21, "role": "Platform moat", "buyer": "Developers / internal"},
-    {"repo": "Blue-Moon-Portal", "total": 20, "role": "Agritech beachhead", "buyer": "Growers"},
+    {"repo": "Blue-Moon-Portal", "total": 20, "role": "Byte Size Kai (agritech lead)", "buyer": "Growers / Mana Kai"},
     {"repo": "SoilGuard-Portal", "total": 20, "role": "Whenua / pasture", "buyer": "Farms / co-ops"},
     {"repo": "fivepanelhat", "total": 19, "role": "Top-of-funnel", "buyer": "Investors / partners"},
     {"repo": "Weaver", "total": 19, "role": "Multi-tenant edge", "buyer": "Rural enterprise"},

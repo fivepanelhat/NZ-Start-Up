@@ -36,7 +36,7 @@ ROLES = {
     "Coastal-Alpine-Core": "Shared edge SDK (SecurityGuard, MQTT, flywheel)",
     "coastal-alpine-stack": "Full-stack edge monorepo / deploy",
     "Sovereign-Edge-Firmware": "ESP32 field layer / mTLS MQTT",
-    "Blue-Moon-Portal": "Crop / microgreens domain portal",
+    "Blue-Moon-Portal": "Byte Size Kai product (Blue-Moon stack)",
     "SoilGuard-Portal": "Soil & pasture domain portal",
     "AquaGuard-Portal": "Water & aquaculture domain portal",
     "Sting-Operation-AI": "Biosecurity vision sentinel",
@@ -121,7 +121,7 @@ This repository is part of the **Kiwi Edge AI Stack** - hybrid edge (RPi 5 16GB 
 | Edge orchestration | Weaver |
 | Shared SDK | Coastal-Alpine-Core, coastal-alpine-stack |
 | Field | Sovereign-Edge-Firmware |
-| Domains | Blue-Moon-Portal, SoilGuard-Portal, AquaGuard-Portal, Sting-Operation-AI |
+| Domains | **Byte Size Kai** (Blue-Moon-Portal), SoilGuard-Portal, AquaGuard-Portal, Sting-Operation-AI |
 | Whanau / social | whanau-preterm-support-hub, Front_Line_Whanau |
 | Privacy util | CAT-mail |
 

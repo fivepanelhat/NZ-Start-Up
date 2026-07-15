@@ -39,7 +39,7 @@ Software/SaaS → Fintech → Agritech/Foodtech → Healthtech → Climate/Clean
 1. **EDA white-label (highest leverage)** — Venture Taranaki PowerUp-class cohorts; pre-seeded company memory per founder; partner report + anonymised cohort analytics for the EDA; per-seat or revenue-share.
 2. **Direct founder** — one-command install, 14–30 day trial with example company, Xero read-only + bank CSV as day-1 value.
 3. **RDTI/grant dogfood** — position as the tool that makes RDTI claims defensible (contemporaneous logs + audit trail); discounted for active claimants.
-4. **Hybrid edge bundle** — founder OS + Blue-Moon/SoilGuard/Sting edge nodes for agritech/biosecurity ("Platinum Edge").
+4. **Hybrid edge bundle** — founder OS + Byte Size Kai / SoilGuard / Sting edge nodes for agritech/biosecurity ("Platinum Edge").
 5. **Global/diaspora** — startups.com-layer narrative for offshore NZ founders.
 
 ## Competitive white space

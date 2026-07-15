@@ -23,7 +23,7 @@
 │  Sovereign-Edge-Firmware — ESP32 field layer                │
 ├─────────────────────────────────────────────────────────────┤
 │  Domain portals (primary industries):                       │
-│    Blue-Moon (crop/microgreens) · SoilGuard (soil/pasture)  │
+│    Byte Size Kai / Blue-Moon stack (crop/microgreens) · SoilGuard (soil/pasture)  │
 │    AquaGuard (water/aqua) · Sting-Operation (biosecurity)   │
 ├─────────────────────────────────────────────────────────────┤
 │  Whānau / social: Front_Line_Whanau · preterm support hub   │  ← cultural care
@@ -47,7 +47,7 @@ Score 0–5: **ICP clarity · Revenue nearness · Tech maturity · NZ impact · 
 | **Weaver** | 4 | 3 | 4 | 4 | 4 | **19** | Multi-tenant edge | Rural enterprise / helpdesk |
 | **Coastal-Alpine-Core** | 3 | 2 | 5 | 4 | 5 | **19** | Shared IP moat | Portfolio enablement |
 | **coastal-alpine-stack** | 3 | 2 | 5 | 4 | 4 | **18** | Architecture proof | Technical DD |
-| **Blue-Moon-Portal** | 4 | 3 | 4 | 5 | 4 | **20** | Agritech beachhead | Growers / Mana Kai class |
+| **Byte Size Kai** (`Blue-Moon-Portal`) | 4 | 3 | 4 | 5 | 4 | **20** | **Agritech lead product** | Growers / Mana Kai class |
 | **SoilGuard-Portal** | 4 | 3 | 4 | 5 | 4 | **20** | Whenua / pasture | Farms / co-ops |
 | **AquaGuard-Portal** | 4 | 2 | 4 | 4 | 3 | **17** | Water vertical | Aqua / councils |
 | **Sting-Operation-AI** | 4 | 2 | 4 | 5 | 4 | **19** | Biosecurity wedge | MPI-adjacent / apiarists |
@@ -64,7 +64,7 @@ Score 0–5: **ICP clarity · Revenue nearness · Tech maturity · NZ impact · 
 |------|----------|------------------------------|
 | **Founder → fleet** | NZ-Start-Up onboard → RDTI logs → board packs | Faster company formation; more investable founders in Taranaki |
 | **EDA → region** | PowerUp white-label → cohort report → renewals | EDA capacity without linear headcount |
-| **Founder → field** | Agritech founder on NZ-Start-Up → Blue-Moon/SoilGuard pilot | Farm productivity + local install jobs |
+| **Founder → field** | Agritech founder on NZ-Start-Up → Byte Size Kai / SoilGuard pilot | Farm productivity + local install jobs |
 | **Trust → enterprise** | standards-mapping + compliance gate → council/SME procurement | Public-sector-ready narrative without fake autonomy |
 | **Social care** | Hub / Front_Line (separate GTM, cultural HITL) | Social licence + Te Tiriti-aligned impact (not mixed with agritech cold pitch) |
 
@@ -75,7 +75,7 @@ Score 0–5: **ICP clarity · Revenue nearness · Tech maturity · NZ impact · 
 | Use of funds | % (indicative) | Repos / workstreams |
 |--------------|----------------|---------------------|
 | Commercialise NZ-Start-Up (EDA pilot, support, packaging) | 40% | NZ-Start-Up, fivepanelhat |
-| First paid agritech edge pilot (hardware + portal) | 25% | Blue-Moon or SoilGuard + Core + Firmware |
+| First paid agritech edge pilot (hardware + portal) | 25% | Byte Size Kai (Blue-Moon) or SoilGuard + Core + Firmware |
 | Hardening / SecOps / observability | 15% | Weaver, Core, stack |
 | Legal, IP assignment, incorporation, RDTI advisor | 10% | Company ops |
 | Cultural advisory / social hub (gated) | 10% | Hub / Front_Line if in scope |

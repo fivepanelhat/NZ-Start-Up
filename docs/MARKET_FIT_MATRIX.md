@@ -47,7 +47,7 @@ Enterprises do not “download a founder OS” the same way. We open markets by 
 | **B. RDTI evidence OS** | Founder + tax advisor | Defensible contemporaneous R&D logs | `rdti` + audit + board pack | Founder sub + advisor channel | `grants-rdti-clerk` |
 | **C. Procurement trust pack** | Council / gov-adjacent / mid-market | Answer Algorithm Charter / Privacy / HITL DD | standards-mapping + compliance gate report | Paid pilot / licence | `enterprise-adoption-officer` |
 | **D. Finance handoff** | SME + accountant | GST/invoice triage without agent email risk | bank/invoice/handoff zips | Founder tier + accountant referral | `finance-clerk` |
-| **E. Hybrid edge story** | Agritech co-ops / farms | Local inference + founder ops in one narrative | Portfolio link + board pack | Bundle with Blue-Moon/SoilGuard | market + portfolio matrix |
+| **E. Hybrid edge story** | Agritech co-ops / farms | Local inference + founder ops in one narrative | Portfolio link + board pack | Bundle with Byte Size Kai / SoilGuard | market + portfolio matrix |
 | **F. Investor readiness** | Pre-seed founder | Data room + honest market claims | seed pack + investor-readiness skill | Included in Active | `investor-readiness-clerk` |
 | **G. Cultural sovereign stack** | Iwi / Māori enterprise (gated) | Data sovereignty + HITL | Te Mana Raraunga docs + cultural flags | Relationship-first; no cold sell | compliance, cultural HITL |
 
