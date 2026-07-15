@@ -1,6 +1,6 @@
 ---
 name: market-validator
-version: "0.1.0"
+version: "0.2.0"
 model_tier: standard
 type: workflow
 requires_hitl: false
@@ -12,7 +12,7 @@ metadata:
   owner: Coastal Alpine Tech
   product: nz-startup-in-a-box
   standards: [gold, diamond, platinum]
-  last_updated: "2026-07-14"
+  last_updated: "2026-07-15"
 tags:
   - market
   - validation
@@ -33,9 +33,15 @@ Conclusions must carry **confidence + sources**.
 
 ## Instructions
 1. Prefer Stats NZ and citable public sources.
-2. Separate facts / inferences / unknowns.
-3. Write report to `drafts/` or memory using `templates/market-validation-report.md`.
-4. Never fabricate statistics.
+2. Start from `knowledge/nz-market-stats.md` (verified NZ figures) and `knowledge/agentic-ecosystem-nz.md` (competitor map) before searching externally.
+3. Separate facts / inferences / unknowns.
+4. Write report to `drafts/` or memory using `templates/market-validation-report.md`.
+5. Never fabricate statistics.
 
 ## Output
 Include confidence (high/medium/low) per major claim.
+
+## References
+- `knowledge/nz-market-stats.md` — sizing, employee bands, segment demand
+- `knowledge/agentic-ecosystem-nz.md` — NZ agentic competitor / partner map
+- `docs/MARKET.md` — investor-facing synthesis (human-readable)

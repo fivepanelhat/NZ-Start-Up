@@ -1,6 +1,6 @@
 ---
 name: gtm-pipeline-rep
-version: "0.1.0"
+version: "0.2.0"
 model_tier: standard
 type: workflow
 requires_hitl: true
@@ -12,7 +12,7 @@ metadata:
   owner: Coastal Alpine Tech
   product: nz-startup-in-a-box
   standards: [gold, diamond, platinum]
-  last_updated: "2026-07-14"
+  last_updated: "2026-07-15"
 tags:
   - gtm
   - pipeline
@@ -46,3 +46,5 @@ NZ Unsolicited Electronic Messages Act 2007 makes autonomous cold email a legal 
 ## References
 - `templates/outreach-draft.md`
 - `compliance/hitl-matrix.md`
+- `knowledge/nz-market-stats.md` — ICP employee bands + top-5 segments for list building
+- `docs/MARKET.md` — ranked ICP priorities (P0 solo founders + EDA cohorts first)

@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.7.0 — 2026-07-15
+
+### Market intelligence layer (reports 10–11)
+
+Deep-dive NZ startup stats + agentic ecosystem research wired into the fleet as CI-freshness-gated knowledge.
+
+| Item | Ship |
+|------|------|
+| Knowledge | `knowledge/nz-market-stats.md` — Stats NZ / NZGCP / StartupBlink verified figures, employee bands, top-5 segments, agent citation rules |
+| Knowledge | `knowledge/agentic-ecosystem-nz.md` — NZ agentic competitor/partner map, white-space statement, no-over-claim rules |
+| Knowledge | `knowledge/funding-landscape.md` — 2025 capital climate ($754m/166 deals; 47 first-funded) with honest-framing rule |
+| Docs | `docs/MARKET.md` — investor-facing market opportunity: bottom-up sizing, ranked ICP, adoption pathways, success metrics |
+| Skills | market-validator, gtm-pipeline-rep, funding-analyst → 0.2.0; reference the new knowledge before external search |
+| Deps | Lockfile refreshed to clear all pip-audit findings (cryptography 48.0.1, pytest 9.0.3, mcp 1.23.0, pypdf 6.13.3) |
+
+All new knowledge carries `verified: 2026-07-15` and is enforced by the G4 freshness gate (90-day max age).
+
 ## 1.6.1 — 2026-07-15
 
 ### Final review calibration (report 8) + investor consistency (report 9)

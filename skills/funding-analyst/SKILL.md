@@ -1,6 +1,6 @@
 ---
 name: funding-analyst
-version: "0.1.0"
+version: "0.2.0"
 model_tier: frontier
 type: workflow
 requires_hitl: true
@@ -12,7 +12,7 @@ metadata:
   owner: Coastal Alpine Tech
   product: nz-startup-in-a-box
   standards: [gold, diamond, platinum]
-  last_updated: "2026-07-14"
+  last_updated: "2026-07-15"
 tags:
   - funding
   - investors
@@ -38,3 +38,6 @@ Digital employee #8. Full autonomy on **prep**; term recommendations always flag
 
 ## References
 - `templates/investor-data-room-index.md`
+- `knowledge/funding-landscape.md` — capital climate (2025: $754m/166 deals; 47 first-funded)
+- `knowledge/agentic-ecosystem-nz.md` — partner targets + no-over-claim rules
+- `docs/MARKET.md` — honest sizing for deck iteration
