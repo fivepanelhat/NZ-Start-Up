@@ -10,6 +10,7 @@
 | **Org sweep** | Applied + pushed to all 14 public fivepanelhat repos + front page |
 | **NZ-Start-Up** | `CAT_CONGRUENCE.md`, `.github/agent-fleet/*`, agent-hardening **v1.1** (tool use, refusal, extended thinking) |
 | **Docs** | AGENT_HARDENING anti-hallucination section; AGENTS.md load order updated |
+| **Follow-on** | Front_Line_Whanau **main** merged; full skills pack embedded in **Aether** (`skills/nz-startup/` + fleet bridge) |
 
 Every repo now links fivepanelhat + NZ-Start-Up, HITL slogan, investor one-liner, and FACT/INFERENCE/UNKNOWN policy.
 
