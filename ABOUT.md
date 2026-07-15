@@ -20,6 +20,20 @@ This is **Māori development context** for how Coastal Alpine Tech approaches so
 
 Ship a **local-first NZ founder operating system** — skills-heavy agents under hard legal ceilings — so founders and EDAs can move faster without fake autonomy or offshore-default data practices.
 
+## Pre-seed ecosystem — Venture Taranaki, VC, and startups.com
+
+**Coastal Alpine Tech** is a **pre-seed** Taranaki venture: early product, early revenue path, and capital still formative. The near-term channel is not “spray and pray” national VC — it is **regional enablement** first.
+
+**Venture Taranaki** is the region’s economic development agency and the practical front door for founders building here: programmes such as **PowerUp** (intensive early-stage acceleration), introductions to local operators, capability support, and pathways into wider NZ networks. For a pre-seed stack like *NZ Start-Up in a Box*, Venture Taranaki is the natural **dogfood + white-label** conversation — “Nick, but scalable” — cohort seats for founders without inventing a multi-tenant SaaS overnight.
+
+**Pre-seed VC** in NZ is thin and relationship-heavy. The realistic path is: paid pilots and EDA/accelerator proof → then angels, thesis-aligned funds, and programme-linked capital once traction and RDTI-grade R&D discipline are visible. Pre-seed money should buy **pipeline and product proof**, not a cloud empire.
+
+**startups.com** sits in the global founder media and community layer — visibility, narrative, and peer benchmarks. It is useful for **story and signal**, not a substitute for Taranaki relationships, NZ compliance depth, or a signed pilot. Use it to sharpen the pitch; close deals where the whenua and customers are.
+
+**Blurb (short form):**
+
+> Coastal Alpine Tech is a Taranaki pre-seed company building *NZ Start-Up in a Box* — a local-first, HITL agent fleet for NZ founders. We partner first with **Venture Taranaki** and regional pathways (e.g. PowerUp), pursue **paid pilots** before free experiments, and treat national **pre-seed VC** as a second step after proof. Global platforms like **startups.com** help with narrative and reach; the moat remains NZ jurisdiction depth, dual-licence IP, and six-generation whenua context — not hype agents.
+
 ## IP posture
 
 Dual licence under NZ copyright ownership:
