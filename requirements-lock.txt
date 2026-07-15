@@ -4,14 +4,14 @@
 # Audit:   pip-audit -r requirements-lock.txt
 
 # runtime
-cryptography==44.0.3
+cryptography==48.0.1
 
 # dev / CI
-pytest==8.4.1
+pytest==9.0.3
 ruff==0.12.2
 pip-audit==2.9.0
 
 # optional extras (pin when used)
-mcp==1.10.1
-pypdf==5.7.0
+mcp==1.23.0
+pypdf==6.13.3
 pywebview==5.4
