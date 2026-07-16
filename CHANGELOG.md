@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.8.3 — 2026-07-16
+
+### Super Grok proceed — pilot + economic thesis (grounded)
+
+| Item | Ship |
+|------|------|
+| **Pilot offer** | Local DRAFT_NOT_SENT pack for Venture Taranaki PowerUp (company memory) |
+| **Cohort** | vt-powerup-2026 white-label zip + anonymised partner report (local) |
+| **Skills pack** | dist zip + SHA256 + SBOM regenerated |
+| **Docs** | ECONOMIC_IMPACT, INVESTOR_TEASER_ONE_PAGER, SUPER_GROK_PROCEED_LOG |
+
+No email send. No over-claimed partnerships.
+
 ## 1.8.2 — 2026-07-16
 
 ### Optimization execution (Claude reports #6-11) - evidence, not new structure

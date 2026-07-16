@@ -1,6 +1,6 @@
 # NZ Start-Up in a Box
 
-**Status:** Pre-seed · [REALITY.md](./REALITY.md) · [EDA demo kit](./docs/EDA_DEMO_KIT.md) · [Optimization log](./docs/OPTIMIZATION_EXECUTION.md)
+**Status:** Pre-seed · [REALITY.md](./REALITY.md) · [EDA demo kit](./docs/EDA_DEMO_KIT.md) · [Optimization log](./docs/OPTIMIZATION_EXECUTION.md) · [Economic impact](./docs/ECONOMIC_IMPACT.md) · [Super Grok proceed](./docs/SUPER_GROK_PROCEED_LOG.md)
 
 <!-- BEGIN CAT_CONGRUENCE_SNIPPET -->
 ## Coastal Alpine Tech portfolio
