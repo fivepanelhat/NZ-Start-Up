@@ -1,6 +1,6 @@
 # NZ Start-Up in a Box
 
-**Status:** Pre-seed · [REALITY.md](./REALITY.md) · [EDA demo kit](./docs/EDA_DEMO_KIT.md) · [Optimization log](./docs/OPTIMIZATION_EXECUTION.md) · [Economic impact](./docs/ECONOMIC_IMPACT.md) · [Super Grok proceed](./docs/SUPER_GROK_PROCEED_LOG.md)
+**Status:** Pre-seed | [REALITY.md](./REALITY.md) | [EDA demo kit](./docs/EDA_DEMO_KIT.md) | [Optimization log](./docs/OPTIMIZATION_EXECUTION.md) | [Economic impact](./docs/ECONOMIC_IMPACT.md) | [Super Grok proceed](./docs/SUPER_GROK_PROCEED_LOG.md)
 
 <!-- BEGIN CAT_CONGRUENCE_SNIPPET -->
 ## Coastal Alpine Tech portfolio
@@ -14,10 +14,9 @@
 
 > Sovereign hybrid edge AI for NZ farms and founders - local-first + multi-model, Te Mana Raraunga aligned - collaborating with Venture Taranaki, startups.com investors and Kotahitanga Investment Fund (HITL + cultural advisory for formal approaches).
 
-**Agents inform, draft, prepare, monitor, and remind. Humans advise, sign, file, send, and pay.**  
+**Agents inform, draft, prepare, monitor, and remind. Humans advise, sign, file, send, and pay.** 
 Anti-hallucination policy: [`.github/agent-fleet/anti-hallucination.md`](./.github/agent-fleet/anti-hallucination.md) | Congruence: [`CAT_CONGRUENCE.md`](./CAT_CONGRUENCE.md)
 <!-- END CAT_CONGRUENCE_SNIPPET -->
-
 
 [![Coastal Alpine Tech](https://img.shields.io/badge/Coastal%20Alpine%20Tech-Pre--seed-0ea5e9?style=for-the-badge&logo=data:image/svg+xml;base64,)](./ABOUT.md)
 [![Stage](https://img.shields.io/badge/Stage-Pre--seed-7c3aed?style=for-the-badge)](./ABOUT.md)
@@ -43,30 +42,30 @@ Anti-hallucination policy: [`.github/agent-fleet/anti-hallucination.md`](./.gith
 Formation through funding | hard legal ceilings | CAT Gold / Diamond / Platinum | **Coastal Alpine Tech pre-seed**
 **Hybrid:** edge (RPi 5 + Hailo target) + multi-model fleet | agents draft/prepare | humans file/send/pay/sign
 
-> **Investor one-liner:** Coastal Alpine Tech is building the sovereign hybrid edge-AI stack for Aotearoa's primary industries and founders  local-first RPi 5 + Hailo nodes, multi-model fleets (Grok/Claude/Gemini), Te Mana Raraunga data sovereignty, and white-label EDA tools  actively seeking collaboration with **Venture Taranaki**, **startups.com investors**, and the **Kotahitanga Investment Fund** to scale intergenerational MÄori and regional economic outcomes.
+> **Investor one-liner:** Coastal Alpine Tech is building the sovereign hybrid edge-AI stack for Aotearoa's primary industries and founders local-first RPi 5 + Hailo nodes, multi-model fleets (Grok/Claude/Gemini), Te Mana Raraunga data sovereignty, and white-label EDA tools actively seeking collaboration with **Venture Taranaki**, **startups.com investors**, and the **Kotahitanga Investment Fund** to scale intergenerational Maori and regional economic outcomes.
 
 > **One download.** Skills + NZ knowledge + templates + HITL + localhost console.
 > **IP:** Dual licence (proprietary default + commercial track) | protected under **NZ copyright law**.
-> **Whenua:** Taranaki | Wayne Roberts | whÄnau with **six generations in agriculture**.
+> **Whenua:** Taranaki | Wayne Roberts | whanau with **six generations in agriculture**.
 > **Not open source.** Production / white-label requires a commercial licence.
 > **Collaboration:** Open to Venture Taranaki, startups.com investors, and Kotahitanga Investment Fund (cultural HITL for formal approaches).
 
 ## Coastal Alpine Tech (pre-seed)
 
- |  |  |
+ | | |
  | -- | -- |
  | **Company** | Coastal Alpine Tech Limited |
  | **Stage** | Pre-seed |
  | **R&D started** | 8 August 2025 |
  | **Founding date** | 8 August 2026 |
  | **Region** | Taranaki, Aotearoa New Zealand |
- | **Founding context** | Wayne Roberts | Taranaki whÄnau | 6 generations in agriculture |
- | **MÄori development** | Te Mana Raraungaaligned | no cultural extraction | HITL for cultural content |
+ | **Founding context** | Wayne Roberts | Taranaki whanau | 6 generations in agriculture |
+ | **Maori development** | Te Mana Raraungaaligned | no cultural extraction | HITL for cultural content |
 
 Full story: [`ABOUT.md`](./ABOUT.md) | Dual licence: [`docs/DUAL_LICENCE.md`](./docs/DUAL_LICENCE.md)
 **Investor R&D + market dossier:** [`docs/INVESTOR_RD_AND_MARKET_REFERENCE.md`](./docs/INVESTOR_RD_AND_MARKET_REFERENCE.md) (8 Aug 2025 claim, Drive evidence, Taranaki/NZ employment pathways)
 **Market fit matrix:** [`docs/MARKET_FIT_MATRIX.md`](./docs/MARKET_FIT_MATRIX.md) | **Portfolio:** [`docs/PORTFOLIO_MARKET_FIT.md`](./docs/PORTFOLIO_MARKET_FIT.md) | **Seed pack:** [`docs/SEED_INVESTOR_PACK.md`](./docs/SEED_INVESTOR_PACK.md)
-**Market opportunity (verified 2026-07-15):** [`docs/MARKET.md`](./docs/MARKET.md)  honest NZ sizing, ranked ICP, adoption pathways, competitive white space
+**Market opportunity (verified 2026-07-15):** [`docs/MARKET.md`](./docs/MARKET.md) honest NZ sizing, ranked ICP, adoption pathways, competitive white space
 
 ## What you get
 
@@ -87,16 +86,16 @@ A **small orchestrator + skills-heavy specialist fleet** (not 30 fake "autonomou
 
 Plus **`agent-hardening`** and **`cat-architectural-standards`** governance skills.
 
-The **NZ moat** is jurisdiction depth (Companies Office, IRD, RDTI, regional grants, Te Mana Raraunga)  not agent novelty.
+The **NZ moat** is jurisdiction depth (Companies Office, IRD, RDTI, regional grants, Te Mana Raraunga) not agent novelty.
 
 ## Dual licence (IP protection)
 
  | Track | File | Use |
  | ------- | ------ | ----- |
- | **A  Default** | [`LICENSE`](./LICENSE) | Proprietary evaluation only |
- | **B  Commercial** | [`LICENSE-COMMERCIAL.md`](./LICENSE-COMMERCIAL.md) | Production | white-label | cohort (by agreement) |
+ | **A Default** | [`LICENSE`](./LICENSE) | Proprietary evaluation only |
+ | **B Commercial** | [`LICENSE-COMMERCIAL.md`](./LICENSE-COMMERCIAL.md) | Production | white-label | cohort (by agreement) |
 
-Copyright is automatic under the **Copyright Act 1994 (NZ)**. Dual licence lets Coastal Alpine Tech keep ownership while selling commercial rights at pre-seed. **Not legal advice**  see `docs/DUAL_LICENCE.md`.
+Copyright is automatic under the **Copyright Act 1994 (NZ)**. Dual licence lets Coastal Alpine Tech keep ownership while selling commercial rights at pre-seed. **Not legal advice** see `docs/DUAL_LICENCE.md`.
 
 ## Standards (mandatory)
 
@@ -123,7 +122,7 @@ Humans must **advise, sign, file, send, and pay**.
 
 See **[docs/ARCHITECTURE_DETAILED.md](docs/ARCHITECTURE_DETAILED.md)**.
 
-![Architecture  glassmorphism](assets/architecture-glassmorphism.jpg)
+![Architecture glassmorphism](assets/architecture-glassmorphism.jpg)
 
 ## Quick start (Windows)
 
@@ -152,14 +151,14 @@ python -m nz_startup smoke
 ## Repository layout
 
 ```text
-skills/                 # Digital employees + agent-hardening + CAT
-nz_startup/             # CLI, MCP, guardrails, compliance gate, console
-compliance/             # HITL, Privacy Act, Te Mana Raraunga, licence posture
-docs/                   # Architecture, dual licence, demos, white-label
-memory/                 # Schema + example (live companies gitignored)
-templates/              # Checklists and commercial outlines
-assets/                 # Architecture art
-ABOUT.md                # Coastal Alpine Tech pre-seed story
+skills/ # Digital employees + agent-hardening + CAT
+nz_startup/ # CLI, MCP, guardrails, compliance gate, console
+compliance/ # HITL, Privacy Act, Te Mana Raraunga, licence posture
+docs/ # Architecture, dual licence, demos, white-label
+memory/ # Schema + example (live companies gitignored)
+templates/ # Checklists and commercial outlines
+assets/ # Architecture art
+ABOUT.md # Coastal Alpine Tech pre-seed story
 ```
 
 ## Pricing posture (indicative)
@@ -179,4 +178,4 @@ ABOUT.md                # Coastal Alpine Tech pre-seed story
 
 **Dual licence (proprietary default + commercial track).**
 See `LICENSE`, `LICENSE-COMMERCIAL.md`, `NOTICE`, and `docs/DUAL_LICENCE.md`.
-** 20252026 Coastal Alpine Tech Limited  Pre-seed | Taranaki.**
+** 20252026 Coastal Alpine Tech Limited Pre-seed | Taranaki.**

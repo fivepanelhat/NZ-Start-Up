@@ -1,13 +1,13 @@
-# Platinum Standard — Flywheel
+# Platinum Standard - Flywheel
 
 ## Loop
 
 ```text
 Capture (RDTI, decisions, pipeline outcomes)
-  → Curate (company memory, tags, confidence)
-  → Improve prompts/skills from real failures
-  → Evaluate (weekly board metrics)
-  → Hot-swap skill versions
+ -> Curate (company memory, tags, confidence)
+ -> Improve prompts/skills from real failures
+ -> Evaluate (weekly board metrics)
+ -> Hot-swap skill versions
 ```
 
 ## Capture points in this fleet

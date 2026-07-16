@@ -1,13 +1,13 @@
 {
-  "mcpServers": {
-    "nz-startup-in-a-box": {
-      "command": "python",
-      "args": ["-m", "nz_startup", "mcp"],
-      "env": {
-        "NZ_STARTUP_ROOT": ".",
-        "NZ_STARTUP_MEMORY": "./memory"
-      },
-      "description": "HITL-safe NZ Start-Up fleet tools: memory, RDTI log, drafts (never send), NZBN read-only, weekly board review. Annotations: all tools are non-destructive drafts/reads (readOnlyHint-compatible; destructiveHint false)."
-    }
-  }
+ "mcpServers": {
+ "nz-startup-in-a-box": {
+ "command": "python",
+ "args": ["-m", "nz_startup", "mcp"],
+ "env": {
+ "NZ_STARTUP_ROOT": ".",
+ "NZ_STARTUP_MEMORY": "./memory"
+ },
+ "description": "HITL-safe NZ Start-Up fleet tools: memory, RDTI log, drafts (never send), NZBN read-only, weekly board review. Annotations: all tools are non-destructive drafts/reads (readOnlyHint-compatible; destructiveHint false)."
+ }
+ }
 }

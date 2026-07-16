@@ -22,9 +22,9 @@ nz-startup invoice list my-startup
 
 ### Outputs
 
-- `finance/invoices/inbox/` — archived originals  
-- `finance/invoices/triaged/<id>/` — `triage.md`, `triage.json`, `extracted.txt`  
-- `finance/invoices/invoice-registry.csv` + `.md`  
+- `finance/invoices/inbox/` - archived originals 
+- `finance/invoices/triaged/<id>/` - `triage.md`, `triage.json`, `extracted.txt` 
+- `finance/invoices/invoice-registry.csv` + `.md` 
 
 **Human must verify** tax invoice validity before any GST claim.
 

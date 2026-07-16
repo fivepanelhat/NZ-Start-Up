@@ -12,9 +12,9 @@ Writes:
 - `status/status-latest.md`
 - `status/status-latest.json`
 
-Score bands: **early** (<50) · **progressing** (50–79) · **ready** (80+).
+Score bands: **early** (<50) | **progressing** (50-79) | **ready** (80+).
 
-Informational only — does not certify compliance.
+Informational only - does not certify compliance.
 
 ## Board / mentor pack
 
@@ -37,8 +37,8 @@ nz-startup smoke
 # exit code 0 = pass
 ```
 
-Runs isolated sample path: init → pipeline → bank → xero → invoice → weekly → status → handoff → board → cohort pack → demo quick.
+Runs isolated sample path: init -> pipeline -> bank -> xero -> invoice -> weekly -> status -> handoff -> board -> cohort pack -> demo quick.
 
 ## Sales one-pager
 
-`templates/sales-one-pager.md` — copy for EDA conversations.
+`templates/sales-one-pager.md` - copy for EDA conversations.

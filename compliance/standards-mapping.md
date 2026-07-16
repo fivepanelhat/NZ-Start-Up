@@ -1,8 +1,8 @@
-# Standards mapping — procurement & due-diligence collateral
+# Standards mapping - procurement & due-diligence collateral
 
-**Product:** NZ Start-Up in a Box · Coastal Alpine Tech Limited (Pre-seed)  
-verified: 2026-07-15  
-**Version:** 1.6.1  
+**Product:** NZ Start-Up in a Box | Coastal Alpine Tech Limited (Pre-seed) 
+verified: 2026-07-15 
+**Version:** 1.6.1 
 
 Maps existing engineering controls to frameworks EDAs, councils, and investors ask about.
 This is **alignment evidence**, not a certification claim.
@@ -37,7 +37,7 @@ This is **alignment evidence**, not a certification claim.
 
 ---
 
-## ISO/IEC 42001 (AI management systems) — control themes
+## ISO/IEC 42001 (AI management systems) - control themes
 
 | Theme | Implementation | Evidence |
 |-------|----------------|----------|
@@ -55,7 +55,7 @@ This is **alignment evidence**, not a certification claim.
 | Charter principle | Product alignment | Evidence |
 |-------------------|-------------------|----------|
 | Transparency | Local files, greppable audit, no black-box decisions on filings | `audit.jsonl`, company memory markdown |
-| Partnership | HITL — humans advise/sign/file/send/pay | Autonomy slogan everywhere |
+| Partnership | HITL - humans advise/sign/file/send/pay | Autonomy slogan everywhere |
 | People | Cultural sensitivity flags; Te Mana Raraunga | skill `cultural_sensitivity`, compliance docs |
 | Data | Local-first; encrypted backups; no multi-tenant SaaS default | `backup.py`, CONSOLE localhost bind |
 | Privacy | Privacy Act 2020 notes; PII patterns blocked from git paths | `compliance/privacy-act-2020.md` |
@@ -63,7 +63,7 @@ This is **alignment evidence**, not a certification claim.
 
 ---
 
-## Privacy Act 2020 (NZ) — IPP alignment (summary)
+## Privacy Act 2020 (NZ) - IPP alignment (summary)
 
 | IPP theme | Alignment | Evidence |
 |-----------|-----------|----------|
@@ -77,8 +77,8 @@ This is **alignment evidence**, not a certification claim.
 
 ## How to use this document
 
-1. Attach to EDA / council RFIs as **control mapping** (not a certificate).  
-2. Point assessors at `nz-startup compliance check` + test suite.  
+1. Attach to EDA / council RFIs as **control mapping** (not a certificate). 
+2. Point assessors at `nz-startup compliance check` + test suite. 
 3. Re-verify after material architecture changes; bump **Verified** date above.
 
 **Not legal advice.** Independent NZ legal review for regulated deployments.

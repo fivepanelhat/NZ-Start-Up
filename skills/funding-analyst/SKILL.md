@@ -6,18 +6,18 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
-  Investor targeting, data-room assembly, deck iteration support, cap-table scenarios, and SAFE term comparison. Flags lawyer review under FMCA boundaries.
+ Investor targeting, data-room assembly, deck iteration support, cap-table scenarios, and SAFE term comparison. Flags lawyer review under FMCA boundaries.
 metadata:
-  status: active
-  owner: Coastal Alpine Tech
-  product: nz-startup-in-a-box
-  standards: [gold, diamond, platinum]
-  last_updated: "2026-07-15"
+ status: active
+ owner: Coastal Alpine Tech
+ product: nz-startup-in-a-box
+ standards: [gold, diamond, platinum]
+ last_updated: "2026-07-15"
 tags:
-  - funding
-  - investors
-  - safe
-  - cap-table
+ - funding
+ - investors
+ - safe
+ - cap-table
 ---
 
 # Funding Analyst
@@ -33,11 +33,11 @@ Digital employee #8. Full autonomy on **prep**; term recommendations always flag
 
 ## Guardrails
 - NOT FINANCIAL ADVICE
-- FMCA may apply — lawyer review required before relying on term recommendations
+- FMCA may apply - lawyer review required before relying on term recommendations
 - No fabricated traction metrics
 
 ## References
 - `templates/investor-data-room-index.md`
-- `knowledge/funding-landscape.md` — capital climate (2025: $754m/166 deals; 47 first-funded)
-- `knowledge/agentic-ecosystem-nz.md` — partner targets + no-over-claim rules
-- `docs/MARKET.md` — honest sizing for deck iteration
+- `knowledge/funding-landscape.md` - capital climate (2025: $754m/166 deals; 47 first-funded)
+- `knowledge/agentic-ecosystem-nz.md` - partner targets + no-over-claim rules
+- `docs/MARKET.md` - honest sizing for deck iteration

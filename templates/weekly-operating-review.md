@@ -1,7 +1,7 @@
-# Weekly Operating Review — {{date}}
+# Weekly Operating Review - {{date}}
 
-Prepared by: board-chief-of-staff  
-Classification: Gold workflow + Platinum memory  
+Prepared by: board-chief-of-staff 
+Classification: Gold workflow + Platinum memory 
 Status: DRAFT for human decision
 
 ## Snapshot

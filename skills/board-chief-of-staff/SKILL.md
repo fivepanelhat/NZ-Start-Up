@@ -6,24 +6,24 @@ type: orchestration
 requires_hitl: true
 cultural_sensitivity: high
 description: >
-  Orchestrator for the NZ Start-Up fleet. Runs weekly operating reviews, routes founder requests to specialists, maintains company memory, and escalates without deciding.
+ Orchestrator for the NZ Start-Up fleet. Runs weekly operating reviews, routes founder requests to specialists, maintains company memory, and escalates without deciding.
 metadata:
-  status: active
-  owner: Coastal Alpine Tech
-  product: nz-startup-in-a-box
-  standards: [gold, diamond, platinum]
-  last_updated: "2026-07-14"
+ status: active
+ owner: Coastal Alpine Tech
+ product: nz-startup-in-a-box
+ standards: [gold, diamond, platinum]
+ last_updated: "2026-07-14"
 tags:
-  - orchestrator
-  - board
-  - weekly-review
-  - fleet
+ - orchestrator
+ - board
+ - weekly-review
+ - fleet
 ---
 
 # Board Chief of Staff
 
 ## Overview
-Digital employee #10 — the interface. Aggregates pipeline vs plan, cash vs runway,
+Digital employee #10 - the interface. Aggregates pipeline vs plan, cash vs runway,
 compliance deadlines, and top-3 priorities. **Escalates, never decides.**
 
 ## When to Use

@@ -1,7 +1,7 @@
 # Company Memory
 
-- `example-company/` — safe demo data committed to git
-- `companies/` — runtime founder data (gitignored)
+- `example-company/` - safe demo data committed to git
+- `companies/` - runtime founder data (gitignored)
 
 Copy example to start:
 

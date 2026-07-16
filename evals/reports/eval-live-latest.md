@@ -1,4 +1,4 @@
-# Eval report — 2026-07-16
+# Eval report - 2026-07-16
 
 - Lane: live
 - Passed: **3/3**
@@ -6,7 +6,7 @@
 
 | ID | Skill | Score | Pass |
 |----|-------|-------|------|
-| live_rdti_log | grants-rdti-clerk | 1.0 | ✅ |
-| live_legal_draft | legal-document-assistant | 1.0 | ✅ |
-| live_outreach_draft | content-comms-officer | 1.0 | ✅ |
+| live_rdti_log | grants-rdti-clerk | 1.0 | [OK] |
+| live_legal_draft | legal-document-assistant | 1.0 | [OK] |
+| live_outreach_draft | content-comms-officer | 1.0 | [OK] |
 

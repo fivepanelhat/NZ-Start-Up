@@ -1,4 +1,4 @@
-# Legal review checklist (HITL — book a human lawyer)
+# Legal review checklist (HITL - book a human lawyer)
 
 **Not legal advice.** Claude final review (#8) recommended one hour with an NZ startup lawyer before an EDA signs. Use this as an agenda.
 

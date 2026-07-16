@@ -1,6 +1,6 @@
 # GST Prep Worksheet
 
-NOT A TAX FILING — human or accountant files in myIR.
+NOT A TAX FILING - human or accountant files in myIR.
 
 - [ ] Period start / end
 - [ ] Sales (GST inclusive/exclusive noted)

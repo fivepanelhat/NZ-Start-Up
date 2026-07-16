@@ -2,18 +2,18 @@
 
 ## Reporting
 
-**Preferred:** GitHub Security Advisories on this repository  
-https://github.com/fivepanelhat/NZ-Start-Up/security/advisories/new  
+**Preferred:** GitHub Security Advisories on this repository 
+https://github.com/fivepanelhat/NZ-Start-Up/security/advisories/new 
 
-**Inbox (Coastal Alpine Tech):** security@coastalalpinetech.nz  
-(If undeliverable during pre-seed, use the GitHub advisory form — it is monitored.)
+**Inbox (Coastal Alpine Tech):** security@coastalalpinetech.nz 
+(If undeliverable during pre-seed, use the GitHub advisory form - it is monitored.)
 
 Do not open public issues for secrets or vulnerabilities that could expose founder data.
 
 ## Data at rest
 
-- Company memory is local plaintext under `memory/companies/` — **assume full-disk encryption** (BitLocker / FileVault).
-- Use `nz-startup backup create <company> --passphrase …` for encrypted portable archives (`.nzbak`).
+- Company memory is local plaintext under `memory/companies/` - **assume full-disk encryption** (BitLocker / FileVault).
+- Use `nz-startup backup create <company> --passphrase ...` for encrypted portable archives (`.nzbak`).
 - Console binds 127.0.0.1 only and requires a session token (constant-time compare).
 
 ## Licence

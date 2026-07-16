@@ -1,4 +1,4 @@
-# NDA Outline — DRAFT — NOT LEGAL ADVICE
+# NDA Outline - DRAFT - NOT LEGAL ADVICE
 
 Sections to complete with lawyer:
 1. Parties

@@ -6,19 +6,19 @@ type: orchestration
 requires_hitl: true
 cultural_sensitivity: high
 description: >
-  Classify and govern NZ Start-Up in a Box work under CAT Gold, Diamond, and Platinum standards. Use for planning, reviews, HITL gates, and maturity checks.
+ Classify and govern NZ Start-Up in a Box work under CAT Gold, Diamond, and Platinum standards. Use for planning, reviews, HITL gates, and maturity checks.
 metadata:
-  status: active
-  owner: Coastal Alpine Tech
-  product: nz-startup-in-a-box
-  standards: [gold, diamond, platinum]
-  last_updated: "2026-07-14"
+ status: active
+ owner: Coastal Alpine Tech
+ product: nz-startup-in-a-box
+ standards: [gold, diamond, platinum]
+ last_updated: "2026-07-14"
 tags:
-  - cat
-  - gold
-  - diamond
-  - platinum
-  - governance
+ - cat
+ - gold
+ - diamond
+ - platinum
+ - governance
 ---
 
 # CAT Architectural Standards
@@ -36,14 +36,14 @@ Operationalises Gold (workflow), Diamond (foundation), and Platinum (intelligenc
 
 ### 1. Classify
 State primary and secondary tier:
-- **Gold** — founder lifecycle / process mapping / templates
-- **Diamond** — CI, security, privacy, production hygiene
-- **Platinum** — memory, agents, flywheel, learning loops
+- **Gold** - founder lifecycle / process mapping / templates
+- **Diamond** - CI, security, privacy, production hygiene
+- **Platinum** - memory, agents, flywheel, learning loops
 
 ### 2. Apply tier rules
-- Gold → linear phase gates; map to real NZ founder steps
-- Diamond → security, validation, audit, no secrets
-- Platinum → capture points, company memory writes, evaluation
+- Gold -> linear phase gates; map to real NZ founder steps
+- Diamond -> security, validation, audit, no secrets
+- Platinum -> capture points, company memory writes, evaluation
 
 ### 3. HITL
 Load `compliance/hitl-matrix.md`. Block forbidden autonomies.

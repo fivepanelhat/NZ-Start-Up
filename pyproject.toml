@@ -5,46 +5,46 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "nz-startup-in-a-box"
 version = "1.8.3"
-description = "NZ Start-Up in a Box — Coastal Alpine Tech pre-seed dual-licensed founder fleet (CAT Gold/Diamond/Platinum)"
+description = "NZ Start-Up in a Box - Coastal Alpine Tech pre-seed dual-licensed founder fleet (CAT Gold/Diamond/Platinum)"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "LicenseRef-Coastal-Alpine-Tech-Dual-Proprietary-Commercial" }
 authors = [{ name = "Coastal Alpine Tech Limited" }]
 keywords = [
-  "coastal-alpine-tech",
-  "pre-seed",
-  "new-zealand",
-  "taranaki",
-  "aether",
-  "hitl",
+ "coastal-alpine-tech",
+ "pre-seed",
+ "new-zealand",
+ "taranaki",
+ "aether",
+ "hitl",
 ]
 dependencies = [
-  "cryptography>=42.0",
+ "cryptography>=42.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-  "pytest>=8.0",
-  "ruff>=0.4",
-  "pip-audit>=2.7",
+ "pytest>=8.0",
+ "ruff>=0.4",
+ "pip-audit>=2.7",
 ]
 mcp = [
-  "mcp>=1.2.0",
+ "mcp>=1.2.0",
 ]
 pdf = [
-  "pypdf>=4.0",
+ "pypdf>=4.0",
 ]
 desktop = [
-  "pywebview>=5.0",
+ "pywebview>=5.0",
 ]
 all = [
-  "cryptography>=42.0",
-  "pytest>=8.0",
-  "ruff>=0.4",
-  "pip-audit>=2.7",
-  "mcp>=1.2.0",
-  "pypdf>=4.0",
-  "pywebview>=5.0",
+ "cryptography>=42.0",
+ "pytest>=8.0",
+ "ruff>=0.4",
+ "pip-audit>=2.7",
+ "mcp>=1.2.0",
+ "pypdf>=4.0",
+ "pywebview>=5.0",
 ]
 
 [project.scripts]

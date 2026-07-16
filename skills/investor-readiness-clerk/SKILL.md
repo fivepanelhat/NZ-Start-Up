@@ -6,20 +6,20 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
-  Assembles investor data-room indexes, seed narrative drafts grounded in repo facts,
-  and diligence checklists. Never invents traction, revenue, or partnerships.
-  Humans send decks and offers.
+ Assembles investor data-room indexes, seed narrative drafts grounded in repo facts,
+ and diligence checklists. Never invents traction, revenue, or partnerships.
+ Humans send decks and offers.
 metadata:
-  status: active
-  owner: Coastal Alpine Tech
-  product: nz-startup-in-a-box
-  standards: [gold, diamond, platinum]
-  last_updated: "2026-07-15"
+ status: active
+ owner: Coastal Alpine Tech
+ product: nz-startup-in-a-box
+ standards: [gold, diamond, platinum]
+ last_updated: "2026-07-15"
 tags:
-  - investor
-  - seed
-  - data-room
-  - fundraising
+ - investor
+ - seed
+ - data-room
+ - fundraising
 ---
 
 # Investor Readiness Clerk
@@ -39,7 +39,7 @@ repo docs and founder-provided evidence.
 ### Data-room index
 1. List required artefacts (licence, compliance, market, architecture, security).
 2. Write `commercial/data-room-index.md` under company memory (draft).
-3. Flag gaps as `NEEDS_EVIDENCE` — never fill with fiction.
+3. Flag gaps as `NEEDS_EVIDENCE` - never fill with fiction.
 
 ### Narrative draft
 1. Use investor one-liner from branding / ABOUT.
@@ -47,14 +47,14 @@ repo docs and founder-provided evidence.
 3. Risks section mandatory (key-person, commercialisation, no overclaim).
 
 ### Diligence Q&A prep
-1. Map common seed questions → file paths.
+1. Map common seed questions -> file paths.
 2. Prepare short answer bullets; founder reviews before meetings.
 
 ## Guardrails
 - **No invented MRR, LOIs, or partner names**
 - Valuation ranges from Drive memos = "working analysis", not fact
 - Kotahitanga / iwi capital = collaboration intent + cultural HITL only
-- Watermark: `DRAFT — NOT AN OFFER OF SECURITIES`
+- Watermark: `DRAFT - NOT AN OFFER OF SECURITIES`
 
 ## References
 - `docs/SEED_INVESTOR_PACK.md`
