@@ -60,13 +60,15 @@ cohorts/<id>/
 - Email partners or founders
 - Lift HITL ceilings (still draft/prepare only)
 
-## Pricing posture (indicative)
+## Packaging (conceptual tiers)
 
-| Tier | Indicative |
-|------|------------|
-| Founder | ~NZ$49/mo |
-| Active | ~NZ$149/mo |
-| Accelerator seat | ~NZ$399 |
-| White-label | custom per-cohort |
+| Tier | Who it is for |
+|------|---------------|
+| Founder | Individual founder seat |
+| Active | Higher-usage founder / small team |
+| Accelerator seat | Per-seat for cohort programmes |
+| White-label | Custom per-cohort / partner packaging |
 
-Confirm commercially; token burn is real - default on-demand + weekly cadence.
+Specific commercial terms are set per pilot or partnership and are not published as a fixed public price list. Contact for pilot terms.
+
+Token burn is real — default on-demand + weekly cadence.
