@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.8.2 — 2026-07-16
+
+### Optimization execution (Claude reports #6-11) - evidence, not new structure
+
+| Item | Ship |
+|------|------|
+| **Dogfood** | Local `coastal-alpine-tech` onboard + RDTI + VT pipeline (gitignored memory) |
+| **Cadence** | Windows schedule installed + heartbeat verified |
+| **Backup** | Fernet path confirmed (`encryption_path` in manifest) |
+| **Eval** | Live lane written (`provider=rubric` until model keys configured) |
+| **EDA kit** | `docs/EDA_DEMO_KIT.md` + links from VT approach |
+| **Legal** | `docs/LEGAL_REVIEW_CHECKLIST.md` (HITL lawyer agenda only) |
+| **Reality** | `REALITY.md` + `docs/OPTIMIZATION_EXECUTION.md` |
+| **E2E** | doctor / smoke / compliance / demo-vt PASS |
+
 ## 1.8.1 — 2026-07-15
 
 ### Portfolio congruence + anti-hallucination agent fleet

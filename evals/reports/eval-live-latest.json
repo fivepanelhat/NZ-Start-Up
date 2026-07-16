@@ -1,8 +1,9 @@
 {
-  "generated": "2026-07-15",
-  "company_id": "eval-harness",
+  "generated": "2026-07-16",
+  "company_id": "coastal-alpine-tech",
   "lane": "live",
   "provider": "rubric",
+  "model": "",
   "total": 3,
   "passed": 3,
   "failed": 0,
@@ -66,5 +67,5 @@
       "mode": "rubric"
     }
   ],
-  "note": "Opt-in behavioural lane. CI stays on deterministic suite only."
+  "note": "Rubric baseline only \u2014 set NZ_STARTUP_EVAL_API_KEY (or OPENAI_API_KEY / XAI_API_KEY) and --provider openai|xai for production-model scoring before EDA demos."
 }
