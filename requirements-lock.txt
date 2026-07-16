@@ -12,6 +12,6 @@ ruff==0.12.2
 pip-audit==2.9.0
 
 # optional extras (pin when used)
-mcp==1.23.0
+mcp==1.27.2
 pypdf==6.13.3
 pywebview==5.4
