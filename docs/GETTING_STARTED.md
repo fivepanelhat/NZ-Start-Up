@@ -28,6 +28,17 @@ nz-startup validate
 nz-startup smoke
 ```
 
+### Use as a digital employee (recommended)
+
+See **[USE_AS_EMPLOYEE.md](./USE_AS_EMPLOYEE.md)** for the full operator cadence.
+
+```bash
+nz-startup onboard my-company --legal-name "Example Labs Limited" --wedge "..." --icp "..."
+nz-startup operate my-company    # first-principles P0 brief
+nz-startup employee my-company   # alias
+nz-startup console --port 8765
+```
+
 ### Local console (v1.0)
 
 ```bash

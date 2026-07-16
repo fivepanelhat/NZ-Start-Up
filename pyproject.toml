@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nz-startup-in-a-box"
-version = "1.8.3"
+version = "1.8.4"
 description = "NZ Start-Up in a Box - Coastal Alpine Tech pre-seed dual-licensed founder fleet (CAT Gold/Diamond/Platinum)"
 readme = "README.md"
 requires-python = ">=3.10"
