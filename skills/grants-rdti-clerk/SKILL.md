@@ -6,7 +6,7 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: high
 description: >
- Grant radar, eligibility screening, application drafting, and contemporaneous RDTI R and D activity logging from commits or timesheets. Human submits applications.
+  Grant radar, eligibility screening, application drafting, and contemporaneous RDTI R and D activity logging from commits or timesheets. Human submits applications.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -17,8 +17,7 @@ tags:
  - grants
  - rdti
  - funding
- - eda
----
+ - eda---
 
 # Grants and RDTI Clerk
 

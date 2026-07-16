@@ -74,9 +74,21 @@ python -m nz_startup demo run --company demo-vt --partner "Venture Taranaki" --p
 
 ---
 
+## Session 2 re-green (post-ASC portfolio restore) - 2026-07-16
+
+| Action | Result |
+|--------|--------|
+| pytest | **102 passed** (skill YAML fold-indent fix) |
+| doctor / smoke / compliance / schedule | **PASS** |
+| demo-vt | status **100** |
+| pack | v1.8.3 zip + SHA256 + SBOM |
+| dogfood | operate + RDTI + weekly + board pack |
+| install-skills | first-principles-operator included |
+| Super Grok log | `docs/SUPER_GROK_PROCEED_LOG.md` updated |
+
 ## Next human actions (binding constraint = business clock)
 
-1. Personalise and **send** `docs/VT_POWERUP_APPROACH.md` outreach (or decide not to). 
+1. Personalise and **send** `docs/VT_POWERUP_APPROACH.md` outreach (or decide not to).
 2. Run CAT on the fleet daily so dogfood memory accumulates. 
 3. Cold-start: install pack zip on a clean Windows machine (film it). 
 4. One hour NZ startup lawyer on dual licence + standards-mapping language. 

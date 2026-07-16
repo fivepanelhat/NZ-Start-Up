@@ -6,9 +6,9 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
- Assembles investor data-room indexes, seed narrative drafts grounded in repo facts,
- and diligence checklists. Never invents traction, revenue, or partnerships.
- Humans send decks and offers.
+  Assembles investor data-room indexes, seed narrative drafts grounded in repo facts,
+  and diligence checklists. Never invents traction, revenue, or partnerships.
+  Humans send decks and offers.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -19,8 +19,7 @@ tags:
  - investor
  - seed
  - data-room
- - fundraising
----
+ - fundraising---
 
 # Investor Readiness Clerk
 

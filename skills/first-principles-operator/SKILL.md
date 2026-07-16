@@ -21,8 +21,7 @@ tags:
   - employee
   - first-principles
   - cadence
-  - chief-of-staff
----
+  - chief-of-staff---
 
 # First-Principles Operator (digital employee)
 

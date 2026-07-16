@@ -6,9 +6,9 @@ type: security
 requires_hitl: true
 cultural_sensitivity: high
 description: >
- Enforce NZ Start-Up agent autonomy ceilings, secret refusal, path sandboxing,
- watermarks, tool-use discipline, refusal calibration, extended thinking, and
- FACT/INFERENCE/UNKNOWN labels to reduce hallucination. Load before fleet work.
+  Enforce NZ Start-Up agent autonomy ceilings, secret refusal, path sandboxing,
+  watermarks, tool-use discipline, refusal calibration, extended thinking, and
+  FACT/INFERENCE/UNKNOWN labels to reduce hallucination. Load before fleet work.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -22,8 +22,7 @@ tags:
  - security
  - hitl
  - guardrails
- - compliance
----
+ - compliance---
 
 # Agent Hardening
 

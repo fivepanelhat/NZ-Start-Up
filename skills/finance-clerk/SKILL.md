@@ -6,7 +6,7 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: low
 description: >
- Bookkeeping triage, invoice chase drafts, GST return prep worksheets, cash-flow forecasts, and runway alerts. Never moves money or acts as a tax agent.
+  Bookkeeping triage, invoice chase drafts, GST return prep worksheets, cash-flow forecasts, and runway alerts. Never moves money or acts as a tax agent.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -17,8 +17,7 @@ tags:
  - finance
  - gst
  - runway
- - xero
----
+ - xero---
 
 # Finance Clerk
 

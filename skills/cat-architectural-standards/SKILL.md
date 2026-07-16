@@ -6,7 +6,7 @@ type: orchestration
 requires_hitl: true
 cultural_sensitivity: high
 description: >
- Classify and govern NZ Start-Up in a Box work under CAT Gold, Diamond, and Platinum standards. Use for planning, reviews, HITL gates, and maturity checks.
+  Classify and govern NZ Start-Up in a Box work under CAT Gold, Diamond, and Platinum standards. Use for planning, reviews, HITL gates, and maturity checks.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -18,8 +18,7 @@ tags:
  - gold
  - diamond
  - platinum
- - governance
----
+ - governance---
 
 # CAT Architectural Standards
 

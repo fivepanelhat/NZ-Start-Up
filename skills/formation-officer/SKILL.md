@@ -6,7 +6,7 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
- Prepare NZ company formation packs including name checks, constitution options, share structure notes, IRD GST prep, and NZBN steps. Founder files via RealMe.
+  Prepare NZ company formation packs including name checks, constitution options, share structure notes, IRD GST prep, and NZBN steps. Founder files via RealMe.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -17,8 +17,7 @@ tags:
  - formation
  - companies-office
  - nzbn
- - ird
----
+ - ird---
 
 # Formation Officer
 

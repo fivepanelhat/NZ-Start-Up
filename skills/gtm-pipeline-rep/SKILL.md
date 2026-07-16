@@ -6,7 +6,7 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: low
 description: >
- Build ICP lists, personalised outreach drafts, CRM hygiene notes, meeting prep, and proposals. Sends nothing without human approval under UEM Act constraints.
+  Build ICP lists, personalised outreach drafts, CRM hygiene notes, meeting prep, and proposals. Sends nothing without human approval under UEM Act constraints.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -17,8 +17,7 @@ tags:
  - gtm
  - pipeline
  - sales
- - uem
----
+ - uem---
 
 # GTM Pipeline Rep
 

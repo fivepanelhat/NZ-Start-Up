@@ -6,7 +6,7 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
- First drafts of pilot agreements, NDAs, terms, privacy policies, and employment offers from NZ-oriented outlines. Watermarked not legal advice.
+  First drafts of pilot agreements, NDAs, terms, privacy policies, and employment offers from NZ-oriented outlines. Watermarked not legal advice.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -17,8 +17,7 @@ tags:
  - legal
  - nda
  - privacy
- - contracts
----
+ - contracts---
 
 # Legal Document Assistant
 

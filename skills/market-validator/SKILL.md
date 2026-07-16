@@ -6,7 +6,7 @@ type: workflow
 requires_hitl: false
 cultural_sensitivity: low
 description: >
- Market sizing, competitor briefs, pricing research, and interview-guide generation with sources and confidence labels for NZ startups.
+  Market sizing, competitor briefs, pricing research, and interview-guide generation with sources and confidence labels for NZ startups.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -16,8 +16,7 @@ metadata:
 tags:
  - market
  - validation
- - research
----
+ - research---
 
 # Market Validator
 

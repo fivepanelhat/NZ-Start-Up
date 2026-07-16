@@ -6,7 +6,7 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
- One-asset five-outputs content engine for LinkedIn, build-logs, press kit upkeep, media pitches, and event calendars. Schedules only pre-approved content.
+  One-asset five-outputs content engine for LinkedIn, build-logs, press kit upkeep, media pitches, and event calendars. Schedules only pre-approved content.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -17,8 +17,7 @@ tags:
  - content
  - comms
  - linkedin
- - media
----
+ - media---
 
 # Content and Comms Officer
 
