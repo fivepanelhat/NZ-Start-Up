@@ -6,7 +6,7 @@ type: orchestration
 requires_hitl: true
 cultural_sensitivity: high
 description: >
- Product entry skill for NZ Start-Up in a Box. Bootstraps company memory, explains the fleet, and starts dogfooding with CAT standards and HITL compliance.
+  Product entry skill for NZ Start-Up in a Box. Bootstraps company memory, explains the fleet, and starts dogfooding with CAT standards and HITL compliance.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -20,8 +20,7 @@ tags:
  - fleet
  - bootstrap
  - product
- - nz-startup
----
+ - nz-startup---
 
 # NZ Start-Up Fleet
 

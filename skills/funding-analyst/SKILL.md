@@ -6,7 +6,7 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
- Investor targeting, data-room assembly, deck iteration support, cap-table scenarios, and SAFE term comparison. Flags lawyer review under FMCA boundaries.
+  Investor targeting, data-room assembly, deck iteration support, cap-table scenarios, and SAFE term comparison. Flags lawyer review under FMCA boundaries.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -17,8 +17,7 @@ tags:
  - funding
  - investors
  - safe
- - cap-table
----
+ - cap-table---
 
 # Funding Analyst
 

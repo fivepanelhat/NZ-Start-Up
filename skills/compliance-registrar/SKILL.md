@@ -6,7 +6,7 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
- Maintain NZ compliance calendars and checklists for annual returns, Privacy Act, H and S basics, and first-hire employment law prompts. Never self-certifies.
+  Maintain NZ compliance calendars and checklists for annual returns, Privacy Act, H and S basics, and first-hire employment law prompts. Never self-certifies.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -17,8 +17,7 @@ tags:
  - compliance
  - privacy
  - companies-act
- - employment
----
+ - employment---
 
 # Compliance Registrar
 

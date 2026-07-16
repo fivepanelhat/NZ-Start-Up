@@ -6,9 +6,9 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
- Helps EDAs, councils, accountants, and mid-market buyers evaluate NZ-Start-Up fit,
- draft procurement-oriented answers from standards-mapping, and produce adoption
- checklists. Never claims existing partnerships or certifications. Humans send proposals.
+  Helps EDAs, councils, accountants, and mid-market buyers evaluate NZ-Start-Up fit,
+  draft procurement-oriented answers from standards-mapping, and produce adoption
+  checklists. Never claims existing partnerships or certifications. Humans send proposals.
 metadata:
  status: active
  owner: Coastal Alpine Tech
@@ -19,8 +19,7 @@ tags:
  - enterprise
  - procurement
  - adoption
- - eda
----
+ - eda---
 
 # Enterprise Adoption Officer
 
