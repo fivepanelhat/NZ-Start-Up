@@ -47,7 +47,7 @@ Score 0–5: **ICP clarity · Revenue nearness · Tech maturity · NZ impact · 
 | **Weaver** | 4 | 3 | 4 | 4 | 4 | **19** | Multi-tenant edge | Rural enterprise / helpdesk |
 | **Coastal-Alpine-Core** | 3 | 2 | 5 | 4 | 5 | **19** | Shared IP moat | Portfolio enablement |
 | **coastal-alpine-stack** | 3 | 2 | 5 | 4 | 4 | **18** | Architecture proof | Technical DD |
-| **Byte Size Kai** (`Blue-Moon-Portal`) | 4 | 3 | 4 | 5 | 4 | **20** | **Agritech lead product** | Growers / Mana Kai class |
+| **Byte Size Kai** (`Byte-Size-Kai`) | 4 | 3 | 4 | 5 | 4 | **20** | **Agritech lead product** | Growers / Mana Kai class |
 | **SoilGuard-Portal** | 4 | 3 | 4 | 5 | 4 | **20** | Whenua / pasture | Farms / co-ops |
 | **AquaGuard-Portal** | 4 | 2 | 4 | 4 | 3 | **17** | Water vertical | Aqua / councils |
 | **Sting-Operation-AI** | 4 | 2 | 4 | 5 | 4 | **19** | Biosecurity wedge | MPI-adjacent / apiarists |

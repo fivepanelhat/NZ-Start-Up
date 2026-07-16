@@ -11,7 +11,7 @@ $Repos = @(
   "Coastal-Alpine-Core",
   "coastal-alpine-stack",
   "Sovereign-Edge-Firmware",
-  "Blue-Moon-Portal",
+  "Byte-Size-Kai",
   "SoilGuard-Portal",
   "AquaGuard-Portal",
   "Sting-Operation-AI",
@@ -86,7 +86,7 @@ foreach ($repo in $Repos) {
       "Coastal-Alpine-Core" { "Shared edge SDK (SecurityGuard, MQTT, flywheel)" }
       "coastal-alpine-stack" { "Full-stack edge monorepo / deploy" }
       "Sovereign-Edge-Firmware" { "ESP32 field layer / mTLS MQTT" }
-      "Blue-Moon-Portal" { "Crop / microgreens domain portal" }
+      "Byte-Size-Kai" { "Crop / microgreens domain portal" }
       "SoilGuard-Portal" { "Soil & pasture domain portal" }
       "AquaGuard-Portal" { "Water & aquaculture domain portal" }
       "Sting-Operation-AI" { "Biosecurity vision sentinel" }

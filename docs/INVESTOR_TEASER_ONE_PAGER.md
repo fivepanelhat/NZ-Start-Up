@@ -16,7 +16,7 @@ Coastal Alpine Tech is building the sovereign hybrid edge-AI stack for Aotearoa'
 | Surface | State |
 |---------|--------|
 | **NZ-Start-Up** | Installable founder OS / digital-employee fleet; HITL hard-coded; demo-ready (v1.8.2) |
-| **Byte Size Kai** | Lead agritech product (repo: Blue-Moon-Portal) on Core + edge hardware target |
+| **Byte Size Kai** | Lead agritech product (repo: Byte-Size-Kai) on Core + edge hardware target |
 | **Front Line Whanau** | Live national support platform (Apache-2.0) |
 | **Aether + Core + Weaver + stack** | Shared hybrid architecture; pre-seed target design |
 | **Revenue** | Pre-revenue |

@@ -6,7 +6,7 @@ import re
 import subprocess
 from pathlib import Path
 
-BM = Path(r"C:\Users\Admin\source\portfolio-work\Blue-Moon-Portal")
+BM = Path(r"C:\Users\Admin\source\portfolio-work\Byte-Size-Kai")
 FP = Path(r"C:\Users\Admin\source\portfolio-work\fivepanelhat")
 NZ = Path(r"C:\Users\Admin\source\NZ-Start-Up")
 
@@ -28,7 +28,7 @@ def fix_blue_moon_readme() -> None:
         (
             "**Byte Size Kai** is Coastal Alpine Tech's agritech product for sovereign, "
             "on-farm microgreen and crop intelligence. The engineering stack and GitHub "
-            "repository path remain **Blue-Moon-Portal** (technical / package name) - use "
+            "repository path remain **Byte-Size-Kai** (technical / package name) - use "
             "that for clones, CI, and Core SDK imports."
         ),
         t,
@@ -41,7 +41,7 @@ def fix_blue_moon_readme() -> None:
 | Name | Use |
 |------|-----|
 | **Byte Size Kai** | Product brand - growers, Mana Kai partners, and the [org front page](https://github.com/fivepanelhat/fivepanelhat) lead with this |
-| **Blue-Moon-Portal** | Repository / edge portal package name (background technical identity) |
+| **Byte-Size-Kai** | Repository / edge portal package name (background technical identity) |
 
 This repository implements **Byte Size Kai** on the Kiwi Edge stack (RPi 5 16GB + Hailo-10H, Core SDK, local Ollama).
 
@@ -56,8 +56,8 @@ This repository implements **Byte Size Kai** on the Kiwi Edge stack (RPi 5 16GB 
     t = t.replace("n-portal\npython bootstrap.py\n```\n", "")
     t = re.sub(r"ð[^\s]{1,10}\s*", "", t)
     t = t.replace("\ufffd", "")
-    t = t.replace("blue-moon-portal.git", "Blue-Moon-Portal.git")
-    t = t.replace("cd blue-moon-portal", "cd Blue-Moon-Portal")
+    t = t.replace("blue-moon-portal.git", "Byte-Size-Kai.git")
+    t = t.replace("cd blue-moon-portal", "cd Byte-Size-Kai")
 
     if "HITL for actuators" not in t and "Autonomy (edge agents)" not in t:
         t = t.replace(
@@ -83,12 +83,12 @@ Agents **inform, draft, prepare, monitor, and remind**. Physical actuation and c
             if "## This repository" in c:
                 c = re.sub(
                     r"(\| \*\*Role in stack\*\* \| )([^\n|]+)",
-                    r"\1Byte Size Kai product (repo: Blue-Moon-Portal)",
+                    r"\1Byte Size Kai product (repo: Byte-Size-Kai)",
                     c,
                     count=1,
                 )
         write_utf8(cong, c)
-    print("Blue-Moon-Portal product branding updated")
+    print("Byte-Size-Kai product branding updated")
 
 
 def fix_front_page() -> None:
@@ -96,8 +96,8 @@ def fix_front_page() -> None:
     t = p.read_text(encoding="utf-8", errors="replace")
 
     t = t.replace(
-        "| [Blue-Moon-Portal](https://github.com/fivepanelhat/Blue-Moon-Portal) | Multi-modal edge AI for microgreen cultivation | Edge Linux | Biosecurity Act 1993, HSNO Act 1996, Food Act 2014 | RPi 5 16GB + Hailo-10H |",
-        "| [**Byte Size Kai**](https://github.com/fivepanelhat/Blue-Moon-Portal) (`Blue-Moon-Portal`) | **Lead agritech product** - multi-modal edge AI for microgreens / Mana Kai | Edge Linux | Biosecurity Act 1993, HSNO Act 1996, Food Act 2014 | RPi 5 16GB + Hailo-10H |",
+        "| [Byte-Size-Kai](https://github.com/fivepanelhat/Byte-Size-Kai) | Multi-modal edge AI for microgreen cultivation | Edge Linux | Biosecurity Act 1993, HSNO Act 1996, Food Act 2014 | RPi 5 16GB + Hailo-10H |",
+        "| [**Byte Size Kai**](https://github.com/fivepanelhat/Byte-Size-Kai) (`Byte-Size-Kai`) | **Lead agritech product** - multi-modal edge AI for microgreens / Mana Kai | Edge Linux | Biosecurity Act 1993, HSNO Act 1996, Food Act 2014 | RPi 5 16GB + Hailo-10H |",
     )
     t = re.sub(r'Blue\["Blue-Moon"\]', 'Blue["Byte Size Kai"]', t)
     t = re.sub(r"Blue\['Blue-Moon'\]", 'Blue["Byte Size Kai"]', t)
@@ -110,7 +110,7 @@ def fix_front_page() -> None:
 | | |
 |--|--|
 | **Product brand** | Byte Size Kai |
-| **Repository (technical / CI path)** | [Blue-Moon-Portal](https://github.com/fivepanelhat/Blue-Moon-Portal) - keep clone URLs as-is |
+| **Repository (technical / CI path)** | [Byte-Size-Kai](https://github.com/fivepanelhat/Byte-Size-Kai) - keep clone URLs as-is |
 | **Stack role** | Domain portal on Coastal-Alpine-Core + Hailo vision + local Ollama |
 | **Sister portals (background)** | SoilGuard, AquaGuard, Sting-Operation |
 
@@ -133,8 +133,8 @@ def fix_front_page() -> None:
     if cong.is_file():
         c = cong.read_text(encoding="utf-8", errors="replace")
         c = c.replace(
-            "Blue-Moon-Portal, SoilGuard-Portal, AquaGuard-Portal, Sting-Operation-AI",
-            "**Byte Size Kai** (Blue-Moon-Portal), SoilGuard-Portal, AquaGuard-Portal, Sting-Operation-AI",
+            "Byte-Size-Kai, SoilGuard-Portal, AquaGuard-Portal, Sting-Operation-AI",
+            "**Byte Size Kai** (Byte-Size-Kai), SoilGuard-Portal, AquaGuard-Portal, Sting-Operation-AI",
         )
         write_utf8(cong, c)
     print("fivepanelhat front page updated")
@@ -143,16 +143,16 @@ def fix_front_page() -> None:
 def fix_nz_startup_docs() -> None:
     replacements = [
         (
-            "Blue-Moon-Portal, SoilGuard-Portal, AquaGuard-Portal, Sting-Operation-AI",
-            "**Byte Size Kai** (Blue-Moon-Portal), SoilGuard-Portal, AquaGuard-Portal, Sting-Operation-AI",
+            "Byte-Size-Kai, SoilGuard-Portal, AquaGuard-Portal, Sting-Operation-AI",
+            "**Byte Size Kai** (Byte-Size-Kai), SoilGuard-Portal, AquaGuard-Portal, Sting-Operation-AI",
         ),
         (
             "Blue-Moon (crop/microgreens)",
             "Byte Size Kai / Blue-Moon stack (crop/microgreens)",
         ),
         (
-            "| **Blue-Moon-Portal** | 4 | 3 | 4 | 5 | 4 | **20** | Agritech beachhead | Growers / Mana Kai class |",
-            "| **Byte Size Kai** (`Blue-Moon-Portal`) | 4 | 3 | 4 | 5 | 4 | **20** | **Agritech lead product** | Growers / Mana Kai class |",
+            "| **Byte-Size-Kai** | 4 | 3 | 4 | 5 | 4 | **20** | Agritech beachhead | Growers / Mana Kai class |",
+            "| **Byte Size Kai** (`Byte-Size-Kai`) | 4 | 3 | 4 | 5 | 4 | **20** | **Agritech lead product** | Growers / Mana Kai class |",
         ),
         (
             "Agritech founder on NZ-Start-Up → Blue-Moon/SoilGuard pilot",
@@ -175,8 +175,8 @@ def fix_nz_startup_docs() -> None:
             "Edge agritech stack (Byte Size Kai, SoilGuard, Sting…)",
         ),
         (
-            '"Blue-Moon-Portal": "Crop / microgreens domain portal"',
-            '"Blue-Moon-Portal": "Byte Size Kai product (Blue-Moon stack)"',
+            '"Byte-Size-Kai": "Crop / microgreens domain portal"',
+            '"Byte-Size-Kai": "Byte Size Kai product (Blue-Moon stack)"',
         ),
     ]
 
@@ -199,8 +199,8 @@ def fix_nz_startup_docs() -> None:
             t = t.replace(a, b)
         # market_fit portfolio role
         t = t.replace(
-            '{"repo": "Blue-Moon-Portal", "total": 20, "role": "Agritech beachhead", "buyer": "Growers"}',
-            '{"repo": "Blue-Moon-Portal", "total": 20, "role": "Byte Size Kai (agritech lead)", "buyer": "Growers / Mana Kai"}',
+            '{"repo": "Byte-Size-Kai", "total": 20, "role": "Agritech beachhead", "buyer": "Growers"}',
+            '{"repo": "Byte-Size-Kai", "total": 20, "role": "Byte Size Kai (agritech lead)", "buyer": "Growers / Mana Kai"}',
         )
         if t != orig:
             write_utf8(path, t)
@@ -232,9 +232,9 @@ def main() -> None:
             "gh",
             "repo",
             "edit",
-            "fivepanelhat/Blue-Moon-Portal",
+            "fivepanelhat/Byte-Size-Kai",
             "--description",
-            "Byte Size Kai - sovereign multi-modal edge agritech for microgreens / Mana Kai (technical stack: Blue-Moon-Portal on Core + RPi 5 16GB + Hailo-10H).",
+            "Byte Size Kai - sovereign multi-modal edge agritech for microgreens / Mana Kai (technical stack: Byte-Size-Kai on Core + RPi 5 16GB + Hailo-10H).",
         ],
         check=False,
     )
