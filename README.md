@@ -18,6 +18,68 @@
 Anti-hallucination policy: [`.github/agent-fleet/anti-hallucination.md`](./.github/agent-fleet/anti-hallucination.md) | Congruence: [`CAT_CONGRUENCE.md`](./CAT_CONGRUENCE.md)
 <!-- END CAT_CONGRUENCE_SNIPPET -->
 
+<!-- BEGIN PROBLEMS_SOLUTIONS_ECONOMY -->
+## Problems we are solving
+
+**NZ-Start-Up** is the **founder OS / EDA white-label** product - local digital capacity for NZ company formation through early funding discipline.
+
+1. **Founder time tax** - Formation, IRD/GST, annual returns, and grants are fragmented across PDFs and portals.
+2. **EDA capacity limits** - Regional economic development agencies cannot clone "Nick" for every founder.
+3. **Weak R&D evidence** - RDTI and grants fail without contemporaneous activity logs.
+4. **Legal overreach by AI** - Unconstrained agents invent filings; NZ needs hard ceilings (UEM, tax, legal).
+5. **Capital-city bias** - Tools often assume Auckland SaaS defaults, not Taranaki / regional founders.
+
+## Solution we have built
+
+| Built capability | What it does |
+| :--- | :--- |
+| **Skills fleet** | Formation, compliance, grants/RDTI, market, GTM - draft/prepare only |
+| **NZ knowledge + templates** | Jurisdiction-native memory and checklists |
+| **HITL console** | Localhost founder OS with default-deny autonomy |
+| **EDA white-label path** | Cohort packs and partner-oriented reporting design |
+| **Investor / market docs** | Market fit, employment pathways, seed packs in `docs/` |
+
+**Autonomy ceiling:** agents draft and prepare; founders and advisors **file, send, pay, and sign**.
+
+### Local (Taranaki) and national (Aotearoa) economic benefits
+
+Coastal Alpine Tech is a **pre-seed** company engineering in **New Plymouth, Taranaki**, with field context in regional primary industries (including Mana Kai-class / Horowhenua agritech). Benefits are framed as **pathways**, not guaranteed job numbers.
+
+#### Local / regional (Taranaki and rural NZ)
+
+| Pathway | What it creates |
+| :--- | :--- |
+| **R&D and product HQ** | Engineering, product, and IP ownership in region - counterweight to capital-city-only tech |
+| **Field install and support** | RPi / Hailo edge nodes, ESP32 sensors, and pilot support need local technicians and partners |
+| **EDA leverage** | Tools that help Venture Taranaki-class programmes onboard more founders without linear staff growth |
+| **Contractor network** | Legal, cultural advisory, hardware, and pilot ops spend that stays in NZ |
+
+#### National economy and employment
+
+| Pathway | What it creates |
+| :--- | :--- |
+| **Primary sector competitiveness** | Better yield, compliance, and biosecurity decisions support NZ's export food economy |
+| **Onshore data value** | Farm, whanau, and SME operational data stays under NZ custody (Privacy Act + Te Mana Raraunga) |
+| **Founder formation** | Faster, cleaner company setup and RDTI-ready logging keeps more early companies investable **in NZ** |
+| **Digital capability outside main centres** | Edge AI skills (vision, MQTT, local LLM) transferable across regions |
+| **Quality of work** | Human-in-the-loop design preserves skilled human roles in advice, compliance, and care |
+
+#### How this product contributes
+
+See **Solution we have built** above. Cross-portfolio map: [Kiwi Edge AI Stack](https://github.com/fivepanelhat/fivepanelhat) | employment detail: [NZ-Start-Up investor pack](https://github.com/fivepanelhat/NZ-Start-Up/blob/main/docs/INVESTOR_RD_AND_MARKET_REFERENCE.md).
+
+#### Founder / EDA employment detail
+
+| Pathway | Effect |
+| :--- | :--- |
+| **More regional companies formed correctly** | Higher quality pipeline for Venture Taranaki and peers |
+| **RDTI-ready logging** | Keeps R&D activity onshore and fundable |
+| **EDA staff leverage** | White-label kit scales advice without linear headcount |
+| **Local professional spend** | Lawyers, accountants, cultural advisors still required - product prepares packs, does not replace them |
+
+Full dossier: [`docs/INVESTOR_RD_AND_MARKET_REFERENCE.md`](./docs/INVESTOR_RD_AND_MARKET_REFERENCE.md) | market: [`docs/MARKET.md`](./docs/MARKET.md)
+<!-- END PROBLEMS_SOLUTIONS_ECONOMY -->
+
 [![Coastal Alpine Tech](https://img.shields.io/badge/Coastal%20Alpine%20Tech-Pre--seed-0ea5e9?style=for-the-badge&logo=data:image/svg+xml;base64,)](./ABOUT.md)
 [![Stage](https://img.shields.io/badge/Stage-Pre--seed-7c3aed?style=for-the-badge)](./ABOUT.md)
 [![Founded](https://img.shields.io/badge/Founded-8%20Aug%202026-0369a1?style=for-the-badge)](./ABOUT.md)
