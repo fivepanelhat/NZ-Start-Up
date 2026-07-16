@@ -1,60 +1,44 @@
-# Super Grok proceed log - 2026-07-16 (session 3)
+# Super Grok proceed log - 2026-07-16 (session 4)
 
-**Sources:** Super Grok proceed pack, CAT next-steps, prior session 2 log.  
-**Binding constraint:** business clock (pipeline + evidence), not more scaffolding.  
-**Autonomy:** draft/prepare only - humans send/file/pay/sign.
-
----
-
-## Session 3 execution (this run)
-
-| Super Grok item | Result |
-|-----------------|--------|
-| Re-green e2e | pytest **102**, doctor/smoke/compliance **PASS** |
-| Demo VT | demo-vt status **100** |
-| Dogfood finance loop | sample bank + offline xero + invoice + GST + handoff - CAT readiness **100** (sample data, labelled honest) |
-| Pipeline hygiene | P002 -> discovery + HUMAN send next_step; tasks for send / film / wedge |
-| RDTI | +1.0h session-3 evidence |
-| Weekly + board pack | regenerated |
-| Skills pack | v1.8.3 zip + sha256 regenerated |
-| Founder send pack | **`docs/FOUNDER_SEND_PACK.md`** (copy-paste email, still DRAFT_NOT_SENT) |
-| Cold-start film | **`docs/COLD_START_FILM_RUNBOOK.md`** |
-| Byte Size Kai front page | non_ascii **0** (prior fix verified) |
-| Front Line Whanau live | HTTP **200** |
-| Auto-send VT email | **NOT DONE** (UEM / HITL) |
+**Sources:** Super Grok proceed pack, CAT next-steps, sessions 2-3.  
+**Binding constraint:** business clock - founder outbound + one wedge.  
+**Autonomy:** draft/prepare only.
 
 ---
 
-## Session 2 (prior) - still valid
+## Session 4 (this run)
 
-Skill YAML indent fix, operate skill, pack, pilot DRAFT, cohort white-label, install-skills.
+| Item | Result |
+|------|--------|
+| e2e re-green | pytest 102, doctor/smoke PASS |
+| operate / status CAT | readiness **100** (sample finance dogfood) |
+| Calendar | C006 send VT 18 Jul; C007 wedge 19 Jul; C008 film 20 Jul |
+| ICS export | deadlines-latest.ics regenerated |
+| **FOUNDER_TODAY.md** | Single open-this-first page |
+| **DEMO_10_MIN.md** | Call script if VT books |
+| Wedge check | BSK README clean; FLW HTTP 200 |
+| Skills pack | v1.8.3 zip refreshed |
+| Auto-send email | **NOT DONE** (UEM) |
 
 ---
 
-## Human-only remaining
+## Still human-only
 
-1. **Send** VT email from `docs/FOUNDER_SEND_PACK.md` (or log no-send).  
-2. Book call if they reply.  
-3. Film cold-start (`docs/COLD_START_FILM_RUNBOOK.md`).  
-4. Choose wedge: Byte Size Kai **or** Front Line Whanau.  
-5. Lawyer dual licence (optional days 8-14).  
-6. Real pilot LOI / field evidence before valuation moves.
+1. Send VT email (`FOUNDER_TODAY` / `FOUNDER_SEND_PACK`) or log no-send.  
+2. Confirm wedge (agent **recommends Byte Size Kai** lead + FLW social proof).  
+3. Film cold-start.  
+4. Lawyer / LOI when ready.
 
 ---
 
-## Reproduce
+## Open first
 
-```bash
-cd NZ-Start-Up
-python -m pytest -q
-python -m nz_startup doctor && python -m nz_startup smoke
-python -m nz_startup demo run --company demo-vt --partner "Venture Taranaki" --programme "PowerUp demo"
-python -m nz_startup operate coastal-alpine-tech
-python -m nz_startup pack
+```text
+docs/FOUNDER_TODAY.md
 ```
 
-Open: `docs/FOUNDER_SEND_PACK.md`
+OneDrive: `SuperGrok-Proceed-2026-07-16/FOUNDER_TODAY.md`
 
 ---
 
-*Prefer one real meeting over ten more repositories.*
+*One real send beats another engineering sprint.*
