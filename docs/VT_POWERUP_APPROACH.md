@@ -2,7 +2,7 @@
 
 **Coastal Alpine Tech Limited · Pre-seed · Taranaki**
 Prepared 2026-07-15 · Status: **DRAFT_NOT_SENT** — human reviews, personalises, and sends.
-Evidence base: [`docs/MARKET.md`](./MARKET.md) · [`knowledge/agentic-ecosystem-nz.md`](../knowledge/agentic-ecosystem-nz.md) · [`docs/WHITE_LABEL.md`](./WHITE_LABEL.md)
+Evidence base: [`docs/MARKET.md`](./MARKET.md) · [`knowledge/agentic-ecosystem-nz.md`](../knowledge/agentic-ecosystem-nz.md) · [`docs/WHITE_LABEL.md`](./WHITE_LABEL.md) · [`docs/EDA_DEMO_KIT.md`](./EDA_DEMO_KIT.md) · [`docs/OPTIMIZATION_EXECUTION.md`](./OPTIMIZATION_EXECUTION.md)
 
 > House rules apply: UEM Act — humans send. No over-claims — every line below is "seeking collaboration", never "in partnership with". Cultural content stays HITL.
 
