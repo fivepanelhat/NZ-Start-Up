@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.8.4 - 2026-07-16
+
+### Critical fix
+- Restore Python package indentation destroyed by the ASCII encoding sweep — CLI was unimportable.
+
+### Digital employee (first-principles operator)
+- CLI: `nz-startup operate <company>` (alias `employee`) — ranked P0-P2 brief from company physics
+- Module: `nz_startup/operator.py`
+- Skill: `skills/first-principles-operator/`
+- Docs: `docs/USE_AS_EMPLOYEE.md`
+- Tests: `tests/test_operator.py`
+
 ## 1.8.3 - 2026-07-16
 
 ### Super Grok proceed - pilot + economic thesis (grounded)
