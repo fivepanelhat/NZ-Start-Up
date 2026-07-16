@@ -4,9 +4,9 @@
 
 ```bash
 nz-startup onboard my-startup \
-  --legal-name "Example Labs Limited" \
-  --wedge "Sovereign edge AI for operators" \
-  --icp "Regional councils and co-ops"
+ --legal-name "Example Labs Limited" \
+ --wedge "Sovereign edge AI for operators" \
+ --icp "Regional councils and co-ops"
 ```
 
 Creates/updates company memory, seeds pipeline/calendar/grants, writes:
@@ -18,11 +18,11 @@ Creates/updates company memory, seeds pipeline/calendar/grants, writes:
 
 ```bash
 nz-startup pilot offer my-startup \
-  --customer "Taranaki Regional Council" \
-  --fee 1500 \
-  --days 90 \
-  --champion "Name" \
-  --criteria "Weekly champion check-ins; offline demo accepted; go/no-go on conversion"
+ --customer "Taranaki Regional Council" \
+ --fee 1500 \
+ --days 90 \
+ --champion "Name" \
+ --criteria "Weekly champion check-ins; offline demo accepted; go/no-go on conversion"
 ```
 
 Writes under `commercial/pilots/`:
@@ -31,7 +31,7 @@ Writes under `commercial/pilots/`:
 - agreement outline (not legal advice)
 - `pilot-offer-latest.zip`
 
-**DRAFT_NOT_SENT** — human emails and signs.
+**DRAFT_NOT_SENT** - human emails and signs.
 
 ## Cohort partner report
 

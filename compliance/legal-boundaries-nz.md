@@ -11,7 +11,7 @@
 ## Financial Markets Conduct Act (FMC Act)
 
 - Term sheets, SAFE comparison, investor materials are **preparation only**.
-- Flag: “have your lawyer review” — financial advice regime may apply depending on context.
+- Flag: "have your lawyer review" - financial advice regime may apply depending on context.
 
 ## Tax administration
 
@@ -25,7 +25,7 @@
 
 ## Companies Act 1993 / Companies Office
 
-- Annual returns, records (s189-style obligations) → reminders and checklists.
+- Annual returns, records (s189-style obligations) -> reminders and checklists.
 - Incorporation and filings require founder (or authorised agent) authentication.
 
 ## Privacy Act 2020
@@ -44,7 +44,7 @@
 
 ## Sources to re-verify
 
-- legislation.govt.nz  
-- companies-office.govt.nz / api.business.govt.nz  
-- rdti.govt.nz  
-- privacy.org.nz  
+- legislation.govt.nz 
+- companies-office.govt.nz / api.business.govt.nz 
+- rdti.govt.nz 
+- privacy.org.nz 

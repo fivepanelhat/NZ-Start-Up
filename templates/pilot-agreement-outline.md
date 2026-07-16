@@ -1,4 +1,4 @@
-# Pilot Agreement Outline — DRAFT — NOT LEGAL ADVICE
+# Pilot Agreement Outline - DRAFT - NOT LEGAL ADVICE
 
 1. Parties and champions
 2. Pilot scope and sites

@@ -2,7 +2,7 @@
 
 ## Bank feed
 
-Human exports CSV from their bank → agent imports and triages.
+Human exports CSV from their bank -> agent imports and triages.
 
 ```bash
 nz-startup bank import my-startup --file ./exports/transactions.csv
@@ -18,7 +18,7 @@ Flexible headers. Preferred:
 |--------|---------|
 | Date | Transaction Date, Posted, Value Date |
 | Description | Narrative, Details, Memo, Payee |
-| Amount | Value, NZD — **or** Debit + Credit |
+| Amount | Value, NZD - **or** Debit + Credit |
 | Balance | optional |
 
 Sample: `templates/bank-feed-sample.csv`

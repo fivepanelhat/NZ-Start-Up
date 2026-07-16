@@ -1,11 +1,11 @@
 COASTAL ALPINE TECH LIMITED
-DUAL-LICENCE NOTICE — TRACK A (DEFAULT)
+DUAL-LICENCE NOTICE - TRACK A (DEFAULT)
 PROPRIETARY SOFTWARE LICENCE
 NZ Start-Up in a Box
 
-Copyright © 2025–2026 Coastal Alpine Tech Limited. All rights reserved.
-R&D commenced 8 August 2025 · Founding date 8 August 2026 (pre-seed)
-Taranaki · Aotearoa New Zealand
+Copyright © 2025-2026 Coastal Alpine Tech Limited. All rights reserved.
+R&D commenced 8 August 2025 | Founding date 8 August 2026 (pre-seed)
+Taranaki | Aotearoa New Zealand
 
 IMPORTANT: THIS IS NOT OPEN SOURCE SOFTWARE.
 This software and associated documentation (the "Software") are the exclusive
@@ -15,9 +15,9 @@ DUAL LICENCE
 ------------
 This product is dual-licensed under New Zealand copyright ownership:
 
-  Track A — this Proprietary Software Licence (DEFAULT)
-  Track B — Commercial / white-label / cohort licence terms
-            (see LICENSE-COMMERCIAL.md and any signed order form)
+ Track A - this Proprietary Software Licence (DEFAULT)
+ Track B - Commercial / white-label / cohort licence terms
+ (see LICENSE-COMMERCIAL.md and any signed order form)
 
 Unless you have a valid Track B agreement, Track A applies in full.
 
@@ -25,9 +25,9 @@ NEW ZEALAND COPYRIGHT
 ---------------------
 The Software is protected by the Copyright Act 1994 (NZ) and related laws.
 Copyright arises automatically in original works; this notice does not create
-rights — it asserts them. Evaluation access does not transfer ownership.
+rights - it asserts them. Evaluation access does not transfer ownership.
 
-1. GRANT OF LICENCE (TRACK A — EVALUATION)
+1. GRANT OF LICENCE (TRACK A - EVALUATION)
 Subject to these terms, you may view the Software solely to evaluate a possible
 commercial engagement with Licensor. Evaluation does not include production use,
 redistribution, white-label resale, removal of notices, or competitive hosting.
@@ -36,19 +36,19 @@ redistribution, white-label resale, removal of notices, or competitive hosting.
 Except as expressly permitted by a Track B Licence or mandatory applicable law,
 you must not:
 
-  (a) copy, modify, adapt, reverse engineer, or create derivative works of the
-      Software (except to the extent non-excludable under NZ law);
-  (b) distribute, publish, sublicense, rent, lease, sell, or otherwise make the
-      Software available to any third party;
-  (c) remove or alter proprietary, copyright, trademark, or attribution notices
-      (including Coastal Alpine Tech pre-seed and dual-licence notices);
-  (d) use the Software to provide a multi-tenant hosted service competing with
-      Licensor without a separate written SaaS or OEM agreement;
-  (e) use the Software for any unlawful purpose under New Zealand law.
+ (a) copy, modify, adapt, reverse engineer, or create derivative works of the
+ Software (except to the extent non-excludable under NZ law);
+ (b) distribute, publish, sublicense, rent, lease, sell, or otherwise make the
+ Software available to any third party;
+ (c) remove or alter proprietary, copyright, trademark, or attribution notices
+ (including Coastal Alpine Tech pre-seed and dual-licence notices);
+ (d) use the Software to provide a multi-tenant hosted service competing with
+ Licensor without a separate written SaaS or OEM agreement;
+ (e) use the Software for any unlawful purpose under New Zealand law.
 
 3. OWNERSHIP
-The Software — including skills, harness, templates, documentation, branding,
-and related intellectual property — remains the sole property of Licensor.
+The Software - including skills, harness, templates, documentation, branding,
+and related intellectual property - remains the sole property of Licensor.
 No title is transferred by evaluation access.
 
 4. THIRD-PARTY COMPONENTS
@@ -86,4 +86,4 @@ to mandatory consumer rights.
 For production, white-label, cohort, or OEM rights, see LICENSE-COMMERCIAL.md
 and contact Coastal Alpine Tech Limited (Pre-seed, Taranaki).
 
-END OF TRACK A — PROPRIETARY SOFTWARE LICENCE
+END OF TRACK A - PROPRIETARY SOFTWARE LICENCE

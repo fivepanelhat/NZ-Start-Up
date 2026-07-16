@@ -1,7 +1,7 @@
-# G5/T7* — Supply-chain lock.
+# G5/T7* - Supply-chain lock.
 # Core runtime now includes cryptography for Fernet backups.
 # Install: pip install -r requirements-lock.txt
-# Audit:   pip-audit -r requirements-lock.txt
+# Audit: pip-audit -r requirements-lock.txt
 
 # runtime
 cryptography==48.0.1

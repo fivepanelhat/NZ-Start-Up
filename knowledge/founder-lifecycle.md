@@ -8,18 +8,18 @@ max_age_days: 90
 
 ```text
 Idea
- → Name / structure / incorporate
- → IRD / GST / bank / insurance
- → Privacy + records + annual return cadence
- → RDTI logging habit (day one of R&D)
- → Market validation
- → ICP + pipeline (human-sent outreach)
- → Content engine
- → Finance hygiene + runway
- → Grants / EDA / accelerators
- → Pilot agreements + legal drafts
- → Weekly board rhythm
- → Optional pre-seed
+ -> Name / structure / incorporate
+ -> IRD / GST / bank / insurance
+ -> Privacy + records + annual return cadence
+ -> RDTI logging habit (day one of R&D)
+ -> Market validation
+ -> ICP + pipeline (human-sent outreach)
+ -> Content engine
+ -> Finance hygiene + runway
+ -> Grants / EDA / accelerators
+ -> Pilot agreements + legal drafts
+ -> Weekly board rhythm
+ -> Optional pre-seed
 ```
 
 ## 30 / 60 / 90 alignment (Coastal Alpine example)
@@ -27,9 +27,9 @@ Idea
 | Window | Fleet focus |
 |--------|-------------|
 | Pre-incorporation | formation-officer, market-validator |
-| Days 1–30 | formation, finance, grants-rdti, gtm |
-| Days 31–60 | legal pilots, compliance, content |
-| Days 61–90 | funding-analyst deck, board reviews, RDTI file prep |
+| Days 1-30 | formation, finance, grants-rdti, gtm |
+| Days 31-60 | legal pilots, compliance, content |
+| Days 61-90 | funding-analyst deck, board reviews, RDTI file prep |
 
 ## Memory artefacts by stage
 

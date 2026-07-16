@@ -10,6 +10,6 @@
 
 > Sovereign hybrid edge AI for NZ farms and founders - local-first + multi-model, Te Mana Raraunga aligned - collaborating with Venture Taranaki, startups.com investors and Kotahitanga Investment Fund (HITL + cultural advisory for formal approaches).
 
-**Agents inform, draft, prepare, monitor, and remind. Humans advise, sign, file, send, and pay.**  
+**Agents inform, draft, prepare, monitor, and remind. Humans advise, sign, file, send, and pay.** 
 Anti-hallucination policy: [`.github/agent-fleet/anti-hallucination.md`](./.github/agent-fleet/anti-hallucination.md) | Congruence: [`CAT_CONGRUENCE.md`](./CAT_CONGRUENCE.md)
 <!-- END CAT_CONGRUENCE_SNIPPET -->

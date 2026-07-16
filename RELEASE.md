@@ -1,18 +1,18 @@
-# NZ Start-Up in a Box — v1.8.0
+# NZ Start-Up in a Box - v1.8.0
 
-**Coastal Alpine Tech Limited — Pre-seed** · Taranaki · Aotearoa New Zealand  
-**R&D since 8 August 2025** · **Founded 8 August 2026**  
-**Local founder OS + white-label EDA kit** · dual proprietary/commercial licence  
-Built with **CAT Gold / Diamond / Platinum** on **Aether**  
-Dev tools: **Grok 4.5 Build** · **Claude Pro Code** · **Claude Computer Use** · **Google Gemini 3.5 Flash**
+**Coastal Alpine Tech Limited - Pre-seed** | Taranaki | Aotearoa New Zealand 
+**R&D since 8 August 2025** | **Founded 8 August 2026** 
+**Local founder OS + white-label EDA kit** | dual proprietary/commercial licence 
+Built with **CAT Gold / Diamond / Platinum** on **Aether** 
+Dev tools: **Grok 4.5 Build** | **Claude Pro Code** | **Claude Computer Use** | **Google Gemini 3.5 Flash**
 
 ## Investor one-liner
 
-> Coastal Alpine Tech is building the sovereign hybrid edge-AI stack for Aotearoa’s primary industries and founders — local-first RPi 5 + Hailo nodes, multi-model fleets (Grok/Claude/Gemini), Te Mana Raraunga data sovereignty, and white-label EDA tools — actively seeking collaboration with Venture Taranaki, startups.com investors, and the Kotahitanga Investment Fund to scale intergenerational Māori and regional economic outcomes.
+> Coastal Alpine Tech is building the sovereign hybrid edge-AI stack for Aotearoa's primary industries and founders - local-first RPi 5 + Hailo nodes, multi-model fleets (Grok/Claude/Gemini), Te Mana Raraunga data sovereignty, and white-label EDA tools - actively seeking collaboration with Venture Taranaki, startups.com investors, and the Kotahitanga Investment Fund to scale intergenerational Maori and regional economic outcomes.
 
 ## What 1.6 means
 
-Trust-transfer layer (Claude T1–T9) on the v1.5 fleet ops base · **v1.6.1** calibrates Fernet backups + real live-eval provider hooks:
+Trust-transfer layer (Claude T1-T9) on the v1.5 fleet ops base | **v1.6.1** calibrates Fernet backups + real live-eval provider hooks:
 
 | Ops | Command |
 |-----|---------|
@@ -23,14 +23,14 @@ Trust-transfer layer (Claude T1–T9) on the v1.5 fleet ops base · **v1.6.1** c
 | Memory INDEX | `nz-startup index write\|compact` |
 | Token budget + hard cap | `nz-startup budget set --enforce` |
 | Skills pack + SHA256/SBOM | `nz-startup pack` |
-| Encrypted backup | `nz-startup backup create <co> --passphrase …` |
+| Encrypted backup | `nz-startup backup create <co> --passphrase ...` |
 | Audit OTel export | `nz-startup audit export <co>` |
 | Standards mapping | `compliance/standards-mapping.md` |
 | Console auth | session token (`hmac.compare_digest`) |
 
 ## What 1.5 means
 
-Fleet **ops layer** on top of hardened guardrails (gap analysis G1–G14):
+Fleet **ops layer** on top of hardened guardrails (gap analysis G1-G14):
 
 | Ops | Command |
 |-----|---------|
@@ -53,7 +53,7 @@ The **production local product** (skills + CLI + MCP + localhost console + deskt
 | White-label cohorts + EDA demo | Unsolicited email / IRD filing automation |
 | Status, board pack, pilot offers, partner reports | Full packaged native installers |
 | **Founder Console** + **desktop-lite** (`pywebview` optional) | Cloud data hosting of founder secrets |
-| Evals · quarantine · allow-list HITL · freshness · telemetry · scheduler | RealMe / myIR computer-use (G15 watch) |
+| Evals | quarantine | allow-list HITL | freshness | telemetry | scheduler | RealMe / myIR computer-use (G15 watch) |
 
 Full native packaged desktop remains demand-gated; desktop-lite covers day-to-day local UI.
 
@@ -73,7 +73,7 @@ Windows: `powershell -ExecutionPolicy Bypass -File .\install.ps1`
 ## First hour
 
 ```bash
-nz-startup onboard my-startup --legal-name "…" --wedge "…" --icp "…"
+nz-startup onboard my-startup --legal-name "..." --wedge "..." --icp "..."
 nz-startup console --port 8765 --open
 # or: nz-startup desktop
 ```
@@ -88,16 +88,16 @@ nz-startup cohort pack <cohort-id>
 
 ## Autonomy slogan
 
-> Agents inform, draft, prepare, monitor, and remind.  
+> Agents inform, draft, prepare, monitor, and remind. 
 > Humans advise, sign, file, send, and pay.
 
 ## Licence
 
-**Dual licence** — Track A proprietary (`LICENSE`) + Track B commercial (`LICENSE-COMMERCIAL.md`).  
-Copyright under NZ law (Copyright Act 1994). Not open source.  
+**Dual licence** - Track A proprietary (`LICENSE`) + Track B commercial (`LICENSE-COMMERCIAL.md`). 
+Copyright under NZ law (Copyright Act 1994). Not open source. 
 See `docs/DUAL_LICENCE.md` and `ABOUT.md`.
 
 ## Support
 
-Issues: https://github.com/fivepanelhat/NZ-Start-Up/issues  
-Coastal Alpine Tech · Taranaki · Aotearoa New Zealand
+Issues: https://github.com/fivepanelhat/NZ-Start-Up/issues 
+Coastal Alpine Tech | Taranaki | Aotearoa New Zealand

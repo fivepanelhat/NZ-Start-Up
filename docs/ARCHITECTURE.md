@@ -1,37 +1,37 @@
 # Architecture
 
-> **Detailed reference:** [ARCHITECTURE_DETAILED.md](ARCHITECTURE_DETAILED.md)  
-> **Hardening:** [AGENT_HARDENING.md](AGENT_HARDENING.md)  
+> **Detailed reference:** [ARCHITECTURE_DETAILED.md](ARCHITECTURE_DETAILED.md) 
+> **Hardening:** [AGENT_HARDENING.md](AGENT_HARDENING.md) 
 > **Hero visual:** ![glassmorphism](assets/architecture-glassmorphism.jpg)
 
 ## Shape (v1.2)
 
 ```text
-                    ┌─────────────────────────────┐
-                    │  Board / Chief-of-Staff     │
-                    │  (orchestrator skill)       │
-                    └─────────────┬───────────────┘
-                                  │ routes + weekly review
-          ┌───────────────────────┼───────────────────────┐
-          ▼                       ▼                       ▼
-   Formation … Legal        Company Memory          HITL / Audit
-   (specialist skills)      (local MD/CSV/JSONL)    (compliance/)
-          │                       │                       │
-          └───────────────────────┴───────────────────────┘
-                                  │
-              ┌───────────────────┼───────────────────┐
-              ▼                   ▼                   ▼
-        nz-startup CLI      MCP stdio server     Aether skills
-        (local runtime)     (drafts-only)        (~/.aether/skills)
-              │                   │
-              ├─ pipeline/calendar/grants CSVs
-              ├─ Xero read-only snapshot (optional)
-              ├─ bank-feed.csv import + GST working papers
-              ├─ invoice triage + handoff/*.zip
-              ├─ cohorts/* white-label + demo reports
-              └─ exports/*.ics + digest (no email)
-                                  │
-                     CAT Standards + Aether Guardrails
+ -----------------------------
+ | Board / Chief-of-Staff |
+ | (orchestrator skill) |
+ `----------------------------
+ | routes + weekly review
+ ----------------------------------------------
+ 
+ Formation ... Legal Company Memory HITL / Audit
+ (specialist skills) (local MD/CSV/JSONL) (compliance/)
+ | | |
+ `----------------------------------------------
+ |
+ --------------------------------------
+ 
+ nz-startup CLI MCP stdio server Aether skills
+ (local runtime) (drafts-only) (~/.aether/skills)
+ | |
+ |- pipeline/calendar/grants CSVs
+ |- Xero read-only snapshot (optional)
+ |- bank-feed.csv import + GST working papers
+ |- invoice triage + handoff/*.zip
+ |- cohorts/* white-label + demo reports
+ `- exports/*.ics + digest (no email)
+ |
+ CAT Standards + Aether Guardrails
 ```
 
 ## Design choices
@@ -48,31 +48,31 @@
 ## Data flow (Gold unbroken chain)
 
 ```text
-Formation pack → company profile
-       → compliance calendar
-       → RDTI activity log (from commits/timesheets)
-       → market thesis
-       → pipeline CRM drafts
-       → content calendar
-       → finance runway
-       → funding / investor room
-       → legal draft registry
-       → weekly board report
+Formation pack -> company profile
+ -> compliance calendar
+ -> RDTI activity log (from commits/timesheets)
+ -> market thesis
+ -> pipeline CRM drafts
+ -> content calendar
+ -> finance runway
+ -> funding / investor room
+ -> legal draft registry
+ -> weekly board report
 ```
 
 Every specialist **reads and writes company memory** with clear ownership fields.
 
 ## Runtime options
 
-1. **Aether CLI / orchestrator** — load `skills/`  
-2. **Claude Code / Cowork** — install skills as plugin packs  
-3. **Future desktop** — Tauri/Electron + SQLite memory + scheduled agents  
-4. **Future SaaS** — multi-tenant only with funded compliance programme  
+1. **Aether CLI / orchestrator** - load `skills/` 
+2. **Claude Code / Cowork** - install skills as plugin packs 
+3. **Future desktop** - Tauri/Electron + SQLite memory + scheduled agents 
+4. **Future SaaS** - multi-tenant only with funded compliance programme 
 
 ## Security model
 
-- Tools that write files or call external APIs must pass guardrails  
-- Always-require-approval actions: send email, file government forms, pay, git push of secrets  
+- Tools that write files or call external APIs must pass guardrails 
+- Always-require-approval actions: send email, file government forms, pay, git push of secrets 
 - Audit events: `actor`, `skill`, `action`, `hitl_required`, `hitl_status`, `timestamp`, `artefact_ref`
 
 ## Relationship to Aether

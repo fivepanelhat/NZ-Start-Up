@@ -19,7 +19,7 @@ python -m nz_startup mcp
 ```
 
 Wire into Claude Desktop / Cursor / other hosts via the single **`mcp.json`** in this repo root
-(G13: do not maintain a parallel `.mcp.json` — drift risk).
+(G13: do not maintain a parallel `.mcp.json` - drift risk).
 
 **Paths:** env uses relative `NZ_STARTUP_ROOT=.` and `NZ_STARTUP_MEMORY=./memory`.
 Set absolute paths in your client if it does not resolve cwd to the repo root.
@@ -38,7 +38,7 @@ Clients may treat tools as `readOnlyHint` / `destructiveHint: false` for auto-ap
 | `append_company_decision` | Decision log |
 | `append_rdti_log` / `list_rdti_log` | Contemporaneous RDTI logging |
 | `generate_weekly_operating_review` | Board pack with live pipeline/calendar/grants |
-| `save_outreach_draft` | CRM-style draft only — **never sends** |
+| `save_outreach_draft` | CRM-style draft only - **never sends** |
 | `save_legal_draft` | Watermarked legal draft |
 | `nzbn_lookup` | Read-only NZBN/name (offline without API key) |
 | `pipeline_list` / `pipeline_add` / `pipeline_update` / `pipeline_summary` | Local CRM stages |
@@ -62,7 +62,7 @@ Clients may treat tools as `readOnlyHint` / `destructiveHint: false` for auto-ap
 
 ## Tools deliberately absent
 
-`send_email`, `file_companies_office`, `file_ird`, `move_money`, `submit_grant`, `sign_document`, `realme_login`, …
+`send_email`, `file_companies_office`, `file_ird`, `move_money`, `submit_grant`, `sign_document`, `realme_login`, ...
 
 ## NZBN API
 

@@ -1,4 +1,4 @@
-# Constitution Notes — DRAFT — NOT LEGAL ADVICE
+# Constitution Notes - DRAFT - NOT LEGAL ADVICE
 
 Discuss with advisor:
 - Default Companies Act constitution vs custom

@@ -1,54 +1,54 @@
 name: Skills CI
 
 on:
-  push:
-    branches: [main, master]
-  pull_request:
+ push:
+ branches: [main, master]
+ pull_request:
 
 jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Install dev deps
-        run: |
-          python -m pip install -U pip
-          python -m pip install -e ".[dev]"
-          python -m pip install -r requirements-lock.txt
-      - name: Validate skills
-        run: python scripts/validate_skills.py
-      - name: Knowledge freshness (G4)
-        run: python scripts/check_knowledge_freshness.py
-      - name: Cost rates freshness (T6)
-        run: |
-          python - <<'PY'
-          from datetime import date
-          from nz_startup.audit import COST_RATES_META
-          verified = date.fromisoformat(COST_RATES_META["verified"])
-          age = (date.today() - verified).days
-          assert age <= 90, f"cost rates stale: {verified} ({age}d)"
-          print(f"OK cost rates verified {verified} ({age}d)")
-          PY
-      - name: Tests
-        run: pytest -q
-      - name: Golden evals deterministic (G1)
-        run: python -m nz_startup eval --company-id eval-ci --write
-      - name: Live eval lane rubric (T1, no external API)
-        run: python -m nz_startup eval --live --company-id eval-live-ci --write
-      - name: Doctor
-        run: python -m nz_startup doctor
-      - name: Compliance gate
-        run: python -m nz_startup compliance check
-      - name: Smoke e2e
-        run: python -m nz_startup smoke
-      - name: Supply chain pip-audit lockfile (G5/T4)
-        run: |
-          python -m pip install pip-audit
-          pip-audit -r requirements-lock.txt
-      - name: Pack + SHA256 (T4)
-        run: |
-          python -m nz_startup pack
-          ls -la dist || true
+ validate:
+ runs-on: ubuntu-latest
+ steps:
+ - uses: actions/checkout@v4
+ - uses: actions/setup-python@v5
+ with:
+ python-version: "3.12"
+ - name: Install dev deps
+ run: |
+ python -m pip install -U pip
+ python -m pip install -e ".[dev]"
+ python -m pip install -r requirements-lock.txt
+ - name: Validate skills
+ run: python scripts/validate_skills.py
+ - name: Knowledge freshness (G4)
+ run: python scripts/check_knowledge_freshness.py
+ - name: Cost rates freshness (T6)
+ run: |
+ python - <<'PY'
+ from datetime import date
+ from nz_startup.audit import COST_RATES_META
+ verified = date.fromisoformat(COST_RATES_META["verified"])
+ age = (date.today() - verified).days
+ assert age <= 90, f"cost rates stale: {verified} ({age}d)"
+ print(f"OK cost rates verified {verified} ({age}d)")
+ PY
+ - name: Tests
+ run: pytest -q
+ - name: Golden evals deterministic (G1)
+ run: python -m nz_startup eval --company-id eval-ci --write
+ - name: Live eval lane rubric (T1, no external API)
+ run: python -m nz_startup eval --live --company-id eval-live-ci --write
+ - name: Doctor
+ run: python -m nz_startup doctor
+ - name: Compliance gate
+ run: python -m nz_startup compliance check
+ - name: Smoke e2e
+ run: python -m nz_startup smoke
+ - name: Supply chain pip-audit lockfile (G5/T4)
+ run: |
+ python -m pip install pip-audit
+ pip-audit -r requirements-lock.txt
+ - name: Pack + SHA256 (T4)
+ run: |
+ python -m nz_startup pack
+ ls -la dist || true

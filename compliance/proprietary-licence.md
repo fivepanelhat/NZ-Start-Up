@@ -4,7 +4,7 @@ NZ Start-Up in a Box is **dual-licensed proprietary software** owned by **Coasta
 
 | Fact | Detail |
 |------|--------|
-| Track A (default) | `LICENSE` — proprietary evaluation |
+| Track A (default) | `LICENSE` - proprietary evaluation |
 | Track B (commercial) | `LICENSE-COMMERCIAL.md` + written/paid terms |
 | Explainer | `docs/DUAL_LICENCE.md` |
 | Copyright | Automatic under **Copyright Act 1994 (NZ)** |
@@ -20,13 +20,13 @@ NZ Start-Up in a Box is **dual-licensed proprietary software** owned by **Coasta
 
 Proprietary licensing supports:
 
-- Controlled white-label distribution to EDAs  
-- Clear ownership of skills, templates, and NZ knowledge packs  
-- Ability to enforce commercial terms for cohort seats  
+- Controlled white-label distribution to EDAs 
+- Clear ownership of skills, templates, and NZ knowledge packs 
+- Ability to enforce commercial terms for cohort seats 
 
 It does **not** remove Privacy Act, tax, or consumer-law obligations of users.
 
 ## Contact
 
-Commercial licensing: Coastal Alpine Tech Limited · Taranaki · Aotearoa New Zealand  
+Commercial licensing: Coastal Alpine Tech Limited | Taranaki | Aotearoa New Zealand 
 Via repository commercial channels designated by the Licensor.

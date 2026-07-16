@@ -1,7 +1,7 @@
-# Optimization execution log — Claude reports #6–11
+# Optimization execution log - Claude reports #6-11
 
-**Date:** 2026-07-16  
-**Grounding:** Claude gap analysis (G1–G15), final review T1–T9, adoption report #10, collab map #11, investor one-liner #9.  
+**Date:** 2026-07-16 
+**Grounding:** Claude gap analysis (G1-G15), final review T1-T9, adoption report #10, collab map #11, investor one-liner #9. 
 **Rule:** Do not break e2e. Prefer evidence over new structure.
 
 ---
@@ -15,7 +15,7 @@
 | G3 allow-list HITL | `hitl.py` default-deny |
 | G4 freshness | knowledge frontmatter + CI discipline |
 | G5 lockfile + pip-audit | `requirements-lock.txt`, strict audit |
-| G6 / T5 scheduler | `schedule install` → Windows task present |
+| G6 / T5 scheduler | `schedule install` -> Windows task present |
 | G7 tasks | `tasks` CLI |
 | G8 telemetry | `audit export` OTel-shaped |
 | G9 routing/budgets | `budget` CLI |
@@ -24,7 +24,7 @@
 | G12 policy vs branding | ABOUT / README vs pure policy modules |
 | G13 MCP | single `mcp.json` pattern |
 | G14 pack | `pack` zip + SHA256 + SBOM |
-| T4–T9 trust layer | See Claude final review #8 |
+| T4-T9 trust layer | See Claude final review #8 |
 
 ---
 
@@ -50,11 +50,11 @@
 
 | Item | Why |
 |------|-----|
-| Email Venture Taranaki | **UEM Act / HITL** — human must personalise and send |
+| Email Venture Taranaki | **UEM Act / HITL** - human must personalise and send |
 | Claim partnership with VT / Kotahitanga / startups.com | No signed deals |
 | LLM-as-judge eval with live API | No model keys configured; rubric is correct fallback |
 | Commit company memory | Gitignored by design (founder data residency) |
-| Lawyer review of dual licence | Human booking required — checklist prepared only |
+| Lawyer review of dual licence | Human booking required - checklist prepared only |
 
 ---
 
@@ -76,8 +76,8 @@ python -m nz_startup demo run --company demo-vt --partner "Venture Taranaki" --p
 
 ## Next human actions (binding constraint = business clock)
 
-1. Personalise and **send** `docs/VT_POWERUP_APPROACH.md` outreach (or decide not to).  
-2. Run CAT on the fleet daily so dogfood memory accumulates.  
-3. Cold-start: install pack zip on a clean Windows machine (film it).  
-4. One hour NZ startup lawyer on dual licence + standards-mapping language.  
+1. Personalise and **send** `docs/VT_POWERUP_APPROACH.md` outreach (or decide not to). 
+2. Run CAT on the fleet daily so dogfood memory accumulates. 
+3. Cold-start: install pack zip on a clean Windows machine (film it). 
+4. One hour NZ startup lawyer on dual licence + standards-mapping language. 
 5. One wedge pilot evidence (Byte Size Kai field **or** FLW live product) before quoting higher valuation bands.

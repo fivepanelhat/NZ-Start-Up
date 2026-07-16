@@ -1,6 +1,6 @@
 # Agent Hardening Guide
 
-**Version:** 1.3 · Coastal Alpine Tech · NZ Start-Up in a Box · Portfolio pack aligned
+**Version:** 1.3 | Coastal Alpine Tech | NZ Start-Up in a Box | Portfolio pack aligned
 
 ## Autonomy ceiling
 
@@ -30,33 +30,33 @@
 
 ```text
 User / Aether / Claude / Grok
-        │
-        ▼
-┌───────────────────┐
-│ agent-hardening   │  policy skill + anti-hallucination
-│ anti-hallucination.md
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ hitl.py           │  default-deny allow-list + fragments
-│ agent_guardrails  │  risk tier, secrets, sandbox, watermarks
-│ untrusted.py      │  inbound data quarantine
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ MCP / CLI runtime │  no send/file/pay tools exist
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ Company memory    │  path sandbox + audit.jsonl + INDEX
-└───────────────────┘
+ |
+ 
+-------------------
+| agent-hardening | policy skill + anti-hallucination
+| anti-hallucination.md
+`------------------
+ 
+-------------------
+| hitl.py | default-deny allow-list + fragments
+| agent_guardrails | risk tier, secrets, sandbox, watermarks
+| untrusted.py | inbound data quarantine
+`------------------
+ 
+-------------------
+| MCP / CLI runtime | no send/file/pay tools exist
+`------------------
+ 
+-------------------
+| Company memory | path sandbox + audit.jsonl + INDEX
+`-------------------
 ```
 
 ## Specialist risk map
 
 | Skill | Default risk | HITL |
 |-------|--------------|------|
-| market-validator | low–medium | sources required |
+| market-validator | low-medium | sources required |
 | content-comms-officer | medium | publish pre-approved only |
 | formation-officer | high | founder files RealMe |
 | compliance-registrar | high | never self-certify |
@@ -71,11 +71,11 @@ User / Aether / Claude / Grok
 
 Runtime refuses writes containing:
 
-- PEM / private keys  
-- AWS-style access keys  
-- API key / secret assignments  
-- JWT bearer tokens  
-- DB URLs with embedded passwords  
+- PEM / private keys 
+- AWS-style access keys 
+- API key / secret assignments 
+- JWT bearer tokens 
+- DB URLs with embedded passwords 
 
 ## Path sandbox
 
@@ -91,11 +91,11 @@ nz-startup harden check --action "draft weekly board" --skill board-chief-of-sta
 
 ## MCP
 
-- `harden_status` — policy snapshot  
-- `harden_check` — classify an action  
+- `harden_status` - policy snapshot 
+- `harden_check` - classify an action 
 
 ## Related
 
-- `compliance/hitl-matrix.md`  
-- `COMPLIANCE.md`  
-- Aether `guardrails.py` / `COMPLIANCE.md`  
+- `compliance/hitl-matrix.md` 
+- `COMPLIANCE.md` 
+- Aether `guardrails.py` / `COMPLIANCE.md` 

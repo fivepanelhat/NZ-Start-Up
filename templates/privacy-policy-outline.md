@@ -1,4 +1,4 @@
-# Privacy Policy Outline — DRAFT — NOT LEGAL ADVICE
+# Privacy Policy Outline - DRAFT - NOT LEGAL ADVICE
 
 Align with Privacy Act 2020 IPPs:
 1. Who we are

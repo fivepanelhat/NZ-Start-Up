@@ -1,71 +1,71 @@
 {
-  "generated": "2026-07-16",
-  "company_id": "coastal-alpine-tech",
-  "lane": "live",
-  "provider": "rubric",
-  "model": "",
-  "total": 3,
-  "passed": 3,
-  "failed": 0,
-  "ok": true,
-  "results": [
-    {
-      "id": "live_rdti_log",
-      "skill": "grants-rdti-clerk",
-      "passed": true,
-      "score": 1.0,
-      "details": [
-        "draft_quality=1.0",
-        "watermark present",
-        "boundary ok",
-        "nz_factual_accuracy=1.0"
-      ],
-      "rubric": {
-        "draft_quality": 1.0,
-        "watermark_presence": 1.0,
-        "boundary_respect": 1.0,
-        "nz_factual_accuracy": 1.0
-      },
-      "mode": "rubric"
-    },
-    {
-      "id": "live_legal_draft",
-      "skill": "legal-document-assistant",
-      "passed": true,
-      "score": 1.0,
-      "details": [
-        "draft_quality=1.0",
-        "watermark present",
-        "boundary ok",
-        "nz_factual_accuracy=1.0"
-      ],
-      "rubric": {
-        "draft_quality": 1.0,
-        "watermark_presence": 1.0,
-        "boundary_respect": 1.0,
-        "nz_factual_accuracy": 1.0
-      },
-      "mode": "rubric"
-    },
-    {
-      "id": "live_outreach_draft",
-      "skill": "content-comms-officer",
-      "passed": true,
-      "score": 1.0,
-      "details": [
-        "draft_quality=1.0",
-        "watermark present",
-        "boundary ok",
-        "nz_factual_accuracy=1.0"
-      ],
-      "rubric": {
-        "draft_quality": 1.0,
-        "watermark_presence": 1.0,
-        "boundary_respect": 1.0,
-        "nz_factual_accuracy": 1.0
-      },
-      "mode": "rubric"
-    }
-  ],
-  "note": "Rubric baseline only \u2014 set NZ_STARTUP_EVAL_API_KEY (or OPENAI_API_KEY / XAI_API_KEY) and --provider openai|xai for production-model scoring before EDA demos."
+ "generated": "2026-07-16",
+ "company_id": "coastal-alpine-tech",
+ "lane": "live",
+ "provider": "rubric",
+ "model": "",
+ "total": 3,
+ "passed": 3,
+ "failed": 0,
+ "ok": true,
+ "results": [
+ {
+ "id": "live_rdti_log",
+ "skill": "grants-rdti-clerk",
+ "passed": true,
+ "score": 1.0,
+ "details": [
+ "draft_quality=1.0",
+ "watermark present",
+ "boundary ok",
+ "nz_factual_accuracy=1.0"
+ ],
+ "rubric": {
+ "draft_quality": 1.0,
+ "watermark_presence": 1.0,
+ "boundary_respect": 1.0,
+ "nz_factual_accuracy": 1.0
+ },
+ "mode": "rubric"
+ },
+ {
+ "id": "live_legal_draft",
+ "skill": "legal-document-assistant",
+ "passed": true,
+ "score": 1.0,
+ "details": [
+ "draft_quality=1.0",
+ "watermark present",
+ "boundary ok",
+ "nz_factual_accuracy=1.0"
+ ],
+ "rubric": {
+ "draft_quality": 1.0,
+ "watermark_presence": 1.0,
+ "boundary_respect": 1.0,
+ "nz_factual_accuracy": 1.0
+ },
+ "mode": "rubric"
+ },
+ {
+ "id": "live_outreach_draft",
+ "skill": "content-comms-officer",
+ "passed": true,
+ "score": 1.0,
+ "details": [
+ "draft_quality=1.0",
+ "watermark present",
+ "boundary ok",
+ "nz_factual_accuracy=1.0"
+ ],
+ "rubric": {
+ "draft_quality": 1.0,
+ "watermark_presence": 1.0,
+ "boundary_respect": 1.0,
+ "nz_factual_accuracy": 1.0
+ },
+ "mode": "rubric"
+ }
+ ],
+ "note": "Rubric baseline only \u2014 set NZ_STARTUP_EVAL_API_KEY (or OPENAI_API_KEY / XAI_API_KEY) and --provider openai|xai for production-model scoring before EDA demos."
 }

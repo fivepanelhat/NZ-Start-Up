@@ -1,17 +1,17 @@
 {
-  "schema_version": 1,
-  "cohort_id": "powerup-demo",
-  "partner_name": "Venture Taranaki",
-  "partner_slug": "venture-taranaki",
-  "programme": "PowerUp founder cohort",
-  "region": "Taranaki, Aotearoa New Zealand",
-  "contact_email": "",
-  "seat_quota": 15,
-  "brand": {
-    "product_name": "Venture Taranaki Start-Up Box",
-    "tagline": "NZ founder operating system for the PowerUp cohort",
-    "powered_by": "NZ Start-Up in a Box · Coastal Alpine Tech · Aether",
-    "hitl_slogan": "Agents inform, draft, prepare, monitor, and remind. Humans advise, sign, file, send, and pay.",
-    "disclaimer": "Not legal, financial, tax, or cultural advice."
-  }
+ "schema_version": 1,
+ "cohort_id": "powerup-demo",
+ "partner_name": "Venture Taranaki",
+ "partner_slug": "venture-taranaki",
+ "programme": "PowerUp founder cohort",
+ "region": "Taranaki, Aotearoa New Zealand",
+ "contact_email": "",
+ "seat_quota": 15,
+ "brand": {
+ "product_name": "Venture Taranaki Start-Up Box",
+ "tagline": "NZ founder operating system for the PowerUp cohort",
+ "powered_by": "NZ Start-Up in a Box | Coastal Alpine Tech | Aether",
+ "hitl_slogan": "Agents inform, draft, prepare, monitor, and remind. Humans advise, sign, file, send, and pay.",
+ "disclaimer": "Not legal, financial, tax, or cultural advice."
+ }
 }

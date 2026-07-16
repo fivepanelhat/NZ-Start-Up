@@ -1,11 +1,11 @@
-# HITL Matrix — Autonomy Ceilings
+# HITL Matrix - Autonomy Ceilings
 
 **Rule:** Agents inform, draft, prepare, monitor, remind. Humans advise, sign, file, send, pay.
 
 | Skill | May do autonomously | Requires HITL | Forbidden |
 |-------|---------------------|---------------|-----------|
 | formation-officer | Name research notes, constitution options, incorporation pack drafts | Filing, reserved name payment, RealMe session | File as authorised agent |
-| compliance-registrar | Deadline calendar, checklist drafts, reminders | Self-certifying compliance, lodgement | Legal advice that work is “compliant” |
+| compliance-registrar | Deadline calendar, checklist drafts, reminders | Self-certifying compliance, lodgement | Legal advice that work is "compliant" |
 | grants-rdti-clerk | Opportunity monitoring, log drafting from provided commits/hours | Application submit, inventing hours/budget | False RDTI claims |
 | market-validator | Web research, synthesis with sources | Publishing claims as verified market fact without sources | Fabricated stats |
 | gtm-pipeline-rep | ICP lists, draft emails, CRM field suggestions | **Any send**, mass mail, SMS | Autonomous cold email (UEM Act) |
@@ -19,20 +19,20 @@
 
 Always require human approval when action involves:
 
-1. Government filing or payment  
-2. Outbound communication to third parties  
-3. Money movement  
-4. Legal or financial advice presentation  
-5. Cultural claims or iwi engagement  
-6. Committing secrets or personal information to shared systems  
-7. Changing CAT standard classification of a production system  
+1. Government filing or payment 
+2. Outbound communication to third parties 
+3. Money movement 
+4. Legal or financial advice presentation 
+5. Cultural claims or iwi engagement 
+6. Committing secrets or personal information to shared systems 
+7. Changing CAT standard classification of a production system 
 
 ## Watermark templates
 
 ```text
-DRAFT — NOT FOR SUBMISSION
-NOT LEGAL ADVICE — independent legal review required
-NOT FINANCIAL ADVICE — FMCA regime may apply; lawyer/AFA as required
-INFORMATION ONLY — not a compliance certificate
-PREPARED BY AGENT — human must verify before use
+DRAFT - NOT FOR SUBMISSION
+NOT LEGAL ADVICE - independent legal review required
+NOT FINANCIAL ADVICE - FMCA regime may apply; lawyer/AFA as required
+INFORMATION ONLY - not a compliance certificate
+PREPARED BY AGENT - human must verify before use
 ```

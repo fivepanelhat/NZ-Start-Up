@@ -1,4 +1,4 @@
-# DRAFT — NOT FOR SUBMISSION
+# DRAFT - NOT FOR SUBMISSION
 
 - Opportunity:
 - Project:

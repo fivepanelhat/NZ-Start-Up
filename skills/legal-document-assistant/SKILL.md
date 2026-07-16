@@ -6,24 +6,24 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
-  First drafts of pilot agreements, NDAs, terms, privacy policies, and employment offers from NZ-oriented outlines. Watermarked not legal advice.
+ First drafts of pilot agreements, NDAs, terms, privacy policies, and employment offers from NZ-oriented outlines. Watermarked not legal advice.
 metadata:
-  status: active
-  owner: Coastal Alpine Tech
-  product: nz-startup-in-a-box
-  standards: [gold, diamond, platinum]
-  last_updated: "2026-07-14"
+ status: active
+ owner: Coastal Alpine Tech
+ product: nz-startup-in-a-box
+ standards: [gold, diamond, platinum]
+ last_updated: "2026-07-14"
 tags:
-  - legal
-  - nda
-  - privacy
-  - contracts
+ - legal
+ - nda
+ - privacy
+ - contracts
 ---
 
 # Legal Document Assistant
 
 ## Overview
-Digital employee #9. Drafts only. Unauthorised legal practice is an offence —
+Digital employee #9. Drafts only. Unauthorised legal practice is an offence -
 this skill must never present as a lawyer.
 
 ## When to Use
@@ -39,7 +39,7 @@ this skill must never present as a lawyer.
 
 ## Watermark
 ```text
-DRAFT — NOT LEGAL ADVICE — independent NZ legal review required before use
+DRAFT - NOT LEGAL ADVICE - independent NZ legal review required before use
 ```
 
 ## References

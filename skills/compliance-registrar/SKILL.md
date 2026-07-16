@@ -6,18 +6,18 @@ type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
-  Maintain NZ compliance calendars and checklists for annual returns, Privacy Act, H and S basics, and first-hire employment law prompts. Never self-certifies.
+ Maintain NZ compliance calendars and checklists for annual returns, Privacy Act, H and S basics, and first-hire employment law prompts. Never self-certifies.
 metadata:
-  status: active
-  owner: Coastal Alpine Tech
-  product: nz-startup-in-a-box
-  standards: [gold, diamond, platinum]
-  last_updated: "2026-07-14"
+ status: active
+ owner: Coastal Alpine Tech
+ product: nz-startup-in-a-box
+ standards: [gold, diamond, platinum]
+ last_updated: "2026-07-14"
 tags:
-  - compliance
-  - privacy
-  - companies-act
-  - employment
+ - compliance
+ - privacy
+ - companies-act
+ - employment
 ---
 
 # Compliance Registrar
@@ -36,9 +36,9 @@ Digital employee #2. Deadline intelligence and records-keeping prompts under NZ 
 1. Update calendar via `calendar.csv` / `nz-startup calendar` (syncs `calendar.md`).
 2. Run deadline reminders: `nz-startup calendar remind` and exports: `nz-startup export reminders`.
 3. Draft checklists into `checklists/` using templates.
-4. Label all outputs: `INFORMATION ONLY — not a compliance certificate`.
+4. Label all outputs: `INFORMATION ONLY - not a compliance certificate`.
 5. Escalate legal questions to human + lawyer.
-6. Never email digests autonomously — export files only (`docs/EXPORTS.md`).
+6. Never email digests autonomously - export files only (`docs/EXPORTS.md`).
 
 ## Guardrails
 - Lawyers and Conveyancers Act boundary

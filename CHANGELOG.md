@@ -1,8 +1,8 @@
 # Changelog
 
-## 1.8.3 — 2026-07-16
+## 1.8.3 - 2026-07-16
 
-### Super Grok proceed — pilot + economic thesis (grounded)
+### Super Grok proceed - pilot + economic thesis (grounded)
 
 | Item | Ship |
 |------|------|
@@ -13,7 +13,7 @@
 
 No email send. No over-claimed partnerships.
 
-## 1.8.2 — 2026-07-16
+## 1.8.2 - 2026-07-16
 
 ### Optimization execution (Claude reports #6-11) - evidence, not new structure
 
@@ -28,13 +28,13 @@ No email send. No over-claimed partnerships.
 | **Reality** | `REALITY.md` + `docs/OPTIMIZATION_EXECUTION.md` |
 | **E2E** | doctor / smoke / compliance / demo-vt PASS |
 
-## 1.8.1 — 2026-07-15
+## 1.8.1 - 2026-07-15
 
 ### Portfolio congruence + anti-hallucination agent fleet
 
 | Item | Ship |
 |------|------|
-| **Pack** | `portfolio/congruence-pack/` — portable AGENTS, hardening, anti-hallucination, CAT standards |
+| **Pack** | `portfolio/congruence-pack/` - portable AGENTS, hardening, anti-hallucination, CAT standards |
 | **Org sweep** | Applied + pushed to all 14 public fivepanelhat repos + front page |
 | **NZ-Start-Up** | `CAT_CONGRUENCE.md`, `.github/agent-fleet/*`, agent-hardening **v1.1** (tool use, refusal, extended thinking) |
 | **Docs** | AGENT_HARDENING anti-hallucination section; AGENTS.md load order updated |
@@ -42,41 +42,41 @@ No email send. No over-claimed partnerships.
 
 Every repo now links fivepanelhat + NZ-Start-Up, HITL slogan, investor one-liner, and FACT/INFERENCE/UNKNOWN policy.
 
-## 1.8.0 — 2026-07-15
+## 1.8.0 - 2026-07-15
 
-### Seed GTM — market-fit matrices, enterprise markets, investor pack
+### Seed GTM - market-fit matrices, enterprise markets, investor pack
 
 Built on Claude's v1.7.0 market intelligence + investor R&D dossier.
 
 | Item | Ship |
 |------|------|
-| **Market-fit matrix** | `docs/MARKET_FIT_MATRIX.md` — 12 segments scored (S1–S12), enterprise products A–G |
-| **Portfolio matrix** | `docs/PORTFOLIO_MARKET_FIT.md` — all CAT public repos scored for seed narrative |
-| **Seed pack** | `docs/SEED_INVESTOR_PACK.md` — diligence-ready narrative + data-room index |
+| **Market-fit matrix** | `docs/MARKET_FIT_MATRIX.md` - 12 segments scored (S1-S12), enterprise products A-G |
+| **Portfolio matrix** | `docs/PORTFOLIO_MARKET_FIT.md` - all CAT public repos scored for seed narrative |
+| **Seed pack** | `docs/SEED_INVESTOR_PACK.md` - diligence-ready narrative + data-room index |
 | **Skills** | `enterprise-adoption-officer`, `investor-readiness-clerk` (15 skills total) |
-| **CLI** | `nz-startup market matrix\|score\|enterprise\|portfolio` · `investor data-room\|pack` |
+| **CLI** | `nz-startup market matrix\|score\|enterprise\|portfolio` | `investor data-room\|pack` |
 | **Runtime** | `nz_startup/market_fit.py` deterministic scoring |
 
-**GTM priority:** S2 EDA/PowerUp → S1 founders → S3 agritech → S7 climate / S4 SaaS.
+**GTM priority:** S2 EDA/PowerUp -> S1 founders -> S3 agritech -> S7 climate / S4 SaaS.
 
-## 1.7.0 — 2026-07-15
+## 1.7.0 - 2026-07-15
 
-### Market intelligence layer (reports 10–11)
+### Market intelligence layer (reports 10-11)
 
 Deep-dive NZ startup stats + agentic ecosystem research wired into the fleet as CI-freshness-gated knowledge.
 
 | Item | Ship |
 |------|------|
-| Knowledge | `knowledge/nz-market-stats.md` — Stats NZ / NZGCP / StartupBlink verified figures, employee bands, top-5 segments, agent citation rules |
-| Knowledge | `knowledge/agentic-ecosystem-nz.md` — NZ agentic competitor/partner map, white-space statement, no-over-claim rules |
-| Knowledge | `knowledge/funding-landscape.md` — 2025 capital climate ($754m/166 deals; 47 first-funded) with honest-framing rule |
-| Docs | `docs/MARKET.md` — investor-facing market opportunity: bottom-up sizing, ranked ICP, adoption pathways, success metrics |
-| Skills | market-validator, gtm-pipeline-rep, funding-analyst → 0.2.0; reference the new knowledge before external search |
+| Knowledge | `knowledge/nz-market-stats.md` - Stats NZ / NZGCP / StartupBlink verified figures, employee bands, top-5 segments, agent citation rules |
+| Knowledge | `knowledge/agentic-ecosystem-nz.md` - NZ agentic competitor/partner map, white-space statement, no-over-claim rules |
+| Knowledge | `knowledge/funding-landscape.md` - 2025 capital climate ($754m/166 deals; 47 first-funded) with honest-framing rule |
+| Docs | `docs/MARKET.md` - investor-facing market opportunity: bottom-up sizing, ranked ICP, adoption pathways, success metrics |
+| Skills | market-validator, gtm-pipeline-rep, funding-analyst -> 0.2.0; reference the new knowledge before external search |
 | Deps | Lockfile refreshed to clear all pip-audit findings (cryptography 48.0.1, pytest 9.0.3, mcp 1.23.0, pypdf 6.13.3) |
 
 All new knowledge carries `verified: 2026-07-15` and is enforced by the G4 freshness gate (90-day max age).
 
-## 1.6.1 — 2026-07-15
+## 1.6.1 - 2026-07-15
 
 ### Final review calibration (report 8) + investor consistency (report 9)
 
@@ -91,17 +91,17 @@ Super Grok final review of v1.6.0: **demo-ready**; remaining items are calibrati
 | Branding | Global investor one-liner + Venture Taranaki / startups.com / Kotahitanga collab (report 9) |
 | Hybrid badge | README hybrid edge + multi-model framing |
 
-## 1.6.0 — 2026-07-15
+## 1.6.0 - 2026-07-15
 
-### Next-tier optimisations (Claude v1.5.0 review T1–T9)
+### Next-tier optimisations (Claude v1.5.0 review T1-T9)
 
-Super Grok G1–G14 verified closed; this release closes the trust-transfer tier.
+Super Grok G1-G14 verified closed; this release closes the trust-transfer tier.
 
 | Item | Ship |
 |------|------|
 | **T1** | Opt-in behavioural lane: `nz-startup eval --live` (rubric judge; LLM-ready) |
 | **T2** | Nonce quarantine delimiters + expanded injection fuzz patterns |
-| **T3** | `compliance/standards-mapping.md` — OWASP LLM Top 10, NIST AI RMF, ISO 42001, NZ Algorithm Charter, Privacy Act |
+| **T3** | `compliance/standards-mapping.md` - OWASP LLM Top 10, NIST AI RMF, ISO 42001, NZ Algorithm Charter, Privacy Act |
 | **T4** | Hard pip-audit on lockfile; pack SHA256 + CycloneDX SBOM + git provenance |
 | **T5** | Scheduler runner in `~/.nz-startup/`; `schedule verify` + heartbeat |
 | **T6** | Budget hard cap (`--enforce`); cost rates with `verified:` date in CI |
@@ -109,9 +109,9 @@ Super Grok G1–G14 verified closed; this release closes the trust-transfer tier
 | **T8** | `nz-startup audit export` OTel-GenAI-shaped JSON |
 | **T9** | eval-latest only in git; `hmac.compare_digest` console tokens; SECURITY inbox |
 
-## 1.5.0 — 2026-07-15
+## 1.5.0 - 2026-07-15
 
-### Gap analysis ship (G1–G14) — EDA fleet ops layer
+### Gap analysis ship (G1-G14) - EDA fleet ops layer
 
 Aggressive build against Super Grok gap report. Guardrails were already strong;
 this release adds the operational layer: evals, freshness, telemetry, cadence, tasks.
@@ -123,35 +123,35 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 | **G3** | HITL default-deny allow-list (`ALLOWED_AUTONOMY_VERBS`) |
 | **G4** | Knowledge `verified:` frontmatter + `scripts/check_knowledge_freshness.py` (90d) |
 | **G5** | `requirements-lock.txt` + `pip-audit` CI step |
-| **G6** | `nz-startup schedule install\|run` — OS timers (Task Scheduler / launchd / systemd) |
+| **G6** | `nz-startup schedule install\|run` - OS timers (Task Scheduler / launchd / systemd) |
 | **G7** | Per-company `tasks.jsonl` + `tasks.md` + CLI |
 | **G8** | Audit telemetry (`model`, tokens, `est_cost_nzd`) + board pack fleet-cost line |
 | **G9** | `model_tier` skill frontmatter + monthly token budget CLI |
 | **G10** | Company `INDEX.md`, compaction ritual, single-writer `.memory.lock` |
 | **G11** | Console session token (localhost + cookie/Bearer) |
-| **G12** | Policy banner stripped of marketing — pure policy tokens |
+| **G12** | Policy banner stripped of marketing - pure policy tokens |
 | **G13** | Single `mcp.json` (removed drift-prone `.mcp.json`) |
-| **G14** | `nz-startup pack` → versioned skills-pack zip under `dist/` |
-| **G15** | Watch-only (RealMe / A2A) — correctly not automated |
+| **G14** | `nz-startup pack` -> versioned skills-pack zip under `dist/` |
+| **G15** | Watch-only (RealMe / A2A) - correctly not automated |
 
 ### CLI surface
 - `tasks`, `schedule`, `index`, `eval`, `budget`, `pack`
 - Console `--token` / auto-minted session secret
 
-## 1.4.0 — 2026-07-15
+## 1.4.0 - 2026-07-15
 
 ### Dual licence & pre-seed IP
 - Dual-licence model documented: Track A proprietary + Track B commercial
-- `docs/DUAL_LICENCE.md` — NZ Copyright Act 1994 plain-English explainer for pre-seed
-- `LICENSE-COMMERCIAL.md` — commercial/white-label outline
+- `docs/DUAL_LICENCE.md` - NZ Copyright Act 1994 plain-English explainer for pre-seed
+- `LICENSE-COMMERCIAL.md` - commercial/white-label outline
 - `LICENSE` updated with dual-track notice and NZ copyright assertion
-- `ABOUT.md` — Coastal Alpine Tech pre-seed, dates, Taranaki founding context
+- `ABOUT.md` - Coastal Alpine Tech pre-seed, dates, Taranaki founding context
 
 ### Branding & badges
 - README badges: Pre-seed, founded 8 Aug 2026, R&D since 8 Aug 2025, dual licence,
-  HITL, Te Mana Raraunga, CAT standards, Grok 4.5 Build, Claude Pro Code,
-  Claude Computer Use, Google Gemini 3.5 Flash
-- Founding context: Wayne Roberts · Taranaki whānau · six generations in agriculture
+ HITL, Te Mana Raraunga, CAT standards, Grok 4.5 Build, Claude Pro Code,
+ Claude Computer Use, Google Gemini 3.5 Flash
+- Founding context: Wayne Roberts | Taranaki whanau | six generations in agriculture
 - `nz-startup about` CLI
 - `nz_startup/branding.py` single source of truth
 
@@ -161,7 +161,7 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - Compliance gate checks dual licence files + ABOUT branding
 - Fleet/agent-hardening skill metadata: pre-seed dates
 
-## 1.3.0 — 2026-07-14
+## 1.3.0 - 2026-07-14
 
 ### Licence
 - **Switched from Apache-2.0 to Coastal Alpine Tech Proprietary Software Licence**
@@ -175,7 +175,7 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - CI + smoke include compliance gate
 - Gate verifies proprietary licence, HITL docs, hardening modules, MCP inventory
 
-## 1.2.0 — 2026-07-14
+## 1.2.0 - 2026-07-14
 
 ### Security / agents
 - **Agent hardening plane**: `agent_guardrails.py`, skill `agent-hardening`
@@ -189,7 +189,7 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - Detailed architecture doc with diagrams: `docs/ARCHITECTURE_DETAILED.md`
 - Ultra glassmorphism architecture hero: `assets/architecture-glassmorphism.jpg`
 
-## 1.1.0 — 2026-07-14
+## 1.1.0 - 2026-07-14
 
 ### Added
 - Console company view: pipeline, grants, 14d reminders, weekly excerpt, artefact paths
@@ -200,12 +200,12 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - Home list shows status score per company
 - Console security headers (nosniff, DENY frame)
 
-## 1.0.0 — 2026-07-14
+## 1.0.0 - 2026-07-14
 
 ### Added
-- **v1.0 local product release** — skills + CLI + MCP + localhost Founder Console
-- `nz-startup console` — 127.0.0.1-only dashboard (status + weekly actions)
-- `nz-startup doctor` — install/environment health checks
+- **v1.0 local product release** - skills + CLI + MCP + localhost Founder Console
+- `nz-startup console` - 127.0.0.1-only dashboard (status + weekly actions)
+- `nz-startup doctor` - install/environment health checks
 - `RELEASE.md`, `docs/CONSOLE.md`
 - MCP: `doctor_run`
 - Smoke includes doctor
@@ -214,17 +214,17 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - Console refuses non-localhost binds (not multi-tenant SaaS)
 - Full native desktop shell still demand-gated; console is the v1.0 UI surface
 
-## 0.9.0 — 2026-07-14
+## 0.9.0 - 2026-07-14
 
 ### Added
-- **Founder onboard wizard** (`onboard`) — profile, 30-day plan, seeds, weekly, status
-- **Paid pilot offer pack** (`pilot offer`) — DRAFT_NOT_SENT commercial zip
-- **Cohort partner report** (`cohort report`) — seat readiness, optional anonymise
+- **Founder onboard wizard** (`onboard`) - profile, 30-day plan, seeds, weekly, status
+- **Paid pilot offer pack** (`pilot offer`) - DRAFT_NOT_SENT commercial zip
+- **Cohort partner report** (`cohort report`) - seat readiness, optional anonymise
 - Demo walkthrough now includes **status + board pack**
 - CLI/MCP for onboard, pilot, partner report
 - Docs: `docs/PILOT_ONBOARD.md`
 
-## 0.8.0 — 2026-07-14
+## 0.8.0 - 2026-07-14
 
 ### Added
 - **Company status dashboard** (`status`) with readiness score, gaps, next actions
@@ -235,7 +235,7 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - MCP: `company_status`, `board_pack_create`, `smoke_run`
 - Docs: `docs/STATUS_BOARD.md`
 
-## 0.7.0 — 2026-07-14
+## 0.7.0 - 2026-07-14
 
 ### Added
 - **White-label cohorts** for EDAs/accelerators: init, seats, brand overlay, pack zip (no seat PII)
@@ -252,7 +252,7 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - Still local-first; not multi-tenant SaaS
 - White-label pack excludes founder seat PII
 
-## 0.6.0 — 2026-07-14
+## 0.6.0 - 2026-07-14
 
 ### Added
 - **Invoice triage** for PDF/text (optional `pypdf`): field extraction, confidence, registry
@@ -269,7 +269,7 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - No auto GST claims; no emailing handoff packs
 - Image invoices flagged for human OCR (no cloud OCR)
 
-## 0.5.0 — 2026-07-14
+## 0.5.0 - 2026-07-14
 
 ### Added
 - **Bank feed CSV import** with flexible headers, dedupe, category/GST-hint triage
@@ -283,9 +283,9 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 
 ### HITL
 - No bank transfers, no myIR filing, no GST certification
-- Estimates assume GST-inclusive bank amounts — human verifies tax invoices
+- Estimates assume GST-inclusive bank amounts - human verifies tax invoices
 
-## 0.4.0 — 2026-07-14
+## 0.4.0 - 2026-07-14
 
 ### Added
 - **Xero read-only adapter** (`nz_startup/xero_readonly.py`): offline demo + live GET snapshot
@@ -302,10 +302,10 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - No Xero write APIs; no emailing digests
 - Forbidden tool names extended: `create_payment`, `email_digest`, etc.
 
-## 0.3.0 — 2026-07-14
+## 0.3.0 - 2026-07-14
 
 ### Added
-- **Pipeline CRM-lite** (`pipeline.csv` + markdown sync): stages lead→won/lost, add/update/list/summary
+- **Pipeline CRM-lite** (`pipeline.csv` + markdown sync): stages lead->won/lost, add/update/list/summary
 - **Calendar** (`calendar.csv`): deadlines, overdue/upcoming reminders (default 14 days)
 - **Grants tracker** (`grants-tracker.csv`): add/update/list/rank by fit; NZ starter seed
 - CLI: `nz-startup pipeline|calendar|grants ...`
@@ -319,7 +319,7 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - Calendar never files compliance
 - Grants never submits applications (`submitted` status flags human confirmation)
 
-## 0.2.0 — 2026-07-14
+## 0.2.0 - 2026-07-14
 
 ### Added
 - Python package `nz_startup` with CLI (`nz-startup`)
@@ -329,7 +329,7 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - Outreach + legal draft writers (never send)
 - Read-only NZBN lookup (offline without API key; live with `BUSINESS_GOVT_API_KEY`)
 - HITL policy module and forbidden-tool inventory
-- MCP stdio server (`nz-startup mcp`) — drafts-only CRM + NZBN read + memory + RDTI
+- MCP stdio server (`nz-startup mcp`) - drafts-only CRM + NZBN read + memory + RDTI
 - `install.ps1` / `install.sh` for Aether skills install
 - `mcp.json` / `.mcp.json` host configs
 - `docs/MCP.md`
@@ -340,6 +340,6 @@ this release adds the operational layer: evals, freshness, telemetry, cadence, t
 - Diamond: validated package, HITL enforcement in connectors
 - Platinum: audit JSONL on memory/RDTI/draft writes
 
-## 0.1.0 — 2026-07-14
+## 0.1.0 - 2026-07-14
 
 - Initial skills pack (12 skills), compliance, templates, knowledge, CI
