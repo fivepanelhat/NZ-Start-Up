@@ -1,8 +1,10 @@
-# Founder send pack - Super Grok session 3
+# Founder send pack - Super Grok session 3/4
 
 **Date:** 2026-07-16  
 **Status:** READY FOR HUMAN - nothing auto-sent  
 **Company memory:** `coastal-alpine-tech` (local / gitignored)
+
+**Start here first:** [`FOUNDER_TODAY.md`](./FOUNDER_TODAY.md)
 
 ---
 
