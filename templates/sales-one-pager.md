@@ -29,14 +29,16 @@ Companies Office / NZBN | IRD/GST prep | RDTI contemporaneous logs | regional ED
 | White-label | Cohort seats + brand pack zip (no multi-tenant SaaS required) |
 | Demo | One-command EDA walkthrough + mentor board pack |
 
-## Indicative packaging
+## Packaging (conceptual tiers)
 
-| Offer | Indicative |
-|-------|------------|
-| Founder | ~NZ$49/mo |
-| Active | ~NZ$149/mo |
-| Accelerator seat | ~NZ$399 |
-| White-label cohort | custom per-seat / per-cohort |
+| Offer | Who it is for |
+|-------|---------------|
+| Founder | Individual founder seat |
+| Active | Higher-usage founder / small team |
+| Accelerator seat | Per-seat for cohort programmes |
+| White-label cohort | Custom per-seat / per-cohort for partners |
+
+Specific commercial terms are set per pilot or partnership and are not published as a fixed public price list. Contact for pilot terms.
 
 *Token burn is real - default on-demand + weekly cadence.*
 
@@ -54,7 +56,7 @@ Not legal/financial/tax advice | no myIR filing | no money movement | no unsolic
 
 ## Ask
 
-Paid pilot cohort (N seats, 90 days) with weekly board artefact and clear success criteria - then white-label seat pricing.
+Paid pilot cohort (N seats, 90 days) with weekly board artefact and clear success criteria - then white-label seat packaging.
 
 ---
 
