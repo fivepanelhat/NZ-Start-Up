@@ -1,6 +1,19 @@
 # NZ Start-Up in a Box
 
+[![Founder tool](https://img.shields.io/badge/Portfolio%20role-Founder%20tool-6366f1)](https://github.com/fivepanelhat/fivepanelhat#founder-tools)
+
 **Status:** Pre-seed | [REALITY.md](./REALITY.md) | [EDA demo kit](./docs/EDA_DEMO_KIT.md) | [Optimization log](./docs/OPTIMIZATION_EXECUTION.md) | [Economic impact](./docs/ECONOMIC_IMPACT.md) | [Super Grok proceed](./docs/SUPER_GROK_PROCEED_LOG.md)
+
+> **Founder tool.** The founder OS for the Coastal Alpine Tech portfolio —
+> company formation, compliance, RDTI logging and the EDA white-label kit.
+> Support tooling rather than a commercial beachhead; the revenue-facing
+> products are [Byte Size Kai](https://github.com/fivepanelhat/Byte-Size-Kai)
+> (agritech) and
+> [Front Line Whanau](https://github.com/fivepanelhat/Front_Line_Whanau) (social).
+
+<!-- Placed above the congruence snippet on purpose: everything between the
+     BEGIN/END markers below is synced across repos and would overwrite an
+     edit made inside it. -->
 
 <!-- BEGIN CAT_CONGRUENCE_SNIPPET -->
 ## Coastal Alpine Tech portfolio
