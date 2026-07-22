@@ -58,7 +58,7 @@ See `docs/DUAL_LICENCE.md`.
 This repository was built and refined with multi-model assistance, including:
 
 - **Grok 4.5 Build** (xAI) 
-- **Claude Pro Code** 
+- **Claude Code Pro** 
 - **Claude Computer Use** 
 - **Google Gemini 3.5 Flash** 
 
