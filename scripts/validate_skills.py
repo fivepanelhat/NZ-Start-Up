@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Validate Aether-style skills for NZ Start-Up in a Box."""
+"""Validate Aether-style skills for NZ Start-Up in a Box.
+
+Accepts both legacy (top-level version) and modern (metadata.version) formats.
+"""
 from __future__ import annotations
 
 import re
@@ -9,8 +12,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / "skills"
 
-REQUIRED_KEYS = ("name", "description", "version")
-# Lowercase alnum segments separated by single hyphens
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
@@ -27,22 +28,46 @@ def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
     for line in fm_raw.splitlines():
         if not line.strip():
             continue
-        if line.startswith("  ") and current_key == "description":
-            data["description"] = (data.get("description", "") + " " + line.strip()).strip()
+        if line.startswith("  ") and current_key in ("description", "related"):
+            data[current_key] = (data.get(current_key, "") + " " + line.strip()).strip()
             continue
         if ":" in line and not line.startswith(" "):
             key, _, val = line.partition(":")
             key = key.strip()
             val = val.strip().strip('"').strip("'")
-            if val == ">":
+            if val == ">" or val == "|":
                 current_key = key
                 data[key] = ""
             else:
                 data[key] = val
-                current_key = key if key == "description" else None
-        elif current_key == "description" and line.startswith("  "):
-            data["description"] = (data.get("description", "") + " " + line.strip()).strip()
+                current_key = key if key in ("description", "related") else None
+        elif current_key and line.startswith("  "):
+            data[current_key] = (data.get(current_key, "") + " " + line.strip()).strip()
     return data, body
+
+
+def has_version(fm: dict[str, str], text: str) -> bool:
+    if fm.get("version"):
+        return True
+    # Accept metadata.version
+    if "metadata" in text and re.search(r"version:\s*[\"']?\d+\.\d+", text):
+        return True
+    return False
+
+
+def has_hitl_signal(text: str) -> bool:
+    lower = text.lower()
+    return any(
+        token in lower
+        for token in (
+            "requires_hitl",
+            "hitl",
+            "human action checklist",
+            "founder must",
+            "human-in-the-loop",
+            "approval",
+        )
+    )
 
 
 def validate_skill(skill_dir: Path) -> list[str]:
@@ -56,9 +81,10 @@ def validate_skill(skill_dir: Path) -> list[str]:
     except ValueError as e:
         return [f"{skill_dir.name}: {e}"]
 
-    for key in REQUIRED_KEYS:
-        if key not in fm or not fm[key]:
-            errors.append(f"{skill_dir.name}: missing frontmatter key '{key}'")
+    if "name" not in fm or not fm["name"]:
+        errors.append(f"{skill_dir.name}: missing frontmatter key 'name'")
+    if "description" not in fm or not fm["description"]:
+        errors.append(f"{skill_dir.name}: missing frontmatter key 'description'")
 
     name = fm.get("name", "")
     if name != skill_dir.name:
@@ -77,13 +103,11 @@ def validate_skill(skill_dir: Path) -> list[str]:
     if not body.strip():
         errors.append(f"{skill_dir.name}: empty body")
 
-    # Soft requirements for this product
-    lower = text.lower()
-    if "requires_hitl" not in lower and skill_dir.name != "market-validator":
-        # market-validator may be false but key should exist
-        pass
-    if "requires_hitl" not in lower:
-        errors.append(f"{skill_dir.name}: requires_hitl field recommended/required")
+    if not has_version(fm, text):
+        errors.append(f"{skill_dir.name}: version missing (use top-level or metadata.version)")
+
+    if not has_hitl_signal(text):
+        errors.append(f"{skill_dir.name}: no HITL signal found (requires_hitl / HITL / founder must / approval)")
 
     return errors
 
