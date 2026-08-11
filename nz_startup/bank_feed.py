@@ -141,7 +141,7 @@ def _categorize(description: str, amount: float) -> tuple[str, str]:
 
 def _row_id(date_s: str, desc: str, amount: float, idx: int) -> str:
     base = f"{date_s}|{desc}|{amount:.2f}|{idx}"
-    return "B" + hashlib.sha1(base.encode("utf-8")).hexdigest()[:10]
+    return "B" + hashlib.sha1(base.encode("utf-8"), usedforsecurity=False).hexdigest()[:10]
 
 
 def detect_mapping(headers: list[str]) -> dict[str, str | None]:
