@@ -250,7 +250,7 @@ def parse_invoice_text(text: str, source_name: str = "") -> dict[str, Any]:
 
 def _invoice_id(path: Path, parsed: dict[str, Any]) -> str:
     key = f"{path.name}|{parsed.get('invoice_number')}|{parsed.get('total')}|{parsed.get('invoice_date')}"
-    return "I" + hashlib.sha1(key.encode("utf-8")).hexdigest()[:10]
+    return "I" + hashlib.sha1(key.encode("utf-8"), usedforsecurity=False).hexdigest()[:10]
 
 
 def _read_registry(company_id: str) -> list[dict[str, str]]:
