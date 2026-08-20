@@ -28,21 +28,22 @@ def run_compliance_check(company_id: str | None = None) -> dict[str, Any]:
     root = repo_root()
     checks: list[dict[str, Any]] = []
 
-    # Dual / proprietary licence (Track A + Track B)
+    # Proprietary licence (standard CAT notice or dual Track A)
     license_text = ""
     lic = root / "LICENSE"
     if lic.is_file():
         license_text = lic.read_text(encoding="utf-8", errors="replace")
+    upper = license_text.upper()
     is_prop = (
-        "PROPRIETARY" in license_text.upper()
+        "PROPRIETARY" in upper
         and "Apache License" not in license_text
-        and "NOT OPEN SOURCE" in license_text.upper()
+        and "Coastal Alpine Tech" in license_text
     )
     checks.append(
         _ok(
             "proprietary_license",
             is_prop,
-            "LICENSE is Coastal Alpine Tech proprietary (Track A)"
+            "LICENSE is Coastal Alpine Tech proprietary"
             if is_prop
             else "LICENSE missing proprietary markers or still Apache",
         )
@@ -83,7 +84,7 @@ def run_compliance_check(company_id: str | None = None) -> dict[str, Any]:
         _ok(
             "notice_proprietary",
             notice.is_file() and "PROPRIETARY" in notice_txt.upper(),
-            "NOTICE declares proprietary / dual-licence",
+            "NOTICE declares proprietary",
         )
     )
     checks.append(
@@ -211,7 +212,7 @@ def run_compliance_check(company_id: str | None = None) -> dict[str, Any]:
         "ok": len(hard_fail) == 0,
         "product_version": __version__,
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "licence": "dual-proprietary-commercial",
+        "licence": "proprietary-commercial",
         "company_id": company_id,
         "checks": checks,
         "hard_failures": [c["name"] for c in hard_fail],
