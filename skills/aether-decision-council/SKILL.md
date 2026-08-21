@@ -1,8 +1,9 @@
 ---
 name: aether-decision-council
+version: "1.0.0"
+requires_hitl: true
 description: Use when the user needs rigorous multi-perspective pressure-testing of a high-stakes decision, strategy, trade-off, pivot, pricing, grant positioning, partnership term, architecture choice, or founder dilemma. Runs a structured 5-advisor council with anonymous peer review and chairman synthesis. Always apply for genuine uncertainty with meaningful stakes. Triggers include council this, run the council, pressure-test this, stress-test this, war room this, debate this, should I X or Y, which option, get multiple perspectives, I can't decide. Do not trigger on factual lookups, simple yes/no, or low-stakes creative tasks. Enforces HITL presentation for any verdict touching production, funding, cultural, or sovereignty matters. Owner Coastal Alpine Tech.
 metadata:
-  version: "1.0.0"
   status: active
   owner: Coastal Alpine Tech
   last_updated: "2026-08-21"
