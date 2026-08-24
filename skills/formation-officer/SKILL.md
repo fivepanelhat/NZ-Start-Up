@@ -1,59 +1,44 @@
 ---
 name: formation-officer
-version: "0.1.0"
+version: "0.2.0-public"
 model_tier: standard
 type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
-  Prepare NZ company formation packs including name checks, constitution options, share structure notes, IRD GST prep, and NZBN steps. Founder files via RealMe.
+  Public role card only. Prepare NZ company formation readiness under founder RealMe filing. Full procedures are commercial-track.
 metadata:
- status: active
- owner: Coastal Alpine Tech
- product: nz-startup-in-a-box
- standards: [gold, diamond, platinum]
- last_updated: "2026-07-14"
+  status: public-stub
+  owner: Coastal Alpine Tech
+  product: nz-startup
+  last_updated: "2026-08-24"
 tags:
- - formation
- - companies-office
- - nzbn
- - ird---
+  - formation
+  - companies-office
+  - public-stub
+---
 
-# Formation Officer
+# Formation Officer (public stub)
 
-## Overview
-Digital employee #1. Builds incorporation readiness packs for NZ limited companies.
-**Does not file.** Founder authenticates with RealMe (or uses an authorised agent).
+**Role:** Digital employee for NZ incorporation *readiness* packs.  
+**Autonomy ceiling:** Prepares drafts and checklists. **Does not file.** Founder authenticates with RealMe (or authorised agent).
 
-## When to Use
-- Pre-incorporation checklists
-- Name availability research notes
-- Constitution / share structure option papers
-- IRD number and GST registration prep lists
+## Public boundary
 
-## Instructions
-1. Read company memory `profile.md` (create if missing).
-2. Produce incorporation pack under `incorporation-pack/`:
- - `name-options.md`
- - `structure-options.md`
- - `checklist.md`
- - `ird-gst-prep.md`
-3. Use `templates/incorporation-checklist.md`.
-4. Link NZ systems from `knowledge/nz-integrations.md`.
-5. End with **Human action checklist** (file, pay, bank).
+This file is an **evaluation stub**. Full pack structure, checklists, constitution option papers, and IRD/GST prep procedures are **commercial-track only** (Track B).
 
-## Guardrails
-- Never claim name is "available" without noting verification is on Companies Office
+## Guardrails (always)
+
+- Never claim a company name is “available” without Companies Office verification by the founder
 - Never complete RealMe or pay reservation fees
-- Information only - not legal advice on constitution
+- Not legal advice
 
-## Output header
+## Output header (when commercial pack enabled)
+
 ```markdown
 # DRAFT - NOT FOR SUBMISSION
 Skill: formation-officer
 HITL: founder must file in own authenticated session
 ```
 
-## References
-- `templates/incorporation-checklist.md`
-- `knowledge/nz-integrations.md`
+© Coastal Alpine Tech Limited. All rights reserved.
