@@ -1,67 +1,28 @@
 ---
 name: edge-node-commissioning
-version: "1.0.0"
+version: "1.1.0-public"
 requires_hitl: true
-description: Use when bringing up, validating, or documenting a Coastal Alpine Tech edge node (RPi 5 16GB + Hailo-10H + sensors + local Ollama). Provides phased commissioning checklist, hardware validation, software stack bring-up, security hardening, and Te Mana Raraunga local-data checks. Triggers include commission node, bring up RPi, Mata Kai node, edge node setup, Hailo validation, node commissioning, farm node install. Always require human confirmation before marking a node production-ready.
+description: >
+  Public role card only. Edge node commissioning support for RPi 5 + Hailo class nodes. Full phased runbooks commercial-track.
 metadata:
-  status: active
+  status: public-stub
   owner: Coastal Alpine Tech
-  last_updated: "2026-08-21"
-  maturity: Gold
-  related: [cat-architectural-standards, aether-data-sovereignty, te-mana-raraunga-controls, coastal-alpine-core]
+  last_updated: "2026-08-24"
 ---
 
-# Edge Node Commissioning
+# Edge Node Commissioning (public stub)
 
-Production skill for repeatable, sovereign commissioning of Kiwi Edge nodes (Raspberry Pi 5 16GB + Hailo-10H NPU + sensor suite + local LLM).
+**Role:** Support repeatable commissioning of Kiwi Edge nodes (RPi 5 class + NPU + local inference).  
+**Autonomy ceiling:** Prepares checklists and reports. Human signs off production-ready.
 
-## Target Hardware Baseline
-- Raspberry Pi 5 (16GB recommended)
-- Hailo-10H M.2 / AI HAT
-- Official or high-quality power supply
-- Storage (NVMe or high-endurance SD)
-- Network (Ethernet preferred for field stability)
-- Sensors as required by domain portal (AquaGuard, SoilGuard, Mata Kai, etc.)
+## Public boundary
 
-## Phased Process
+Full phased commissioning runbooks, security hardening steps, and sign-off report formats are **commercial-track only**.
 
-### Phase 0 — Pre-flight
-- Confirm physical inventory and serial numbers
-- Record intended site / farm / Mana Kai location
-- Confirm data-sovereignty requirements for this node
+## Guardrails (always)
 
-### Phase 1 — Base OS & Hardware
-- Flash and boot verified OS image
-- Confirm CPU, memory, storage, thermal
-- Install and validate Hailo runtime + firmware
-- Run Hailo basic inference smoke test
+- HITL before declaring any node production-ready
+- HITL before any data path that could leave the local site
+- No silent outbound data paths
 
-### Phase 2 — Core Software Stack
-- Install / update Coastal-Alpine-Core
-- Configure SovereignOllamaClient + local model(s)
-- Bring up MQTT / mTLS if required
-- SecurityGuard baseline checks
-
-### Phase 3 — Domain & Sensors
-- Attach and validate sensors
-- Configure domain portal or agent loop
-- End-to-end data path test (sensor → local process → optional flywheel)
-
-### Phase 4 — Sovereignty & Hardening
-- Confirm no unexpected outbound data paths
-- Local key / credential handling verified
-- Logging and telemetry retention policy set
-- Physical and network access controls documented
-
-### Phase 5 — Sign-off
-- Produce commissioning report
-- Human (founder or authorised operator) signs off “production-ready”
-- Record node ID, location, software versions, and next maintenance window
-
-## HITL Gates
-- Before declaring any node production-ready.
-- Before enabling any data path that could leave the local site.
-- Before changing security or key-management configuration.
-
-## Output
-Structured commissioning checklist + final sign-off report in markdown, ready for the node register / operations log.
+© Coastal Alpine Tech Limited. All rights reserved.
