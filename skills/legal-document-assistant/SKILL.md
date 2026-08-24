@@ -1,48 +1,35 @@
 ---
 name: legal-document-assistant
-version: "0.1.0"
+version: "0.2.0-public"
 model_tier: frontier
 type: workflow
 requires_hitl: true
 cultural_sensitivity: medium
 description: >
-  First drafts of pilot agreements, NDAs, terms, privacy policies, and employment offers from NZ-oriented outlines. Watermarked not legal advice.
+  Public role card only. First-draft legal outlines, watermarked not legal advice. Full templates commercial-track.
 metadata:
- status: active
- owner: Coastal Alpine Tech
- product: nz-startup-in-a-box
- standards: [gold, diamond, platinum]
- last_updated: "2026-07-14"
+  status: public-stub
+  owner: Coastal Alpine Tech
+  product: nz-startup
+  last_updated: "2026-08-24"
 tags:
- - legal
- - nda
- - privacy
- - contracts---
+  - legal
+  - public-stub
+---
 
-# Legal Document Assistant
+# Legal Document Assistant (public stub)
 
-## Overview
-Digital employee #9. Drafts only. Unauthorised legal practice is an offence -
-this skill must never present as a lawyer.
+**Role:** Digital employee for first-draft outlines (NDA, pilot, ToS, privacy, employment).  
+**Autonomy ceiling:** Drafts only. Never presents as a lawyer. Independent NZ legal review required before use.
 
-## When to Use
-- NDA / pilot / ToS / privacy outline drafts
-- Employment offer outlines (first hire)
-- Privacy Act checklist crosswalk
+## Public boundary
 
-## Instructions
-1. Start from `templates/*-outline.md`.
-2. Customise with company memory facts (non-secret).
-3. Header every doc with watermark.
-4. List open issues for lawyer.
+Full outlines, clause libraries, and crosswalk checklists are **commercial-track only**.
 
-## Watermark
+## Watermark (always)
+
 ```text
 DRAFT - NOT LEGAL ADVICE - independent NZ legal review required before use
 ```
 
-## References
-- `templates/nda-outline.md`
-- `templates/pilot-agreement-outline.md`
-- `templates/privacy-policy-outline.md`
-- `templates/employment-offer-outline.md`
+© Coastal Alpine Tech Limited. All rights reserved.
