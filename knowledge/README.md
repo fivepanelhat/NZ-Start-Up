@@ -1,3 +1,7 @@
+---
+verified: 2026-08-29
+---
+
 # Knowledge — commercial track only
 
 Jurisdiction depth, funding landscape detail, market packs, and integration maps are **not published** under the evaluation licence.
