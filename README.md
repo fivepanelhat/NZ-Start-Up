@@ -4,6 +4,11 @@
 
 **Status:** Pre-seed · [REALITY.md](./REALITY.md) · [EDA demo kit](./docs/EDA_DEMO_KIT.md) · [Market](./docs/MARKET.md) · [Dual licence](./docs/DUAL_LICENCE.md)
 
+[![Grok](https://img.shields.io/badge/Grok%204.5-xAI-000000)](https://x.ai)
+[![Claude Pro](https://img.shields.io/badge/Claude%20Pro-Anthropic-9C27B0)](https://anthropic.com)
+[![Computer Use](https://img.shields.io/badge/Computer%20Use-Enabled-0ea5e9)](https://github.com/fivepanelhat/Aether)
+[![Gemini](https://img.shields.io/badge/Gemini-Google-4285F4)](https://gemini.google.com)
+
 <!-- BEGIN CAT_CONGRUENCE_SNIPPET -->
 ## Coastal Alpine Tech portfolio
 
@@ -19,6 +24,12 @@
 **Agents inform, draft, prepare, monitor, and remind. Humans advise, sign, file, send, and pay.**  
 Anti-hallucination policy: [`.github/agent-fleet/anti-hallucination.md`](./.github/agent-fleet/anti-hallucination.md) | Congruence: [`CAT_CONGRUENCE.md`](./CAT_CONGRUENCE.md)
 <!-- END CAT_CONGRUENCE_SNIPPET -->
+
+Work is classified Gold / Platinum / Diamond under [`cat-architectural-standards`](./skills/cat-architectural-standards/SKILL.md).
+
+## Skills
+
+Coastal Alpine Tech maintains a fleet of **93 named, versioned skills**. They are customisable for any industry under the same HITL and Te Mana Raraunga contract. This repository shows the **Founder OS** working set. Full procedures load from the private CAT Agent Harness under agreement.
 
 ## Commercial boundary (read this first)
 
