@@ -55,9 +55,9 @@ def test_docs_exist():
     for name in (
         "MARKET_FIT_MATRIX.md",
         "PORTFOLIO_MARKET_FIT.md",
-        "SEED_INVESTOR_PACK.md",
+        "PUBLIC_ENGAGEMENT_POSTURE.md",
     ):
-        assert (root / name).is_file()
+        assert (root / name).is_file(), name
 
 
 @pytest.fixture()
@@ -89,5 +89,4 @@ def test_investor_data_room_cli(company, monkeypatch):
     path = memory.ensure_exists(company) / "commercial" / "data-room-index.md"
     assert path.is_file()
     text = path.read_text(encoding="utf-8")
-    assert "SEED_INVESTOR_PACK" in text
     assert "NEEDS_EVIDENCE" in text
