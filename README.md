@@ -2,7 +2,7 @@
 
 **Founder operating system for Aotearoa New Zealand** — formation through early funding, with hard legal ceilings and Human-in-the-Loop governance.
 
-**Status:** Pre-seed · [REALITY.md](./REALITY.md) · [EDA demo kit](./docs/EDA_DEMO_KIT.md) · [Market](./docs/MARKET.md) · [Dual licence](./docs/DUAL_LICENCE.md)
+**Status:** Pre-seed · [REALITY.md](./REALITY.md) · [EDA demo kit](./docs/EDA_DEMO_KIT.md) · [Market](./docs/MARKET.md) · [Dual licence](./docs/DUAL_LICENCE.md) · [Public engagement posture](./docs/PUBLIC_ENGAGEMENT_POSTURE.md)
 
 [![Grok](https://img.shields.io/badge/Grok%204.5-xAI-000000)](https://x.ai)
 [![Claude Pro](https://img.shields.io/badge/Claude%20Pro-Anthropic-9C27B0)](https://anthropic.com)
@@ -19,7 +19,7 @@
 
 **Part of the [Kiwi Edge AI Stack](https://github.com/fivepanelhat/fivepanelhat)** | Founder OS: [NZ-Start-Up](https://github.com/fivepanelhat/NZ-Start-Up) | Agent policy: [`.github/agent-fleet/`](./.github/agent-fleet/)
 
-> Sovereign hybrid edge AI for NZ farms and founders — local-first + multi-model, Te Mana Raraunga aligned. Open to collaboration with Venture Taranaki, startups.com investors, and Kotahitanga Investment Fund (HITL and cultural advisory for formal approaches).
+> Sovereign hybrid edge AI for NZ farms and founders — local-first + multi-model, Te Mana Raraunga aligned. Pre-seed. Open to approaches to regional development agencies, angel networks, and Māori capital funds. No partnership, mandate, investment, or market leadership is claimed unless a published agreement or evidence pack exists.
 
 **Agents inform, draft, prepare, monitor, and remind. Humans advise, sign, file, send, and pay.**  
 Anti-hallucination policy: [`.github/agent-fleet/anti-hallucination.md`](./.github/agent-fleet/anti-hallucination.md) | Congruence: [`CAT_CONGRUENCE.md`](./CAT_CONGRUENCE.md)
