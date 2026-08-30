@@ -8,7 +8,7 @@
 
 **Part of the [Kiwi Edge AI Stack](https://github.com/fivepanelhat/fivepanelhat)** | Founder OS: [NZ-Start-Up](https://github.com/fivepanelhat/NZ-Start-Up) | Agent policy: [`.github/agent-fleet/`](./.github/agent-fleet/)
 
-> Sovereign hybrid edge AI for NZ farms and founders - local-first + multi-model, Te Mana Raraunga aligned - collaborating with Venture Taranaki, startups.com investors and Kotahitanga Investment Fund (HITL + cultural advisory for formal approaches).
+> Sovereign hybrid edge AI for NZ farms and founders — local-first + multi-model, Te Mana Raraunga aligned. Pre-seed. Open to approaches to regional development agencies, angel networks, and Māori capital funds. No partnership, mandate, investment, or market leadership is claimed unless a published agreement or evidence pack exists.
 
 **Agents inform, draft, prepare, monitor, and remind. Humans advise, sign, file, send, and pay.** 
 Anti-hallucination policy: [`.github/agent-fleet/anti-hallucination.md`](./.github/agent-fleet/anti-hallucination.md) | Congruence: [`CAT_CONGRUENCE.md`](./CAT_CONGRUENCE.md)
