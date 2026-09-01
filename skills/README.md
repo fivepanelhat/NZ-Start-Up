@@ -1,6 +1,8 @@
 # Skills (public evaluation layer)
 
-Coastal Alpine Tech maintains a fleet of **93 named, versioned skills**. They are customisable for any industry under the same HITL and Te Mana Raraunga contract.
+Coastal Alpine Tech maintains a fleet of named, versioned skills. They are customisable for any industry under the same HITL and Te Mana Raraunga contract.
+
+**Updated:** 1 September 2026 — skills and the private CAT Agent Harness were created and updated for NZ-Start-Up and related products. This public repository does not describe those procedures.
 
 This public repository shows **one working set** — **Founder OS**:
 
@@ -13,10 +15,12 @@ This public repository shows **one working set** — **Founder OS**:
 
 Other folders in this directory are **name cards** only.
 
+Commercial-track packs, including add-ons to Founder OS, load from the private CAT Agent Harness under a written agreement. Pack names may be stated. Methods, checklists, and prices are not published here.
+
 ## What is public
 
 - Skill identity, HITL / autonomy ceiling, cultural-sensitivity flags
-- Fleet count (93) and the customisable-for-any-industry claim
+- That the fleet and harness were updated on 1 September 2026
 
 ## What is not public
 
