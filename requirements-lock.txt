@@ -13,5 +13,5 @@ pip-audit==2.9.0
 
 # optional extras (pin when used)
 mcp==1.28.1
-pypdf==6.15.0
+pypdf==6.16.1
 pywebview==5.4
