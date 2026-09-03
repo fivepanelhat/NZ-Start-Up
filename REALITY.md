@@ -5,14 +5,14 @@ Honest pre-seed status. Update when evidence changes.
 | Item | Status | Evidence |
 |------|--------|----------|
 | **Product** | NZ Start-Up in a Box (founder OS / digital-employee fleet) | Dual-licensed proprietary + commercial track |
-| **Version** | 1.8.0 | `pyproject.toml` |
+| **Version** | 1.8.4 | `pyproject.toml` |
 | **Tests** | Green when last run | `pytest` (100+), `doctor`, `smoke`, `compliance check` |
 | **HITL** | Hard-coded | Forbidden tools absent from MCP; default-deny autonomy |
 | **Dogfood** | Local memory only | `memory/companies/coastal-alpine-tech/` is **gitignored** - runs on founder machine |
 | **EDA collab** | Seeking, not signed | `docs/VT_POWERUP_APPROACH.md` = **DRAFT_NOT_SENT** |
 | **Live model eval** | Rubric lane works; LLM-as-judge needs API key | `evals/reports/eval-live-latest.json` provider=`rubric` |
 | **Paying customers** | None claimed | Pre-revenue |
-| **Incorporation** | Target / pending | Do not claim Companies Office filing done unless true |
+| **Incorporation** | Registered | Coastal Alpine Tech Limited — Companies Office 9451195, incorporated 28 August 2026. Day 0 of the 30/60/90 clock. Public register facts only. |
 
 ## Autonomy ceiling (product law)
 
